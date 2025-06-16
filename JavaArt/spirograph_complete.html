@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complete Spirograph Curves</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      margin: 0;
+      overflow: hidden;
+    }
+    svg {
+      display: block;
+      margin: auto;
+      width: 100vw;
+      height: 100vh;
+    }
+    path {
+      fill: none;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body>
+  <svg id="spirograph">
+    <circle cx="400" cy="400" r="2" fill="white" />
+  </svg>
+  <script>
+    const svg = document.getElementById("spirograph");
+
+    function createPath(color) {
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("stroke", color);
+      svg.appendChild(path);
+      return path;
+    }
+
+    function drawHypotrochoid(path, R, r, d, cx, cy, period, label, onComplete) {
+      let t = 0;
+      let points = "";
+      const step = 0.02;
+      const maxSteps = Math.ceil(period / step);
+
+      console.log("Starting " + label);
+
+      function hypotrochoid(t) {
+        const x = (R - r) * Math.cos(t) + d * Math.cos(((R - r) / r) * t);
+        const y = (R - r) * Math.sin(t) - d * Math.sin(((R - r) / r) * t);
+        return [cx + x, cy + y];
+      }
+
+      function draw() {
+        const [x, y] = hypotrochoid(t);
+        points += (points === "" ? "M" : "L") + x + "," + y + " ";
+        path.setAttribute("d", points);
+        t += step;
+        if (t < period) {
+          requestAnimationFrame(draw);
+        } else {
+          console.log(label + " complete.");
+          if (onComplete) onComplete();
+        }
+      }
+
+      draw();
+    }
+
+    const path1 = createPath("cyan");
+    drawHypotrochoid(path1, 120, 45, 85, 400, 400, 18.84955592153876, "First curve", () => {
+      const path2 = createPath("red");
+      drawHypotrochoid(path2, 60, 20, 40, 400, 400, 6.283185307179586, "Second curve");
+    });
+  </script>
+</body>
+</html>

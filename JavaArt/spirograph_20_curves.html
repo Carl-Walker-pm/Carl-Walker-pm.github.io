@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>20 Spirograph Curves</title>
+  <style>
+    body {
+      background-color: #0d0d0d;
+      margin: 0;
+      overflow: hidden;
+    }
+    svg {
+      display: block;
+      margin: auto;
+      width: 100vw;
+      height: 100vh;
+    }
+    path {
+      fill: none;
+      stroke-width: 1.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body>
+  <svg id="spirograph"></svg>
+  <script>
+    const svg = document.getElementById("spirograph");
+    const centerX = 400, centerY = 400;
+    const step = 0.02;
+
+    const curves = [
+    {'R': 203, 'r': 14, 'd': 174, 'steps': 629, 'color': 'hsl(0, 100%, 50%)'}, 
+    {'R': 176, 'r': 31, 'd': 51, 'steps': 9739, 'color': 'hsl(18, 100%, 50%)'}, 
+    {'R': 62, 'r': 21, 'd': 47, 'steps': 6598, 'color': 'hsl(36, 100%, 50%)'}, 
+    {'R': 187, 'r': 38, 'd': 89, 'steps': 11939, 'color': 'hsl(54, 100%, 50%)'}, 
+    {'R': 129, 'r': 21, 'd': 70, 'steps': 2200, 'color': 'hsl(72, 100%, 50%)'}, 
+    {'R': 146, 'r': 5, 'd': 88, 'steps': 1571, 'color': 'hsl(90, 100%, 50%)'}, 
+    {'R': 94, 'r': 31, 'd': 75, 'steps': 9739, 'color': 'hsl(108, 100%, 50%)'}, 
+    {'R': 212, 'r': 16, 'd': 141, 'steps': 1257, 'color': 'hsl(126, 100%, 50%)'}, 
+    {'R': 81, 'r': 21, 'd': 24, 'steps': 2200, 'color': 'hsl(144, 100%, 50%)'}, 
+    {'R': 154, 'r': 39, 'd': 114, 'steps': 12253, 'color': 'hsl(162, 100%, 50%)'}, 
+    {'R': 208, 'r': 62, 'd': 32, 'steps': 9739, 'color': 'hsl(180, 100%, 50%)'}, 
+    {'R': 219, 'r': 62, 'd': 205, 'steps': 19478, 'color': 'hsl(198, 100%, 50%)'}, 
+    {'R': 135, 'r': 52, 'd': 90, 'steps': 16337, 'color': 'hsl(216, 100%, 50%)'}, 
+    {'R': 138, 'r': 25, 'd': 125, 'steps': 7854, 'color': 'hsl(234, 100%, 50%)'}, 
+    {'R': 166, 'r': 26, 'd': 144, 'steps': 4085, 'color': 'hsl(252, 100%, 50%)'}, 
+    {'R': 157, 'r': 60, 'd': 59, 'steps': 18850, 'color': 'hsl(270, 100%, 50%)'}, 
+    {'R': 154, 'r': 70, 'd': 49, 'steps': 1571, 'color': 'hsl(288, 100%, 50%)'}, 
+    {'R': 169, 'r': 12, 'd': 116, 'steps': 3770, 'color': 'hsl(306, 100%, 50%)'}, 
+    {'R': 145, 'r': 56, 'd': 34, 'steps': 17593, 'color': 'hsl(324, 100%, 50%)'}, 
+    {'R': 159, 'r': 67, 'd': 77, 'steps': 21049, 'color': 'hsl(342, 100%, 50%)'}];
+
+    function createPath(color) {
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("stroke", color);
+      svg.appendChild(path);
+      return path;
+    }
+
+    function drawCurve(index) {
+      if (index >= curves.length) return;
+
+      const { R, r, d, steps, color } = curves[index];
+      console.log(`Starting curve #${index}: color=${color}, R=${R}, r=${r}, d=${d}, steps=${steps}`);
+      const path = createPath(color);
+      let t = 0;
+      let count = 0;
+      let points = "";
+
+      function hypotrochoid(t) {
+        const x = (R - r) * Math.cos(t) + d * Math.cos(((R - r) / r) * t);
+        const y = (R - r) * Math.sin(t) - d * Math.sin(((R - r) / r) * t);
+        return [centerX + x, centerY + y];
+      }
+
+      function draw() {
+        const [x, y] = hypotrochoid(t);
+        points += (count === 0 ? "M" : "L") + x + "," + y + " ";
+        path.setAttribute("d", points);
+        t += step;
+        count++;
+        if (count < steps) {
+          requestAnimationFrame(draw);
+        } else {
+          console.log(`Curve #${index} complete.`);
+          drawCurve(index + 1);
+        }
+      }
+
+      draw();
+    }
+
+    drawCurve(0);
+  </script>
+</body>
+</html>

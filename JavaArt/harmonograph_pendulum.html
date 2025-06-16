@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Harmonograph Pendulum</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<script>
+  const canvas = document.getElementById("canvas");
+  const ctx = canvas.getContext("2d");
+  let width, height;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, width, height);
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+
+  let t = 0;
+  const dt = 0.01;
+
+  function draw() {
+    const A1 = width / 3;
+    const A2 = height / 3;
+    const f1 = 2;
+    const f2 = 3;
+    const d1 = 0.002;
+    const d2 = 0.002;
+    const p1 = Math.PI / 2;
+    const p2 = 0;
+
+    const x = A1 * Math.sin(f1 * t + p1) * Math.exp(-d1 * t);
+    const y = A2 * Math.sin(f2 * t + p2) * Math.exp(-d2 * t);
+
+    const cx = width / 2 + x;
+    const cy = height / 2 + y;
+
+    const hue = (t * 50) % 360;
+    ctx.fillStyle = `hsl(${hue}, 100%, 60%)`;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 1.5, 0, 2 * Math.PI);
+    ctx.fill();
+
+    t += dt;
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+</script>
+</body>
+</html>
