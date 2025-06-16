@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spiral Chaos Pendulum</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #111;
+    }
+    svg {
+      display: block;
+      margin: auto;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <svg id="pendulum" width="800" height="800" viewBox="0 0 800 800">
+    <circle id="trace" cx="400" cy="400" r="1" fill="lime"></circle>
+    <line id="arm1" stroke="white" stroke-width="2"/>
+    <line id="arm2" stroke="cyan" stroke-width="2"/>
+    <circle id="bob1" r="8" fill="white"/>
+    <circle id="bob2" r="8" fill="cyan"/>
+  </svg>
+
+  <script>
+    const svg = document.getElementById("pendulum");
+    const arm1 = document.getElementById("arm1");
+    const arm2 = document.getElementById("arm2");
+    const bob1 = document.getElementById("bob1");
+    const bob2 = document.getElementById("bob2");
+
+    const originX = 400, originY = 400;
+    let angle1 = Math.PI / 2, angle2 = Math.PI / 2 + 0.01;
+    let aVel1 = 0, aVel2 = 0;
+    let aAcc1 = 0, aAcc2 = 0;
+
+    const g = 0.98;
+    const len1 = 150;
+    const len2 = 150;
+    const mass1 = 10;
+    const mass2 = 10;
+
+    let tracePath = [];
+
+    function animate() {
+      // Equations from physics of double pendulum
+      const num1 = -g * (2 * mass1 + mass2) * Math.sin(angle1);
+      const num2 = -mass2 * g * Math.sin(angle1 - 2 * angle2);
+      const num3 = -2 * Math.sin(angle1 - angle2) * mass2;
+      const num4 = aVel2 * aVel2 * len2 + aVel1 * aVel1 * len1 * Math.cos(angle1 - angle2);
+      const den = len1 * (2 * mass1 + mass2 - mass2 * Math.cos(2 * angle1 - 2 * angle2));
+      aAcc1 = (num1 + num2 + num3 * num4) / den;
+
+      const num5 = 2 * Math.sin(angle1 - angle2);
+      const num6 = aVel1 * aVel1 * len1 * (mass1 + mass2);
+      const num7 = g * (mass1 + mass2) * Math.cos(angle1);
+      const num8 = aVel2 * aVel2 * len2 * mass2 * Math.cos(angle1 - angle2);
+      const den2 = len2 * (2 * mass1 + mass2 - mass2 * Math.cos(2 * angle1 - 2 * angle2));
+      aAcc2 = (num5 * (num6 + num7 + num8)) / den2;
+
+      aVel1 += aAcc1;
+      aVel2 += aAcc2;
+      aVel1 *= 0.999;
+      aVel2 *= 0.999;
+      angle1 += aVel1;
+      angle2 += aVel2;
+
+      const x1 = originX + len1 * Math.sin(angle1);
+      const y1 = originY + len1 * Math.cos(angle1);
+      const x2 = x1 + len2 * Math.sin(angle2);
+      const y2 = y1 + len2 * Math.cos(angle2);
+
+      arm1.setAttribute("x1", originX);
+      arm1.setAttribute("y1", originY);
+      arm1.setAttribute("x2", x1);
+      arm1.setAttribute("y2", y1);
+
+      arm2.setAttribute("x1", x1);
+      arm2.setAttribute("y1", y1);
+      arm2.setAttribute("x2", x2);
+      arm2.setAttribute("y2", y2);
+
+      bob1.setAttribute("cx", x1);
+      bob1.setAttribute("cy", y1);
+      bob2.setAttribute("cx", x2);
+      bob2.setAttribute("cy", y2);
+
+      // Draw trace
+      const traceDot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      traceDot.setAttribute("cx", x2);
+      traceDot.setAttribute("cy", y2);
+      traceDot.setAttribute("r", "0.5");
+      traceDot.setAttribute("fill", "lime");
+      svg.appendChild(traceDot);
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
