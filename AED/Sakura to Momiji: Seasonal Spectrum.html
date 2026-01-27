@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakura to Momiji: 144 Seasonal Colors</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #fcfaf7; /* Rice paper color */
+            color: #444;
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            margin: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 1100px;
+        }
+        h1 {
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            color: #d67ba4; /* Sakura Pink */
+            text-transform: uppercase;
+        }
+        p.subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 1.1em;
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+        .season-header {
+            text-align: center;
+            font-size: 2em;
+            font-weight: 100;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+        }
+        .season-spring { color: #FFB7C5; border-color: #FFB7C5; }
+        .season-autumn { color: #C04000; border-color: #C04000; }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .hue-group {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        h3 {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            color: #999;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85em;
+        }
+        td {
+            padding: 6px 0;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+        }
+        .color-preview {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: inset 0 0 2px rgba(0,0,0,0.1);
+        }
+        .code-col {
+            padding-left: 12px;
+            font-family: 'Courier New', monospace;
+            color: #888;
+            width: 70px;
+        }
+        .desc-col {
+            padding-left: 12px;
+        }
+        .desc-name {
+            display: block;
+            font-weight: 600;
+            color: #333;
+        }
+        .desc-note {
+            display: block;
+            font-size: 0.85em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Seasonal Spectrum</h1>
+    <p class="subtitle">144 Colors // Spring Bloom to Autumn Fade</p>
+
+    <h2 class="season-header season-spring">Spring (Hanami)</h2>
+    <div class="color-grid">
+
+        <div class="hue-group">
+            <h3 style="border-color: #FFB7C5;">01. Sakura Reds</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#FFB7C5"></span></td><td class="code-col">#FFB7C5</td><td class="desc-col"><span class="desc-name">Sakura Petal</span><span class="desc-note">Classic cherry blossom</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFC0CB"></span></td><td class="code-col">#FFC0CB</td><td class="desc-col"><span class="desc-name">Pink</span><span class="desc-note">Soft spring bloom</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FDEEF4"></span></td><td class="code-col">#FDEEF4</td><td class="desc-col"><span class="desc-name">Pearl Blush</span><span class="desc-note">Almost white bud</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFF0F5"></span></td><td class="code-col">#FFF0F5</td><td class="desc-col"><span class="desc-name">Lavender Blush</span><span class="desc-note">Pale atmospheric pink</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FF69B4"></span></td><td class="code-col">#FF69B4</td><td class="desc-col"><span class="desc-name">Hot Pink</span><span class="desc-note">Vibrant azalea</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#E68FAC"></span></td><td class="code-col">#E68FAC</td><td class="desc-col"><span class="desc-name">Old Rose</span><span class="desc-note">Fading petal</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#DB7093"></span></td><td class="code-col">#DB7093</td><td class="desc-col"><span class="desc-name">Pale Violet Red</span><span class="desc-note">Deep blossom</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FF1493"></span></td><td class="code-col">#FF1493</td><td class="desc-col"><span class="desc-name">Deep Pink</span><span class="desc-note">Intense bloom</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#F4C2C2"></span></td><td class="code-col">#F4C2C2</td><td class="desc-col"><span class="desc-name">Tea Rose</span><span class="desc-note">Vintage botanical</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#F88379"></span></td><td class="code-col">#F88379</td><td class="desc-col"><span class="desc-name">Coral Pink</span><span class="desc-note">Warm bud</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#F08080"></span></td><td class="code-col">#F08080</td><td class="desc-col"><span class="desc-name">Light Coral</span><span class="desc-note">Sunlit flower</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#E30B5C"></span></td><td class="code-col">#E30B5C</td><td class="desc-col"><span class="desc-name">Raspberry</span><span class="desc-note">Early berry</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #FFDAB9;">02. Morning Sun Oranges</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#FFDAB9"></span></td><td class="code-col">#FFDAB9</td><td class="desc-col"><span class="desc-name">Peach Puff</span><span class="desc-note">Morning haze</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFE5B4"></span></td><td class="code-col">#FFE5B4</td><td class="desc-col"><span class="desc-name">Peach</span><span class="desc-note">Fruit skin</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFEFD5"></span></td><td class="code-col">#FFEFD5</td><td class="desc-col"><span class="desc-name">Papaya Whip</span><span class="desc-note">Soft sunlight</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FAEBD7"></span></td><td class="code-col">#FAEBD7</td><td class="desc-col"><span class="desc-name">Antique White</span><span class="desc-note">Old parchment</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFA07A"></span></td><td class="code-col">#FFA07A</td><td class="desc-col"><span class="desc-name">Light Salmon</span><span class="desc-note">Warm dawn</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FBCEB1"></span></td><td class="code-col">#FBCEB1</td><td class="desc-col"><span class="desc-name">Apricot</span><span class="desc-note">Spring fruit</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FF7F50"></span></td><td class="code-col">#FF7F50</td><td class="desc-col"><span class="desc-name">Coral</span><span class="desc-note">Vibrant sunrise</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#F4A460"></span></td><td class="code-col">#F4A460</td><td class="desc-col"><span class="desc-name">Sandy Brown</span><span class="desc-note">Riverbank sand</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#E9967A"></span></td><td class="code-col">#E9967A</td><td class="desc-col"><span class="desc-name">Dark Salmon</span><span class="desc-note">Dusk light</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFDEAD"></span></td><td class="code-col">#FFDEAD</td><td class="desc-col"><span class="desc-name">Navajo White</span><span class="desc-note">Warm stone</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFE4C4"></span></td><td class="code-col">#FFE4C4</td><td class="desc-col"><span class="desc-name">Bisque</span><span class="desc-note">Ceramic texture</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#F5DEB3"></span></td><td class="code-col">#F5DEB3</td><td class="desc-col"><span class="desc-name">Wheat</span><span class="desc-note">Dry grass</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #FFFACD;">03. Dappled Light Yellows</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#FFFFF0"></span></td><td class="code-col">#FFFFF0</td><td class="desc-col"><span class="desc-name">Ivory</span><span class="desc-note">Pure light</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFFACD"></span></td><td class="code-col">#FFFACD</td><td class="desc-col"><span class="desc-name">Lemon Chiffon</span><span class="desc-note">Pale sunbeam</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FAFAD2"></span></td><td class="code-col">#FAFAD2</td><td class="desc-col"><span class="desc-name">Light Gold</span><span class="desc-note">Spring glow</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFFFE0"></span></td><td class="code-col">#FFFFE0</td><td class="desc-col"><span class="desc-name">Light Yellow</span><span class="desc-note">Daffodil</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FDF5E6"></span></td><td class="code-col">#FDF5E6</td><td class="desc-col"><span class="desc-name">Old Lace</span><span class="desc-note">Vintage dress</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFF8DC"></span></td><td class="code-col">#FFF8DC</td><td class="desc-col"><span class="desc-name">Cornsilk</span><span class="desc-note">Plant fiber</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#EEE8AA"></span></td><td class="code-col">#EEE8AA</td><td class="desc-col"><span class="desc-name">Pale Goldenrod</span><span class="desc-note">Pollen</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#F0E68C"></span></td><td class="code-col">#F0E68C</td><td class="desc-col"><span class="desc-name">Khaki</span><span class="desc-note">Dusty path</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#E4D00A"></span></td><td class="code-col">#E4D00A</td><td class="desc-col"><span class="desc-name">Citrine</span><span class="desc-note">Bright flower</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFD700"></span></td><td class="code-col">#FFD700</td><td class="desc-col"><span class="desc-name">Gold</span><span class="desc-note">Stamen core</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#DAA520"></span></td><td class="code-col">#DAA520</td><td class="desc-col"><span class="desc-name">Goldenrod</span><span class="desc-note">Field flower</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#BDB76B"></span></td><td class="code-col">#BDB76B</td><td class="desc-col"><span class="desc-name">Dark Khaki</span><span class="desc-note">Shadowed grass</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #98FB98;">04. Sprout Greens</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#F0FFF0"></span></td><td class="code-col">#F0FFF0</td><td class="desc-col"><span class="desc-name">Honeydew</span><span class="desc-note">Morning dew</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#F5FFFA"></span></td><td class="code-col">#F5FFFA</td><td class="desc-col"><span class="desc-name">Mint Cream</span><span class="desc-note">Cold morning</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#98FB98"></span></td><td class="code-col">#98FB98</td><td class="desc-col"><span class="desc-name">Pale Green</span><span class="desc-note">New leaf</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#90EE90"></span></td><td class="code-col">#90EE90</td><td class="desc-col"><span class="desc-name">Light Green</span><span class="desc-note">Fresh grass</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#D0F0C0"></span></td><td class="code-col">#D0F0C0</td><td class="desc-col"><span class="desc-name">Tea Green</span><span class="desc-note">Matcha tea</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#9ACD32"></span></td><td class="code-col">#9ACD32</td><td class="desc-col"><span class="desc-name">Yellow Green</span><span class="desc-note">Bud opening</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#ADFF2F"></span></td><td class="code-col">#ADFF2F</td><td class="desc-col"><span class="desc-name">Green Yellow</span><span class="desc-note">Vibrant shoot</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#7FFF00"></span></td><td class="code-col">#7FFF00</td><td class="desc-col"><span class="desc-name">Chartreuse</span><span class="desc-note">First growth</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#32CD32"></span></td><td class="code-col">#32CD32</td><td class="desc-col"><span class="desc-name">Lime Green</span><span class="desc-note">Sunlit moss</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#00FF7F"></span></td><td class="code-col">#00FF7F</td><td class="desc-col"><span class="desc-name">Spring Green</span><span class="desc-note">Peak spring</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#3CB371"></span></td><td class="code-col">#3CB371</td><td class="desc-col"><span class="desc-name">Medium Sea</span><span class="desc-note">Garden shrub</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#2E8B57"></span></td><td class="code-col">#2E8B57</td><td class="desc-col"><span class="desc-name">Sea Green</span><span class="desc-note">Deep leaf</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #87CEEB;">05. April Sky Blues</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#F0F8FF"></span></td><td class="code-col">#F0F8FF</td><td class="desc-col"><span class="desc-name">Alice Blue</span><span class="desc-note">Cloud white</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#E0FFFF"></span></td><td class="code-col">#E0FFFF</td><td class="desc-col"><span class="desc-name">Light Cyan</span><span class="desc-note">High atmosphere</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#AFEEEE"></span></td><td class="code-col">#AFEEEE</td><td class="desc-col"><span class="desc-name">Pale Turquoise</span><span class="desc-note">Cool breeze</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#B0E0E6"></span></td><td class="code-col">#B0E0E6</td><td class="desc-col"><span class="desc-name">Powder Blue</span><span class="desc-note">Soft sky</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#87CEEB"></span></td><td class="code-col">#87CEEB</td><td class="desc-col"><span class="desc-name">Sky Blue</span><span class="desc-note">Clear day</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#00BFFF"></span></td><td class="code-col">#00BFFF</td><td class="desc-col"><span class="desc-name">Deep Sky Blue</span><span class="desc-note">Noon zenith</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#ADD8E6"></span></td><td class="code-col">#ADD8E6</td><td class="desc-col"><span class="desc-name">Light Blue</span><span class="desc-note">Horizon haze</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#40E0D0"></span></td><td class="code-col">#40E0D0</td><td class="desc-col"><span class="desc-name">Turquoise</span><span class="desc-note">Spring water</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#7FFFD4"></span></td><td class="code-col">#7FFFD4</td><td class="desc-col"><span class="desc-name">Aquamarine</span><span class="desc-note">Gemstone</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#66CDAA"></span></td><td class="code-col">#66CDAA</td><td class="desc-col"><span class="desc-name">Medium Aqua</span><span class="desc-note">Pond water</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#5F9EA0"></span></td><td class="code-col">#5F9EA0</td><td class="desc-col"><span class="desc-name">Cadet Blue</span><span class="desc-note">Muted lake</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#4682B4"></span></td><td class="code-col">#4682B4</td><td class="desc-col"><span class="desc-name">Steel Blue</span><span class="desc-note">Evening sky</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #DDA0DD;">06. Wisteria Violets</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#E6E6FA"></span></td><td class="code-col">#E6E6FA</td><td class="desc-col"><span class="desc-name">Lavender</span><span class="desc-note">Pale floral</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#D8BFD8"></span></td><td class="code-col">#D8BFD8</td><td class="desc-col"><span class="desc-name">Thistle</span><span class="desc-note">Wildflower</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#DDA0DD"></span></td><td class="code-col">#DDA0DD</td><td class="desc-col"><span class="desc-name">Plum</span><span class="desc-note">Soft fruit</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#EE82EE"></span></td><td class="code-col">#EE82EE</td><td class="desc-col"><span class="desc-name">Violet</span><span class="desc-note">Garden bloom</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#DA70D6"></span></td><td class="code-col">#DA70D6</td><td class="desc-col"><span class="desc-name">Orchid</span><span class="desc-note">Vibrant floral</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#BA55D3"></span></td><td class="code-col">#BA55D3</td><td class="desc-col"><span class="desc-name">Medium Orchid</span><span class="desc-note">Wisteria hanging</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#9370DB"></span></td><td class="code-col">#9370DB</td><td class="desc-col"><span class="desc-name">Medium Purple</span><span class="desc-note">Spring shadow</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#8A2BE2"></span></td><td class="code-col">#8A2BE2</td><td class="desc-col"><span class="desc-name">Blue Violet</span><span class="desc-note">Iris flower</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#9400D3"></span></td><td class="code-col">#9400D3</td><td class="desc-col"><span class="desc-name">Dark Violet</span><span class="desc-note">Deep petal</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#9932CC"></span></td><td class="code-col">#9932CC</td><td class="desc-col"><span class="desc-name">Dark Orchid</span><span class="desc-note">Twilight bloom</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#8B008B"></span></td><td class="code-col">#8B008B</td><td class="desc-col"><span class="desc-name">Dark Magenta</span><span class="desc-note">Intense shadow</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#800080"></span></td><td class="code-col">#800080</td><td class="desc-col"><span class="desc-name">Purple</span><span class="desc-note">Royal bloom</span></td></tr>
+            </table>
+        </div>
+
+    </div>
+
+    <h2 class="season-header season-autumn">Autumn (Momiji)</h2>
+    <div class="color-grid">
+
+        <div class="hue-group">
+            <h3 style="border-color: #B22222;">07. Maple Reds</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#CD5C5C"></span></td><td class="code-col">#CD5C5C</td><td class="desc-col"><span class="desc-name">Indian Red</span><span class="desc-note">Clay earth</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#B22222"></span></td><td class="code-col">#B22222</td><td class="desc-col"><span class="desc-name">Fire Brick</span><span class="desc-note">Red brick wall</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#A52A2A"></span></td><td class="code-col">#A52A2A</td><td class="desc-col"><span class="desc-name">Brown</span><span class="desc-note">Tree bark</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#8B0000"></span></td><td class="code-col">#8B0000</td><td class="desc-col"><span class="desc-name">Dark Red</span><span class="desc-note">Momiji crimson</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#800000"></span></td><td class="code-col">#800000</td><td class="desc-col"><span class="desc-name">Maroon</span><span class="desc-note">Deep leaves</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#990000"></span></td><td class="code-col">#990000</td><td class="desc-col"><span class="desc-name">Crimson Red</span><span class="desc-note">University brick</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#C41E3A"></span></td><td class="code-col">#C41E3A</td><td class="desc-col"><span class="desc-name">Cardinal</span><span class="desc-note">Late berry</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#660000"></span></td><td class="code-col">#660000</td><td class="desc-col"><span class="desc-name">Blood</span><span class="desc-note">Rich organic</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#5D0005"></span></td><td class="code-col">#5D0005</td><td class="desc-col"><span class="desc-name">Dried Leaf</span><span class="desc-note">Very dark red</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#7B1113"></span></td><td class="code-col">#7B1113</td><td class="desc-col"><span class="desc-name">Wine Red</span><span class="desc-note">Aged vintage</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#9E1B32"></span></td><td class="code-col">#9E1B32</td><td class="desc-col"><span class="desc-name">Rubber Red</span><span class="desc-note">Muted dark</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#4A0404"></span></td><td class="code-col">#4A0404</td><td class="desc-col"><span class="desc-name">Oxblood</span><span class="desc-note">Winter approach</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #D2691E;">08. Harvest Oranges</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#FF8C00"></span></td><td class="code-col">#FF8C00</td><td class="desc-col"><span class="desc-name">Dark Orange</span><span class="desc-note">Pumpkin</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#D2691E"></span></td><td class="code-col">#D2691E</td><td class="desc-col"><span class="desc-name">Chocolate</span><span class="desc-note">Dried mud</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#CD853F"></span></td><td class="code-col">#CD853F</td><td class="desc-col"><span class="desc-name">Peru</span><span class="desc-note">Fallen leaf</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#A0522D"></span></td><td class="code-col">#A0522D</td><td class="desc-col"><span class="desc-name">Sienna</span><span class="desc-note">Reddish earth</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#8B4513"></span></td><td class="code-col">#8B4513</td><td class="desc-col"><span class="desc-name">Saddle Brown</span><span class="desc-note">Leather</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#EC5800"></span></td><td class="code-col">#EC5800</td><td class="desc-col"><span class="desc-name">Persimmon</span><span class="desc-note">Autumn fruit</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#B7410E"></span></td><td class="code-col">#B7410E</td><td class="desc-col"><span class="desc-name">Rust</span><span class="desc-note">Oxidized metal</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#CC5500"></span></td><td class="code-col">#CC5500</td><td class="desc-col"><span class="desc-name">Burnt Orange</span><span class="desc-note">Vibrant decay</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#E2725B"></span></td><td class="code-col">#E2725B</td><td class="desc-col"><span class="desc-name">Terra Cotta</span><span class="desc-note">Baked clay</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#C154C1"></span></td><td class="code-col">#C154C1</td><td class="desc-col"><span class="desc-name">Deep Fuchsia</span><span class="desc-note">Sunset cloud</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#954535"></span></td><td class="code-col">#954535</td><td class="desc-col"><span class="desc-name">Chestnut</span><span class="desc-note">Nut shell</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#6F4E37"></span></td><td class="code-col">#6F4E37</td><td class="desc-col"><span class="desc-name">Coffee</span><span class="desc-note">Warm brew</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #B8860B;">09. Gingko Golds</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#B8860B"></span></td><td class="code-col">#B8860B</td><td class="desc-col"><span class="desc-name">Dark Goldenrod</span><span class="desc-note">Deep pollen</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#D4AF37"></span></td><td class="code-col">#D4AF37</td><td class="desc-col"><span class="desc-name">Metallic Gold</span><span class="desc-note">Autumn luxury</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#C5B358"></span></td><td class="code-col">#C5B358</td><td class="desc-col"><span class="desc-name">Vegas Gold</span><span class="desc-note">Dried hay</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#CFB53B"></span></td><td class="code-col">#CFB53B</td><td class="desc-col"><span class="desc-name">Old Gold</span><span class="desc-note">Antique</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#9B870C"></span></td><td class="code-col">#9B870C</td><td class="desc-col"><span class="desc-name">Dark Yellow</span><span class="desc-note">Shadowed leaf</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#808000"></span></td><td class="code-col">#808000</td><td class="desc-col"><span class="desc-name">Olive</span><span class="desc-note">Military drab</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#6B8E23"></span></td><td class="code-col">#6B8E23</td><td class="desc-col"><span class="desc-name">Olive Drab</span><span class="desc-note">Camouflage</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#FFBF00"></span></td><td class="code-col">#FFBF00</td><td class="desc-col"><span class="desc-name">Amber</span><span class="desc-note">Fossil resin</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#E3B778"></span></td><td class="code-col">#E3B778</td><td class="desc-col"><span class="desc-name">Elm Wood</span><span class="desc-note">Light timber</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#C2B280"></span></td><td class="code-col">#C2B280</td><td class="desc-col"><span class="desc-name">Sand</span><span class="desc-note">Beige ground</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#9ACD32"></span></td><td class="code-col">#9ACD32</td><td class="desc-col"><span class="desc-name">Yellow Green</span><span class="desc-note">Turning leaf</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#55552B"></span></td><td class="code-col">#55552B</td><td class="desc-col"><span class="desc-name">Deep Bronze</span><span class="desc-note">Metal patina</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #556B2F;">10. Deep Forest Greens</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#556B2F"></span></td><td class="code-col">#556B2F</td><td class="desc-col"><span class="desc-name">Dark Olive</span><span class="desc-note">Dense woods</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#228B22"></span></td><td class="code-col">#228B22</td><td class="desc-col"><span class="desc-name">Forest Green</span><span class="desc-note">Evergreen</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#006400"></span></td><td class="code-col">#006400</td><td class="desc-col"><span class="desc-name">Dark Green</span><span class="desc-note">Pine needle</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#354230"></span></td><td class="code-col">#354230</td><td class="desc-col"><span class="desc-name">Kombu Green</span><span class="desc-note">Deep kelp</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#2F4F4F"></span></td><td class="code-col">#2F4F4F</td><td class="desc-col"><span class="desc-name">Dark Slate Gray</span><span class="desc-note">Stormy forest</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#013220"></span></td><td class="code-col">#013220</td><td class="desc-col"><span class="desc-name">Black Forest</span><span class="desc-note">Night woods</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#4A5D23"></span></td><td class="code-col">#4A5D23</td><td class="desc-col"><span class="desc-name">Moss Green</span><span class="desc-note">Ground cover</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#8FBC8F"></span></td><td class="code-col">#8FBC8F</td><td class="desc-col"><span class="desc-name">Dark Sea</span><span class="desc-note">Fading foliage</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#49796B"></span></td><td class="code-col">#49796B</td><td class="desc-col"><span class="desc-name">Hookers Green</span><span class="desc-note">Artist pigment</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#004225"></span></td><td class="code-col">#004225</td><td class="desc-col"><span class="desc-name">Racing Green</span><span class="desc-note">Deep vintage</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#1B4D3E"></span></td><td class="code-col">#1B4D3E</td><td class="desc-col"><span class="desc-name">Brunswick</span><span class="desc-note">Official green</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#043927"></span></td><td class="code-col">#043927</td><td class="desc-col"><span class="desc-name">Sacramento</span><span class="desc-note">Deepest leaf</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #708090;">11. Cold Rain Blues</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#708090"></span></td><td class="code-col">#708090</td><td class="desc-col"><span class="desc-name">Slate Gray</span><span class="desc-note">Stone wall</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#778899"></span></td><td class="code-col">#778899</td><td class="desc-col"><span class="desc-name">Light Slate</span><span class="desc-note">Overcast sky</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#6A5ACD"></span></td><td class="code-col">#6A5ACD</td><td class="desc-col"><span class="desc-name">Slate Blue</span><span class="desc-note">Twilit stone</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#483D8B"></span></td><td class="code-col">#483D8B</td><td class="desc-col"><span class="desc-name">Dark Slate Blue</span><span class="desc-note">Night shadow</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#191970"></span></td><td class="code-col">#191970</td><td class="desc-col"><span class="desc-name">Midnight Blue</span><span class="desc-note">Deepest night</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#000080"></span></td><td class="code-col">#000080</td><td class="desc-col"><span class="desc-name">Navy</span><span class="desc-note">Uniform</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#00008B"></span></td><td class="code-col">#00008B</td><td class="desc-col"><span class="desc-name">Dark Blue</span><span class="desc-note">Cold ocean</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#36454F"></span></td><td class="code-col">#36454F</td><td class="desc-col"><span class="desc-name">Charcoal</span><span class="desc-note">Burnt wood</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#536872"></span></td><td class="code-col">#536872</td><td class="desc-col"><span class="desc-name">Payne's Grey</span><span class="desc-note">Artist shadow</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#2C3E50"></span></td><td class="code-col">#2C3E50</td><td class="desc-col"><span class="desc-name">Midnight</span><span class="desc-note">Late hour</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#232B2B"></span></td><td class="code-col">#232B2B</td><td class="desc-col"><span class="desc-name">Oil</span><span class="desc-note">Slick dark</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#0A1128"></span></td><td class="code-col">#0A1128</td><td class="desc-col"><span class="desc-name">Night Sky</span><span class="desc-note">Winter approach</span></td></tr>
+            </table>
+        </div>
+
+        <div class="hue-group">
+            <h3 style="border-color: #4B0082;">12. Long Night Violets</h3>
+            <table>
+                <tr><td><span class="color-preview" style="background:#4B0082"></span></td><td class="code-col">#4B0082</td><td class="desc-col"><span class="desc-name">Indigo</span><span class="desc-note">Rainbow edge</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#663399"></span></td><td class="code-col">#663399</td><td class="desc-col"><span class="desc-name">Rebecca Purple</span><span class="desc-note">Web classic</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#580F41"></span></td><td class="code-col">#580F41</td><td class="desc-col"><span class="desc-name">Tyrian Purple</span><span class="desc-note">Ancient dye</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#301934"></span></td><td class="code-col">#301934</td><td class="desc-col"><span class="desc-name">Dark Puce</span><span class="desc-note">Dried blood</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#483248"></span></td><td class="code-col">#483248</td><td class="desc-col"><span class="desc-name">Eggplant</span><span class="desc-note">Vegetable skin</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#240046"></span></td><td class="code-col">#240046</td><td class="desc-col"><span class="desc-name">Ultra Violet</span><span class="desc-note">Deep spectrum</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#3C1361"></span></td><td class="code-col">#3C1361</td><td class="desc-col"><span class="desc-name">Imperial</span><span class="desc-note">Regal dark</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#2E0854"></span></td><td class="code-col">#2E0854</td><td class="desc-col"><span class="desc-name">Darkest Purple</span><span class="desc-note">Void</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#922B3E"></span></td><td class="code-col">#922B3E</td><td class="desc-col"><span class="desc-name">Mulberry</span><span class="desc-note">Staining fruit</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#59465C"></span></td><td class="code-col">#59465C</td><td class="desc-col"><span class="desc-name">Deep Taupe</span><span class="desc-note">Greyish violet</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#32174D"></span></td><td class="code-col">#32174D</td><td class="desc-col"><span class="desc-name">Russian Violet</span><span class="desc-note">Cold night</span></td></tr>
+                <tr><td><span class="color-preview" style="background:#120A8F"></span></td><td class="code-col">#120A8F</td><td class="desc-col"><span class="desc-name">Ultramarine</span><span class="desc-note">Deep pigment</span></td></tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
