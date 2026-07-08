@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Powertrain Academy | Engine Engineering Masterclasses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0c10;
+            --bg-card: #12161f;
+            --bg-card-hover: #181d29;
+            --accent-blue: #00d2ff;
+            --accent-orange: #ff6a00;
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+            --border-color: #222b3d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .brand {
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(10, 12, 16, 0.9);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(135deg, var(--accent-blue), #0080ff);
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
+        }
+
+        /* Features/Curriculum */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 6rem 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+            transform: scale(1.03);
+        }
+
+        .pricing-card.enterprise {
+            border-color: var(--accent-orange);
+            background: linear-gradient(180deg, rgba(255, 106, 0, 0.05) 0%, var(--bg-card) 100%);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent-blue);
+            color: #000;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .pricing-card.enterprise .badge {
+            background: var(--accent-orange);
+            color: #fff;
+        }
+
+        .tier-name {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            min-height: 40px;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Rajdhani', sans-serif;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2.5rem;
+            flex-grow: 1;
+        }
+
+        .features-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--accent-blue);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .pricing-card.enterprise .features-list li::before {
+            color: var(--accent-orange);
+        }
+
+        .btn-tier {
+            width: 100%;
+            text-align: center;
+            padding: 1rem;
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .pricing-card.popular .btn-tier {
+            background: var(--accent-blue);
+            color: #000;
+        }
+
+        .pricing-card.enterprise .btn-tier {
+            border-color: var(--accent-orange);
+            background: var(--accent-orange);
+            color: #fff;
+        }
+
+        .btn-tier:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 5%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
+            .pricing-card.popular { transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand">Apex Powertrain</div>
+        <div class="nav-links">
+            <a href="#curriculum">Curriculum</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#login">Student Portal</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Master the Mechanics of Extreme Horsepower</h1>
+        <p>Comprehensive video lectures on Internal Combustion, Thermodynamics, CFD Simulation, and F1 Powertrain Engineering from industry veterans.</p>
+        <a href="#pricing" class="btn">Explore Access Tiers</a>
+    </header>
+
+    <section id="curriculum" class="features">
+        <div class="feature-card">
+            <h3>Thermodynamics & Airflow</h3>
+            <p>Deep dive into volumetric efficiency, gas dynamics, and custom intake/exhaust resonance modeling for high-RPM engines.</p>
+        </div>
+        <div class="feature-card">
+            <h3>CFD & FEA Simulation</h3>
+            <p>Step-by-step video tutorials on running computational fluid dynamics and finite element analysis on pistons, rods, and valves.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Alternative & Hyper-Fuels</h3>
+            <p>Understand the engineering behind hydrogen combustion, synthetic e-fuels, and extreme boost ignition timing.</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="section-title">
+            <h2>Select Your Engineering Tier</h2>
+            <p>From enthusiast fundamentals to enterprise-grade motorsport consulting.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="tier-name">Enthusiast</h3>
+                <p class="tier-desc">Essential theory and foundational engine building principles.</p>
+                <div class="price">$200 <span>/ one-time</span></div>
+                <ul class="features-list">
+                    <li>25+ Hours of HD Video Lectures</li>
+                    <li>Core Thermodynamics & Mechanics</li>
+                    <li>Downloadable Schematics & Charts</li>
+                    <li>Community Discord Access</li>
+                    <li>Lifetime Access to Tier 1 Updates</li>
+                </ul>
+                <a href="#" class="btn-tier">Enroll Now</a>
+            </div>
+
+            <div class="pricing-card popular">
+                <div class="badge">Most Popular</div>
+                <h3 class="tier-name">Professional Engineer</h3>
+                <p class="tier-desc">Advanced simulation, CAD design, and professional telemetry analysis.</p>
+                <div class="price">$2,000 <span>/ one-time</span></div>
+                <ul class="features-list">
+                    <li>120+ Hours of Advanced Video Lectures</li>
+                    <li>Full CFD & FEA Simulation Modules</li>
+                    <li>Downloadable CAD Models & ANSYS Files</li>
+                    <li>Bi-Weekly Live Q&A with F1 Engineers</li>
+                    <li>Official Professional Certification</li>
+                    <li>Direct Email Technical Support</li>
+                </ul>
+                <a href="#" class="btn-tier">Enroll Now</a>
+            </div>
+
+            <div class="pricing-card enterprise">
+                <div class="badge">Enterprise & Race Teams</div>
+                <h3 class="tier-name">Apex Motorsport IP</h3>
+                <p class="tier-desc">Full corporate transfer of knowledge, prototype consulting, and team training.</p>
+                <div class="price">$20,000 <span>/ license</span></div>
+                <ul class="features-list">
+                    <li>All Professional Tier Content (Up to 10 Seats)</li>
+                    <li>50 Hours of Private 1-on-1 Engineering Consulting</li>
+                    <li>Custom Curriculum for Your Race Team</li>
+                    <li>NDA-Protected Prototype Review Sessions</li>
+                    <li>Proprietary Combustion Modeling Software</li>
+                    <li>Direct Phone Access to Chief Instructors</li>
+                </ul>
+                <a href="#" class="btn-tier">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Apex Powertrain Academy. All rights reserved. | Engineering the Future of Speed.</p>
+    </footer>
+
+</body>
+</html>
