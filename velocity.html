@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloCity | Premium Bikes & Gear</title>
+    <style>
+        /* General Styles */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f8f9fa; 
+            color: #333; 
+        }
+        
+        /* Navigation */
+        header { 
+            background: #1a1a1a; 
+            color: #fff; 
+            padding: 1rem 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 1.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: #e67e22;
+        }
+        .cart { 
+            background: #e67e22; 
+            color: #fff;
+            padding: 0.5rem 1.25rem; 
+            border-radius: 25px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: background 0.3s ease;
+        }
+        .cart:hover {
+            background: #d35400;
+        }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1485965120184-e220f721d03e?auto=format&fit=crop&w=1600&q=80') center/cover; 
+            height: 400px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            text-align: center; 
+        }
+        .hero h2 { 
+            font-size: 3.5rem; 
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Product Grid */
+        .container { 
+            max-width: 1200px; 
+            margin: 3rem auto; 
+            padding: 0 5%; 
+        }
+        h3 { 
+            font-size: 2rem; 
+            border-bottom: 3px solid #e67e22; 
+            display: inline-block; 
+            padding-bottom: 0.5rem; 
+            margin-bottom: 2rem; 
+        }
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
+        }
+        .card { 
+            background: #fff; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+            text-align: center; 
+            padding-bottom: 1.5rem; 
+        }
+        .card:hover { 
+            transform: translateY(-10px); 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .card img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: cover; 
+            border-bottom: 1px solid #eee;
+        }
+        .card h4 { 
+            margin: 1.2rem 0 0.5rem; 
+            font-size: 1.25rem;
+            color: #222;
+        }
+        .card p { 
+            color: #e67e22; 
+            margin-bottom: 1.2rem; 
+            font-size: 1.2rem;
+            font-weight: bold; 
+        }
+        .btn { 
+            background: #1a1a1a; 
+            color: #fff; 
+            border: none; 
+            padding: 0.75rem 1.5rem; 
+            border-radius: 5px; 
+            font-size: 1rem;
+            cursor: pointer; 
+            transition: background 0.3s; 
+        }
+        .btn:hover { 
+            background: #e67e22; 
+        }
+
+        /* Footer */
+        footer { 
+            background: #1a1a1a; 
+            color: #888; 
+            text-align: center; 
+            padding: 2rem; 
+            margin-top: 4rem; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>VeloCity</h1>
+        <div class="cart">🛒 Cart (<span id="cart-count">0</span>)</div>
+    </header>
+
+    <div class="hero">
+        <div>
+            <h2>Ride The Future</h2>
+            <p>Premium bicycles and gear for every terrain.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h3>Bicycles</h3>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?auto=format&fit=crop&w=600&q=80" alt="Mountain Bike">
+                <h4>Apex Mountain Trail</h4>
+                <p>$899.00</p>
+                <button class="btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1484144709282-3d898516fb20?auto=format&fit=crop&w=600&q=80" alt="City Cruiser">
+                <h4>Urban Commuter Pro</h4>
+                <p>$450.00</p>
+                <button class="btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?auto=format&fit=crop&w=600&q=80" alt="Road Bike">
+                <h4>Carbon Sprint 3000</h4>
+                <p>$1,250.00</p>
+                <button class="btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+
+        <br><br>
+
+        <h3>Accessories</h3>
+        <div class="grid">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80" alt="Helmet">
+                <h4 style="margin-top: 1.5rem;">AeroShield Helmet</h4>
+                <p>$85.00</p>
+                <button class="btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1596734415884-2503a296e625?auto=format&fit=crop&w=600&q=80" alt="Bike Lock">
+                <h4 style="margin-top: 1.5rem;">Titanium U-Lock</h4>
+                <p>$45.00</p>
+                <button class="btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&w=600&q=80" alt="Lights">
+                <h4 style="margin-top: 1.5rem;">LED Night Rider Set</h4>
+                <p>$35.00</p>
+                <button class="btn" onclick="addToCart(this)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 VeloCity Bikes. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cartCount = 0;
+        
+        function addToCart(buttonElement) {
+            // Update cart counter
+            cartCount++;
+            document.getElementById('cart-count').innerText = cartCount;
+            
+            // Visual feedback on the button
+            const originalText = buttonElement.innerText;
+            const originalBackground = buttonElement.style.background;
+            
+            buttonElement.innerText = "Added!";
+            buttonElement.style.background = "#27ae60"; // Green color
+            
+            // Revert button back after 1.5 seconds
+            setTimeout(() => {
+                buttonElement.innerText = originalText;
+                buttonElement.style.background = originalBackground;
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
