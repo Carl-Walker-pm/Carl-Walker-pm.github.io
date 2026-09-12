@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNTHETIX | Autonomous Agent Infrastructure</title>
+    <meta name="description" content="Deploy, manage, and orchestrate swarm intelligence. Synthetix provides the infrastructure for next-generation autonomous AI agents.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Rajdhani', 'sans-serif'],
+                        mono: ['Share Tech Mono', 'monospace'],
+                    },
+                    colors: {
+                        neon: {
+                            purple: '#b026ff',
+                            cyan: '#00f3ff',
+                            green: '#00ff41',
+                            pink: '#ff0099',
+                        },
+                        void: '#030005',
+                        panel: '#0a0510',
+                        surface: '#130a1f',
+                    },
+                    animation: {
+                        'spin-slow': 'spin 12s linear infinite',
+                        'scan': 'scan 4s linear infinite',
+                        'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glitch': 'glitch 1s linear infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '0% 100%' },
+                        },
+                        glitch: {
+                            '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                            '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                            '62%': { transform: 'translate(0,0) skew(5deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #030005;
+            color: #e0e0e0;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(176, 38, 255, 0.1), transparent 40%),
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+        }
+
+        /* CRT Scanline Effect */
+        .scanlines::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Glass Panels */
+        .cyber-panel {
+            background: rgba(10, 5, 16, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(176, 38, 255, 0.2);
+            box-shadow: 0 0 15px rgba(176, 38, 255, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .cyber-panel:hover {
+            border-color: rgba(0, 243, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030005;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b026ff;
+            border-radius: 2px;
+        }
+
+        /* Utilities */
+        .text-glow {
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+        }
+        .text-glow-purple {
+            text-shadow: 0 0 10px rgba(176, 38, 255, 0.7);
+        }
+        
+        .code-block {
+            font-family: 'Share Tech Mono', monospace;
+            background: #08040b;
+            border-left: 2px solid #b026ff;
+        }
+
+        .typing-cursor::after {
+            content: '█';
+            animation: blink 1s step-end infinite;
+            color: #00f3ff;
+            margin-left: 2px;
+        }
+        
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="antialiased selection:bg-neon-cyan selection:text-black overflow-x-hidden">
+
+    <!-- System Status Bar -->
+    <div class="fixed top-0 w-full z-50 bg-void/90 border-b border-white/10 h-8 flex items-center justify-between px-4 font-mono text-[10px] uppercase tracking-widest text-gray-500">
+        <div class="flex items-center gap-4">
+            <span class="flex items-center text-neon-green"><span class="w-1.5 h-1.5 bg-neon-green rounded-full animate-pulse mr-2"></span> System Optimal</span>
+            <span>Latency: <span class="text-white">12ms</span></span>
+            <span>Active Nodes: <span class="text-white">8,402</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-4">
+            <span>Grid: <span class="text-neon-cyan">CONNECTED</span></span>
+            <span>Encryption: <span class="text-neon-purple">AES-256-GCM</span></span>
+            <span>Ver: <span class="text-white">2.4.1-alpha</span></span>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="fixed top-8 w-full z-40 bg-void/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-[1600px] mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <div class="relative w-10 h-10 flex items-center justify-center">
+                        <div class="absolute inset-0 border-2 border-neon-purple rounded-lg transform rotate-45 group-hover:rotate-90 transition-transform duration-700"></div>
+                        <div class="absolute inset-0 border-2 border-neon-cyan rounded-lg transform -rotate-45 group-hover:-rotate-90 transition-transform duration-700 opacity-70"></div>
+                        <i class="fa-solid fa-microchip text-white relative z-10 text-lg"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-2xl tracking-wider text-white group-hover:text-neon-cyan transition-colors">SYNTHETIX</span>
+                        <span class="font-mono text-[9px] text-neon-purple tracking-[0.4em]">NEURAL SWARM</span>
+                    </div>
+                </div>
+
+                <!-- Nav Links -->
+                <div class="hidden lg:flex items-center space-x-10 font-mono text-sm">
+                    <a href="#agents" class="text-gray-400 hover:text-neon-cyan transition-colors flex items-center gap-2 group">
+                        <span class="text-neon-purple opacity-0 group-hover:opacity-100 transition-opacity">></span> AGENTS
+                    </a>
+                    <a href="#swarm" class="text-gray-400 hover:text-neon-cyan transition-colors flex items-center gap-2 group">
+                        <span class="text-neon-purple opacity-0 group-hover:opacity-100 transition-opacity">></span> SWARM_NET
+                    </a>
+                    <a href="#monitoring" class="text-gray-400 hover:text-neon-cyan transition-colors flex items-center gap-2 group">
+                        <span class="text-neon-purple opacity-0 group-hover:opacity-100 transition-opacity">></span> TELEMETRY
+                    </a>
+                    <a href="#docs" class="text-gray-400 hover:text-neon-cyan transition-colors flex items-center gap-2 group">
+                        <span class="text-neon-purple opacity-0 group-hover:opacity-100 transition-opacity">></span> API_DOCS
+                    </a>
+                </div>
+
+                <!-- CTA -->
+                <div class="flex items-center gap-6">
+                    <div class="hidden md:flex flex-col items-end text-right mr-2">
+                        <span class="text-[10px] text-gray-500 font-mono">CREDITS BALANCE</span>
+                        <span class="text-neon-green font-mono text-sm">∞ UNLIMITED</span>
+                    </div>
+                    <button class="relative px-6 py-2 bg-neon-purple/10 border border-neon-purple/50 text-neon-purple font-mono text-xs hover:bg-neon-purple hover:text-white transition-all duration-300 clip-path-slant">
+                        <span class="absolute top-0 left-0 w-1 h-1 bg-white"></span>
+                        <span class="absolute bottom-0 right-0 w-1 h-1 bg-white"></span>
+                        DEPLOY_INSTANCE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-32 flex items-center overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-purple/20 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
+
+        <div class="max-w-[1600px] mx-auto px-6 relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Text Content -->
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 border border-neon-cyan/30 bg-neon-cyan/5 rounded-full mb-8">
+                    <span class="w-2 h-2 rounded-full bg-neon-cyan animate-pulse"></span>
+                    <span class="font-mono text-xs text-neon-cyan tracking-widest">V3.0 NEURAL ENGINE ONLINE</span>
+                </div>
+                
+                <h1 class="text-6xl md:text-8xl font-display font-bold leading-[0.9] mb-8 text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">
+                    SCALE YOUR <br>
+                    <span class="text-glow-purple text-white">INTELLIGENCE</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-400 font-light max-w-xl mb-12 border-l-2 border-neon-purple pl-6">
+                    Synthetix orchestrates autonomous AI agents to code, research, trade, and analyze. 
+                    <span class="text-white">One prompt. Infinite execution.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <button class="px-8 py-4 bg-white text-black font-display font-bold text-lg hover:bg-neon-cyan transition-colors clip-path-button">
+                        START SWARM
+                    </button>
+                    <button class="px-8 py-4 bg-transparent border border-white/20 text-white font-display font-bold text-lg hover:border-neon-purple hover:text-neon-purple transition-colors clip-path-button">
+                        VIEW DEMO
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="mt-20 grid grid-cols-3 gap-8">
+                    <div>
+                        <div class="font-mono text-3xl text-white">100k+</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Agents Deployed</div>
+                    </div>
+                    <div>
+                        <div class="font-mono text-3xl text-neon-cyan">99.9%</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Task Success</div>
+                    </div>
+                    <div>
+                        <div class="font-mono text-3xl text-neon-purple">24/7</div>
+                        <div class="text-xs text-gray-500 uppercase tracking-widest mt-1">Autonomous Ops</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Terminal Interface -->
+            <div class="relative">
+                <div class="cyber-panel rounded-xl overflow-hidden relative">
+                    <!-- Terminal Header -->
+                    <div class="bg-panel border-b border-white/10 p-3 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                        </div>
+                        <div class="font-mono text-xs text-gray-500">agent_orchestrator.exe</div>
+                    </div>
+
+                    <!-- Terminal Body -->
+                    <div class="p-6 font-mono text-xs md:text-sm h-[500px] overflow-hidden relative">
+                        <!-- Background Grid -->
+                        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#b026ff 1px, transparent 1px), linear-gradient(90deg, #b026ff 1px, transparent 1px); background-size: 20px 20px;"></div>
+
+                        <div class="relative z-10 space-y-3">
+                            <div class="text-gray-400">
+                                <span class="text-neon-cyan">usr@synthetix:~$</span> init_swarm --target="market_analysis" --agents=3
+                            </div>
+                            <div class="text-gray-300 pl-4 border-l border-gray-700">
+                                [SYS] Initializing Neural Core... <span class="text-neon-green">OK</span><br>
+                                [SYS] Allocating GPU resources... <span class="text-neon-green">OK</span><br>
+                                [SYS] Deploying Agent-Alpha (Researcher)... <span class="text-neon-purple">DEPLOYED</span>
+                            </div>
+
+                            <!-- Animated Agent Activity -->
+                            <div class="mt-4 bg-white/5 p-4 rounded border border-white/10">
+                                <div class="flex justify-between text-neon-purple mb-2">
+                                    <span>AGENT-ALPHA</span>
+                                    <span>STATUS: <span class="animate-pulse">Active</span></span>
+                                </div>
+                                <div class="text-gray-400 mb-2">> Scraping Bloomberg API for volatility indices...</div>
+                                <div class="w-full bg-gray-700 h-1 rounded overflow-hidden">
+                                    <div class="h-full bg-neon-purple w-[75%] animate-pulse"></div>
+                                </div>
+                            </div>
+
+                            <div class="mt-2 bg-white/5 p-4 rounded border border-white/10">
+                                <div class="flex justify-between text-neon-cyan mb-2">
+                                    <span>AGENT-BETA</span>
+                                    <span>STATUS: <span class="animate-pulse">Active</span></span>
+                                </div>
+                                <div class="text-gray-400 mb-2">> Running sentiment analysis on 50k tweets...</div>
+                                <div class="text-gray-500 text-[10px] grid grid-cols-2 gap-2 mt-2">
+                                    <span>Pos: 45%</span>
+                                    <span>Neg: 12%</span>
+                                    <span>Neu: 43%</span>
+                                    <span>Spam: 0%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-gray-400 mt-4 typing-cursor">
+                                <span class="text-neon-cyan">usr@synthetix:~$</span> awaiting_results...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Elements -->
+                <div class="absolute -right-10 -bottom-10 cyber-panel p-4 rounded-lg hidden md:block animate-pulse-fast">
+                    <div class="font-mono text-xs text-neon-green mb-1">CPU LOAD</div>
+                    <div class="text-2xl font-display font-bold text-white">12%</div>
+                </div>
+                <div class="absolute -left-10 top-20 cyber-panel p-4 rounded-lg hidden md:block">
+                    <div class="font-mono text-xs text-neon-purple mb-1">TOKENS/SEC</div>
+                    <div class="text-2xl font-display font-bold text-white">4,021</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Capabilities Grid -->
+    <section id="agents" class="py-24 bg-surface relative">
+        <div class="absolute inset-0 bg-void opacity-50"></div>
+        <div class="max-w-[1600px] mx-auto px-6 relative z-10">
+            <div class="mb-16 flex flex-col md:flex-row justify-between items-end">
+                <div>
+                    <h2 class="font-mono text-neon-cyan text-sm tracking-widest mb-2">/// CLASSIFIED_AGENTS</h2>
+                    <h3 class="font-display text-4xl md:text-5xl font-bold text-white">Select Your Worker</h3>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-gray-500">
+                    DATABASE: UPDATED 4MS AGO
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Agent Card 1 -->
+                <div class="cyber-panel p-1 group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-panel p-6 h-full relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-code text-6xl text-neon-purple"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded bg-neon-purple/20 flex items-center justify-center text-neon-purple mb-6 border border-neon-purple/50">
+                            <i class="fa-solid fa-terminal"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl text-white mb-2">Dev-01</h4>
+                        <div class="font-mono text-xs text-gray-500 mb-4">FULL_STACK_ENGINEER</div>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Writes, debugs, and deploys production-ready code. Specialized in Python, Rust, and React. Can maintain legacy systems.
+                        </p>
+                        <div class="border-t border-white/10 pt-4 flex justify-between items-center text-xs font-mono">
+                            <span class="text-neon-green">AVAILABLE</span>
+                            <span class="text-gray-500">v4.2.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Card 2 -->
+                <div class="cyber-panel p-1 group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-panel p-6 h-full relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-magnifying-glass-chart text-6xl text-neon-cyan"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded bg-neon-cyan/20 flex items-center justify-center text-neon-cyan mb-6 border border-neon-cyan/50">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl text-white mb-2">Analyst-X</h4>
+                        <div class="font-mono text-xs text-gray-500 mb-4">DATA_SCIENTIST</div>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Processes massive datasets, identifies patterns, creates visualizations, and generates actionable business intelligence reports.
+                        </p>
+                        <div class="border-t border-white/10 pt-4 flex justify-between items-center text-xs font-mono">
+                            <span class="text-neon-green">AVAILABLE</span>
+                            <span class="text-gray-500">v3.9.1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Card 3 -->
+                <div class="cyber-panel p-1 group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-panel p-6 h-full relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-pen-nib text-6xl text-pink-500"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded bg-pink-500/20 flex items-center justify-center text-pink-500 mb-6 border border-pink-500/50">
+                            <i class="fa-solid fa-feather"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl text-white mb-2">Scribe-9</h4>
+                        <div class="font-mono text-xs text-gray-500 mb-4">CONTENT_STRATEGIST</div>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Creates SEO-optimized articles, social media posts, email campaigns, and technical documentation with perfect tone matching.
+                        </p>
+                        <div class="border-t border-white/10 pt-4 flex justify-between items-center text-xs font-mono">
+                            <span class="text-neon-green">AVAILABLE</span>
+                            <span class="text-gray-500">v5.0.0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agent Card 4 -->
+                <div class="cyber-panel p-1 group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="bg-panel p-6 h-full relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-shield-halved text-6xl text-yellow-500"></i>
+                        </div>
+                        <div class="w-12 h-12 rounded bg-yellow-500/20 flex items-center justify-center text-yellow-500 mb-6 border border-yellow-500/50">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-xl text-white mb-2">Sentinel</h4>
+                        <div class="font-mono text-xs text-gray-500 mb-4">CYBER_SECURITY</div>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Continuous vulnerability scanning, pentesting, code auditing, and real-time threat detection for your infrastructure.
+                        </p>
+                        <div class="border-t border-white/10 pt-4 flex justify-between items-center text-xs font-mono">
+                            <span class="text-yellow-500">BUSY (98% LOAD)</span>
+                            <span class="text-gray-500">v2.1.4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Telemetry / Swarm Monitor -->
+    <section id="monitoring" class="py-24 bg-void relative overflow-hidden">
+        <!-- Scanlines -->
+        <div class="scanlines absolute inset-0 pointer-events-none opacity-20"></div>
+
+        <div class="max-w-[1600px] mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-8 h-full">
+                
+                <!-- Left Panel: Live Log -->
+                <div class="lg:w-2/3 cyber-panel p-1 rounded-sm">
+                    <div class="bg-black p-4 h-full">
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-800 pb-2">
+                            <h3 class="font-mono text-neon-cyan text-sm"><i class="fa-solid fa-satellite-dish mr-2"></i> GLOBAL_EVENT_STREAM</h3>
+                            <div class="flex gap-2">
+                                <span class="w-2 h-2 bg-neon-green rounded-full animate-pulse"></span>
+                                <span class="w-2 h-2 bg-gray-700 rounded-full"></span>
+                            </div>
+                        </div>
+                        
+                        <!-- Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full font-mono text-xs text-left">
+                                <thead class="text-gray-500 border-b border-gray-800">
+                                    <tr>
+                                        <th class="pb-2">TIMESTAMP</th>
+                                        <th class="pb-2">AGENT_ID</th>
+                                        <th class="pb-2">TASK_TYPE</th>
+                                        <th class="pb-2">STATUS</th>
+                                        <th class="pb-2 text-right">LATENCY</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300 space-y-2">
+                                    <tr class="border-b border-gray-900 hover:bg-white/5 transition-colors">
+                                        <td class="py-3 text-neon-purple">14:02:45.002</td>
+                                        <td class="py-3">DEV-01-A4</td>
+                                        <td class="py-3">Compiling React Build</td>
+                                        <td class="py-3 text-neon-green">SUCCESS</td>
+                                        <td class="py-3 text-right">45ms</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-900 hover:bg-white/5 transition-colors">
+                                        <td class="py-3 text-neon-purple">14:02:44.892</td>
+                                        <td class="py-3">ANALYST-X-99</td>
+                                        <td class="py-3">SQL Query Optimization</td>
+                                        <td class="py-3 text-yellow-500">PROCESSING</td>
+                                        <td class="py-3 text-right">120ms</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-900 hover:bg-white/5 transition-colors">
+                                        <td class="py-3 text-neon-purple">14:02:44.501</td>
+                                        <td class="py-3">SCRIBE-9-B2</td>
+                                        <td class="py-3">Blog Post Generation</td>
+                                        <td class="py-3 text-neon-green">SUCCESS</td>
+                                        <td class="py-3 text-right">802ms</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-900 hover:bg-white/5 transition-colors">
+                                        <td class="py-3 text-neon-purple">14:02:43.110</td>
+                                        <td class="py-3">SENTINEL-01</td>
+                                        <td class="py-3">Port Scan Detected</td>
+                                        <td class="py-3 text-red-500 font-bold">BLOCKED</td>
+                                        <td class="py-3 text-right">2ms</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-900 hover:bg-white/5 transition-colors">
+                                        <td class="py-3 text-neon-purple">14:02:42.555</td>
+                                        <td class="py-3">DEV-01-A4</td>
+                                        <td class="py-3">Unit Tests (402/402)</td>
+                                        <td class="py-3 text-neon-green">PASSED</td>
+                                        <td class="py-3 text-right">1,200ms</td>
+                                    </tr>
+                                    <tr class="border-b border-gray-900 hover:bg-white/5 transition-colors">
+                                        <td class="py-3 text-neon-purple">14:02:41.002</td>
+                                        <td class="py-3">TRADER-V8</td>
+                                        <td class="py-3">Execute Limit Buy BTC</td>
+                                        <td class="py-3 text-neon-cyan">FILLED</td>
+                                        <td class="py-3 text-right">12ms</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Network Viz -->
+                <div class="lg:w-1/3 flex flex-col gap-6">
+                    <!-- Map Visualization Placeholder -->
+                    <div class="cyber-panel p-1 rounded-sm flex-1 relative overflow-hidden group">
+                         <div class="bg-black p-4 h-full flex flex-col">
+                            <div class="font-mono text-neon-purple text-sm mb-4">/// NODE_DISTRIBUTION</div>
+                            <div class="flex-1 border border-white/10 relative bg-panel">
+                                <!-- Simulated Nodes -->
+                                <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full shadow-[0_0_10px_white]"></div>
+                                <div class="absolute top-1/2 left-1/2 w-3 h-3 bg-neon-cyan rounded-full shadow-[0_0_15px_#00f3ff] animate-pulse"></div>
+                                <div class="absolute bottom-1/3 right-1/4 w-2 h-2 bg-neon-purple rounded-full shadow-[0_0_10px_#b026ff]"></div>
+                                
+                                <!-- Connecting Lines (SVG) -->
+                                <svg class="absolute inset-0 w-full h-full pointer-events-none">
+                                    <line x1="25%" y1="25%" x2="50%" y2="50%" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+                                    <line x1="50%" y1="50%" x2="75%" y2="66%" stroke="rgba(176,38,255,0.2)" stroke-width="1" />
+                                </svg>
+
+                                <!-- Scanning Line -->
+                                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-neon-cyan/10 to-transparent h-[10%] w-full animate-scan pointer-events-none"></div>
+                            </div>
+                            <div class="mt-2 flex justify-between text-[10px] font-mono text-gray-500">
+                                <span>US-EAST-1</span>
+                                <span>EU-WEST-2</span>
+                                <span>AP-SOUTH-1</span>
+                            </div>
+                         </div>
+                    </div>
+
+                    <!-- Resource Usage -->
+                    <div class="cyber-panel p-4 rounded-sm">
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="font-mono text-xs text-gray-400">GPU CLUSTER UTILIZATION</span>
+                            <span class="font-mono text-xl text-neon-green">87%</span>
+                        </div>
+                        <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-neon-purple to-neon-cyan w-[87%]"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing / Enterprise -->
+    <section class="py-24 bg-surface border-t border-white/5">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Initialize Protocol</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Select infrastructure capacity. Enterprise nodes execute in isolated environments with dedicated TPM security.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plan 1 -->
+                <div class="cyber-panel p-8 rounded-xl bg-panel/50 hover:bg-panel transition-colors relative group">
+                    <h3 class="font-mono text-neon-cyan text-lg mb-2">STARTUP</h3>
+                    <div class="text-4xl font-display font-bold text-white mb-6">$499<span class="text-lg text-gray-500 font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-green"></i> 5 Concurrent Agents</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-green"></i> GPT-4o Access</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-green"></i> 10GB Vector DB</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-green"></i> Standard API Rate</li>
+                    </ul>
+                    <button class="w-full py-3 border border-gray-600 text-white font-mono text-xs hover:border-neon-cyan hover:text-neon-cyan transition-colors">DEPLOY_BASIC</button>
+                </div>
+
+                <!-- Plan 2 (Featured) -->
+                <div class="cyber-panel p-8 rounded-xl bg-panel border-neon-purple relative transform md:-translate-y-4">
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-neon-purple px-4 py-1 text-[10px] font-bold text-black uppercase tracking-widest rounded-full">Recommended</div>
+                    <h3 class="font-mono text-neon-purple text-lg mb-2">SCALE</h3>
+                    <div class="text-4xl font-display font-bold text-white mb-6">$2,499<span class="text-lg text-gray-500 font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-300 font-mono">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-purple"></i> 50 Concurrent Agents</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-purple"></i> Custom LLM Fine-tuning</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-purple"></i> 1TB Vector DB</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-purple"></i> Priority Queue</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-neon-purple"></i> Slack/Discord Integration</li>
+                    </ul>
+                    <button class="w-full py-3 bg-neon-purple text-white font-mono text-xs font-bold hover:bg-neon-purple/80 transition-colors shadow-[0_0_20px_rgba(176,38,255,0.4)]">DEPLOY_SCALE</button>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="cyber-panel p-8 rounded-xl bg-panel/50 hover:bg-panel transition-colors relative group">
+                    <h3 class="font-mono text-white text-lg mb-2">ENTERPRISE</h3>
+                    <div class="text-4xl font-display font-bold text-white mb-6">CUSTOM</div>
+                    <ul class="space-y-4 mb-8 text-sm text-gray-400 font-mono">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-white"></i> Unlimited Swarms</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-white"></i> On-Premise Deployment</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-white"></i> Dedicated GPU Cluster</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-white"></i> 24/7 Engineer Support</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-white"></i> SOC2 Compliance</li>
+                    </ul>
+                    <button class="w-full py-3 border border-gray-600 text-white font-mono text-xs hover:border-white hover:bg-white hover:text-black transition-colors">CONTACT_SALES</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code / API Preview -->
+    <section id="docs" class="py-24 bg-void border-t border-white/5">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-display text-4xl font-bold text-white mb-6">Built for Developers.</h2>
+                    <p class="text-gray-400 mb-8 leading-relaxed">
+                        Synthetix is API-first. Integrate autonomous agents directly into your application stack using our Python or Node.js SDKs. Full control over memory, tools, and execution context.
+                    </p>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-4 text-sm text-gray-300">
+                            <i class="fa-brands fa-python text-xl text-yellow-400"></i>
+                            <span class="font-mono">pip install synthetix-core</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-sm text-gray-300">
+                            <i class="fa-brands fa-js text-xl text-yellow-400"></i>
+                            <span class="font-mono">npm install @synthetix/sdk</span>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-block mt-8 text-neon-cyan font-mono text-sm hover:underline decoration-neon-cyan underline-offset-4">READ_FULL_DOCUMENTATION -></a>
+                </div>
+
+                <!-- Code Window -->
+                <div class="cyber-panel rounded-lg overflow-hidden">
+                    <div class="bg-[#1e1e1e] p-2 flex items-center gap-2 border-b border-black">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div class="ml-4 font-mono text-xs text-gray-500">main.py</div>
+                    </div>
+                    <div class="p-6 bg-[#0d0d0d] font-mono text-xs md:text-sm text-gray-300 overflow-x-auto">
+                        <pre><code><span class="text-pink-500">from</span> synthetix <span class="text-pink-500">import</span> Swarm, Agent
+
+<span class="text-gray-500"># Initialize the swarm</span>
+swarm = <span class="text-yellow-300">Swarm</span>(api_key=<span class="text-green-400">"sk_live_..."</span>)
+
+<span class="text-gray-500"># Define a specialized agent</span>
+researcher = <span class="text-yellow-300">Agent</span>(
+    role=<span class="text-green-400">"Senior Researcher"</span>,
+    goal=<span class="text-green-400">"Analyze market trends for crypto"</span>,
+    tools=[<span class="text-green-400">"web_scrape"</span>, <span class="text-green-400">"sentiment_analysis"</span>],
+    verbose=<span class="text-pink-500">True</span>
+)
+
+<span class="text-gray-500"># Execute task</span>
+task = <span class="text-green-400">"""
+Find the top 3 emerging DeFi protocols
+and summarize their whitepapers.
+"""</span>
+
+report = swarm.<span class="text-yellow-300">execute</span>(agents=[researcher], task=task)
+<span class="text-yellow-300">print</span>(report)</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 pt-20 pb-10">
+        <div class="max-w-[1600px] mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <div class="flex items-center gap-2 mb-6 text-white">
+                        <i class="fa-solid fa-microchip text-neon-purple text-xl"></i>
+                        <span class="font-display font-bold text-2xl tracking-wider">SYNTHETIX</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6 font-mono">
+                        Building the nervous system for the artificial intelligence era. Autonomous, scalable, and secure.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-neon-purple transition-all"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-neon-cyan transition-all"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-neon-green transition-all"><i class="fa-brands fa-discord"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-white text-sm font-bold mb-6 uppercase">Platform</h4>
+                    <ul class="space-y-3 text-gray-500 text-sm font-mono">
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Agents Library</a></li>
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Integrations</a></li>
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">API Status</a></li>
+                        <li><a href="#" class="hover:text-neon-cyan transition-colors">Security</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-white text-sm font-bold mb-6 uppercase">Resources</h4>
+                    <ul class="space-y-3 text-gray-500 text-sm font-mono">
+                        <li><a href="#" class="hover:text-neon-purple transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-neon-purple transition-colors">Community Hub</a></li>
+                        <li><a href="#" class="hover:text-neon-purple transition-colors">Research Papers</a></li>
+                        <li><a href="#" class="hover:text-neon-purple transition-colors">Changelog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-white text-sm font-bold mb-6 uppercase">Company</h4>
+                    <ul class="space-y-3 text-gray-500 text-sm font-mono">
+                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a> <span class="text-[10px] bg-neon-green text-black px-1 rounded ml-2">HIRING</span></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Legal</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-gray-600">
+                <div>
+                    &copy; 2026 SYNTHETIX LABS INC. SYSTEM ONLINE.
+                </div>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-gray-400">PRIVACY_PROTOCOL</a>
+                    <a href="#" class="hover:text-gray-400">TERMS_OF_EXECUTION</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
