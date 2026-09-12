@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELENE INDUSTRIAL | Off-World Extraction Systems</title>
+    <meta name="description" content="Selene Industrial engineers autonomous heavy machinery for lunar regolith processing and Helium-3 extraction. Building the foundation of the Type I civilization.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Rajdhani', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        lunar: {
+                            black: '#050505',
+                            dark: '#0a0a0f',
+                            surface: '#121216',
+                            dust: '#8c8c9a',
+                            white: '#e0e0e0',
+                        },
+                        accent: {
+                            orange: '#ff4d00', // Safety Orange
+                            blue: '#00f0ff',   // HUD Blue
+                            red: '#ff2a2a',    // Alert Red
+                        }
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
+                        'scanline': "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))"
+                    },
+                    animation: {
+                        'scan': 'scan 8s linear infinite',
+                        'blink': 'blink 1s step-end infinite',
+                        'rotate-slow': 'spin 20s linear infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glitch': 'glitch 2s linear infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '0% 100%' },
+                        },
+                        blink: {
+                            '50%': { opacity: '0' },
+                        },
+                        glitch: {
+                            '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                            '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                            '62%': { transform: 'translate(0,0) skew(5deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #e0e0e0;
+        }
+
+        /* Blueprint Grid Background */
+        .bg-blueprint {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Technical Borders */
+        .tech-border {
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tech-border::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid #ff4d00;
+            border-left: 2px solid #ff4d00;
+        }
+        .tech-border::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 10px;
+            height: 10px;
+            border-bottom: 2px solid #ff4d00;
+            border-right: 2px solid #ff4d00;
+        }
+
+        /* HUD Panels */
+        .hud-panel {
+            background: rgba(18, 18, 22, 0.6);
+            backdrop-filter: blur(12px);
+            border-left: 2px solid #ff4d00;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border: 1px solid #000;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff4d00;
+        }
+
+        /* Glitch Text Effect */
+        .glitch-wrapper {
+            position: relative;
+        }
+        .glitch-wrapper::before,
+        .glitch-wrapper::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+        }
+        .glitch-wrapper::before {
+            left: 2px;
+            text-shadow: -1px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch-wrapper::after {
+            left: -2px;
+            text-shadow: -1px 0 #00fff9;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(13px, 9999px, 81px, 0); }
+            5% { clip: rect(89px, 9999px, 63px, 0); }
+            10% { clip: rect(2px, 9999px, 83px, 0); }
+            /* ... abbreviated for brevity ... */
+            100% { clip: rect(67px, 9999px, 62px, 0); }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-lunar-black text-gray-300 selection:bg-accent-orange selection:text-black overflow-x-hidden">
+
+    <!-- Loading Sequence Overlay (Simulated) -->
+    <div id="loader" class="fixed inset-0 z-[100] bg-lunar-black flex flex-col items-center justify-center font-mono text-xs text-accent-orange">
+        <div class="w-64 mb-4">
+            <div class="h-1 w-full bg-gray-800 relative overflow-hidden">
+                <div class="absolute h-full bg-accent-orange animate-[scan_2s_ease-in-out_forwards] w-full origin-left"></div>
+            </div>
+        </div>
+        <div class="space-y-1 text-center">
+            <div class="animate-pulse">INITIALIZING SELENE_OS_V9.4...</div>
+            <div class="text-gray-500">ESTABLISHING UPLINK: SHACKLETON CRATER</div>
+            <div class="text-gray-500">VERIFYING TLS HANDSHAKE... OK</div>
+        </div>
+    </div>
+
+    <!-- Top Telemetry Bar -->
+    <div class="fixed top-0 w-full z-50 bg-lunar-black/90 border-b border-gray-800 h-8 flex items-center justify-between px-4 font-mono text-[10px] tracking-widest text-gray-500">
+        <div class="flex items-center gap-6">
+            <span class="flex items-center text-accent-orange"><i class="fa-solid fa-signal mr-2 animate-pulse"></i> LIVE_FEED</span>
+            <span class="hidden md:inline">LUNAR_ORBIT: <span class="text-white">STABLE</span></span>
+            <span class="hidden md:inline">REGOLITH_YIELD: <span class="text-accent-blue">482.4 MT/DAY</span></span>
+        </div>
+        <div class="flex items-center gap-6">
+            <span>HE-3 PRICE: <span class="text-accent-orange">$1.4M / KG</span></span>
+            <span>UTC: <span id="clock" class="text-white">12:00:00</span></span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-40 bg-lunar-surface/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand -->
+                <div class="flex items-center gap-4 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 border border-accent-orange flex items-center justify-center bg-black relative overflow-hidden group-hover:border-white transition-colors">
+                        <div class="absolute inset-0 bg-accent-orange/10"></div>
+                        <i class="fa-solid fa-moon text-xl text-white"></i>
+                        <!-- Crosshair corners -->
+                        <div class="absolute top-0 left-0 w-1 h-1 border-t border-l border-white"></div>
+                        <div class="absolute bottom-0 right-0 w-1 h-1 border-b border-r border-white"></div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-tech font-bold text-2xl tracking-wide text-white uppercase leading-none">SELENE <span class="text-accent-orange">IND.</span></span>
+                        <span class="font-mono text-[9px] text-gray-500 tracking-[0.2em] uppercase">Off-World Heavy Systems</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-10 font-mono text-xs font-bold tracking-widest">
+                    <a href="#machinery" class="hover:text-accent-orange transition-colors relative group">
+                        <span class="text-gray-600 mr-1">01</span> MACHINERY
+                        <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent-orange transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#process" class="hover:text-accent-orange transition-colors relative group">
+                        <span class="text-gray-600 mr-1">02</span> PROCESS
+                        <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent-orange transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#infrastructure" class="hover:text-accent-orange transition-colors relative group">
+                        <span class="text-gray-600 mr-1">03</span> INFRASTRUCTURE
+                        <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent-orange transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#data" class="hover:text-accent-orange transition-colors relative group">
+                        <span class="text-gray-600 mr-1">04</span> DATA
+                        <span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-accent-orange transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- CTA -->
+                <div class="hidden lg:flex items-center gap-6">
+                    <a href="#contact" class="px-6 py-2 border border-white/20 text-white font-mono text-xs hover:bg-accent-orange hover:border-accent-orange hover:text-black transition-all duration-300">
+                        [ INITIATE_CONTRACT ]
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen min-h-[800px] flex items-center pt-28 overflow-hidden bg-blueprint">
+        <!-- Background Overlay with Noise -->
+        <div class="absolute inset-0 z-0 opacity-40">
+             <div class="absolute inset-0 bg-gradient-to-t from-lunar-black via-transparent to-transparent"></div>
+             <!-- Simulated 3D Moon Surface via Image -->
+             <img src="https://images.unsplash.com/photo-1614728853913-1e22ba61d527?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover filter contrast-125 grayscale" alt="Lunar Surface">
+        </div>
+        
+        <!-- Tech Overlay Lines -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <div class="absolute top-1/2 left-0 w-full h-px bg-white/10"></div>
+            <div class="absolute left-1/4 top-0 w-px h-full bg-white/10"></div>
+            <div class="absolute right-1/4 top-0 w-px h-full bg-white/10"></div>
+            
+            <!-- Rotating Reticle -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-white/5 rounded-full animate-rotate-slow hidden md:block">
+                <div class="absolute top-0 left-1/2 w-2 h-2 bg-accent-orange"></div>
+                <div class="absolute bottom-0 left-1/2 w-2 h-2 bg-white/20"></div>
+            </div>
+        </div>
+
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Main Text -->
+                <div class="lg:col-span-8">
+                    <div class="inline-flex items-center gap-3 px-3 py-1 border border-accent-orange/30 bg-accent-orange/5 mb-8">
+                        <span class="w-2 h-2 bg-accent-orange animate-blink"></span>
+                        <span class="font-mono text-xs text-accent-orange tracking-widest uppercase">Sector 7-G Operational</span>
+                    </div>
+                    
+                    <h1 class="font-tech font-bold text-6xl md:text-8xl lg:text-9xl text-white leading-[0.85] mb-8 tracking-tighter uppercase glitch-wrapper" data-text="EXTRACT. REFINE. BUILD.">
+                        EXTRACT.<br>
+                        REFINE.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-white">BUILD.</span>
+                    </h1>
+                    
+                    <p class="font-sans text-xl text-gray-400 max-w-2xl font-light leading-relaxed mb-12 border-l-2 border-accent-orange pl-6">
+                        We provide the industrial backbone for the cis-lunar economy. 
+                        Autonomous mining rigs, regolith smelting plants, and orbital launch infrastructure.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+                        <button class="bg-accent-orange text-black px-8 py-4 font-mono text-sm font-bold hover:bg-white transition-colors uppercase tracking-widest flex items-center gap-2">
+                            <i class="fa-solid fa-download"></i> Download Catalog [PDF]
+                        </button>
+                        <button class="border border-white/20 text-white px-8 py-4 font-mono text-sm font-bold hover:border-white transition-colors uppercase tracking-widest backdrop-blur-sm">
+                            View Fleet Status
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Technical readout sidebar -->
+                <div class="lg:col-span-4 hidden lg:flex flex-col justify-end pb-12">
+                    <div class="hud-panel p-6">
+                        <h3 class="font-mono text-accent-orange text-xs mb-4 border-b border-gray-700 pb-2">/// ACTIVE_UNITS_STATUS</h3>
+                        <div class="space-y-4 font-mono text-xs">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">MARK-IV EXCAVATOR</span>
+                                <span class="text-accent-blue">ONLINE [98%]</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1">
+                                <div class="bg-accent-blue h-full w-[98%]"></div>
+                            </div>
+                            
+                            <div class="flex justify-between items-center mt-4">
+                                <span class="text-gray-400">O2 REFINERY ALPHA</span>
+                                <span class="text-accent-blue">OPTIMAL</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1">
+                                <div class="bg-accent-blue h-full w-[100%]"></div>
+                            </div>
+
+                            <div class="flex justify-between items-center mt-4">
+                                <span class="text-gray-400">TRANSPORT ROVER 09</span>
+                                <span class="text-accent-orange">MAINTENANCE REQ</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1">
+                                <div class="bg-accent-orange h-full w-[45%]"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t border-gray-700 grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="text-[10px] text-gray-500">YIELD (KG/H)</div>
+                                <div class="text-xl text-white font-tech">1,240.5</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] text-gray-500">TEMP (SURFACE)</div>
+                                <div class="text-xl text-white font-tech">-173°C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Machinery Showcase Grid -->
+    <section id="machinery" class="py-24 bg-lunar-surface border-t border-white/10 relative">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+                <div>
+                    <h2 class="font-mono text-accent-orange text-xs tracking-widest mb-2">/// HEAVY_EQUIPMENT_DIVISION</h2>
+                    <h3 class="font-tech text-5xl text-white uppercase font-bold">The Extraction Fleet</h3>
+                </div>
+                <div class="mt-4 md:mt-0 font-mono text-xs text-gray-500 text-right">
+                    DESIGNED FOR VACUUM ENVIRONMENTS<br>
+                    RADIATION HARDENED ELECTRONICS
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+                <!-- Card 1 -->
+                <div class="group relative bg-lunar-black border border-white/10 hover:border-accent-orange transition-colors duration-300 h-[600px] flex flex-col">
+                    <div class="h-2/3 relative overflow-hidden bg-gray-900">
+                        <img src="https://images.unsplash.com/photo-1579935110378-8fe5944122ee?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale group-hover:grayscale-0" alt="Excavator">
+                        <div class="absolute top-4 left-4 font-mono text-[10px] bg-black px-2 py-1 border border-white/20 text-accent-orange">SERIES-X</div>
+                        
+                        <!-- Overlay UI on Hover -->
+                        <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-8 flex flex-col justify-center font-mono text-xs text-green-400">
+                            <div class="mb-2">> DIAGNOSTICS: COMPLETE</div>
+                            <div class="mb-2">> TORQUE: 45,000 NM</div>
+                            <div class="mb-2">> BUCKET CAP: 4.5 M3</div>
+                            <div class="mb-2">> POWER: NUCLEAR RTG</div>
+                        </div>
+                    </div>
+                    <div class="h-1/3 p-8 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-tech text-3xl text-white mb-2 group-hover:text-accent-orange transition-colors">Titan-IV Excavator</h4>
+                            <p class="font-sans text-sm text-gray-400 leading-relaxed">
+                                Autonomous continuous mining unit designed for abrasive regolith. Electrostatic dust mitigation systems included standard.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-white/10 font-mono text-xs text-gray-500">
+                            <span>ID: EX-004</span>
+                            <span>STATUS: PRODUCTION</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group relative bg-lunar-black border border-white/10 hover:border-accent-blue transition-colors duration-300 h-[600px] flex flex-col">
+                    <div class="h-2/3 relative overflow-hidden bg-gray-900">
+                         <img src="https://images.unsplash.com/photo-1581093458791-9f302e683800?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale group-hover:grayscale-0" alt="Processor">
+                         <div class="absolute top-4 left-4 font-mono text-[10px] bg-black px-2 py-1 border border-white/20 text-accent-blue">SERIES-R</div>
+                    </div>
+                    <div class="h-1/3 p-8 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-tech text-3xl text-white mb-2 group-hover:text-accent-blue transition-colors">Helios Refinery</h4>
+                            <p class="font-sans text-sm text-gray-400 leading-relaxed">
+                                Vacuum pyrolysis plant for oxygen extraction from metal oxides. Produces breathable air and rocket oxidizer in-situ.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-white/10 font-mono text-xs text-gray-500">
+                            <span>ID: RF-102</span>
+                            <span>STATUS: DEPLOYED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group relative bg-lunar-black border border-white/10 hover:border-white transition-colors duration-300 h-[600px] flex flex-col">
+                    <div class="h-2/3 relative overflow-hidden bg-gray-900">
+                         <img src="https://images.unsplash.com/photo-1569629743817-70d8db6c323b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 grayscale group-hover:grayscale-0" alt="Hauler">
+                         <div class="absolute top-4 left-4 font-mono text-[10px] bg-black px-2 py-1 border border-white/20 text-white">SERIES-T</div>
+                    </div>
+                    <div class="h-1/3 p-8 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-tech text-3xl text-white mb-2 group-hover:text-white transition-colors">Atlas Hauler</h4>
+                            <p class="font-sans text-sm text-gray-400 leading-relaxed">
+                                6-wheel independent drive autonomous rover. Payload capacity of 20 metric tons in 1/6th gravity.
+                            </p>
+                        </div>
+                        <div class="flex justify-between items-center pt-4 border-t border-white/10 font-mono text-xs text-gray-500">
+                            <span>ID: TR-009</span>
+                            <span>STATUS: PROTOTYPE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specs / The Process -->
+    <section id="process" class="py-24 bg-lunar-black relative overflow-hidden">
+        <!-- Grid Background -->
+        <div class="absolute inset-0 bg-blueprint opacity-20 pointer-events-none"></div>
+
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Schematic Visualization -->
+                <div class="tech-border p-6 bg-lunar-dark/50 backdrop-blur-sm">
+                    <div class="flex justify-between items-center mb-6 font-mono text-xs text-gray-500 border-b border-gray-700 pb-2">
+                        <span>SCHEMATIC: BENEFICIATION_FLOW</span>
+                        <span class="text-accent-orange animate-pulse">● SIMULATION ACTIVE</span>
+                    </div>
+                    
+                    <!-- CSS Diagram -->
+                    <div class="relative h-[400px] w-full border border-gray-800 bg-black/40 p-4 font-mono text-[10px] text-accent-blue">
+                        <!-- Box 1 -->
+                        <div class="absolute top-10 left-10 w-32 h-20 border border-accent-blue flex items-center justify-center text-center">
+                            RAW REGOLITH<br>INPUT
+                        </div>
+                        <!-- Arrow -->
+                        <div class="absolute top-20 left-44 w-12 h-px bg-accent-blue"></div>
+                        
+                        <!-- Box 2 -->
+                        <div class="absolute top-10 left-56 w-32 h-20 border border-white flex items-center justify-center text-center text-white">
+                            MAGNETIC<br>SEPARATION
+                        </div>
+                        <!-- Arrow Down -->
+                        <div class="absolute top-32 left-72 h-12 w-px bg-white"></div>
+
+                        <!-- Box 3 -->
+                        <div class="absolute top-48 left-56 w-40 h-24 border border-accent-orange flex items-center justify-center text-center text-accent-orange">
+                            HYDROGEN<br>REDUCTION<br>REACTOR (1000°C)
+                        </div>
+
+                        <!-- Output Lines -->
+                        <div class="absolute top-60 left-96 w-12 h-px bg-accent-orange"></div>
+                        <div class="absolute top-56 right-10 text-right">
+                            <span class="text-white block mb-2">> OXYGEN (LSS)</span>
+                            <span class="text-gray-500 block mb-2">> WATER (ICE)</span>
+                            <span class="text-gray-500 block">> SLAG (CONSTRUCTION)</span>
+                        </div>
+                        
+                        <!-- Moving Particles (CSS Animation) -->
+                        <div class="absolute top-[82px] left-44 w-2 h-2 bg-accent-blue rounded-full animate-[ping_1s_linear_infinite]"></div>
+                    </div>
+                    
+                    <div class="mt-4 grid grid-cols-3 gap-4 text-center">
+                        <div class="bg-gray-900 p-2">
+                            <div class="text-[10px] text-gray-500">EFFICIENCY</div>
+                            <div class="text-accent-blue font-bold">94.2%</div>
+                        </div>
+                        <div class="bg-gray-900 p-2">
+                            <div class="text-[10px] text-gray-500">POWER DRAW</div>
+                            <div class="text-accent-orange font-bold">450 kW</div>
+                        </div>
+                        <div class="bg-gray-900 p-2">
+                            <div class="text-[10px] text-gray-500">THROUGHPUT</div>
+                            <div class="text-white font-bold">50 T/h</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div>
+                    <h2 class="font-mono text-accent-blue text-xs tracking-widest mb-4">/// ENGINEERING_CHALLENGE</h2>
+                    <h3 class="font-tech text-4xl md:text-5xl text-white mb-6 leading-tight">
+                        Solving the Regolith Equation
+                    </h3>
+                    <p class="font-sans text-gray-400 text-lg leading-relaxed mb-8">
+                        Lunar dust is electrostatically charged, razor-sharp, and ubiquitous. Traditional earth-moving equipment fails in hours. Selene Industrial uses patented <span class="text-white">Magnetic Levitation Bearings</span> and <span class="text-white">Self-Healing Polymers</span> to ensure operational longevity in the harshest environment known to man.
+                    </p>
+                    
+                    <ul class="space-y-4 font-mono text-sm text-gray-300">
+                        <li class="flex items-center gap-4">
+                            <span class="text-accent-orange">></span>
+                            <span>Vacuum-proof fluid dynamics systems</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-accent-orange">></span>
+                            <span>Thermal management for -230°C to +120°C swings</span>
+                        </li>
+                        <li class="flex items-center gap-4">
+                            <span class="text-accent-orange">></span>
+                            <span>AI-driven topographic navigation (LIDAR/Radar)</span>
+                        </li>
+                    </ul>
+
+                    <button class="mt-10 border-b border-accent-blue text-accent-blue pb-1 font-mono text-xs hover:text-white hover:border-white transition-colors">
+                        READ TECHNICAL WHITE PAPER ->
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Table Section -->
+    <section id="data" class="py-24 bg-lunar-surface border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-mono text-accent-orange text-xs tracking-widest mb-2">/// RESOURCE_PROJECTIONS_2030</h2>
+                    <h3 class="font-tech text-4xl text-white">Yield Analysis</h3>
+                </div>
+                <button class="font-mono text-xs text-gray-500 border border-gray-700 px-4 py-2 hover:bg-gray-800 transition-colors">
+                    EXPORT .CSV
+                </button>
+            </div>
+
+            <div class="overflow-x-auto tech-border bg-lunar-black">
+                <table class="w-full font-mono text-xs text-left">
+                    <thead class="bg-gray-900 text-gray-400 border-b border-gray-800">
+                        <tr>
+                            <th class="p-4">RESOURCE_TYPE</th>
+                            <th class="p-4">ABUNDANCE (PPM)</th>
+                            <th class="p-4">EXTRACTION_METHOD</th>
+                            <th class="p-4">MARKET_VALUE ($/KG)</th>
+                            <th class="p-4 text-right">STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-800 text-gray-300">
+                        <tr class="hover:bg-gray-900/50 transition-colors group">
+                            <td class="p-4 font-bold text-white group-hover:text-accent-blue">HELIUM-3</td>
+                            <td class="p-4">0.015</td>
+                            <td class="p-4">Thermal Volatilization</td>
+                            <td class="p-4 text-accent-orange">$1,400,000</td>
+                            <td class="p-4 text-right"><span class="bg-accent-blue/20 text-accent-blue px-2 py-1">ACTIVE</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-900/50 transition-colors group">
+                            <td class="p-4 font-bold text-white group-hover:text-accent-blue">OXYGEN (O2)</td>
+                            <td class="p-4">420,000</td>
+                            <td class="p-4">Molten Electrolysis</td>
+                            <td class="p-4">$500 (LEO)</td>
+                            <td class="p-4 text-right"><span class="bg-accent-blue/20 text-accent-blue px-2 py-1">ACTIVE</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-900/50 transition-colors group">
+                            <td class="p-4 font-bold text-white group-hover:text-accent-blue">TITANIUM</td>
+                            <td class="p-4">50,000</td>
+                            <td class="p-4">Ilmenite Reduction</td>
+                            <td class="p-4">$35</td>
+                            <td class="p-4 text-right"><span class="bg-yellow-500/20 text-yellow-500 px-2 py-1">PLANNED</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-900/50 transition-colors group">
+                            <td class="p-4 font-bold text-white group-hover:text-accent-blue">WATER (ICE)</td>
+                            <td class="p-4">Variable (PSR)</td>
+                            <td class="p-4">Sublimation Capture</td>
+                            <td class="p-4">$1,200 (Surface)</td>
+                            <td class="p-4 text-right"><span class="bg-accent-orange/20 text-accent-orange px-2 py-1">PRIORITY</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-900/50 transition-colors group">
+                            <td class="p-4 font-bold text-white group-hover:text-accent-blue">RARE EARTHS</td>
+                            <td class="p-4">250</td>
+                            <td class="p-4">Chemical Leaching</td>
+                            <td class="p-4">Variable</td>
+                            <td class="p-4 text-right"><span class="bg-gray-800 text-gray-500 px-2 py-1">R&D</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-lunar-black text-gray-500 pt-20 pb-10 border-t border-gray-800 font-mono text-xs">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i class="fa-solid fa-moon text-accent-orange"></i>
+                        <span class="font-tech font-bold text-lg text-white uppercase">Selene Ind.</span>
+                    </div>
+                    <address class="not-italic leading-loose mb-6">
+                        HQ: Mare Tranquillitatis Base Alpha<br>
+                        Sector 4, Quadrant 9<br>
+                        Earth Office: Houston, TX<br>
+                        +1 (281) 555-0199
+                    </address>
+                    <div class="text-[10px] text-gray-600">
+                        EST. 2032 // ISO 9001:2035 CERTIFIED
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h5 class="text-white font-bold mb-4 uppercase tracking-widest">Systems</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Excavation Units</a></li>
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Processing Plants</a></li>
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Power Systems (Nuclear)</a></li>
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Logistics Rovers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-4 uppercase tracking-widest">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Mission Statement</a></li>
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Investor Relations</a></li>
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Sustainability Report</a></li>
+                        <li><a href="#" class="hover:text-accent-orange transition-colors">Careers (Off-World)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h5 class="text-white font-bold mb-4 uppercase tracking-widest">Secure Comms</h5>
+                    <p class="mb-4 text-[10px] leading-relaxed">
+                        Subscribe for technical briefs and launch manifests. PGP Encrypted.
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="USER@DOMAIN.COM" class="bg-gray-900 border border-gray-700 px-3 py-2 w-full focus:border-accent-orange focus:outline-none text-white">
+                        <button class="bg-accent-orange text-black px-4 py-2 hover:bg-white transition-colors font-bold">></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center opacity-60">
+                <p>&copy; 2042 Selene Industrial Corp. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">LEGAL</a>
+                    <a href="#" class="hover:text-white transition-colors">PRIVACY</a>
+                    <a href="#" class="hover:text-white transition-colors">OUTER SPACE TREATY COMPLIANCE</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Loader Logic
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 2500); // 2.5s simulated loading time
+        });
+
+        // UTC Clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toISOString().split('T')[1].split('.')[0];
+            document.getElementById('clock').textContent = timeString;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
