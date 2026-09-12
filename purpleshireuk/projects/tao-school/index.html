@@ -1,75 +1,814 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TAO School — PurpleShire.uk</title>
-<link rel="stylesheet" href="../assets/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAO School | The Way of Future Learning</title>
+    <meta name="description" content="TAO School is a world-class institution dedicated to holistic intelligence, blending academic excellence with mindfulness and character development.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        zen: ['Zen Kaku Gothic New', 'sans-serif'],
+                    },
+                    colors: {
+                        tao: {
+                            black: '#1a1a1a',
+                            charcoal: '#2d2d2d',
+                            stone: '#e6e5e0',
+                            paper: '#f5f4f0',
+                            bamboo: '#5c7a56',
+                            clay: '#8c7b6c',
+                            gold: '#c4a661',
+                            ink: '#0b0b0b'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 8s ease-in-out infinite',
+                        'breathe': 'breathe 6s ease-in-out infinite',
+                        'slide-up': 'slideUp 1s ease-out forwards',
+                        'reveal': 'reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        breathe: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+                            '50%': { transform: 'scale(1.05)', opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(40px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        reveal: {
+                            '0%': { clipPath: 'inset(0 100% 0 0)' },
+                            '100%': { clipPath: 'inset(0 0 0 0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f5f4f0;
+            color: #1a1a1a;
+        }
+
+        /* Smooth reveal for sections */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom ink brush stroke effect */
+        .brush-stroke {
+            position: relative;
+        }
+        .brush-stroke::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 8px;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='10' viewBox='0 0 100 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 Q 50 10 100 5' stroke='%23c4a661' stroke-width='2' fill='none' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            opacity: 0.6;
+        }
+
+        /* Vertical text support */
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+        }
+
+        /* Grain texture overlay */
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Parallax Image Container */
+        .parallax-container {
+            overflow: hidden;
+        }
+        .parallax-image {
+            transition: transform 0.5s cubic-bezier(0,0,0,1);
+        }
+        
+        /* Navigation Hover Line */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 0;
+            background-color: #1a1a1a;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f5f4f0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8c7b6c;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body>
-<header class="site-header wrap">
-  <a class="wordmark" href="../index.html">PurpleShire<span class="dot">.</span>uk</a>
-  <span class="badge-alpha">ALPHA</span>
-</header><nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>
-<section class="hero wrap">
-<h1>TAO School</h1>
-<p class="lede">The way of future learning.</p>
-<span class="status-pill">Concept — live demo</span>
-</section>
-<section class="section"><div class="wrap prose">
-<h2>About</h2>
-<p>A concept site for a school of future learning — philosophy, curriculum, environment, and masters.</p>
-<h2>Highlights</h2>
-<ul class="ticks">
-<li>Philosophy of future learning</li>
-<li>Curriculum and environment</li>
-<li>The masters</li>
-</ul>
-<p><a class="btn" href="demo.html" target="_blank" rel="noopener">Open the live page →</a></p>
-</div></section>
-<section class="section" id="contact">
-<div class="wrap prose">
-<h2>Contact</h2>
-<p>Questions about TAO School? Send us a message — we reply from our Gmail.</p>
-<div class="contact-box">
-<form method="post" data-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-email="carl.walker.pm@gmail.com" data-project="TAO School">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] TAO School — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about TAO School — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name">Name</label>
-<input type="text" id="cf-name" name="name" required autocomplete="name">
-<label for="cf-email">Email</label>
-<input type="email" id="cf-email" name="email" required autocomplete="email">
-<label for="cf-msg">Message</label>
-<textarea id="cf-msg" name="message" required></textarea>
-<button type="submit">Send message</button>
-<p class="form-note">Or email us directly: <a href="mailto:carl.walker.pm@gmail.com" style="color: var(--accent-soft);">carl.walker.pm@gmail.com</a></p>
-</form>
-<noscript>
-<form method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] TAO School — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about TAO School — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name-ns">Name</label>
-<input type="text" id="cf-name-ns" name="name" required autocomplete="name">
-<label for="cf-email-ns">Email</label>
-<input type="email" id="cf-email-ns" name="email" required autocomplete="email">
-<label for="cf-msg-ns">Message</label>
-<textarea id="cf-msg-ns" name="message" required></textarea>
-<button type="submit">Send message</button>
-</form>
-</noscript>
-</div>
-</div>
-</section><footer class="site-footer">
-  <div class="wrap">
-    <p>© <span id="year"></span> PurpleShire.uk — alpha version. <a href="../index.html" style="color: var(--accent-soft);">Back to the platform</a></p>
+<body class="antialiased font-sans">
+    
+    <div class="texture-overlay"></div>
+
+    <!-- Preloader (Simulated) -->
+    <div id="preloader" class="fixed inset-0 bg-tao-paper z-[100] flex items-center justify-center transition-opacity duration-1000 pointer-events-none">
+        <div class="text-center">
+            <div class="font-serif text-4xl mb-4 tracking-widest text-tao-ink">道</div>
+            <div class="h-px w-0 bg-tao-ink animate-[reveal_1s_ease-out_forwards]"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-tao-paper/90 backdrop-blur-sm border-b border-tao-charcoal/5" id="navbar">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo -->
+                <div class="flex items-center gap-4 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-12 h-12 border border-tao-ink/10 rounded-full flex items-center justify-center bg-white shadow-sm group-hover:shadow-md transition-all duration-500">
+                        <span class="font-serif text-2xl text-tao-ink">T</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-zen font-bold text-xl tracking-widest text-tao-ink uppercase">Tao School</span>
+                        <span class="font-serif text-xs text-tao-clay tracking-wider italic">Est. 1984</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-12 font-zen text-sm tracking-widest uppercase text-tao-charcoal">
+                    <a href="#philosophy" class="nav-link hover:text-tao-ink transition-colors">Philosophy</a>
+                    <a href="#academics" class="nav-link hover:text-tao-ink transition-colors">Academics</a>
+                    <a href="#campus" class="nav-link hover:text-tao-ink transition-colors">Campus</a>
+                    <a href="#faculty" class="nav-link hover:text-tao-ink transition-colors">Masters</a>
+                    <a href="#admissions" class="nav-link hover:text-tao-ink transition-colors">Admissions</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden lg:flex items-center gap-6">
+                    <a href="#" class="font-zen text-xs uppercase tracking-widest text-tao-charcoal hover:text-tao-gold transition-colors">Portal Login</a>
+                    <a href="#inquire" class="px-8 py-3 bg-tao-ink text-white font-zen text-xs uppercase tracking-widest hover:bg-tao-charcoal transition-colors duration-300">
+                        Inquire
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="lg:hidden text-tao-ink p-2">
+                    <i class="fa-solid fa-bars-staggered text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+        <!-- Background Video/Image Placeholder -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1623164966601-3c81734292b0?q=80&w=2069&auto=format&fit=crop" alt="Peaceful Architecture" class="w-full h-full object-cover opacity-90 scale-105 animate-[breathe_20s_infinite_alternate]">
+            <div class="absolute inset-0 bg-gradient-to-b from-tao-paper/10 via-transparent to-tao-paper"></div>
+        </div>
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6 mt-16">
+            <div class="inline-block mb-6 animate-slide-up" style="animation-delay: 0.2s;">
+                <span class="font-zen text-xs uppercase tracking-[0.4em] text-tao-ink/60 border-b border-tao-ink/20 pb-2">Holistic Intelligence</span>
+            </div>
+            
+            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl text-tao-ink mb-8 leading-[0.9] animate-slide-up" style="animation-delay: 0.4s;">
+                Balance <span class="italic font-light text-tao-clay">&</span> <br> Brilliance
+            </h1>
+            
+            <p class="font-sans text-lg md:text-xl text-tao-charcoal/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed animate-slide-up" style="animation-delay: 0.6s;">
+                We cultivate the whole human being. Where rigorous intellect meets profound character, and ancient wisdom informs future innovation.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 animate-slide-up" style="animation-delay: 0.8s;">
+                <a href="#philosophy" class="group relative px-8 py-4 overflow-hidden border border-tao-ink text-tao-ink transition-all hover:text-white">
+                    <span class="absolute inset-0 w-0 bg-tao-ink transition-all duration-[250ms] ease-out group-hover:w-full"></span>
+                    <span class="relative font-zen text-xs uppercase tracking-widest">Discover The Way</span>
+                </a>
+                <a href="#video-tour" class="flex items-center gap-3 text-tao-ink hover:text-tao-gold transition-colors duration-300">
+                    <div class="w-10 h-10 border border-current rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-play text-xs ml-1"></i>
+                    </div>
+                    <span class="font-zen text-xs uppercase tracking-widest">Watch Film</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-50">
+            <span class="font-zen text-[10px] uppercase tracking-widest vertical-text h-12">Scroll</span>
+            <div class="w-px h-12 bg-tao-ink"></div>
+        </div>
+    </header>
+
+    <!-- Philosophy Section (Yin Yang Layout) -->
+    <section id="philosophy" class="py-32 relative overflow-hidden bg-white">
+        <!-- Decorative Circle -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-tao-stone rounded-full opacity-30 pointer-events-none"></div>
+
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <!-- Text Content -->
+                <div class="reveal-on-scroll">
+                    <span class="font-serif text-5xl text-tao-clay/10 absolute -top-16 -left-8 pointer-events-none">01</span>
+                    <h2 class="font-zen text-sm uppercase tracking-widest text-tao-bamboo mb-4">Our Philosophy</h2>
+                    <h3 class="font-serif text-5xl md:text-6xl text-tao-ink mb-8 leading-tight">
+                        The Harmony of <br> <span class="brush-stroke">Opposites</span>
+                    </h3>
+                    <p class="font-sans text-lg text-tao-charcoal/70 mb-6 leading-relaxed">
+                        At TAO School, we believe that true intelligence arises from the integration of seemingly opposing forces. Technology and Nature. Logic and Intuition. Individual ambition and Collective responsibility.
+                    </p>
+                    <p class="font-sans text-lg text-tao-charcoal/70 mb-10 leading-relaxed">
+                        Our curriculum is not just a transfer of knowledge, but a transformation of the self. We prepare students not just for the workforce, but for the world—equipped with the inner stability to navigate an ever-changing outer reality.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 border-t border-tao-stone pt-8">
+                        <div>
+                            <div class="font-serif text-3xl text-tao-ink mb-2">12:1</div>
+                            <div class="font-zen text-xs uppercase tracking-widest text-tao-clay">Student-Master Ratio</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-3xl text-tao-ink mb-2">40%</div>
+                            <div class="font-zen text-xs uppercase tracking-widest text-tao-clay">Mindfulness Practice</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Grid -->
+                <div class="relative reveal-on-scroll">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="mt-12">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1000&auto=format&fit=crop" alt="Student studying" class="w-full h-[400px] object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm">
+                            <div class="mt-4 font-zen text-xs uppercase tracking-widest text-right">Intellect</div>
+                        </div>
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1528351655743-77626966fa06?q=80&w=1000&auto=format&fit=crop" alt="Meditation" class="w-full h-[400px] object-cover grayscale hover:grayscale-0 transition-all duration-700 rounded-sm">
+                            <div class="mt-4 font-zen text-xs uppercase tracking-widest text-left">Spirit</div>
+                        </div>
+                    </div>
+                    <!-- Center Badge -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-tao-paper rounded-full flex items-center justify-center border border-tao-stone shadow-xl">
+                        <div class="w-20 h-20 border border-tao-ink rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-yin-yang text-2xl text-tao-ink animate-spin-slow"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academics / The Path -->
+    <section id="academics" class="py-32 bg-tao-paper relative">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal-on-scroll">
+                <span class="font-serif text-5xl text-tao-clay/10 block mb-4">02</span>
+                <h2 class="font-zen text-sm uppercase tracking-widest text-tao-bamboo mb-4">The Curriculum</h2>
+                <h3 class="font-serif text-5xl text-tao-ink mb-6">Three Pillars of Growth</h3>
+                <p class="font-sans text-tao-charcoal/70">
+                    Our academic structure is built upon three foundational pillars, ensuring a complete education that nurtures every aspect of the student's potential.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-tao-stone border border-tao-stone">
+                <!-- Pillar 1 -->
+                <div class="bg-tao-paper p-12 hover:bg-white transition-colors duration-500 group relative overflow-hidden h-[500px] flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i class="fa-solid fa-atom text-9xl"></i>
+                    </div>
+                    <div>
+                        <div class="w-12 h-px bg-tao-ink mb-8 group-hover:w-24 transition-all duration-500"></div>
+                        <h4 class="font-serif text-3xl text-tao-ink mb-4">Logos</h4>
+                        <h5 class="font-zen text-xs uppercase tracking-widest text-tao-clay mb-6">Science & Technology</h5>
+                        <p class="font-sans text-tao-charcoal/70 leading-relaxed mb-6">
+                            Advanced mathematics, coding, AI ethics, and environmental science. We teach not just how technology works, but why it matters.
+                        </p>
+                        <ul class="space-y-3 font-sans text-sm text-tao-charcoal/60">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-bamboo"></span> Quantum Physics</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-bamboo"></span> Algorithmic Logic</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-bamboo"></span> Sustainable Engineering</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-tao-ink font-zen text-xs uppercase tracking-widest group-hover:text-tao-gold transition-colors">
+                        Explore Pillar <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="bg-tao-paper p-12 hover:bg-white transition-colors duration-500 group relative overflow-hidden h-[500px] flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i class="fa-solid fa-palette text-9xl"></i>
+                    </div>
+                    <div>
+                        <div class="w-12 h-px bg-tao-ink mb-8 group-hover:w-24 transition-all duration-500"></div>
+                        <h4 class="font-serif text-3xl text-tao-ink mb-4">Pathos</h4>
+                        <h5 class="font-zen text-xs uppercase tracking-widest text-tao-clay mb-6">Arts & Humanities</h5>
+                        <p class="font-sans text-tao-charcoal/70 leading-relaxed mb-6">
+                            Literature, visual arts, music, and history. Cultivating empathy, expression, and a deep understanding of the human condition.
+                        </p>
+                        <ul class="space-y-3 font-sans text-sm text-tao-charcoal/60">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-clay"></span> Classical Literature</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-clay"></span> Fine Arts Studio</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-clay"></span> World Philosophy</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-tao-ink font-zen text-xs uppercase tracking-widest group-hover:text-tao-gold transition-colors">
+                        Explore Pillar <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="bg-tao-paper p-12 hover:bg-white transition-colors duration-500 group relative overflow-hidden h-[500px] flex flex-col justify-between">
+                    <div class="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i class="fa-solid fa-leaf text-9xl"></i>
+                    </div>
+                    <div>
+                        <div class="w-12 h-px bg-tao-ink mb-8 group-hover:w-24 transition-all duration-500"></div>
+                        <h4 class="font-serif text-3xl text-tao-ink mb-4">Ethos</h4>
+                        <h5 class="font-zen text-xs uppercase tracking-widest text-tao-clay mb-6">Character & Spirit</h5>
+                        <p class="font-sans text-tao-charcoal/70 leading-relaxed mb-6">
+                            Mindfulness, ethics, leadership, and physical cultivation (Yoga, Tai Chi). Developing the inner resilience to lead with integrity.
+                        </p>
+                        <ul class="space-y-3 font-sans text-sm text-tao-charcoal/60">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-gold"></span> Meditation Practice</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-gold"></span> Ethical Leadership</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-tao-gold"></span> Somatic Movement</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-tao-ink font-zen text-xs uppercase tracking-widest group-hover:text-tao-gold transition-colors">
+                        Explore Pillar <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Tour / Environment -->
+    <section id="campus" class="bg-tao-ink text-tao-stone py-32 relative">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal-on-scroll">
+                <div>
+                    <span class="font-serif text-5xl text-white/10 block mb-4">03</span>
+                    <h2 class="font-zen text-sm uppercase tracking-widest text-tao-gold mb-4">The Environment</h2>
+                    <h3 class="font-serif text-5xl text-white">Sanctuary for Learning</h3>
+                </div>
+                <div class="mt-8 md:mt-0 text-right">
+                    <p class="font-sans text-white/60 max-w-md mb-6">
+                        Architecture that breathes. Spaces designed to foster focus, community, and connection with nature.
+                    </p>
+                    <a href="#" class="text-white border-b border-white/30 pb-1 hover:text-tao-gold hover:border-tao-gold transition-all">View Interactive Map</a>
+                </div>
+            </div>
+
+            <!-- Mosaic Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[800px]">
+                <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1598190356778-27669145f771?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" alt="Main Hall">
+                    <div class="absolute bottom-0 left-0 p-8 w-full bg-gradient-to-t from-black/80 to-transparent">
+                        <h4 class="font-serif text-3xl text-white">The Great Hall</h4>
+                        <p class="font-zen text-xs uppercase tracking-widest text-tao-gold mt-2">Center for Assembly</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=2072&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" alt="Library">
+                    <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black/80 to-transparent">
+                        <h4 class="font-serif text-xl text-white">Silence Library</h4>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1584622412117-bb1b6d77181d?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" alt="Gardens">
+                    <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black/80 to-transparent">
+                        <h4 class="font-serif text-xl text-white">Zen Gardens</h4>
+                    </div>
+                </div>
+                <div class="md:col-span-2 relative group overflow-hidden rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 group-hover:opacity-100" alt="Tech Lab">
+                    <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black/80 to-transparent">
+                        <h4 class="font-serif text-2xl text-white">Innovation Labs</h4>
+                        <p class="font-zen text-xs uppercase tracking-widest text-tao-gold mt-2">Where Future Meets Present</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty / Masters -->
+    <section id="faculty" class="py-32 bg-white">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12">
+            <div class="text-center mb-20">
+                <span class="font-serif text-5xl text-tao-clay/10 block mb-4">04</span>
+                <h2 class="font-zen text-sm uppercase tracking-widest text-tao-bamboo mb-4">The Masters</h2>
+                <h3 class="font-serif text-5xl text-tao-ink">Guided by Excellence</h3>
+            </div>
+
+            <!-- Carousel-like Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Master 1 -->
+                <div class="group text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-tao-stone">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1000&auto=format&fit=crop" alt="Headmistress" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="font-serif text-xl text-tao-ink mb-1">Dr. Elena Vosk</h4>
+                    <p class="font-zen text-xs uppercase tracking-widest text-tao-clay mb-4">Headmistress</p>
+                    <p class="font-sans text-sm text-tao-charcoal/60 italic">
+                        "Education is the kindling of a flame, not the filling of a vessel."
+                    </p>
+                </div>
+
+                <!-- Master 2 -->
+                <div class="group text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-tao-stone">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop" alt="Science Lead" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="font-serif text-xl text-tao-ink mb-1">Prof. James Chen</h4>
+                    <p class="font-zen text-xs uppercase tracking-widest text-tao-clay mb-4">Dean of Sciences</p>
+                    <p class="font-sans text-sm text-tao-charcoal/60 italic">
+                        "In nature's patterns, we find the blueprints for tomorrow's technology."
+                    </p>
+                </div>
+
+                <!-- Master 3 -->
+                <div class="group text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-tao-stone">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1000&auto=format&fit=crop" alt="Arts Lead" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="font-serif text-xl text-tao-ink mb-1">Maya Al-Fayed</h4>
+                    <p class="font-zen text-xs uppercase tracking-widest text-tao-clay mb-4">Dean of Arts</p>
+                    <p class="font-sans text-sm text-tao-charcoal/60 italic">
+                        "Creativity is the voice of the soul made visible."
+                    </p>
+                </div>
+
+                <!-- Master 4 -->
+                <div class="group text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border border-tao-stone">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1000&auto=format&fit=crop" alt="Mindfulness Lead" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                    </div>
+                    <h4 class="font-serif text-xl text-tao-ink mb-1">Kaito Tanaka</h4>
+                    <p class="font-zen text-xs uppercase tracking-widest text-tao-clay mb-4">Director of Mindfulness</p>
+                    <p class="font-sans text-sm text-tao-charcoal/60 italic">
+                        "Stillness is the canvas upon which clarity is painted."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News / Journal -->
+    <section class="py-24 bg-tao-paper border-t border-tao-stone">
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-end mb-12">
+                <h3 class="font-serif text-4xl text-tao-ink">School Journal</h3>
+                <a href="#" class="font-zen text-xs uppercase tracking-widest text-tao-charcoal hover:text-tao-gold">View All Stories</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden mb-4 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?q=80&w=1000&auto=format&fit=crop" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Robotics">
+                    </div>
+                    <div class="flex items-center gap-3 text-xs font-zen text-tao-clay mb-2">
+                        <span>Oct 12, 2025</span>
+                        <span class="w-1 h-1 bg-tao-clay rounded-full"></span>
+                        <span>Innovation</span>
+                    </div>
+                    <h4 class="font-serif text-xl text-tao-ink group-hover:text-tao-gold transition-colors">Robotics Team Wins National Biomimicry Award</h4>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden mb-4 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1518002171953-a080ee321e2f?q=80&w=1000&auto=format&fit=crop" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Retreat">
+                    </div>
+                    <div class="flex items-center gap-3 text-xs font-zen text-tao-clay mb-2">
+                        <span>Sep 28, 2025</span>
+                        <span class="w-1 h-1 bg-tao-clay rounded-full"></span>
+                        <span>Student Life</span>
+                    </div>
+                    <h4 class="font-serif text-xl text-tao-ink group-hover:text-tao-gold transition-colors">Autumn Silent Retreat: Reflections from the Mountains</h4>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden mb-4 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=1000&auto=format&fit=crop" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-105" alt="Guest Lecture">
+                    </div>
+                    <div class="flex items-center gap-3 text-xs font-zen text-tao-clay mb-2">
+                        <span>Sep 15, 2025</span>
+                        <span class="w-1 h-1 bg-tao-clay rounded-full"></span>
+                        <span>Events</span>
+                    </div>
+                    <h4 class="font-serif text-xl text-tao-ink group-hover:text-tao-gold transition-colors">Guest Lecture: The Ethics of Artificial Consciousness</h4>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions / CTA -->
+    <section id="admissions" class="py-32 bg-tao-ink text-white relative overflow-hidden">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 Q 50 0 100 100" fill="none" stroke="white" stroke-width="0.5"/>
+                <path d="M0 80 Q 50 -20 100 80" fill="none" stroke="white" stroke-width="0.5"/>
+                <path d="M0 60 Q 50 -40 100 60" fill="none" stroke="white" stroke-width="0.5"/>
+            </svg>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="font-zen text-sm uppercase tracking-widest text-tao-gold mb-6">Join The Path</h2>
+            <h3 class="font-serif text-5xl md:text-6xl mb-8 leading-tight">Begin Your Journey Towards <br> Holistic Excellence</h3>
+            <p class="font-sans text-white/60 mb-12 text-lg">
+                We invite curious minds and open hearts to apply for the 2026-2027 academic year. 
+                Applications are reviewed on a rolling basis.
+            </p>
+            
+            <form class="bg-white/5 backdrop-blur-md p-8 rounded-sm border border-white/10 max-w-2xl mx-auto text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block font-zen text-xs uppercase tracking-widest text-tao-stone mb-2">Student Name</label>
+                        <input type="text" class="w-full bg-white/10 border border-white/20 p-3 text-white focus:outline-none focus:border-tao-gold transition-colors">
+                    </div>
+                    <div>
+                        <label class="block font-zen text-xs uppercase tracking-widest text-tao-stone mb-2">Grade Level</label>
+                        <select class="w-full bg-white/10 border border-white/20 p-3 text-white focus:outline-none focus:border-tao-gold transition-colors appearance-none cursor-pointer">
+                            <option class="bg-tao-charcoal">Grade 9</option>
+                            <option class="bg-tao-charcoal">Grade 10</option>
+                            <option class="bg-tao-charcoal">Grade 11</option>
+                            <option class="bg-tao-charcoal">Grade 12</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-8">
+                    <label class="block font-zen text-xs uppercase tracking-widest text-tao-stone mb-2">Parent Email</label>
+                    <input type="email" class="w-full bg-white/10 border border-white/20 p-3 text-white focus:outline-none focus:border-tao-gold transition-colors">
+                </div>
+                <button class="w-full bg-tao-gold text-tao-ink font-zen text-sm uppercase tracking-widest py-4 hover:bg-white transition-colors duration-300">
+                    Request Information Packet
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-tao-black text-tao-stone pt-24 pb-12 border-t border-white/5">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
+                <!-- Brand -->
+                <div class="md:col-span-4">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white font-serif text-xl">T</div>
+                        <span class="font-zen text-lg tracking-widest uppercase">Tao School</span>
+                    </div>
+                    <address class="font-sans text-white/50 not-italic leading-loose mb-8">
+                        108 Serenity Lane<br>
+                        Kyoto Prefecture, Japan 604-8001<br>
+                        +81 75-555-0199
+                    </address>
+                    <div class="flex gap-6 text-white/40">
+                        <a href="#" class="hover:text-tao-gold transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="#" class="hover:text-tao-gold transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                        <a href="#" class="hover:text-tao-gold transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="md:col-span-2">
+                    <h5 class="font-zen text-xs uppercase tracking-widest text-tao-gold mb-6">About</h5>
+                    <ul class="space-y-4 font-sans text-sm text-white/60">
+                        <li><a href="#" class="hover:text-white transition-colors">Mission & Vision</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">History</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Leadership</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Diversity</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h5 class="font-zen text-xs uppercase tracking-widest text-tao-gold mb-6">Academics</h5>
+                    <ul class="space-y-4 font-sans text-sm text-white/60">
+                        <li><a href="#" class="hover:text-white transition-colors">Curriculum</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">College Counseling</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Summer Programs</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Library</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h5 class="font-zen text-xs uppercase tracking-widest text-tao-gold mb-6">Admissions</h5>
+                    <ul class="space-y-4 font-sans text-sm text-white/60">
+                        <li><a href="#" class="hover:text-white transition-colors">Apply Now</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Tuition & Aid</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Visit Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-2">
+                    <h5 class="font-zen text-xs uppercase tracking-widest text-tao-gold mb-6">Community</h5>
+                    <ul class="space-y-4 font-sans text-sm text-white/60">
+                        <li><a href="#" class="hover:text-white transition-colors">Parents Association</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Alumni Network</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Giving</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-white/30">
+                <p>&copy; 2026 TAO School. All rights reserved.</p>
+                <div class="flex gap-8 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Use</a>
+                    <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Remove preloader
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                preloader.style.opacity = '0';
+            }, 1500);
+
+            // Reveal elements on scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            revealElements.forEach(el => observer.observe(el));
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-sm');
+                    navbar.classList.add('bg-tao-paper/95');
+                } else {
+                    navbar.classList.remove('shadow-sm');
+                    navbar.classList.remove('bg-tao-paper/95');
+                }
+            });
+        });
+    </script>
+
+<!-- PurpleShire.uk platform chrome -->
+<a id="psuk-back" href="../../index.html">&larr; PurpleShire.uk</a>
+<button id="psuk-contact-btn" type="button">&#9993; Contact</button>
+<div id="psuk-modal" role="dialog" aria-modal="true" aria-label="Contact form">
+  <div id="psuk-modal-card">
+    <button id="psuk-modal-close" type="button" aria-label="Close">&times;</button>
+    <div id="psuk-modal-body">
+      <h3 id="psuk-modal-title">Contact</h3>
+      <p id="psuk-modal-sub">Questions about TAO School? Send a message &mdash; we reply from our Gmail.</p>
+      <form id="psuk-form" novalidate>
+        <label class="psuk-label">Name<input class="psuk-input" name="name" type="text" required autocomplete="name"></label>
+        <label class="psuk-label">Email<input class="psuk-input" name="email" type="email" required autocomplete="email"></label>
+        <label class="psuk-label">Message<textarea class="psuk-input" name="message" rows="4" required></textarea></label>
+        <button id="psuk-send" type="submit">Send message</button>
+        <p class="psuk-note">Or email directly: <a href="mailto:carl.walker.pm@gmail.com">carl.walker.pm@gmail.com</a></p>
+        <p id="psuk-status"></p>
+      </form>
+    </div>
   </div>
-</footer>
-<script src="../assets/site.js"></script>
+</div>
+<style>
+#psuk-back{position:fixed;top:14px;left:14px;z-index:99998;background:rgba(18,16,26,.82);color:#c9b6ff !important;
+  font:600 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none !important;
+  padding:8px 14px;border-radius:999px;border:1px solid #3a2f5c;backdrop-filter:blur(4px)}
+#psuk-back:hover{color:#fff !important;border-color:#9d7bff}
+#psuk-contact-btn{position:fixed;right:18px;bottom:18px;z-index:99999;background:#9d7bff;color:#14101f !important;
+  font:700 15px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 24px rgba(157,123,255,.45)}
+#psuk-contact-btn:hover{background:#c9b6ff}
+#psuk-modal{display:none;position:fixed;inset:0;z-index:100000;background:rgba(10,8,18,.72);
+  align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+#psuk-modal.psuk-open{display:flex}
+#psuk-modal-card{position:relative;background:#1a1626;color:#ece7fa;border:1px solid #3a2f5c;border-radius:14px;
+  width:100%;max-width:430px;padding:26px;box-shadow:0 18px 60px rgba(0,0,0,.55);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#psuk-modal-close{position:absolute;top:10px;right:14px;background:none;border:0;color:#a99fc4;font-size:26px;
+  cursor:pointer;line-height:1;padding:4px}
+#psuk-modal-close:hover{color:#fff}
+#psuk-modal-title{margin:0 0 6px;font-size:20px;color:#ece7fa}
+#psuk-modal-sub{margin:0 0 14px;font-size:14px;color:#a99fc4}
+.psuk-label{display:block;font-size:13px;font-weight:600;color:#ece7fa;margin:10px 0 4px}
+.psuk-input{display:block;width:100%;box-sizing:border-box;background:#201b31;border:1px solid #3a2f5c;border-radius:8px;
+  color:#ece7fa;padding:9px 11px;font-size:15px;font-family:inherit;margin-top:4px}
+.psuk-input:focus{outline:none;border-color:#9d7bff}
+textarea.psuk-input{resize:vertical;min-height:84px}
+#psuk-send{margin-top:14px;background:#9d7bff;color:#14101f;border:0;border-radius:10px;font-weight:700;
+  font-size:15px;padding:11px 22px;cursor:pointer;width:100%}
+#psuk-send:hover{background:#c9b6ff}
+#psuk-send[disabled]{opacity:.6;cursor:default}
+.psuk-note{font-size:12px;color:#a99fc4;margin:12px 0 0}
+.psuk-note a{color:#c9b6ff}
+#psuk-status{font-size:14px;margin:10px 0 0}
+#psuk-status.psuk-ok{color:#9df0b6}
+#psuk-status.psuk-err{color:#ff9d9d}
+</style>
+<script>
+(function(){
+  "use strict";
+  var EMAIL="carl.walker.pm@gmail.com", PROJECT="TAO School";
+  var modal=document.getElementById("psuk-modal"),
+      btn=document.getElementById("psuk-contact-btn"),
+      close=document.getElementById("psuk-modal-close"),
+      form=document.getElementById("psuk-form"),
+      status=document.getElementById("psuk-status"),
+      send=document.getElementById("psuk-send");
+  function open(){modal.classList.add("psuk-open");}
+  function hide(){modal.classList.remove("psuk-open");}
+  btn.addEventListener("click",open);
+  close.addEventListener("click",hide);
+  modal.addEventListener("click",function(e){if(e.target===modal)hide();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var name=form.elements.name.value.trim(),
+        sender=form.elements.email.value.trim(),
+        msg=form.elements.message.value.trim();
+    status.className="";status.textContent="";
+    if(!name||!sender||!msg){status.className="psuk-err";status.textContent="Please fill in all fields.";return;}
+    send.disabled=true;send.textContent="Sending…";
+    fetch("https://formsubmit.co/ajax/"+EMAIL,{
+      method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({name:name,email:sender,message:msg,
+        _subject:"[PurpleShire.uk] "+PROJECT+" — new website message",
+        _template:"table",_honey:"",
+        _autoresponse:"Thanks for reaching out about "+PROJECT+" — we will get back to you soon. — PurpleShire.uk"})
+    }).then(function(r){if(!r.ok)throw new Error("http "+r.status);return r.json();})
+    .then(function(){
+      document.getElementById("psuk-modal-body").innerHTML=
+        '<h3 id="psuk-modal-title">Thank you!</h3><p id="psuk-modal-sub">Your message is on its way. We reply from our Gmail.</p>';
+    })
+    .catch(function(){
+      status.className="psuk-err";
+      status.innerHTML='Sorry — something went wrong. Please try again or write to <a href="mailto:'+EMAIL+'" style="color:#c9b6ff">'+EMAIL+'</a>.';
+      send.disabled=false;send.textContent="Send message";
+    });
+  });
+})();
+</script>
+<!-- /PurpleShire.uk platform chrome -->
 </body>
 </html>

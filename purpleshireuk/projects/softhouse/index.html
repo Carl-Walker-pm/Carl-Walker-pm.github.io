@@ -1,73 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SoftHouse — PurpleShire.uk</title>
-<link rel="stylesheet" href="../assets/style.css">
+    <meta charset="UTF-8">
+    <title>SoftHouse</title>
 </head>
 <body>
-<header class="site-header wrap">
-  <a class="wordmark" href="../index.html">PurpleShire<span class="dot">.</span>uk</a>
-  <span class="badge-alpha">ALPHA</span>
-</header><nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>
-<section class="hero wrap">
-<h1>SoftHouse</h1>
-<p class="lede">A minimal hub stub.</p>
-<span class="status-pill">Stub — work in progress</span>
-</section>
-<section class="section"><div class="wrap prose">
-<h2>About</h2>
-<p>A minimal hub page — an early scaffold.</p>
-<h2>Highlights</h2>
-<ul class="ticks">
-<li>Early scaffold</li>
-</ul>
-<p><a class="btn" href="demo.html" target="_blank" rel="noopener">Open the live page →</a></p>
-</div></section>
-<section class="section" id="contact">
-<div class="wrap prose">
-<h2>Contact</h2>
-<p>Questions about SoftHouse? Send us a message — we reply from our Gmail.</p>
-<div class="contact-box">
-<form method="post" data-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-email="carl.walker.pm@gmail.com" data-project="SoftHouse">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] SoftHouse — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about SoftHouse — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name">Name</label>
-<input type="text" id="cf-name" name="name" required autocomplete="name">
-<label for="cf-email">Email</label>
-<input type="email" id="cf-email" name="email" required autocomplete="email">
-<label for="cf-msg">Message</label>
-<textarea id="cf-msg" name="message" required></textarea>
-<button type="submit">Send message</button>
-<p class="form-note">Or email us directly: <a href="mailto:carl.walker.pm@gmail.com" style="color: var(--accent-soft);">carl.walker.pm@gmail.com</a></p>
-</form>
-<noscript>
-<form method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] SoftHouse — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about SoftHouse — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name-ns">Name</label>
-<input type="text" id="cf-name-ns" name="name" required autocomplete="name">
-<label for="cf-email-ns">Email</label>
-<input type="email" id="cf-email-ns" name="email" required autocomplete="email">
-<label for="cf-msg-ns">Message</label>
-<textarea id="cf-msg-ns" name="message" required></textarea>
-<button type="submit">Send message</button>
-</form>
-</noscript>
-</div>
-</div>
-</section><footer class="site-footer">
-  <div class="wrap">
-    <p>© <span id="year"></span> PurpleShire.uk — alpha version. <a href="../index.html" style="color: var(--accent-soft);">Back to the platform</a></p>
+    <h1>SoftHouse</h1>
+    <ul>
+        <li>
+          <a href="https://www.google.com" target>
+          <a href="https://www.wikipedia.org" target="_blank">
+          <a href="https://www.github.com" target>
+          </li>
+    </ul>
+
+<!-- PurpleShire.uk platform chrome -->
+<a id="psuk-back" href="../../index.html">&larr; PurpleShire.uk</a>
+<button id="psuk-contact-btn" type="button">&#9993; Contact</button>
+<div id="psuk-modal" role="dialog" aria-modal="true" aria-label="Contact form">
+  <div id="psuk-modal-card">
+    <button id="psuk-modal-close" type="button" aria-label="Close">&times;</button>
+    <div id="psuk-modal-body">
+      <h3 id="psuk-modal-title">Contact</h3>
+      <p id="psuk-modal-sub">Questions about SoftHouse? Send a message &mdash; we reply from our Gmail.</p>
+      <form id="psuk-form" novalidate>
+        <label class="psuk-label">Name<input class="psuk-input" name="name" type="text" required autocomplete="name"></label>
+        <label class="psuk-label">Email<input class="psuk-input" name="email" type="email" required autocomplete="email"></label>
+        <label class="psuk-label">Message<textarea class="psuk-input" name="message" rows="4" required></textarea></label>
+        <button id="psuk-send" type="submit">Send message</button>
+        <p class="psuk-note">Or email directly: <a href="mailto:carl.walker.pm@gmail.com">carl.walker.pm@gmail.com</a></p>
+        <p id="psuk-status"></p>
+      </form>
+    </div>
   </div>
-</footer>
-<script src="../assets/site.js"></script>
+</div>
+<style>
+#psuk-back{position:fixed;top:14px;left:14px;z-index:99998;background:rgba(18,16,26,.82);color:#c9b6ff !important;
+  font:600 13px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-decoration:none !important;
+  padding:8px 14px;border-radius:999px;border:1px solid #3a2f5c;backdrop-filter:blur(4px)}
+#psuk-back:hover{color:#fff !important;border-color:#9d7bff}
+#psuk-contact-btn{position:fixed;right:18px;bottom:18px;z-index:99999;background:#9d7bff;color:#14101f !important;
+  font:700 15px/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;border:0;border-radius:999px;
+  padding:14px 22px;cursor:pointer;box-shadow:0 6px 24px rgba(157,123,255,.45)}
+#psuk-contact-btn:hover{background:#c9b6ff}
+#psuk-modal{display:none;position:fixed;inset:0;z-index:100000;background:rgba(10,8,18,.72);
+  align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
+#psuk-modal.psuk-open{display:flex}
+#psuk-modal-card{position:relative;background:#1a1626;color:#ece7fa;border:1px solid #3a2f5c;border-radius:14px;
+  width:100%;max-width:430px;padding:26px;box-shadow:0 18px 60px rgba(0,0,0,.55);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+#psuk-modal-close{position:absolute;top:10px;right:14px;background:none;border:0;color:#a99fc4;font-size:26px;
+  cursor:pointer;line-height:1;padding:4px}
+#psuk-modal-close:hover{color:#fff}
+#psuk-modal-title{margin:0 0 6px;font-size:20px;color:#ece7fa}
+#psuk-modal-sub{margin:0 0 14px;font-size:14px;color:#a99fc4}
+.psuk-label{display:block;font-size:13px;font-weight:600;color:#ece7fa;margin:10px 0 4px}
+.psuk-input{display:block;width:100%;box-sizing:border-box;background:#201b31;border:1px solid #3a2f5c;border-radius:8px;
+  color:#ece7fa;padding:9px 11px;font-size:15px;font-family:inherit;margin-top:4px}
+.psuk-input:focus{outline:none;border-color:#9d7bff}
+textarea.psuk-input{resize:vertical;min-height:84px}
+#psuk-send{margin-top:14px;background:#9d7bff;color:#14101f;border:0;border-radius:10px;font-weight:700;
+  font-size:15px;padding:11px 22px;cursor:pointer;width:100%}
+#psuk-send:hover{background:#c9b6ff}
+#psuk-send[disabled]{opacity:.6;cursor:default}
+.psuk-note{font-size:12px;color:#a99fc4;margin:12px 0 0}
+.psuk-note a{color:#c9b6ff}
+#psuk-status{font-size:14px;margin:10px 0 0}
+#psuk-status.psuk-ok{color:#9df0b6}
+#psuk-status.psuk-err{color:#ff9d9d}
+</style>
+<script>
+(function(){
+  "use strict";
+  var EMAIL="carl.walker.pm@gmail.com", PROJECT="SoftHouse";
+  var modal=document.getElementById("psuk-modal"),
+      btn=document.getElementById("psuk-contact-btn"),
+      close=document.getElementById("psuk-modal-close"),
+      form=document.getElementById("psuk-form"),
+      status=document.getElementById("psuk-status"),
+      send=document.getElementById("psuk-send");
+  function open(){modal.classList.add("psuk-open");}
+  function hide(){modal.classList.remove("psuk-open");}
+  btn.addEventListener("click",open);
+  close.addEventListener("click",hide);
+  modal.addEventListener("click",function(e){if(e.target===modal)hide();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")hide();});
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var name=form.elements.name.value.trim(),
+        sender=form.elements.email.value.trim(),
+        msg=form.elements.message.value.trim();
+    status.className="";status.textContent="";
+    if(!name||!sender||!msg){status.className="psuk-err";status.textContent="Please fill in all fields.";return;}
+    send.disabled=true;send.textContent="Sending…";
+    fetch("https://formsubmit.co/ajax/"+EMAIL,{
+      method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({name:name,email:sender,message:msg,
+        _subject:"[PurpleShire.uk] "+PROJECT+" — new website message",
+        _template:"table",_honey:"",
+        _autoresponse:"Thanks for reaching out about "+PROJECT+" — we will get back to you soon. — PurpleShire.uk"})
+    }).then(function(r){if(!r.ok)throw new Error("http "+r.status);return r.json();})
+    .then(function(){
+      document.getElementById("psuk-modal-body").innerHTML=
+        '<h3 id="psuk-modal-title">Thank you!</h3><p id="psuk-modal-sub">Your message is on its way. We reply from our Gmail.</p>';
+    })
+    .catch(function(){
+      status.className="psuk-err";
+      status.innerHTML='Sorry — something went wrong. Please try again or write to <a href="mailto:'+EMAIL+'" style="color:#c9b6ff">'+EMAIL+'</a>.';
+      send.disabled=false;send.textContent="Send message";
+    });
+  });
+})();
+</script>
+<!-- /PurpleShire.uk platform chrome -->
 </body>
 </html>
