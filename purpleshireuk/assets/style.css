@@ -108,6 +108,17 @@ a.card:hover {
 .card .status { font-size: .8rem; color: var(--muted); }
 .card .status::before { content: "● "; color: var(--accent); }
 
+/* Directions overview */
+.dir-num {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: .04em;
+  margin-bottom: .35rem;
+}
+.dir-card p.dir-text { color: var(--muted); font-size: .95rem; margin: .5rem 0 0; }
+.dir-card h3 { margin: 0 0 .2rem; }
+
 /* Breadcrumb */
 .breadcrumb { padding: 1.25rem 0 0; font-size: .9rem; }
 .breadcrumb a { color: var(--accent-soft); text-decoration: none; }
