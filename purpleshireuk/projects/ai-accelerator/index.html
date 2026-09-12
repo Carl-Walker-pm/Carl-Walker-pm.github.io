@@ -1,75 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PurpleShire Forge — PurpleShire.uk</title>
-<link rel="stylesheet" href="../assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PurpleShire Forge — AI Accelerator</title>
+<meta name="description" content="PurpleShire Forge: an AI accelerator with 20 KPI-driven tracks. Measurable revenue growth, cost reduction and productivity gains within 3–12 months.">
+<style>
+  :root{
+    --bg:#0d0716; --bg2:#150b26; --card:#1c1033; --card2:#241540;
+    --purple:#8b5cf6; --purple2:#a78bfa; --pink:#d946ef; --gold:#fbbf24;
+    --text:#f3f0fa; --muted:#b8a9d9; --line:rgba(139,92,246,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(13,7,22,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:1.15rem;letter-spacing:.02em}
+  .logo span{background:linear-gradient(90deg,var(--purple2),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav a.nl{color:var(--muted);text-decoration:none;margin-left:28px;font-size:.95rem}
+  nav a.nl:hover{color:var(--text)}
+  .cta-btn{display:inline-block;background:linear-gradient(90deg,var(--purple),var(--pink));color:#fff;text-decoration:none;font-weight:700;padding:12px 28px;border-radius:999px;border:none;cursor:pointer;font-size:1rem}
+  .cta-btn:hover{filter:brightness(1.1)}
+  .cta-ghost{display:inline-block;color:var(--text);text-decoration:none;font-weight:600;padding:12px 28px;border-radius:999px;border:1px solid var(--line);margin-left:12px}
+  .cta-ghost:hover{border-color:var(--purple)}
+  .hero{padding:110px 0 80px;text-align:center;background:radial-gradient(ellipse 70% 55% at 50% -5%,rgba(139,92,246,.28),transparent 70%)}
+  .eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple2);border:1px solid var(--line);border-radius:999px;padding:8px 18px;margin-bottom:28px}
+  h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;line-height:1.08;margin-bottom:20px}
+  h1 .grad{background:linear-gradient(90deg,var(--purple2),var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{color:var(--muted);font-size:1.2rem;max-width:680px;margin:0 auto 36px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:70px 0 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 18px}
+  .stat .n{font-size:2.1rem;font-weight:800;color:var(--purple2)}
+  .stat .l{color:var(--muted);font-size:.92rem;margin-top:6px}
+  section{padding:84px 0}
+  .sec-head{text-align:center;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;margin-bottom:12px}
+  .sec-head p{color:var(--muted);max-width:640px;margin:0 auto}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 28px}
+  .step .num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));font-weight:800;font-size:1.1rem;margin-bottom:18px}
+  .step h3{margin-bottom:10px;font-size:1.15rem}
+  .step p{color:var(--muted);font-size:.97rem}
+  .cat{margin-bottom:56px}
+  .cat h3{font-size:1.35rem;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+  .cat h3 .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink))}
+  .cat .sub{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .2s,border-color .2s}
+  .card:hover{transform:translateY(-4px);border-color:var(--purple)}
+  .card h4{font-size:1.05rem;margin-bottom:12px}
+  .card ul{list-style:none}
+  .card li{color:var(--muted);font-size:.9rem;padding:5px 0 5px 22px;position:relative}
+  .card li::before{content:"✓";position:absolute;left:0;color:var(--purple2);font-weight:700}
+  .niches{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
+  .pill{background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:12px 22px;font-size:.95rem;font-weight:600}
+  .pill:hover{border-color:var(--pink)}
+  .note{text-align:center;color:var(--muted);max-width:700px;margin:30px auto 0;font-size:.97rem}
+  .cta-final{text-align:center;background:radial-gradient(ellipse 60% 70% at 50% 110%,rgba(217,70,239,.22),transparent 70%);border-top:1px solid var(--line);padding:96px 0}
+  .cta-final h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:16px}
+  .cta-final p{color:var(--muted);margin-bottom:34px;font-size:1.1rem}
+  .apply-form{max-width:620px;margin:0 auto;text-align:left}
+  .apply-form .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .apply-form input,.apply-form select,.apply-form textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:14px 16px;font-size:1rem;margin-bottom:14px;font-family:inherit}
+  .apply-form input:focus,.apply-form select:focus,.apply-form textarea:focus{outline:none;border-color:var(--purple)}
+  .apply-form select{appearance:none}
+  .apply-form textarea{resize:vertical}
+  .apply-form .cta-btn{width:100%;margin-top:6px}
+  .apply-form .form-note{text-align:center;font-size:.85rem;margin-top:14px;margin-bottom:0}
+  @media(max-width:560px){.apply-form .frow{grid-template-columns:1fr}}
+  footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--text)}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}nav a.nl{display:none}}
+</style>
 </head>
 <body>
-<header class="site-header wrap">
-  <a class="wordmark" href="../index.html">PurpleShire<span class="dot">.</span>uk</a>
-  <span class="badge-alpha">ALPHA</span>
-</header><nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>
-<section class="hero wrap">
-<h1>PurpleShire Forge</h1>
-<p class="lede">PurpleShire&#x27;s AI accelerator for entrepreneurs.</p>
-<span class="status-pill">Flagship — in development</span>
-</section>
-<section class="section"><div class="wrap prose">
-<h2>About</h2>
-<p>The flagship project of PurpleShire.uk: an accelerator for entrepreneurs building with AI — from idea to working product.</p>
-<p>The program is being shaped right now. Leave a message below to follow the launch and get early access.</p>
-<h2>Highlights</h2>
-<ul class="ticks">
-<li>Flagship project of PurpleShire.uk</li>
-<li>For entrepreneurs building with AI</li>
-<li>Early access — details coming soon</li>
-</ul>
-</div></section>
-<section class="section" id="contact">
-<div class="wrap prose">
-<h2>Contact</h2>
-<p>Questions about PurpleShire Forge? Send us a message — we reply from our Gmail.</p>
-<div class="contact-box">
-<form method="post" data-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-email="carl.walker.pm@gmail.com" data-project="PurpleShire Forge">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] PurpleShire Forge — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about PurpleShire Forge — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name">Name</label>
-<input type="text" id="cf-name" name="name" required autocomplete="name">
-<label for="cf-email">Email</label>
-<input type="email" id="cf-email" name="email" required autocomplete="email">
-<label for="cf-msg">Message</label>
-<textarea id="cf-msg" name="message" required></textarea>
-<button type="submit">Send message</button>
-<p class="form-note">Or email us directly: <a href="mailto:carl.walker.pm@gmail.com" style="color: var(--accent-soft);">carl.walker.pm@gmail.com</a></p>
-</form>
-<noscript>
-<form method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] PurpleShire Forge — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about PurpleShire Forge — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name-ns">Name</label>
-<input type="text" id="cf-name-ns" name="name" required autocomplete="name">
-<label for="cf-email-ns">Email</label>
-<input type="email" id="cf-email-ns" name="email" required autocomplete="email">
-<label for="cf-msg-ns">Message</label>
-<textarea id="cf-msg-ns" name="message" required></textarea>
-<button type="submit">Send message</button>
-</form>
-</noscript>
-</div>
-</div>
-</section><footer class="site-footer">
+
+<nav>
   <div class="wrap">
-    <p>© <span id="year"></span> PurpleShire.uk — alpha version <span class="ver">· v2.3</span>. <a href="../index.html" style="color: var(--accent-soft);">Back to the platform</a></p>
+    <div class="logo">PurpleShire <span>Forge</span></div>
+    <div>
+      <a class="nl" href="../../index.html">← PurpleShire.uk</a>
+      <a class="nl" href="#program">Program</a>
+      <a class="nl" href="#tracks">Tracks</a>
+      <a class="nl" href="#niches">2026 Niches</a>
+      <a class="nl" href="#apply">Apply</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">AI Accelerator · PurpleShire.uk</div>
+    <h1>Forge your edge with <span class="grad">applied AI</span></h1>
+    <p class="lead">20 tracks. One goal: measurable KPI impact — revenue growth, cost reduction, productivity — within 3–12 months of implementation.</p>
+    <a class="cta-btn" href="#apply">Apply for the next cohort</a>
+    <a class="cta-ghost" href="#tracks">Explore the 20 tracks</a>
+    <div class="stats">
+      <div class="stat"><div class="n">20</div><div class="l">KPI-driven business domains</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">High-growth niches for 2026</div></div>
+      <div class="stat"><div class="n">3–12 mo</div><div class="l">To measurable results</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Focused on business outcomes</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="program">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How the program works</h2>
+      <p>No theory for theory's sake. Every track is built around the KPIs it moves — and the cohort builds, ships, and measures.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Pick your track</h3>
+        <p>Choose one of 20 business domains where AI moves the needle — from sales and marketing to supply chain and cybersecurity.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Build with AI</h3>
+        <p>Work through the accelerator playbook: deploy AI where it compounds — automation, intelligence, personalization.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Measure the KPI</h3>
+        <p>Every track defines its success metrics up front. You graduate when the numbers move — typically within 3–12 months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tracks" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The 20 tracks</h2>
+      <p>Each track targets specific, measurable KPIs. Find the one where AI can change your business.</p>
+    </div>
+
+    <div class="cat">
+      <h3><span class="dot"></span>Revenue &amp; Growth</h3>
+      <p class="sub">AI that brings money in the door and keeps customers coming back.</p>
+      <div class="grid">
+        <div class="card"><h4>Sales Intelligence &amp; Lead Generation</h4><ul><li>Increase conversion rates</li><li>Improve lead qualification</li><li>Reduce customer acquisition costs</li></ul></div>
+        <div class="card"><h4>Marketing Content Production</h4><ul><li>Accelerate content creation</li><li>Improve campaign ROI</li><li>Increase audience engagement</li></ul></div>
+        <div class="card"><h4>Digital Advertising Optimization</h4><ul><li>Improve ROAS</li><li>Reduce wasted budget</li><li>Enhance targeting precision</li></ul></div>
+        <div class="card"><h4>E-commerce Personalization</h4><ul><li>Increase average order value</li><li>Improve customer retention</li><li>Boost conversion rates</li></ul></div>
+        <div class="card"><h4>Customer Support Automation</h4><ul><li>Reduce response times</li><li>Increase customer satisfaction (CSAT)</li><li>Lower support costs</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <h3><span class="dot"></span>Operations &amp; Efficiency</h3>
+      <p class="sub">AI that removes friction, waste, and manual work from the machine.</p>
+      <div class="grid">
+        <div class="card"><h4>Business Process Automation</h4><ul><li>Increase operational efficiency</li><li>Reduce manual work</li><li>Improve scalability</li></ul></div>
+        <div class="card"><h4>Supply Chain Optimization</h4><ul><li>Reduce inventory costs</li><li>Improve delivery performance</li><li>Minimize stockouts</li></ul></div>
+        <div class="card"><h4>Logistics &amp; Route Optimization</h4><ul><li>Lower transportation costs</li><li>Improve delivery speed</li><li>Increase fleet utilization</li></ul></div>
+        <div class="card"><h4>Predictive Maintenance</h4><ul><li>Reduce equipment downtime</li><li>Extend asset lifespan</li><li>Lower maintenance expenses</li></ul></div>
+        <div class="card"><h4>Manufacturing Quality Control</h4><ul><li>Reduce defect rates</li><li>Increase production efficiency</li><li>Improve product consistency</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <h3><span class="dot"></span>People &amp; Strategy</h3>
+      <p class="sub">AI that makes teams sharper and decisions faster.</p>
+      <div class="grid">
+        <div class="card"><h4>Human Resources &amp; Recruitment</h4><ul><li>Shorten time-to-hire</li><li>Improve candidate quality</li><li>Reduce recruitment costs</li></ul></div>
+        <div class="card"><h4>Education &amp; Corporate Training</h4><ul><li>Personalize learning paths</li><li>Improve completion rates</li><li>Reduce training costs</li></ul></div>
+        <div class="card"><h4>Product Development &amp; Innovation</h4><ul><li>Shorten time-to-market</li><li>Speed up research processes</li><li>Improve product-market fit</li></ul></div>
+        <div class="card"><h4>Executive Decision Intelligence</h4><ul><li>Real-time business insights</li><li>Improve strategic planning</li><li>Enable faster decision-making</li></ul></div>
+        <div class="card"><h4>Financial Planning &amp; Forecasting</h4><ul><li>Improve forecasting accuracy</li><li>Optimize cash flow management</li><li>Reduce financial risks</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cat" style="margin-bottom:0">
+      <h3><span class="dot"></span>Trust &amp; Risk</h3>
+      <p class="sub">AI that protects the business — its assets, contracts, and customers.</p>
+      <div class="grid">
+        <div class="card"><h4>Cybersecurity &amp; Threat Detection</h4><ul><li>Identify risks faster</li><li>Reduce incident response time</li><li>Improve compliance</li></ul></div>
+        <div class="card"><h4>Fraud Detection &amp; Risk Management</h4><ul><li>Reduce financial losses</li><li>Improve transaction security</li><li>Enhance compliance monitoring</li></ul></div>
+        <div class="card"><h4>Legal Tech &amp; Contract Analysis</h4><ul><li>Accelerate contract reviews</li><li>Reduce legal costs</li><li>Improve risk management</li></ul></div>
+        <div class="card"><h4>Healthcare &amp; Medical Services</h4><ul><li>Improve diagnostic support</li><li>Enhance patient experience</li><li>Optimize resource allocation</li></ul></div>
+        <div class="card"><h4>Real Estate &amp; Property Management</h4><ul><li>Improve occupancy rates</li><li>Enhance valuation accuracy</li><li>Automate tenant communications</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="niches">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>High-growth niches for 2026</h2>
+      <p>The ten sectors where AI accelerators show the strongest, fastest measurable impact.</p>
+    </div>
+    <div class="niches">
+      <div class="pill">AI for SMB Sales</div>
+      <div class="pill">AI Marketing Automation</div>
+      <div class="pill">AI Customer Service</div>
+      <div class="pill">AI Financial Operations</div>
+      <div class="pill">AI Healthcare Admin</div>
+      <div class="pill">AI HR &amp; Recruiting</div>
+      <div class="pill">AI Supply Chain Analytics</div>
+      <div class="pill">AI Cybersecurity</div>
+      <div class="pill">AI Legal Operations</div>
+      <div class="pill">AI Real Estate Tech</div>
+    </div>
+    <p class="note">These sectors typically show measurable improvements in revenue growth, cost reduction, productivity, and customer experience within 3–12 months of AI implementation.</p>
+  </div>
+</section>
+
+<section id="apply" class="cta-final">
+  <div class="wrap">
+    <h2>Ready to accelerate?</h2>
+    <p>Join the next cohort and put AI to work on the KPIs that matter.</p>
+    <form class="apply-form" action="https://formsubmit.co/carl.walker.pm@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New application — PurpleShire Forge">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <div class="frow">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <input type="text" name="company" placeholder="Company (optional)">
+      <select name="track" required>
+        <option value="" disabled selected>Track of interest</option>
+        <option>Sales Intelligence &amp; Lead Generation</option>
+        <option>Customer Support Automation</option>
+        <option>Marketing Content Production</option>
+        <option>Digital Advertising Optimization</option>
+        <option>E-commerce Personalization</option>
+        <option>Financial Planning &amp; Forecasting</option>
+        <option>Human Resources &amp; Recruitment</option>
+        <option>Supply Chain Optimization</option>
+        <option>Predictive Maintenance</option>
+        <option>Business Process Automation</option>
+        <option>Cybersecurity &amp; Threat Detection</option>
+        <option>Healthcare &amp; Medical Services</option>
+        <option>Legal Tech &amp; Contract Analysis</option>
+        <option>Real Estate &amp; Property Management</option>
+        <option>Manufacturing Quality Control</option>
+        <option>Education &amp; Corporate Training</option>
+        <option>Logistics &amp; Route Optimization</option>
+        <option>Product Development &amp; Innovation</option>
+        <option>Fraud Detection &amp; Risk Management</option>
+        <option>Executive Decision Intelligence</option>
+        <option>Not sure yet — advise me</option>
+      </select>
+      <textarea name="message" rows="4" placeholder="Tell us about your goals and where AI could help…" required></textarea>
+      <button class="cta-btn" type="submit">Apply now</button>
+      <p class="form-note">Submissions go straight to carl.walker.pm@gmail.com</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 <a href="https://purpleshire.uk">PurpleShire.uk</a> — Forge AI Accelerator</div>
+    <div><a href="mailto:carl.walker.pm@gmail.com">carl.walker.pm@gmail.com</a></div>
   </div>
 </footer>
-<script src="../assets/site.js"></script>
+
 </body>
 </html>

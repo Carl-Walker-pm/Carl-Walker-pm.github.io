@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KINETIC | Design, Meaning, & Entropy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['IBM Plex Mono', 'monospace'],
+                    },
+                    colors: {
+                        'k-red': '#ff3333',
+                        'k-gray': '#f4f4f4',
+                        'k-border': '#e5e5e5'
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Brutalist touches */
+        .hover-underline:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-decoration-color: #ff3333;
+        }
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1px;
+            background-color: #e5e5e5; /* Border color via gap */
+        }
+        .matrix-item {
+            background-color: white;
+        }
+        /* Ticker animation */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+    </style>
+</head>
+<body class="bg-white text-black font-sans antialiased">
+
+    <!-- Top Info Bar (The "Matrix") -->
+    <div class="bg-k-gray border-b border-gray-200 text-xs font-mono py-1 px-2 flex justify-between items-center overflow-hidden">
+        <div class="flex gap-4">
+            <span><i class="fa-solid fa-temperature-half"></i> Studio: 22°C</span>
+            <span><i class="fa-solid fa-clock"></i> 14:42 MSK</span>
+            <span class="text-gray-500">Coffee consumed: 42L</span>
+        </div>
+        <div class="hidden md:block">
+            <span class="text-k-red font-bold">TODAY'S JOKE:</span> Why does the designer hate the developer? Because he has no class.
+        </div>
+        <div class="flex gap-4">
+            <span>USD: 98.40</span>
+            <span>EUR: 105.20</span>
+            <span>BTC: 😢</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b-2 border-black">
+        <div class="max-w-[1920px] mx-auto">
+            <div class="flex flex-wrap items-center">
+                <!-- Logo -->
+                <div class="w-full md:w-auto p-4 md:p-6 border-b md:border-b-0 md:border-r border-gray-200 flex justify-between items-center">
+                    <a href="#" class="text-4xl font-black tracking-tighter hover:text-k-red transition-colors">KINETIC</a>
+                    <button class="md:hidden text-2xl"><i class="fa-solid fa-bars"></i></button>
+                </div>
+
+                <!-- Nav Links (Dense) -->
+                <div class="flex-1 flex flex-wrap text-sm md:text-base font-semibold">
+                    <a href="#" class="flex-1 min-w-[100px] border-r border-gray-200 p-4 hover:bg-k-gray hover:text-k-red transition-colors flex flex-col justify-between h-full group">
+                        <span>Studio</span>
+                        <span class="text-xs text-gray-400 font-normal group-hover:text-black mt-1">Who we are</span>
+                    </a>
+                    <a href="#" class="flex-1 min-w-[100px] border-r border-gray-200 p-4 hover:bg-k-gray hover:text-k-red transition-colors flex flex-col justify-between h-full group">
+                        <span>Portfolio</span>
+                        <span class="text-xs text-gray-400 font-normal group-hover:text-black mt-1">All 1,402 works</span>
+                    </a>
+                    <a href="#" class="flex-1 min-w-[100px] border-r border-gray-200 p-4 hover:bg-k-gray hover:text-k-red transition-colors flex flex-col justify-between h-full group">
+                        <span>Inventory</span>
+                        <span class="text-xs text-gray-400 font-normal group-hover:text-black mt-1">Things we sell</span>
+                    </a>
+                    <a href="#" class="flex-1 min-w-[100px] border-r border-gray-200 p-4 hover:bg-k-gray hover:text-k-red transition-colors flex flex-col justify-between h-full group">
+                        <span>Brain</span>
+                        <span class="text-xs text-gray-400 font-normal group-hover:text-black mt-1">Articles & Theory</span>
+                    </a>
+                    <a href="#" class="flex-1 min-w-[100px] p-4 hover:bg-k-gray hover:text-k-red transition-colors flex flex-col justify-between h-full group bg-k-red text-white hover:text-white">
+                        <span>Order Us</span>
+                        <span class="text-xs text-white/70 font-normal mt-1">Expensive & Long</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Daily Manifest / Hero -->
+    <header class="border-b border-gray-200 p-8 md:p-16">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl md:text-7xl font-bold leading-tight mb-8">
+                We design <span class="bg-black text-white px-2">systems</span>, not just pictures. <br>
+                <span class="text-gray-400 line-through decoration-k-red decoration-4">Beauty is subjective.</span> 
+                Logic is absolute.
+            </h1>
+            <div class="flex flex-col md:flex-row gap-8 font-mono text-sm text-gray-600">
+                <div class="max-w-xs">
+                    <strong class="text-black block mb-2">LATEST OBSERVATION:</strong>
+                    Most websites look the same because everyone uses the same templates. We don't use templates. We build chaos until it makes sense.
+                </div>
+                <div class="max-w-xs">
+                    <strong class="text-black block mb-2">STATUS:</strong>
+                    Working on 42 projects. Drinking espresso. Arguing about kerning.
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- The Content Matrix (Masonry-ish Grid) -->
+    <section class="border-b border-gray-200 bg-gray-100">
+        <div class="matrix-grid">
+            
+            <!-- Item 1: Featured Project -->
+            <article class="matrix-item p-6 md:p-8 col-span-1 md:col-span-2 row-span-2 group cursor-pointer hover:bg-gray-50">
+                <div class="text-xs font-mono text-gray-400 mb-2">RELEASED YESTERDAY</div>
+                <h2 class="text-3xl font-bold mb-4 group-hover:text-k-red">Siberian Aero Systems</h2>
+                <p class="mb-6 text-lg">Complete rebranding for the largest drone delivery service in Northern Russia. We designed the logo, the app, and the drone paint job.</p>
+                <div class="aspect-video bg-gray-200 mb-4 overflow-hidden relative">
+                    <!-- Placeholder for portfolio image -->
+                    <div class="absolute inset-0 bg-black text-white flex items-center justify-center font-bold text-2xl group-hover:scale-105 transition-transform duration-500">
+                        [DRONE IMAGE]
+                    </div>
+                </div>
+                <div class="flex gap-2 text-sm font-bold">
+                    <span class="bg-gray-100 px-2 py-1">Identity</span>
+                    <span class="bg-gray-100 px-2 py-1">Industrial</span>
+                </div>
+            </article>
+
+            <!-- Item 2: Blog Post (Theory) -->
+            <article class="matrix-item p-6 flex flex-col justify-between hover:bg-blue-50 cursor-pointer border-l border-gray-100">
+                <div>
+                    <div class="text-xs font-mono text-blue-600 mb-2">THEORY • §142</div>
+                    <h3 class="text-xl font-bold mb-3 leading-tight hover-underline">Why rounded corners are destroying the internet</h3>
+                    <p class="text-sm text-gray-600">A 4,000 word essay on the decline of brutalism and the rise of "friendly" corporate aesthetics.</p>
+                </div>
+                <div class="mt-4 flex items-center gap-2">
+                    <img src="https://ui-avatars.com/api/?name=Ivan+K&background=000&color=fff" class="w-6 h-6 rounded-full">
+                    <span class="text-xs font-bold">Ivan K.</span>
+                </div>
+            </article>
+
+            <!-- Item 3: Random Joke/Fact -->
+            <div class="matrix-item p-6 bg-yellow-50 flex flex-col justify-center items-center text-center">
+                <i class="fa-solid fa-lightbulb text-4xl text-yellow-400 mb-4"></i>
+                <p class="font-serif italic text-lg">"A camel is a horse designed by a committee."</p>
+                <span class="text-xs font-mono mt-4 text-gray-400">— Alec Issigonis</span>
+            </div>
+
+            <!-- Item 4: Portfolio Item -->
+            <article class="matrix-item p-0 group cursor-pointer">
+                <div class="aspect-square bg-gray-800 relative overflow-hidden">
+                    <div class="absolute inset-0 flex items-center justify-center text-gray-700 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-font text-9xl opacity-20"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-white/90 transform translate-y-full group-hover:translate-y-0 transition-transform">
+                        <div class="text-xs font-mono">TYPEFACE</div>
+                        <div class="font-bold">Kinetic Sans v2.0</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Item 5: News Item -->
+            <article class="matrix-item p-6 hover:bg-gray-50">
+                <div class="text-xs font-mono text-gray-400 mb-2">STUDIO NEWS • 12 OCT</div>
+                <h3 class="font-bold text-lg mb-2">We bought a new coffee machine</h3>
+                <p class="text-sm text-gray-600 mb-4">It's Italian. It's loud. It cost more than our first car. Productivity has increased by 14%.</p>
+                <a href="#" class="text-xs font-bold text-k-red border-b border-k-red pb-0.5">Read report</a>
+            </article>
+
+            <!-- Item 6: "Process" / Sketch -->
+            <article class="matrix-item p-6 col-span-1 md:col-span-2 bg-black text-white">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-xs font-mono text-gray-400">BEHIND THE SCENES</div>
+                    <i class="fa-solid fa-eye text-gray-600"></i>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Rejected logos for "Bank of Future"</h3>
+                        <p class="text-gray-400 text-sm">Client said they were "too aggressive." We think they were "just aggressive enough."</p>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 opacity-50">
+                         <div class="aspect-square border border-white/20 rounded-full flex items-center justify-center text-2xl">B</div>
+                         <div class="aspect-square border border-white/20 flex items-center justify-center text-2xl font-serif">Bank</div>
+                         <div class="aspect-square border border-white/20 rotate-45 flex items-center justify-center text-2xl">$</div>
+                    </div>
+                </div>
+            </article>
+
+             <!-- Item 7: Product -->
+             <article class="matrix-item p-6 text-center hover:bg-gray-50 cursor-pointer">
+                <div class="text-xs font-mono text-green-600 mb-2">STORE • NEW ARRIVAL</div>
+                <img src="https://placehold.co/200x200/png?text=Poster" alt="Poster" class="w-32 h-32 mx-auto mb-4 object-contain shadow-lg rotate-3 group-hover:rotate-0 transition-transform">
+                <h3 class="font-bold">"Deadlines" Poster</h3>
+                <div class="text-k-red font-bold mt-2">$25.00</div>
+                <button class="mt-4 w-full bg-black text-white text-xs py-2 hover:bg-k-red transition-colors">ADD TO CART</button>
+            </article>
+
+            <!-- Item 8: Short Link List -->
+            <div class="matrix-item p-6 bg-k-gray">
+                <h4 class="font-bold mb-4 border-b border-gray-300 pb-2">Useful Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-k-red">→ How to kerning</a></li>
+                    <li><a href="#" class="hover:text-k-red">→ Client guide v1.2</a></li>
+                    <li><a href="#" class="hover:text-k-red">→ Our Spotify playlist</a></li>
+                    <li><a href="#" class="hover:text-k-red">→ Map to the office</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- The "Stream" (Date-based timeline) -->
+    <section class="max-w-[1920px] mx-auto grid grid-cols-1 lg:grid-cols-4 border-b border-gray-200">
+        <!-- Sidebar Title -->
+        <div class="p-8 border-b lg:border-b-0 lg:border-r border-gray-200">
+            <h2 class="text-4xl font-black sticky top-24">THE STREAM</h2>
+            <p class="mt-4 text-gray-500">Everything that happens, in chronological order. No filter.</p>
+            
+            <div class="mt-12 space-y-4">
+                <div class="bg-yellow-100 p-4 text-sm">
+                    <strong>Hiring:</strong> We are looking for a designer who knows how to use a pencil. <a href="#" class="underline">Apply.</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="col-span-3">
+            <!-- Day Block -->
+            <div class="flex border-b border-gray-200 group hover:bg-gray-50">
+                <div class="w-24 p-6 font-mono text-sm text-gray-400 border-r border-gray-200 flex-shrink-0">
+                    27 JAN
+                </div>
+                <div class="p-6 flex-1">
+                    <div class="flex items-baseline gap-3 mb-2">
+                        <span class="bg-black text-white text-[10px] px-1 py-0.5 font-bold uppercase">Portfolio</span>
+                        <h3 class="text-xl font-bold"><a href="#" class="hover:text-k-red">Website for the Museum of Concrete</a></h3>
+                    </div>
+                    <p class="text-gray-600 max-w-2xl">We launched a minimalist site for the museum. It loads in 0.2 seconds and contains no JavaScript. It is as solid as the material it celebrates.</p>
+                </div>
+                <div class="w-32 hidden md:block bg-gray-200 overflow-hidden relative">
+                    <!-- Thumbnail -->
+                     <div class="absolute inset-0 bg-gray-300 flex items-center justify-center text-gray-500 text-xs">[IMG]</div>
+                </div>
+            </div>
+
+            <!-- Day Block -->
+            <div class="flex border-b border-gray-200 group hover:bg-gray-50">
+                <div class="w-24 p-6 font-mono text-sm text-gray-400 border-r border-gray-200 flex-shrink-0">
+                    26 JAN
+                </div>
+                <div class="p-6 flex-1">
+                    <div class="flex items-baseline gap-3 mb-2">
+                        <span class="bg-blue-600 text-white text-[10px] px-1 py-0.5 font-bold uppercase">Travel</span>
+                        <h3 class="text-xl font-bold"><a href="#" class="hover:text-k-red">Expedition to Mongolia</a></h3>
+                    </div>
+                    <p class="text-gray-600 max-w-2xl">Our art director spent 2 weeks in a yurt. He came back with 4,000 photos of grass and a new font idea.</p>
+                </div>
+            </div>
+
+             <!-- Day Block -->
+             <div class="flex border-b border-gray-200 group hover:bg-gray-50">
+                <div class="w-24 p-6 font-mono text-sm text-gray-400 border-r border-gray-200 flex-shrink-0">
+                    25 JAN
+                </div>
+                <div class="p-6 flex-1">
+                    <div class="flex items-baseline gap-3 mb-2">
+                        <span class="bg-k-red text-white text-[10px] px-1 py-0.5 font-bold uppercase">Critique</span>
+                        <h3 class="text-xl font-bold"><a href="#" class="hover:text-k-red">Business Critique #492: City Navigation</a></h3>
+                    </div>
+                    <p class="text-gray-600 max-w-2xl">A user sent us a photo of a sign in the subway. We explain why it is terrible and how to fix it in 5 minutes.</p>
+                </div>
+            </div>
+            
+            <!-- Day Block (Minor) -->
+            <div class="flex border-b border-gray-200 min-h-[60px] items-center bg-gray-50/50">
+                <div class="w-24 px-6 font-mono text-xs text-gray-300 border-r border-gray-200 flex-shrink-0">
+                    24 JAN
+                </div>
+                <div class="px-6 flex items-center gap-4 text-sm text-gray-500">
+                    <i class="fa-solid fa-camera"></i>
+                    <span>Uploaded 14 new photos to <a href="#" class="underline text-black">Studio Life</a>.</span>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <button class="w-full py-4 border-2 border-black font-bold hover:bg-black hover:text-white transition-colors uppercase tracking-widest">
+                    Load Archive (1998 - 2025)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Sitemap -->
+    <footer class="bg-black text-white pt-16 pb-32 font-mono text-sm">
+        <div class="max-w-[1920px] mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-12">
+                
+                <div class="col-span-1">
+                    <h5 class="text-gray-500 mb-6 uppercase tracking-wider">Studio</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-k-red">About Us</a></li>
+                        <li><a href="#" class="hover:text-k-red">History</a></li>
+                        <li><a href="#" class="hover:text-k-red">Vacancies</a></li>
+                        <li><a href="#" class="hover:text-k-red">Press Kit</a></li>
+                        <li><a href="#" class="hover:text-k-red">Contacts</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h5 class="text-gray-500 mb-6 uppercase tracking-wider">Portfolio</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-k-red">Web Design</a></li>
+                        <li><a href="#" class="hover:text-k-red">Graphic Design</a></li>
+                        <li><a href="#" class="hover:text-k-red">Industrial</a></li>
+                        <li><a href="#" class="hover:text-k-red">Architecture</a></li>
+                        <li><a href="#" class="hover:text-k-red">Urban</a></li>
+                        <li><a href="#" class="hover:text-k-red">Interfaces</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h5 class="text-gray-500 mb-6 uppercase tracking-wider">Inventory</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-k-red">Books</a></li>
+                        <li><a href="#" class="hover:text-k-red">Posters</a></li>
+                        <li><a href="#" class="hover:text-k-red">Objects</a></li>
+                        <li><a href="#" class="hover:text-k-red">Toys</a></li>
+                        <li><a href="#" class="hover:text-k-red">Clothes</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h5 class="text-gray-500 mb-6 uppercase tracking-wider">Follow</h5>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-k-red">Telegram</a></li>
+                        <li><a href="#" class="hover:text-k-red">Instagram</a></li>
+                        <li><a href="#" class="hover:text-k-red">Behance</a></li>
+                        <li><a href="#" class="hover:text-k-red">Dribbble</a></li>
+                        <li><a href="#" class="hover:text-k-red">RSS Feed</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1 md:col-span-1 border-l border-white/20 pl-8">
+                    <div class="text-k-red font-bold text-2xl mb-4">KINETIC</div>
+                    <address class="not-italic text-gray-400 mb-6">
+                        123 Creative Blvd.<br>
+                        District 9, Building B<br>
+                        Floor 4, Door "No Entry"
+                    </address>
+                    <a href="mailto:mailbox@kinetic.design" class="text-xl font-bold hover:text-k-red border-b border-white/30 pb-1">mailbox@kinetic.design</a>
+                    <div class="mt-8 text-xs text-gray-600">
+                        © 1999—2026 KINETIC Studio.<br>
+                        All rights reserved. Use of materials requires a link and a bottle of wine.
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- Bottom Ticker -->
+            <div class="mt-20 pt-4 border-t border-white/20 overflow-hidden">
+                <div class="ticker-wrap">
+                    <div class="ticker text-gray-500">
+                        +++ WE ARE HIRING +++ NEW PROJECT RELEASED +++ THE WEATHER IS GOOD +++ DON'T USE COMIC SANS +++ DEADLINE IS YESTERDAY +++ COFFEE MACHINE IS FIXED +++
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

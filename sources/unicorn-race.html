@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unicorn Race — The World's First Sports-Finance Anime</title>
+<meta name="description" content="Unicorn Race: an anime series concept where billion-dollar startups race at full gallop and every funding round is called like the Kentucky Derby.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a12; --bg2:#12121f; --card:#151526; --line:#26263d;
+    --pink:#ff2d78; --gold:#ffc531; --cyan:#39e6ff; --ink:#f2f0fa; --muted:#a7a3c4;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:
+      repeating-linear-gradient(115deg, transparent 0 46px, rgba(255,45,120,.028) 46px 48px),
+      radial-gradient(1000px 500px at 85% -5%, #2a1030 0%, var(--bg) 60%) fixed,
+      var(--bg);
+    color:var(--ink); font-family:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.6; min-height:100vh; overflow-x:hidden;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px}
+  header{padding:22px 0; display:flex; justify-content:space-between; align-items:center}
+  .logo{font-family:"Anton",sans-serif; font-size:1.35rem; letter-spacing:2px}
+  .logo .u{color:var(--pink)} .logo .r{color:var(--gold)}
+  nav a{margin-left:22px; color:var(--muted); font-size:.92rem; text-decoration:none; font-weight:500}
+  nav a:hover{color:var(--ink)}
+  .hero{padding:70px 0 54px; position:relative}
+  .kicker{display:inline-block; background:rgba(255,45,120,.1); color:var(--pink);
+    border:1px solid rgba(255,45,120,.4); border-radius:999px; padding:5px 16px;
+    font-size:.82rem; font-weight:700; letter-spacing:2.5px; margin-bottom:20px}
+  .hero h1{
+    font-family:"Anton",sans-serif; font-weight:400;
+    font-size:clamp(3.4rem, 11vw, 7rem); line-height:.95; letter-spacing:1px;
+    text-transform:uppercase;
+    background:linear-gradient(180deg,#fff 20%,var(--gold) 55%,var(--pink) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 6px 30px rgba(255,45,120,.25));
+  }
+  .jp{font-size:1.05rem; color:var(--muted); letter-spacing:8px; margin:14px 0 6px; font-weight:700}
+  .hero p.tag{font-size:1.25rem; max-width:620px; color:var(--ink); margin:10px 0 28px}
+  .hero p.tag b{color:var(--gold)}
+  .cta{display:flex; gap:14px; flex-wrap:wrap}
+  .btn{font-family:"Anton",sans-serif; letter-spacing:1.5px; text-transform:uppercase;
+    font-size:1rem; padding:14px 30px; border-radius:10px; text-decoration:none;
+    transform:skewX(-8deg); display:inline-block}
+  .btn span{display:inline-block; transform:skewX(8deg)}
+  .btn.primary{background:linear-gradient(90deg,var(--pink),#ff6b3d); color:#fff;
+    box-shadow:0 8px 32px rgba(255,45,120,.35)}
+  .btn.primary:hover{filter:brightness(1.12)}
+  .btn.ghost{border:2px solid var(--line); color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--gold); color:var(--gold)}
+  .ticker{margin:54px 0 0; border-top:2px solid var(--line); border-bottom:2px solid var(--line);
+    padding:14px 0; overflow:hidden; white-space:nowrap}
+  .ticker .track{display:inline-block; animation:slide 28s linear infinite; color:var(--muted); font-size:.95rem}
+  .ticker .track b{color:var(--gold)} .ticker .track i{color:var(--pink); font-style:normal; margin:0 18px}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  section{padding:52px 0}
+  h2{font-family:"Anton",sans-serif; font-weight:400; font-size:2rem; letter-spacing:1.5px;
+    text-transform:uppercase; margin-bottom:8px}
+  h2 .n{color:var(--pink)}
+  .lede{color:var(--muted); margin-bottom:26px; max-width:640px; font-size:1.02rem}
+  .quote{background:var(--card); border:1px solid var(--line); border-left:5px solid var(--gold);
+    border-radius:12px; padding:26px 30px; font-size:1.08rem; position:relative}
+  .quote::before{content:"“"; font-family:"Anton",sans-serif; font-size:3.4rem; color:var(--gold);
+    position:absolute; top:2px; left:14px; opacity:.5}
+  .quote p{margin:0 0 0 26px}
+  .quote .who{margin:14px 0 0 26px; color:var(--muted); font-size:.9rem; letter-spacing:1px}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:24px;
+    position:relative; overflow:hidden; transition:transform .2s, border-color .2s}
+  .card:hover{transform:translateY(-4px); border-color:var(--pink)}
+  .card .num{font-family:"Anton",sans-serif; font-size:2.6rem; color:transparent;
+    -webkit-text-stroke:1.5px var(--pink); opacity:.85}
+  .card h3{font-size:1.12rem; margin:8px 0 8px; color:var(--gold); letter-spacing:.5px}
+  .card p{color:var(--muted); font-size:.95rem}
+  .racer .stats{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
+  .stat{background:var(--bg2); border:1px solid var(--line); border-radius:8px; padding:6px 12px; font-size:.8rem}
+  .stat b{color:var(--cyan); display:block; font-size:.95rem}
+  .stat span{color:var(--muted)}
+  .format{counter-reset:seg}
+  .seg{display:flex; gap:20px; padding:20px 0; border-bottom:1px solid var(--line); align-items:flex-start}
+  .seg:last-child{border-bottom:none}
+  .seg::before{counter-increment:seg; content:"0" counter(seg); font-family:"Anton",sans-serif;
+    font-size:2.2rem; color:transparent; -webkit-text-stroke:1.5px var(--gold); flex-shrink:0; line-height:1}
+  .seg h3{font-size:1.05rem; letter-spacing:.5px; margin-bottom:4px}
+  .seg p{color:var(--muted); font-size:.95rem}
+  .tone{background:linear-gradient(120deg, rgba(255,45,120,.12), rgba(57,230,255,.08));
+    border:1px solid var(--line); border-radius:16px; padding:30px}
+  .tone p{color:var(--muted); font-size:1.02rem; max-width:640px}
+  .tone p b{color:var(--ink)}
+  .soon{text-align:center; padding:64px 0 30px}
+  .soon h2{font-size:2.6rem}
+  .soon p{color:var(--muted); margin:10px 0 26px}
+  footer{padding:30px 0 60px; color:var(--muted); font-size:.88rem; text-align:center; border-top:1px solid var(--line)}
+  footer a{color:var(--cyan); text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .gate{font-family:"Anton",sans-serif; letter-spacing:3px; color:var(--gold); font-size:.9rem}
+  @media(max-width:600px){.hero{padding:48px 0 36px} nav a{margin-left:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo"><span class="u">UNICORN</span> <span class="r">RACE</span></div>
+    <nav>
+      <a href="#concept">Concept</a>
+      <a href="#racers">Racers</a>
+      <a href="#format">Format</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <span class="kicker">ANIME SERIES &middot; CONCEPT IN DEVELOPMENT</span>
+    <h1>Unicorn<br>Race</h1>
+    <div class="jp">ユニコーンレース</div>
+    <p class="tag">The world's first <b>sports-finance anime</b>. Billion-dollar startups at full gallop &mdash; every funding round called like the Kentucky Derby.</p>
+    <div class="cta">
+      <a class="btn primary" href="#racers"><span>Meet the racers</span></a>
+      <a class="btn ghost" href="#format"><span>Race format</span></a>
+    </div>
+  </div>
+
+</div>
+
+<div class="ticker">
+  <div class="track">
+    <b>SERIES B STAKES</b> &mdash; Dark Horse surges on the outside <i>&#9679;</i> Down Round stumbles at the quarter pole <i>&#9679;</i> <b>IPO DERBY</b> &mdash; Favorite breaks clean from the gate <i>&#9679;</i> Runway shortening at the far turn <i>&#9679;</i> <b>SEED SPRINT</b> &mdash; photo finish, three noses apart <i>&#9679;</i> Bridge loan takes the lead by a length <i>&#9679;</i>
+    <b>SERIES B STAKES</b> &mdash; Dark Horse surges on the outside <i>&#9679;</i> Down Round stumbles at the quarter pole <i>&#9679;</i> <b>IPO DERBY</b> &mdash; Favorite breaks clean from the gate <i>&#9679;</i> Runway shortening at the far turn <i>&#9679;</i> <b>SEED SPRINT</b> &mdash; photo finish, three noses apart <i>&#9679;</i> Bridge loan takes the lead by a length <i>&#9679;</i>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section id="concept">
+    <h2><span class="n">&#9654;</span> The Concept</h2>
+    <p class="lede">Wall Street meets the racetrack. Each episode covers one real funding cycle as a live horse race &mdash; with play-by-play commentary, slow-motion replays of term sheets, and a photo finish at the valuation line.</p>
+    <div class="quote">
+      <p><em>&ldquo;They're off! Series B breaks clean from the gate&hellip; but look at the Dark Horse closing on the outside! Oh no &mdash; a down round at the quarter pole, the Favorite is fading&hellip; and it's a photo finish at the billion-dollar line!&rdquo;</em></p>
+      <p class="who">&mdash; RACE COMMENTATOR, EPISODE 1</p>
+    </div>
+  </section>
+
+  <section id="racers">
+    <h2><span class="n">&#9654;</span> The Racers</h2>
+    <p class="lede">Every startup is a thoroughbred. Every founder rides. Every VC is a commentator with a microphone and an agenda.</p>
+    <div class="grid">
+      <div class="card racer">
+        <div class="num">01</div>
+        <h3>The Dark Horse</h3>
+        <p>Bootstrapped. No investors, no hype, no mercy. Wins races nobody bet on.</p>
+        <div class="stats">
+          <div class="stat"><b>40:1</b><span>odds</span></div>
+          <div class="stat"><b>&infin;</b><span>runway</span></div>
+          <div class="stat"><b>$0</b><span>raised</span></div>
+        </div>
+      </div>
+      <div class="card racer">
+        <div class="num">02</div>
+        <h3>The Sprinter</h3>
+        <p>Series A rocket with a growth chart like a cliff face. Burns bright, burns fast.</p>
+        <div class="stats">
+          <div class="stat"><b>3:1</b><span>odds</span></div>
+          <div class="stat"><b>14 mo</b><span>runway</span></div>
+          <div class="stat"><b>$25M</b><span>raised</span></div>
+        </div>
+      </div>
+      <div class="card racer">
+        <div class="num">03</div>
+        <h3>The Favorite</h3>
+        <p>Heavily funded, heavily hyped, heavily scrutinized. Everyone expects a wire-to-wire win.</p>
+        <div class="stats">
+          <div class="stat"><b>1:2</b><span>odds</span></div>
+          <div class="stat"><b>36 mo</b><span>runway</span></div>
+          <div class="stat"><b>$1.2B</b><span>valuation</span></div>
+        </div>
+      </div>
+      <div class="card racer">
+        <div class="num">04</div>
+        <h3>The Comeback Kid</h3>
+        <p>Survived a down round and came back meaner. The crowd loves a redemption arc.</p>
+        <div class="stats">
+          <div class="stat"><b>12:1</b><span>odds</span></div>
+          <div class="stat"><b>9 mo</b><span>runway</span></div>
+          <div class="stat"><b>&minus;40%</b><span>last round</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="format">
+    <h2><span class="n">&#9654;</span> Episode Format</h2>
+    <p class="lede">Twenty-two minutes. One race. Zero mercy.</p>
+    <div class="format">
+      <div class="seg">
+        <div><h3>The Starting Gate</h3><p>Cold open: the racers are loaded in. Founders sweat, VCs adjust their binoculars, the commentator reads the form guide (pitch decks).</p></div>
+      </div>
+      <div class="seg">
+        <div><h3>The Back Stretch</h3><p>The race unfolds &mdash; term sheets fly, due diligence drags, a bridge loan makes a bold mid-race move on the rail.</p></div>
+      </div>
+      <div class="seg">
+        <div><h3>The Photo Finish</h3><p>Slow-motion replay at the valuation line. Was it a unicorn? The stewards (auditors) review the tape.</p></div>
+      </div>
+      <div class="seg">
+        <div><h3>Winner's Circle</h3><p>Trophy, champagne, and a term sheet the winner definitely should have read more carefully. Post-race interviews.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="tone">
+      <h2><span class="n">&#9654;</span> The Tone</h2>
+      <p>A love letter to startups with a <b>satirist's pen</b>. The humor comes from how seriously everyone takes the race &mdash; the commentators treat a Series A like the Olympics, and the racers behave like the money is life itself. Because for them, it is.</p>
+    </div>
+  </section>
+
+  <section class="soon">
+    <div class="gate">COMING SOON</div>
+    <h2>The starting gate opens soon.</h2>
+    <p>Full project deck arrives later. Saddle up.</p>
+    <a class="btn primary" href="https://carl-walker-pm.github.io/"><span>Back to main site</span></a>
+  </section>
+
+</div>
+
+<footer>
+  <p>UNICORN RACE &mdash; an anime series concept. &copy; 2026. All races fictional. Any resemblance to real valuations is purely intentional.</p>
+  <p style="margin-top:8px"><a href="https://carl-walker-pm.github.io/">carl-walker-pm.github.io</a></p>
+</footer>
+
+</body>
+</html>
