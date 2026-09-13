@@ -258,6 +258,24 @@ ul.ticks li::before { content: "✦"; color: var(--accent); position: absolute; 
   .main-nav { display: none; }
   .btn-nav { display: none; }
 }
+/* Language switcher (EN <-> RU) */
+.lang-switch {
+  margin-left: 1rem;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: .4rem .8rem;
+  white-space: nowrap;
+}
+.lang-switch:hover { color: var(--accent-soft); border-color: var(--accent); }
+.btn-nav { margin-left: .75rem; }
+@media (max-width: 699px) {
+  .lang-switch { margin-left: auto; }
+}
 
 /* Hero 7+5 */
 .hero-grid {
