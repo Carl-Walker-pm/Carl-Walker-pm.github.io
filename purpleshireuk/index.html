@@ -4,38 +4,58 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PurpleShire.uk — One platform, three directions</title>
+<!-- ANALYTICS PLACEHOLDER
+  GA4, Microsoft Clarity, and PostHog snippets go here.
+  Standing rule: every page keeps its analytics counters.
+  assemble.py preserves this comment verbatim on every build. -->
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-<header class="site-header wrap">
-  <a class="wordmark" href="index.html">PurpleShire<span class="dot">.</span>uk</a>
-  <span class="badge-alpha">ALPHA</span>
-</header><section class="hero wrap">
-<h1>One platform, three directions.</h1>
-<p class="lede">PurpleShire.uk unites three equal pillars — LIAF, MOST, and Forecasts — design, rehabilitation, and foresight — each with its own projects and its own pages.</p>
-<p class="hero-cta"><a class="btn" href="projects/ai-accelerator/">PurpleShire Forge →</a> <a class="btn btn-ghost" href="projects/ai-online-university/">PurpleShire University →</a></p>
+<!-- BLOCK 01 — header · grid: logo | nav | CTA -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="wordmark" href="index.html">PurpleShire<span class="dot">.</span>uk</a>
+    <span class="badge-alpha">ALPHA</span>
+    <nav class="main-nav">
+      <a href="#pillars">Directions</a>
+      <a href="#flagships">Flagships</a>
+      <a href="#portfolio">Portfolio</a>
+    </nav>
+    <a class="btn btn-nav" href="projects/ai-accelerator/">PurpleShire Forge →</a>
+  </div>
+</header>
+<!-- BLOCK 02 — hero · grid: 7 cols main + 5 cols visual -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-main">
+      <p class="eyebrow">PurpleShire.uk · alpha</p>
+      <h1>One platform, three directions.</h1>
+      <p class="lede">PurpleShire.uk unites three equal pillars — LIAF, MOST, and Forecasts — design, rehabilitation, and foresight — each with its own projects and its own pages.</p>
+      <p class="hero-cta"><a class="btn" href="projects/ai-accelerator/">PurpleShire Forge →</a> <a class="btn btn-ghost" href="projects/ai-online-university/">PurpleShire University →</a></p>
+    </div>
+    <div class="hero-visual">
+      <div class="visual-stack">
+        <span>ontology</span><span class="v-arrow">→</span>
+        <span>knowledge graph</span><span class="v-arrow">→</span>
+        <span>memory</span><span class="v-arrow">→</span>
+        <span>agents</span><span class="v-arrow">→</span>
+        <span>forecasting</span>
+      </div>
+      <p class="visual-note">The PurpleShire thesis: LLMs are the interface, the graph is the memory, the ontology is the understanding.</p>
+    </div>
+  </div>
 </section>
-<section class="section" id="portfolio"><div class="wrap">
-<h2>Portfolio</h2>
-<p class="section-intro">Every PurpleShire.uk project lives here — led by our flagship products, grouped by direction.</p>
-<div class="cards flagships">
-<a class="card flagship-card" href="projects/ai-accelerator/">
-<span class="flag-badge">Flagship</span>
-<h3>PurpleShire Forge</h3>
-<p class="tagline">PurpleShire&#x27;s AI accelerator for entrepreneurs.</p>
-<p class="status">Flagship — in development</p>
-</a>
-<a class="card flagship-card" href="projects/ai-online-university/">
-<span class="flag-badge">Flagship</span>
-<h3>PurpleShire University</h3>
-<p class="tagline">PurpleShire&#x27;s online university for the AI era.</p>
-<p class="status">Flagship — in development</p>
-</a>
-</div>
-<section class="section" id="concept"><div class="wrap">
-<h2>The concept</h2>
-<p class="section-intro">PurpleShire.uk is the home platform. Under one roof it unites three equal pillars: LIAF, MOST, and Forecasts.</p>
-<div class="cards">
+<!-- BLOCK 03 — manifesto · grid: full width, centered -->
+<section class="manifesto">
+  <div class="wrap">
+    <p class="manifesto-text">PurpleShire.uk is the home platform. Under one roof it unites three equal pillars — LIAF, MOST, and Forecasts — design, rehabilitation, and foresight. One thesis runs through everything we build: the ontology is the understanding.</p>
+  </div>
+</section>
+<!-- BLOCK 04 — pillars · grid: 4 + 4 + 4, equal weight -->
+<section class="section" id="pillars"><div class="wrap">
+<h2>Three directions</h2>
+<p class="section-intro">Equal pillars of the platform — each with its own projects and its own pages.</p>
+<div class="cards pillars">
 <a class="card dir-card" href="#liaf">
 <div class="dir-num">I</div>
 <h3>LIAF</h3>
@@ -53,18 +73,41 @@
 </a>
 </div>
 </div></section>
+<!-- BLOCK 05 — flagships · grid: 6 + 6 -->
+<section class="section" id="flagships"><div class="wrap">
+<h2>Flagships</h2>
+<p class="section-intro">Our two flagship products — in development.</p>
+<div class="cards flagships-grid">
+<a class="card flagship-card" href="projects/ai-accelerator/">
+<span class="flag-badge">Flagship</span>
+<h3>PurpleShire Forge</h3>
+<p class="tagline">PurpleShire&#x27;s AI accelerator for entrepreneurs.</p>
+<p class="status">Flagship — in development</p>
+</a>
+<a class="card flagship-card" href="projects/ai-online-university/">
+<span class="flag-badge">Flagship</span>
+<h3>PurpleShire University</h3>
+<p class="tagline">PurpleShire&#x27;s online university for the AI era.</p>
+<p class="status">Flagship — in development</p>
+</a>
+</div>
+</div></section>
+<!-- BLOCK 06 — portfolio · grid: bento (featured 8 + one 4, then uniform 4-col cards) -->
+<section class="section" id="portfolio"><div class="wrap">
+<h2>Portfolio</h2>
+<p class="section-intro">Every PurpleShire.uk project lives here — grouped by direction.</p>
 <h3 class="portfolio-group" id="liaf">LIAF</h3>
 <p class="section-intro">The design series — sixteen digital experiments and concept landings, each live on its own page.</p>
-<div class="cards">
+<div class="cards bento">
+<a class="card card-featured" href="projects/praw-mutual/">
+<h3>PRAW Mutual</h3>
+<p class="tagline">Mutual aid, organized.</p>
+<p class="status">Community page live</p>
+</a>
 <a class="card" href="projects/lunar-mall/">
 <h3>LUNAR_MALL</h3>
 <p class="tagline">A concept from the LIAF series.</p>
 <p class="status">Archived — currently offline</p>
-</a>
-<a class="card" href="projects/praw-mutual/">
-<h3>PRAW Mutual</h3>
-<p class="tagline">Mutual aid, organized.</p>
-<p class="status">Community page live</p>
 </a>
 <a class="card" href="projects/aed-project/">
 <h3>AED</h3>
@@ -139,8 +182,8 @@
 </div>
 <h3 class="portfolio-group" id="most">MOST</h3>
 <p class="section-intro">The Norway direction — an association for the rehabilitation of war-affected Russian speakers.</p>
-<div class="cards">
-<a class="card" href="projects/most/">
+<div class="cards bento">
+<a class="card card-featured" href="projects/most/">
 <h3>MOST</h3>
 <p class="tagline">Rehabilitation after the war. A bridge to recovery.</p>
 <p class="status">In formation — Norway</p>
@@ -148,8 +191,8 @@
 </div>
 <h3 class="portfolio-group" id="forecasts">Forecasts</h3>
 <p class="section-intro">The PurpleShire.uk forecasting direction. First project: GGG+.</p>
-<div class="cards">
-<a class="card" href="projects/ggg-plus/">
+<div class="cards bento">
+<a class="card card-featured" href="projects/ggg-plus/">
 <h3>GGG+</h3>
 <p class="tagline">The first project of the Forecasts direction.</p>
 <p class="status">Announced — details coming soon</p>
@@ -157,7 +200,12 @@
 </div>
 <h3 class="portfolio-group" id="platform">Platform projects</h3>
 <p class="section-intro">Technology, photography, and merch from the PurpleShire.uk home base.</p>
-<div class="cards">
+<div class="cards bento">
+<a class="card card-featured" href="projects/everydays/">
+<h3>Everydays</h3>
+<p class="tagline">1,580 frames. One photographic diary.</p>
+<p class="status">Live</p>
+</a>
 <a class="card" href="projects/purpleshire/">
 <h3>PurpleShire</h3>
 <p class="tagline">From documents to understanding.</p>
@@ -172,11 +220,6 @@
 <h3>OPersona 2.0 — Signature Club</h3>
 <p class="tagline">Author&#x27;s designs. Members-only drops.</p>
 <p class="status">Founding member list open — launching soon</p>
-</a>
-<a class="card" href="projects/everydays/">
-<h3>Everydays</h3>
-<p class="tagline">1,580 frames. One photographic diary.</p>
-<p class="status">Live</p>
 </a>
 <a class="card" href="projects/unicorn-race/">
 <h3>Unicorn Race</h3>
@@ -195,9 +238,32 @@
 </a>
 </div>
 </div></section>
+<!-- BLOCK 07 — footer · grid: 4 columns -->
 <footer class="site-footer">
-  <div class="wrap">
-    <p>© <span id="year"></span> PurpleShire.uk — alpha version <span class="ver">· v2.4</span>. <a href="index.html" style="color: var(--accent-soft);">Back to the platform</a></p>
+  <div class="wrap footer-grid">
+    <div class="footer-col">
+      <a class="wordmark" href="index.html">PurpleShire<span class="dot">.</span>uk</a>
+      <p>One platform, three directions — design, rehabilitation, and foresight.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Directions</h4>
+      <a href="#liaf">LIAF</a>
+      <a href="#most">MOST</a>
+      <a href="#forecasts">Forecasts</a>
+    </div>
+    <div class="footer-col">
+      <h4>Flagships</h4>
+      <a href="projects/ai-accelerator/">PurpleShire Forge</a>
+      <a href="projects/ai-online-university/">PurpleShire University</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="index.html">Back to the platform</a>
+      <span class="ver">alpha · v2.4</span>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>© <span id="year"></span> PurpleShire.uk — alpha version.</p>
   </div>
 </footer>
 <script src="assets/site.js"></script>
