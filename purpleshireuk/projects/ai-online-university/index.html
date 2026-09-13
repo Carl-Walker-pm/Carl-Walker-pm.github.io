@@ -1,76 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PurpleShire University — PurpleShire.uk</title>
-<link rel="stylesheet" href="../assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PurpleShire University — Online University for the AI Era</title>
+<meta name="description" content="PurpleShire University: a 10-module online program for the AI era. From AI fundamentals to venture building — ending with a real shipped product at demo day.">
+<!-- ANALYTICS PLACEHOLDER
+  GA4, Microsoft Clarity, and PostHog snippets go here.
+  Standing rule: every page keeps its analytics counters. -->
+<style>
+  :root{
+    --bg:#0d0716; --bg2:#150b26; --card:#1c1033; --card2:#241540;
+    --purple:#8b5cf6; --purple2:#a78bfa; --pink:#d946ef; --gold:#fbbf24;
+    --text:#f3f0fa; --muted:#b8a9d9; --line:rgba(139,92,246,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;line-height:1.6}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  nav{position:sticky;top:0;z-index:50;background:rgba(13,7,22,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:800;font-size:1.15rem;letter-spacing:.02em}
+  .logo span{background:linear-gradient(90deg,var(--purple2),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav a.nl{color:var(--muted);text-decoration:none;margin-left:28px;font-size:.95rem}
+  nav a.nl:hover{color:var(--text)}
+  .cta-btn{display:inline-block;background:linear-gradient(90deg,var(--purple),var(--pink));color:#fff;text-decoration:none;font-weight:700;padding:12px 28px;border-radius:999px;border:none;cursor:pointer;font-size:1rem}
+  .cta-btn:hover{filter:brightness(1.1)}
+  .cta-ghost{display:inline-block;color:var(--text);text-decoration:none;font-weight:600;padding:12px 28px;border-radius:999px;border:1px solid var(--line);margin-left:12px}
+  .cta-ghost:hover{border-color:var(--purple)}
+  .hero{padding:110px 0 80px;text-align:center;background:radial-gradient(ellipse 70% 55% at 50% -5%,rgba(139,92,246,.28),transparent 70%)}
+  .eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple2);border:1px solid var(--line);border-radius:999px;padding:8px 18px;margin-bottom:28px}
+  h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;line-height:1.08;margin-bottom:20px}
+  h1 .grad{background:linear-gradient(90deg,var(--purple2),var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{color:var(--muted);font-size:1.2rem;max-width:680px;margin:0 auto 36px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:70px 0 0}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 18px}
+  .stat .n{font-size:2.1rem;font-weight:800;color:var(--purple2)}
+  .stat .l{color:var(--muted);font-size:.92rem;margin-top:6px}
+  section{padding:84px 0}
+  .sec-head{text-align:center;margin-bottom:52px}
+  .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;margin-bottom:12px}
+  .sec-head p{color:var(--muted);max-width:640px;margin:0 auto}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px 28px}
+  .step .num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink));font-weight:800;font-size:1.1rem;margin-bottom:18px}
+  .step h3{margin-bottom:10px;font-size:1.15rem}
+  .step p{color:var(--muted);font-size:.97rem}
+  .cat{margin-bottom:56px}
+  .cat h3{font-size:1.35rem;margin-bottom:6px;display:flex;align-items:center;gap:12px}
+  .cat h3 .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--pink))}
+  .cat .sub{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+  .cat .week{color:var(--purple2);font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;transition:transform .2s,border-color .2s}
+  .card:hover{transform:translateY(-4px);border-color:var(--purple)}
+  .card h4{font-size:1.05rem;margin-bottom:12px}
+  .card ul{list-style:none}
+  .card li{color:var(--muted);font-size:.9rem;padding:5px 0 5px 22px;position:relative}
+  .card li::before{content:"✓";position:absolute;left:0;color:var(--purple2);font-weight:700}
+  .pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
+  .pill{background:var(--card2);border:1px solid var(--line);border-radius:999px;padding:12px 22px;font-size:.95rem;font-weight:600}
+  .pill:hover{border-color:var(--pink)}
+  .note{text-align:center;color:var(--muted);max-width:700px;margin:30px auto 0;font-size:.97rem}
+  .cta-final{text-align:center;background:radial-gradient(ellipse 60% 70% at 50% 110%,rgba(217,70,239,.22),transparent 70%);border-top:1px solid var(--line);padding:96px 0}
+  .cta-final h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:16px}
+  .cta-final p{color:var(--muted);margin-bottom:34px;font-size:1.1rem}
+  .apply-form{max-width:620px;margin:0 auto;text-align:left}
+  .apply-form .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .apply-form input,.apply-form select,.apply-form textarea{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--text);padding:14px 16px;font-size:1rem;margin-bottom:14px;font-family:inherit}
+  .apply-form input:focus,.apply-form select:focus,.apply-form textarea:focus{outline:none;border-color:var(--purple)}
+  .apply-form select{appearance:none}
+  .apply-form textarea{resize:vertical}
+  .apply-form .cta-btn{width:100%;margin-top:6px}
+  .apply-form .form-note{text-align:center;font-size:.85rem;margin-top:14px;margin-bottom:0}
+  @media(max-width:560px){.apply-form .frow{grid-template-columns:1fr}}
+  footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.88rem}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--text)}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}nav a.nl{display:none}}
+  .nl.lang{border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+</style>
 </head>
 <body>
-<header class="site-header wrap">
-  <a class="wordmark" href="../index.html">PurpleShire<span class="dot">.</span>uk</a>
-  <span class="badge-alpha">ALPHA</span>
-  <a class="lang-switch" href="../ru/projects/ai-online-university/">RU</a>
-</header><nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>
-<section class="hero wrap">
-<h1>PurpleShire University</h1>
-<p class="lede">PurpleShire&#x27;s online university for the AI era.</p>
-<span class="status-pill">Flagship — in development</span>
-</section>
-<section class="section"><div class="wrap prose">
-<h2>About</h2>
-<p>The second flagship product of PurpleShire.uk: an online university teaching entrepreneurs and builders to work with AI.</p>
-<p>The curriculum is being shaped right now. Leave a message below to follow the launch and get early access.</p>
-<h2>Highlights</h2>
-<ul class="ticks">
-<li>Flagship product of PurpleShire.uk</li>
-<li>Online university for the AI era</li>
-<li>Early access — details coming soon</li>
-</ul>
-</div></section>
-<section class="section" id="contact">
-<div class="wrap prose">
-<h2>Contact</h2>
-<p>Questions about PurpleShire University? Send us a message — we reply from our Gmail.</p>
-<div class="contact-box">
-<form method="post" data-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-email="carl.walker.pm@gmail.com" data-project="PurpleShire University">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] PurpleShire University — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about PurpleShire University — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name">Name</label>
-<input type="text" id="cf-name" name="name" required autocomplete="name">
-<label for="cf-email">Email</label>
-<input type="email" id="cf-email" name="email" required autocomplete="email">
-<label for="cf-msg">Message</label>
-<textarea id="cf-msg" name="message" required></textarea>
-<button type="submit">Send message</button>
-<p class="form-note">Or email us directly: <a href="mailto:carl.walker.pm@gmail.com" style="color: var(--accent-soft);">carl.walker.pm@gmail.com</a></p>
-</form>
-<noscript>
-<form method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] PurpleShire University — new website message">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Thanks for reaching out about PurpleShire University — we will get back to you soon. — PurpleShire.uk">
-<input type="hidden" name="_captcha" value="false">
-<label for="cf-name-ns">Name</label>
-<input type="text" id="cf-name-ns" name="name" required autocomplete="name">
-<label for="cf-email-ns">Email</label>
-<input type="email" id="cf-email-ns" name="email" required autocomplete="email">
-<label for="cf-msg-ns">Message</label>
-<textarea id="cf-msg-ns" name="message" required></textarea>
-<button type="submit">Send message</button>
-</form>
-</noscript>
-</div>
-</div>
-</section><footer class="site-footer">
+
+<nav>
   <div class="wrap">
-    <p>© <span id="year"></span> PurpleShire.uk — alpha version <span class="ver">· v2.3</span>. <a href="../index.html" style="color: var(--accent-soft);">Back to the platform</a></p>
+    <div class="logo">PurpleShire <span>University</span></div>
+    <div>
+      <a class="nl" href="../../index.html">← PurpleShire.uk</a>
+      <a class="nl lang" href="../../ru/projects/ai-online-university/index.html">RU</a>
+      <a class="nl" href="#program">Program</a>
+      <a class="nl" href="#modules">Modules</a>
+      <a class="nl" href="#who">Who it's for</a>
+      <a class="nl" href="#apply">Apply</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Online University · PurpleShire.uk</div>
+    <h1>Learn to build with <span class="grad">applied AI</span></h1>
+    <p class="lead">A 10-module online program for the AI era — from AI fundamentals to venture building, ending with a real shipped product at demo day.</p>
+    <a class="cta-btn" href="#apply">Apply for the next cohort</a>
+    <a class="cta-ghost" href="#modules">Explore the 10 modules</a>
+    <div class="stats">
+      <div class="stat"><div class="n">10</div><div class="l">Modules, fundamentals to launch</div></div>
+      <div class="stat"><div class="n">10–12 wk</div><div class="l">Live online program</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Project-based learning</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">Capstone + demo day</div></div>
+    </div>
+  </div>
+</header>
+
+<section id="program">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How the program works</h2>
+      <p>No passive lectures. Every module ends with something you built — and the cohort ships together, week after week.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Learn the craft</h3>
+        <p>Ten modules from AI fundamentals to venture building — taught live online, with real-world cases, not textbook theory.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Build real projects</h3>
+        <p>Every module ends with a shipped artifact: a prototype, a pipeline, a pitch. You learn by doing, with mentor feedback.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Launch at demo day</h3>
+        <p>The capstone: a working AI product of your own. Present it to the cohort and mentors — and graduate with proof, not just a certificate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modules" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The 10 modules</h2>
+      <p>One journey: understand AI, find where it wins, build it, scale it, lead it — and launch.</p>
+    </div>
+
+    <div class="cat">
+      <h3><span class="dot"></span>Foundations <span class="week">Weeks 1–2</span></h3>
+      <p class="sub">Speak AI fluently — and see where it actually creates value.</p>
+      <div class="grid">
+        <div class="card"><h4>AI Fundamentals</h4><ul><li>How LLMs actually work</li><li>Prompts, agents &amp; tools</li><li>Capabilities, limits &amp; costs</li></ul></div>
+        <div class="card"><h4>Opportunity Discovery</h4><ul><li>Finding AI-shaped problems</li><li>Validating with real users</li><li>Scoping a buildable MVP</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <h3><span class="dot"></span>Building <span class="week">Weeks 3–5</span></h3>
+      <p class="sub">Turn an idea into a working AI product.</p>
+      <div class="grid">
+        <div class="card"><h4>AI Product Design</h4><ul><li>UX patterns for AI products</li><li>Prototyping in days, not months</li><li>Iteration &amp; feedback loops</li></ul></div>
+        <div class="card"><h4>Data &amp; Infrastructure</h4><ul><li>Data pipelines that work</li><li>Evals &amp; quality control</li><li>Deploying &amp; scaling reliably</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <h3><span class="dot"></span>Scaling <span class="week">Weeks 6–7</span></h3>
+      <p class="sub">Make the product grow — and pay for itself.</p>
+      <div class="grid">
+        <div class="card"><h4>Growth &amp; Operations</h4><ul><li>AI in marketing &amp; sales</li><li>Automating operations</li><li>Measuring real ROI</li></ul></div>
+        <div class="card"><h4>Business Models</h4><ul><li>Pricing AI products</li><li>Unit economics that survive</li><li>Moats &amp; defensibility</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cat">
+      <h3><span class="dot"></span>Leading <span class="week">Weeks 8–9</span></h3>
+      <p class="sub">Bring people and organizations along — responsibly.</p>
+      <div class="grid">
+        <div class="card"><h4>Leadership &amp; Change Management</h4><ul><li>Leading AI adoption</li><li>Redesigning team workflows</li><li>Org design for the AI era</li></ul></div>
+        <div class="card"><h4>Responsible AI</h4><ul><li>Safety &amp; alignment basics</li><li>Privacy, compliance &amp; IP</li><li>Bias, fairness &amp; transparency</li></ul></div>
+      </div>
+    </div>
+
+    <div class="cat" style="margin-bottom:0">
+      <h3><span class="dot"></span>Launching <span class="week">Weeks 10–12</span></h3>
+      <p class="sub">From a project to a venture — and onto the stage.</p>
+      <div class="grid">
+        <div class="card"><h4>Venture Building &amp; Fundraising</h4><ul><li>From project to company</li><li>Crafting the pitch &amp; story</li><li>Fundraising fundamentals</li></ul></div>
+        <div class="card"><h4>Capstone Project &amp; Demo Day</h4><ul><li>Ship a real AI product</li><li>Mentor &amp; cohort feedback</li><li>Present at demo day</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Who it's for</h2>
+      <p>One shared language for everyone building in the AI era — whatever your starting point.</p>
+    </div>
+    <div class="pills">
+      <div class="pill">Founders &amp; entrepreneurs</div>
+      <div class="pill">Product managers</div>
+      <div class="pill">Engineers &amp; builders</div>
+      <div class="pill">Marketers &amp; growth</div>
+      <div class="pill">Operators &amp; executives</div>
+      <div class="pill">Students</div>
+      <div class="pill">Career switchers</div>
+      <div class="pill">The AI-curious</div>
+    </div>
+    <p class="note">No PhD required. The program meets you where you are and takes you to a shipped product — whether that's your first or your fiftieth.</p>
+  </div>
+</section>
+
+<section id="apply" class="cta-final">
+  <div class="wrap">
+    <h2>Ready to learn by building?</h2>
+    <p>Join the next cohort and graduate with a shipped AI product — not just notes.</p>
+    <form class="apply-form" action="https://formsubmit.co/carl.walker.pm@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New application — PurpleShire University">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <div class="frow">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <select name="background" required>
+        <option value="" disabled selected>Your background</option>
+        <option>Founder / entrepreneur</option>
+        <option>Product manager</option>
+        <option>Engineer / builder</option>
+        <option>Marketer / growth</option>
+        <option>Operator / executive</option>
+        <option>Student</option>
+        <option>Career switcher</option>
+        <option>Other</option>
+      </select>
+      <select name="module" required>
+        <option value="" disabled selected>Module of most interest</option>
+        <option>AI Fundamentals</option>
+        <option>Opportunity Discovery</option>
+        <option>AI Product Design</option>
+        <option>Data &amp; Infrastructure</option>
+        <option>Growth &amp; Operations</option>
+        <option>Business Models</option>
+        <option>Leadership &amp; Change Management</option>
+        <option>Responsible AI</option>
+        <option>Venture Building &amp; Fundraising</option>
+        <option>Capstone Project &amp; Demo Day</option>
+        <option>The whole program</option>
+      </select>
+      <textarea name="message" rows="4" placeholder="Tell us about your background and what you want to build…" required></textarea>
+      <button class="cta-btn" type="submit">Apply now</button>
+      <p class="form-note">Submissions go straight to carl.walker.pm@gmail.com</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 <a href="https://purpleshire.uk">PurpleShire.uk</a> — University</div>
+    <div><a href="mailto:carl.walker.pm@gmail.com">carl.walker.pm@gmail.com</a></div>
   </div>
 </footer>
-<script src="../assets/site.js"></script>
+
 </body>
 </html>
