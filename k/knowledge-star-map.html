@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Knowledge Star Map — Ontology Engine</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #050510; color: #e0e0ff; font-family: 'Segoe UI', system-ui, sans-serif; }
+
+    #graph { width: 100%; height: 100%; }
+
+    /* HUD */
+    #hud {
+      position: absolute; top: 12px; left: 12px; z-index: 10;
+      display: flex; flex-direction: column; gap: 8px; max-width: 280px;
+    }
+    .panel {
+      background: rgba(8, 12, 28, 0.85);
+      border: 1px solid rgba(80, 120, 255, 0.35);
+      border-radius: 10px;
+      padding: 12px 14px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 20px rgba(40, 80, 200, 0.15);
+    }
+    .panel h3 {
+      font-size: 13px; font-weight: 600; color: #8ab4ff;
+      margin-bottom: 8px; letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    button, .btn {
+      background: rgba(40, 70, 160, 0.6);
+      border: 1px solid rgba(100, 140, 255, 0.5);
+      color: #d0e0ff;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+      width: 100%;
+      text-align: left;
+    }
+    button:hover, .btn:hover {
+      background: rgba(60, 100, 220, 0.8);
+      border-color: #8ab4ff;
+    }
+    button.danger { background: rgba(140, 40, 40, 0.5); border-color: rgba(255,100,100,0.4); }
+    button.danger:hover { background: rgba(180, 50, 50, 0.7); }
+
+    /* Side panel */
+    #side {
+      position: absolute; top: 0; right: 0; width: 340px; height: 100%;
+      background: rgba(6, 10, 24, 0.92);
+      border-left: 1px solid rgba(80, 120, 255, 0.3);
+      z-index: 20;
+      display: none;
+      flex-direction: column;
+      backdrop-filter: blur(12px);
+    }
+    #side.open { display: flex; }
+    #side-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(80,120,255,0.25);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    #side-header h2 { font-size: 16px; color: #a0c4ff; }
+    #side-close {
+      background: none; border: none; color: #888; font-size: 22px;
+      cursor: pointer; width: auto; padding: 0 4px;
+    }
+    #side-body { flex: 1; overflow-y: auto; padding: 14px 16px; }
+    .field { margin-bottom: 12px; }
+    .field label {
+      display: block; font-size: 11px; color: #7a9acc;
+      margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px;
+    }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      background: rgba(20, 30, 60, 0.7);
+      border: 1px solid rgba(80,120,255,0.3);
+      border-radius: 6px;
+      color: #e0e8ff;
+      padding: 8px 10px;
+      font-size: 13px;
+      font-family: inherit;
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none; border-color: #6a9fff;
+    }
+
+    /* Legend */
+    .legend-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; margin-bottom: 4px;
+    }
+    .dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      box-shadow: 0 0 6px currentColor;
+    }
+
+    /* Status bar */
+    #status {
+      position: absolute; bottom: 10px; left: 12px;
+      font-size: 12px; color: #6a8abb; z-index: 10;
+    }
+
+    /* Modal */
+    .modal-bg {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      z-index: 50; display: none; align-items: center; justify-content: center;
+    }
+    .modal-bg.open { display: flex; }
+    .modal {
+      background: #0c1228;
+      border: 1px solid rgba(80,120,255,0.4);
+      border-radius: 12px;
+      padding: 20px;
+      width: 360px;
+      max-width: 95vw;
+    }
+    .modal h3 { margin-bottom: 14px; color: #8ab4ff; }
+    .modal-actions { display: flex; gap: 8px; margin-top: 16px; }
+    .modal-actions button { width: auto; flex: 1; text-align: center; }
+
+    /* Instructions overlay */
+    #help {
+      position: absolute; bottom: 40px; left: 12px;
+      font-size: 11px; color: #556688; line-height: 1.5; z-index: 10;
+      max-width: 260px;
+    }
+  </style>
+</head>
+<body>
+  <div id="graph"></div>
+
+  <div id="hud">
+    <div class="panel">
+      <h3>Ontology Engine</h3>
+      <button id="btn-add-node">＋ Добавить корабль</button>
+      <button id="btn-add-link" style="margin-top:6px">🔗 Создать связь</button>
+      <button id="btn-save" style="margin-top:6px">💾 Сохранить</button>
+      <button id="btn-export" style="margin-top:6px">⬇ Экспорт JSON</button>
+      <button id="btn-import" style="margin-top:6px">⬆ Импорт JSON</button>
+      <button id="btn-reset" class="danger" style="margin-top:6px">🗑 Сбросить всё</button>
+    </div>
+
+    <div class="panel">
+      <h3>Типы</h3>
+      <div id="legend"></div>
+    </div>
+  </div>
+
+  <div id="status">Кораблей: 0 · Связей: 0</div>
+  <div id="help">
+    ЛКМ по кораблю — выбрать<br>
+    Колёсико / перетаскивание — камера<br>
+    Правая кнопка — вращение<br>
+    Двойной клик по фону — сброс камеры
+  </div>
+
+  <!-- Side panel -->
+  <div id="side">
+    <div id="side-header">
+      <h2 id="side-title">Корабль</h2>
+      <button id="side-close">×</button>
+    </div>
+    <div id="side-body">
+      <div class="field">
+        <label>Название</label>
+        <input id="f-name" type="text" />
+      </div>
+      <div class="field">
+        <label>Тип</label>
+        <select id="f-type"></select>
+      </div>
+      <div class="field">
+        <label>Время (ось)</label>
+        <input id="f-time" type="number" step="0.1" />
+      </div>
+      <div class="field">
+        <label>Заметки (Notepad)</label>
+        <textarea id="f-notes" placeholder="Пиши сюда всё, что важно..."></textarea>
+      </div>
+      <div class="field">
+        <label>Свойства (JSON)</label>
+        <textarea id="f-props" placeholder='{"key": "value"}'></textarea>
+      </div>
+      <div class="field">
+        <label>Ссылки (по одной на строку)</label>
+        <textarea id="f-links" placeholder="https://..."></textarea>
+      </div>
+      <button id="btn-save-node" style="margin-top:8px">Сохранить изменения</button>
+      <button id="btn-delete-node" class="danger" style="margin-top:8px">Удалить корабль</button>
+      <div style="margin-top:16px; font-size:12px; color:#6a8abb;" id="node-meta"></div>
+    </div>
+  </div>
+
+  <!-- Modal: Add Node -->
+  <div class="modal-bg" id="modal-add-node">
+    <div class="modal">
+      <h3>Новый корабль</h3>
+      <div class="field">
+        <label>Название</label>
+        <input id="new-name" type="text" placeholder="Например: Catalyst Alpha" />
+      </div>
+      <div class="field">
+        <label>Тип</label>
+        <select id="new-type"></select>
+      </div>
+      <div class="field">
+        <label>Время</label>
+        <input id="new-time" type="number" value="0" step="0.1" />
+      </div>
+      <div class="modal-actions">
+        <button id="modal-add-cancel">Отмена</button>
+        <button id="modal-add-ok">Создать</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Add Link -->
+  <div class="modal-bg" id="modal-add-link">
+    <div class="modal">
+      <h3>Новая связь</h3>
+      <div class="field">
+        <label>От (source)</label>
+        <select id="link-source"></select>
+      </div>
+      <div class="field">
+        <label>К (target)</label>
+        <select id="link-target"></select>
+      </div>
+      <div class="field">
+        <label>Тип связи</label>
+        <input id="link-type" type="text" value="related" placeholder="related / causes / supports..." />
+      </div>
+      <div class="modal-actions">
+        <button id="modal-link-cancel">Отмена</button>
+        <button id="modal-link-ok">Создать</button>
+      </div>
+    </div>
+  </div>
+
+  <input type="file" id="file-import" accept=".json" style="display:none" />
+
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/3d-force-graph@1.73.3/dist/3d-force-graph.min.js"></script>
+
+  <script>
+    // ===================== CONFIG =====================
+    const NODE_TYPES = {
+      BULL:      { color: '#22c55e', label: 'BULL' },
+      BEAR:      { color: '#ef4444', label: 'BEAR' },
+      CATALYST:  { color: '#eab308', label: 'CATALYST' },
+      CLUSTER:   { color: '#06b6d4', label: 'CLUSTER' },
+      MEDIAN:    { color: '#a855f7', label: 'MEDIAN' },
+      RESIST:    { color: '#f97316', label: 'RESIST' },
+      SUPPORT:   { color: '#3b82f6', label: 'SUPPORT' },
+      SHIP:      { color: '#94a3b8', label: 'SHIP' },
+      CONCEPT:   { color: '#e879f9', label: 'CONCEPT' },
+    };
+
+    // ===================== STATE =====================
+    let graphData = { nodes: [], links: [] };
+    let selectedNode = null;
+    let Graph = null;
+
+    // ===================== HELPERS =====================
+    function uid() {
+      return 'n_' + Math.random().toString(36).slice(2, 10);
+    }
+
+    function updateStatus() {
+      document.getElementById('status').textContent =
+        `Кораблей: ${graphData.nodes.length} · Связей: ${graphData.links.length}`;
+    }
+
+    function populateTypeSelects() {
+      const selects = ['f-type', 'new-type'];
+      selects.forEach(id => {
+        const el = document.getElementById(id);
+        el.innerHTML = '';
+        Object.keys(NODE_TYPES).forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t;
+          opt.textContent = NODE_TYPES[t].label;
+          el.appendChild(opt);
+        });
+      });
+    }
+
+    function renderLegend() {
+      const el = document.getElementById('legend');
+      el.innerHTML = '';
+      Object.entries(NODE_TYPES).forEach(([key, conf]) => {
+        const div = document.createElement('div');
+        div.className = 'legend-item';
+        div.innerHTML = `<span class="dot" style="background:${conf.color};color:${conf.color}"></span>${conf.label}`;
+        el.appendChild(div);
+      });
+    }
+
+    function saveToStorage() {
+      localStorage.setItem('knowledge-star-map', JSON.stringify(graphData));
+      updateStatus();
+    }
+
+    function loadFromStorage() {
+      const raw = localStorage.getItem('knowledge-star-map');
+      if (raw) {
+        try {
+          graphData = JSON.parse(raw);
+        } catch (e) {
+          console.warn('Failed to parse saved data');
+        }
+      }
+    }
+
+    // ===================== GRAPH =====================
+    function initGraph() {
+      const elem = document.getElementById('graph');
+
+      Graph = ForceGraph3D()(elem)
+        .backgroundColor('#050510')
+        .nodeId('id')
+        .nodeLabel(node => `${node.name} [${node.type}]`)
+        .nodeVal(node => 4 + (node.val || 1))
+        .nodeColor(node => NODE_TYPES[node.type]?.color || '#94a3b8')
+        .nodeOpacity(0.92)
+        .linkColor(() => 'rgba(120,160,255,0.35)')
+        .linkWidth(0.6)
+        .linkOpacity(0.6)
+        .linkDirectionalParticles(2)
+        .linkDirectionalParticleWidth(1.2)
+        .linkDirectionalParticleSpeed(0.006)
+        .onNodeClick(node => {
+          selectNode(node);
+        })
+        .onBackgroundClick(() => {
+          deselectNode();
+        })
+        .onNodeRightClick(node => {
+          // future: context menu
+        });
+
+      // Slightly softer forces for nicer space feel
+      Graph.d3Force('charge').strength(-120);
+      Graph.d3Force('link').distance(60);
+
+      refreshGraph();
+    }
+
+    function refreshGraph() {
+      // Make sure links reference node objects or ids correctly
+      const nodesById = Object.fromEntries(graphData.nodes.map(n => [n.id, n]));
+      graphData.links.forEach(l => {
+        if (typeof l.source === 'object') l.source = l.source.id;
+        if (typeof l.target === 'object') l.target = l.target.id;
+      });
+
+      Graph.graphData(graphData);
+      updateStatus();
+    }
+
+    // ===================== SELECTION & SIDE PANEL =====================
+    function selectNode(node) {
+      selectedNode = node;
+      const side = document.getElementById('side');
+      side.classList.add('open');
+
+      document.getElementById('side-title').textContent = node.name || 'Корабль';
+      document.getElementById('f-name').value = node.name || '';
+      document.getElementById('f-type').value = node.type || 'SHIP';
+      document.getElementById('f-time').value = node.time ?? 0;
+      document.getElementById('f-notes').value = node.notes || '';
+      document.getElementById('f-props').value = node.props ? JSON.stringify(node.props, null, 2) : '';
+      document.getElementById('f-links').value = (node.links || []).join('\n');
+
+      document.getElementById('node-meta').textContent =
+        `ID: ${node.id}\nСоздан: ${node.created || '—'}`;
+    }
+
+    function deselectNode() {
+      selectedNode = null;
+      document.getElementById('side').classList.remove('open');
+    }
+
+    function saveSelectedNode() {
+      if (!selectedNode) return;
+
+      selectedNode.name = document.getElementById('f-name').value.trim() || 'Без имени';
+      selectedNode.type = document.getElementById('f-type').value;
+      selectedNode.time = parseFloat(document.getElementById('f-time').value) || 0;
+      selectedNode.notes = document.getElementById('f-notes').value;
+
+      try {
+        const propsRaw = document.getElementById('f-props').value.trim();
+        selectedNode.props = propsRaw ? JSON.parse(propsRaw) : {};
+      } catch (e) {
+        alert('Ошибка в JSON свойств');
+        return;
+      }
+
+      selectedNode.links = document.getElementById('f-links').value
+        .split('\n')
+        .map(s => s.trim())
+        .filter(Boolean);
+
+      saveToStorage();
+      refreshGraph();
+      document.getElementById('side-title').textContent = selectedNode.name;
+    }
+
+    function deleteSelectedNode() {
+      if (!selectedNode) return;
+      if (!confirm(`Удалить корабль «${selectedNode.name}» и все его связи?`)) return;
+
+      const id = selectedNode.id;
+      graphData.nodes = graphData.nodes.filter(n => n.id !== id);
+      graphData.links = graphData.links.filter(l => {
+        const s = typeof l.source === 'object' ? l.source.id : l.source;
+        const t = typeof l.target === 'object' ? l.target.id : l.target;
+        return s !== id && t !== id;
+      });
+
+      deselectNode();
+      saveToStorage();
+      refreshGraph();
+    }
+
+    // ===================== ADD NODE / LINK =====================
+    function openAddNodeModal() {
+      document.getElementById('new-name').value = '';
+      document.getElementById('new-time').value = graphData.nodes.length;
+      document.getElementById('modal-add-node').classList.add('open');
+      document.getElementById('new-name').focus();
+    }
+
+    function createNode() {
+      const name = document.getElementById('new-name').value.trim() || 'Новый корабль';
+      const type = document.getElementById('new-type').value;
+      const time = parseFloat(document.getElementById('new-time').value) || 0;
+
+      const node = {
+        id: uid(),
+        name,
+        type,
+        time,
+        notes: '',
+        props: {},
+        links: [],
+        created: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        val: 1
+      };
+
+      graphData.nodes.push(node);
+      saveToStorage();
+      refreshGraph();
+      document.getElementById('modal-add-node').classList.remove('open');
+      selectNode(node);
+    }
+
+    function openAddLinkModal() {
+      const srcSel = document.getElementById('link-source');
+      const tgtSel = document.getElementById('link-target');
+      srcSel.innerHTML = '';
+      tgtSel.innerHTML = '';
+
+      graphData.nodes.forEach(n => {
+        const o1 = document.createElement('option');
+        o1.value = n.id;
+        o1.textContent = n.name;
+        srcSel.appendChild(o1);
+
+        const o2 = document.createElement('option');
+        o2.value = n.id;
+        o2.textContent = n.name;
+        tgtSel.appendChild(o2);
+      });
+
+      if (selectedNode) {
+        srcSel.value = selectedNode.id;
+      }
+
+      document.getElementById('modal-add-link').classList.add('open');
+    }
+
+    function createLink() {
+      const source = document.getElementById('link-source').value;
+      const target = document.getElementById('link-target').value;
+      const type = document.getElementById('link-type').value.trim() || 'related';
+
+      if (source === target) {
+        alert('Нельзя связать корабль сам с собой');
+        return;
+      }
+
+      // prevent exact duplicates
+      const exists = graphData.links.some(l => {
+        const s = typeof l.source === 'object' ? l.source.id : l.source;
+        const t = typeof l.target === 'object' ? l.target.id : l.target;
+        return (s === source && t === target) || (s === target && t === source);
+      });
+      if (exists) {
+        alert('Такая связь уже есть');
+        return;
+      }
+
+      graphData.links.push({ source, target, type });
+      saveToStorage();
+      refreshGraph();
+      document.getElementById('modal-add-link').classList.remove('open');
+    }
+
+    // ===================== IMPORT / EXPORT =====================
+    function exportJSON() {
+      const blob = new Blob([JSON.stringify(graphData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `knowledge-star-map-${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importJSON(file) {
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const data = JSON.parse(e.target.result);
+          if (!data.nodes || !data.links) throw new Error('Invalid format');
+          graphData = data;
+          saveToStorage();
+          refreshGraph();
+          deselectNode();
+        } catch (err) {
+          alert('Не удалось прочитать файл: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // ===================== DEMO DATA =====================
+    function seedDemo() {
+      if (graphData.nodes.length > 0) return;
+
+      const demoNodes = [
+        { id: 'n1', name: 'Market Structure', type: 'CLUSTER', time: 0, notes: 'Основной кластер рыночной структуры', props: {}, links: [], created: '2025-01-01' },
+        { id: 'n2', name: 'Bull Regime', type: 'BULL', time: 1, notes: 'Бычий режим рынка', props: { strength: 0.8 }, links: [], created: '2025-01-02' },
+        { id: 'n3', name: 'Bear Regime', type: 'BEAR', time: 1.2, notes: 'Медвежий режим', props: { strength: 0.6 }, links: [], created: '2025-01-03' },
+        { id: 'n4', name: 'Key Catalyst', type: 'CATALYST', time: 2, notes: 'Главный катализатор текущего движения', props: {}, links: [], created: '2025-01-04' },
+        { id: 'n5', name: 'Resistance Zone', type: 'RESIST', time: 2.5, notes: 'Зона сопротивления', props: { level: 1.25 }, links: [], created: '2025-01-05' },
+        { id: 'n6', name: 'Support Base', type: 'SUPPORT', time: 2.3, notes: 'База поддержки', props: { level: 0.98 }, links: [], created: '2025-01-06' },
+        { id: 'n7', name: 'Median Path', type: 'MEDIAN', time: 3, notes: 'Медианный сценарий', props: {}, links: [], created: '2025-01-07' },
+      ];
+
+      const demoLinks = [
+        { source: 'n1', target: 'n2', type: 'contains' },
+        { source: 'n1', target: 'n3', type: 'contains' },
+        { source: 'n2', target: 'n4', type: 'influenced_by' },
+        { source: 'n3', target: 'n4', type: 'influenced_by' },
+        { source: 'n4', target: 'n5', type: 'creates' },
+        { source: 'n4', target: 'n6', type: 'creates' },
+        { source: 'n5', target: 'n7', type: 'related' },
+        { source: 'n6', target: 'n7', type: 'related' },
+      ];
+
+      graphData.nodes = demoNodes;
+      graphData.links = demoLinks;
+      saveToStorage();
+    }
+
+    // ===================== INIT =====================
+    function init() {
+      populateTypeSelects();
+      renderLegend();
+      loadFromStorage();
+      seedDemo();
+      initGraph();
+
+      // Buttons
+      document.getElementById('btn-add-node').onclick = openAddNodeModal;
+      document.getElementById('btn-add-link').onclick = openAddLinkModal;
+      document.getElementById('btn-save').onclick = () => { saveToStorage(); alert('Сохранено в браузере'); };
+      document.getElementById('btn-export').onclick = exportJSON;
+      document.getElementById('btn-import').onclick = () => document.getElementById('file-import').click();
+      document.getElementById('file-import').onchange = e => {
+        if (e.target.files[0]) importJSON(e.target.files[0]);
+      };
+      document.getElementById('btn-reset').onclick = () => {
+        if (confirm('Полностью очистить карту знаний?')) {
+          graphData = { nodes: [], links: [] };
+          saveToStorage();
+          refreshGraph();
+          deselectNode();
+        }
+      };
+
+      document.getElementById('side-close').onclick = deselectNode;
+      document.getElementById('btn-save-node').onclick = saveSelectedNode;
+      document.getElementById('btn-delete-node').onclick = deleteSelectedNode;
+
+      // Modals
+      document.getElementById('modal-add-ok').onclick = createNode;
+      document.getElementById('modal-add-cancel').onclick = () => {
+        document.getElementById('modal-add-node').classList.remove('open');
+      };
+      document.getElementById('modal-link-ok').onclick = createLink;
+      document.getElementById('modal-link-cancel').onclick = () => {
+        document.getElementById('modal-add-link').classList.remove('open');
+      };
+
+      // Close modal on background click
+      document.querySelectorAll('.modal-bg').forEach(bg => {
+        bg.addEventListener('click', e => {
+          if (e.target === bg) bg.classList.remove('open');
+        });
+      });
+
+      // Enter key in add-node modal
+      document.getElementById('new-name').addEventListener('keydown', e => {
+        if (e.key === 'Enter') createNode();
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
