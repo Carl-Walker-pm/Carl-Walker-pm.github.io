@@ -1,76 +1,813 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth"
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AURA BOTANICA — PurpleShire.uk</title>
-<link rel="stylesheet" href="../../assets/style.css">
+<!-- ANALYTICS PLACEHOLDER
+  GA4, Microsoft Clarity, and PostHog snippets go here.
+  Standing rule: every page keeps its analytics counters.
+  build_liaf.py preserves this comment verbatim on every build. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA BOTANICA | Холистический салон красоты</title>
+    <meta name="description" content="Ощутите вершину органической роскоши. Aura Botanica предлагает авторские уходы за лицом, массажную терапию и эстетические процедуры в оазисе спокойствия.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        script: ['Great Vibes', 'cursive'],
+                    },
+                    colors: {
+                        aura: {
+                            cream: '#F9F7F2',
+                            sage: '#8FA395',
+                            sageLight: '#E8EFE9',
+                            gold: '#D4AF37',
+                            charcoal: '#2C2C2C',
+                            blush: '#F3E5E3',
+                            clay: '#A68A80',
+                        }
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\" opacity=\"0.05\"/%3E%3C/svg%3E')",
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'rotate-slow': 'spin 30s linear infinite',
+                        'breathe': 'breathe 8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        breathe: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F9F7F2;
+            color: #2C2C2C;
+        }
+        
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth Image Hovers */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom {
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .img-zoom-container:hover .img-zoom {
+            transform: scale(1.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F7F2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8FA395;
+            border-radius: 4px;
+        }
+
+        /* Text Selection */
+        ::selection {
+            background: #D4AF37;
+            color: #fff;
+        }
+
+        /* Soft Shadow */
+        .soft-shadow {
+            box-shadow: 0 20px 40px -10px rgba(143, 163, 149, 0.15);
+        }
+        
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, transparent, #D4AF37, transparent) 1;
+        }
+    </style>
 </head>
-<body>
-<header class="site-header wrap">
-  <a class="wordmark" href="../../index.html">PurpleShire<span class="dot">.</span>uk</a>
-  <span class="badge-alpha">ALPHA</span>
-  <a class="lang-switch" href="../../projects/aura-botanica/">EN</a>
-</header><nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>
-<section class="hero wrap">
-<h1>AURA BOTANICA</h1>
-<p class="lede">Холистическое бьюти-пространство.</p>
-<span class="status-pill">Концепт — живое демо</span>
-</section>
-<section class="section"><div class="wrap prose">
-<h2>О проекте</h2>
-<p>Концепт-сайт холистического бьюти-пространства — авторские уходы за лицом, массаж и эстетические процедуры.</p>
-<h2>Ключевое</h2>
-<ul class="ticks">
-<li>Позиционирование органического люкса</li>
-<li>Уходы, массаж, эстетические процедуры</li>
-<li>Дизайн «оазиса спокойствия»</li>
-</ul>
-<p><a class="btn btn-ghost" href="../../projects/aura-botanica/">Открыть EN-демо →</a></p>
-</div></section>
-<section class="section" id="contact">
-<div class="wrap prose">
-<h2>Контакты</h2>
-<p>Вопросы о AURA BOTANICA? Напишите нам — отвечаем с нашего Gmail.</p>
-<div class="contact-box">
-<form method="post" data-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-email="carl.walker.pm@gmail.com" data-project="AURA BOTANICA">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] AURA BOTANICA — новое сообщение с сайта">
+<body class="antialiased overflow-x-hidden">
+
+<style>
+.psuk-topbar{position:sticky;top:0;z-index:99999;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(14,11,24,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-bottom:1px solid #3a2f5c;padding:0 16px;height:44px;box-sizing:border-box;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.psuk-topbar-back{color:#c9b6ff!important;text-decoration:none!important;font-size:13px;font-weight:600;line-height:1}
+.psuk-topbar-back:hover{color:#fff!important}
+.psuk-topbar-lang{color:#14101f!important;background:#9d7bff;text-decoration:none!important;
+  font-size:12px;font-weight:800;letter-spacing:.08em;padding:7px 16px;border-radius:999px;line-height:1}
+.psuk-topbar-lang:hover{background:#c9b6ff}
+</style>
+<div class="psuk-topbar">
+  <a class="psuk-topbar-back" href="../../index.html">&larr; PurpleShire.uk</a>
+  <a class="psuk-topbar-lang" href="../../projects/aura-botanica/index.html">EN</a>
+</div>
+
+
+    <!-- Preloader -->
+    <div id="preloader" class="fixed inset-0 z-[100] bg-aura-cream flex flex-col items-center justify-center transition-opacity duration-1000">
+        <div class="relative w-24 h-24 mb-4">
+            <svg class="animate-spin-slow w-full h-full text-aura-gold" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50 0C50 0 55 20 75 25C95 30 100 50 100 50C100 50 80 55 75 75C70 95 50 100 50 100C50 100 45 80 25 75C5 70 0 50 0 50C0 50 20 45 25 25C30 5 50 0 50 0Z" stroke="currentColor" stroke-width="1"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center font-serif text-2xl text-aura-charcoal">A</div>
+        </div>
+        <div class="font-serif italic text-aura-clay tracking-widest animate-pulse">Пробуждение чувств...</div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="bg-aura-charcoal text-aura-cream py-2 text-center text-xs font-sans tracking-widest uppercase">
+        <span>В октябре — бесплатный апгрейд ароматерапии ко всем 90-минутным ритуалам</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-8 w-full z-50 transition-all duration-300" id="navbar">
+        <div class="absolute inset-0 bg-aura-cream/90 backdrop-blur-md shadow-sm opacity-0 transition-opacity duration-300" id="nav-bg"></div>
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="flex justify-between items-center h-24">
+                <!-- Mobile Menu Trigger -->
+                <button class="lg:hidden text-aura-charcoal text-2xl" id="mobile-menu-trigger">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+
+                <!-- Left Links -->
+                <div class="hidden lg:flex items-center space-x-12 font-sans text-xs uppercase tracking-[0.2em] text-aura-charcoal">
+                    <a href="#philosophy" class="hover:text-aura-gold transition-colors relative group">
+                        Философия
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-aura-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#services" class="hover:text-aura-gold transition-colors relative group">
+                        Процедуры
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-aura-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#rituals" class="hover:text-aura-gold transition-colors relative group">
+                        Ритуалы
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-aura-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+
+                <!-- Logo -->
+                <div class="flex flex-col items-center group cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="font-serif text-4xl text-aura-charcoal tracking-tighter italic relative">
+                        Aura <span class="text-aura-gold font-normal">Botanica</span>
+                        <div class="absolute -top-4 -right-6 text-aura-sage opacity-50 group-hover:rotate-12 transition-transform duration-700">
+                            <i class="fa-solid fa-seedling text-lg"></i>
+                        </div>
+                    </div>
+                    <span class="font-sans text-[0.6rem] uppercase tracking-[0.3em] text-aura-clay mt-1">Холистический салон</span>
+                </div>
+
+                <!-- Right Links -->
+                <div class="hidden lg:flex items-center space-x-12 font-sans text-xs uppercase tracking-[0.2em] text-aura-charcoal">
+                    <a href="#shop" class="hover:text-aura-gold transition-colors relative group">
+                        Магазин
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-aura-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#journal" class="hover:text-aura-gold transition-colors relative group">
+                        Журнал
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-aura-gold transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#book" class="px-8 py-3 bg-aura-charcoal text-white hover:bg-aura-gold transition-colors duration-500 rounded-sm">
+                        Записаться на приём
+                    </a>
+                </div>
+
+                <!-- Mobile Cart/Search -->
+                <div class="lg:hidden flex items-center gap-4 text-aura-charcoal">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <button><i class="fa-solid fa-bag-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen pt-32 flex items-center justify-center overflow-hidden">
+        <!-- Background Video/Image -->
+        <div class="absolute inset-0 z-0">
+            <!-- Simulated Video Background using High-Quality Image -->
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover opacity-90 animate-breathe" alt="Атмосфера спа">
+            <div class="absolute inset-0 bg-gradient-to-b from-aura-cream/20 via-transparent to-aura-cream"></div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="absolute top-1/4 left-10 w-px h-64 bg-aura-charcoal/20 hidden lg:block"></div>
+        <div class="absolute bottom-1/4 right-10 w-px h-64 bg-aura-charcoal/20 hidden lg:block"></div>
+        <div class="absolute top-1/2 left-8 -translate-y-1/2 hidden lg:block font-serif italic text-aura-charcoal/30 vertical-text text-sm tracking-widest rotate-180" style="writing-mode: vertical-rl;">Осн. в 2012 — Париж</div>
+
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+            <div class="inline-block mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <span class="font-script text-3xl text-aura-gold">Добро пожаловать в безмятежность</span>
+            </div>
+            
+            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl text-aura-charcoal mb-8 leading-[0.9] opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+                Красота в <br> <span class="italic text-aura-clay font-light">балансе</span>
+            </h1>
+            
+            <p class="font-sans text-lg text-gray-600 max-w-xl mx-auto mb-12 font-light leading-relaxed opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+                Салон, где древняя ботаническая мудрость встречается с современной эстетической наукой. Восстановите связь со своим внутренним сиянием с помощью наших авторских холистических уходов.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 opacity-0 animate-fade-in-up" style="animation-delay: 0.8s;">
+                <a href="#services" class="group relative px-10 py-4 overflow-hidden border border-aura-charcoal text-aura-charcoal transition-all hover:text-white rounded-sm">
+                    <span class="absolute inset-0 w-0 bg-aura-charcoal transition-all duration-[400ms] ease-out group-hover:w-full"></span>
+                    <span class="relative font-sans text-xs uppercase tracking-widest">Смотреть процедуры</span>
+                </a>
+                <button class="flex items-center gap-3 text-aura-charcoal hover:text-aura-gold transition-colors duration-300">
+                    <div class="w-12 h-12 border border-aura-sage/30 rounded-full flex items-center justify-center relative">
+                        <i class="fa-solid fa-play text-xs ml-1"></i>
+                        <svg class="absolute inset-0 w-full h-full animate-spin-slow text-aura-gold opacity-50" viewBox="0 0 100 100">
+                            <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="transparent" />
+                            <text font-size="12" fill="currentColor">
+                                <textPath href="#circlePath" startOffset="0%">
+                                    НАШ • САЛОН •
+                                </textpath>
+                            </text>
+                        </svg>
+                    </div>
+                    <span class="font-sans text-xs uppercase tracking-widest border-b border-transparent hover:border-aura-gold pb-1">Смотреть фильм</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in-up" style="animation-delay: 1.2s;">
+            <div class="w-[1px] h-12 bg-gradient-to-b from-aura-charcoal to-transparent"></div>
+            <span class="font-sans text-[0.6rem] uppercase tracking-widest text-aura-clay">Открыть</span>
+        </div>
+    </header>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-32 relative overflow-hidden bg-white">
+        <!-- Floating Leaves (CSS Shapes) -->
+        <div class="absolute top-20 left-20 w-64 h-64 bg-aura-sageLight rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-float"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-aura-blush rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-float" style="animation-delay: 2s;"></div>
+
+        <div class="max-w-[1600px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+                <!-- Image Composition -->
+                <div class="relative reveal">
+                    <div class="img-zoom-container rounded-t-full overflow-hidden relative z-10 soft-shadow">
+                        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?q=80&w=1000&auto=format&fit=crop" class="w-full h-[600px] object-cover img-zoom" alt="Органические ингредиенты">
+                    </div>
+                    <!-- Overlapping Image -->
+                    <div class="absolute -bottom-12 -right-12 w-2/3 h-2/3 border-[12px] border-white z-20 hidden md:block soft-shadow">
+                         <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Массажная терапия">
+                    </div>
+                    <!-- Badge -->
+                    <div class="absolute top-10 -left-10 w-24 h-24 bg-aura-cream rounded-full flex items-center justify-center z-30 soft-shadow hidden md:flex">
+                        <div class="text-center">
+                            <div class="font-serif text-2xl text-aura-gold italic">100%</div>
+                            <div class="font-sans text-[0.5rem] uppercase tracking-widest">органика</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="reveal">
+                    <span class="font-script text-3xl text-aura-gold mb-2 block">Наша философия</span>
+                    <h2 class="font-serif text-5xl md:text-6xl text-aura-charcoal mb-8 leading-tight">
+                        Укоренённые в природе, <br> <span class="italic text-aura-sage">утончённые наукой.</span>
+                    </h2>
+                    <p class="font-sans text-gray-500 text-lg leading-relaxed mb-8">
+                        В Aura Botanica мы верим, что истинная красота — отражение внутреннего здоровья. Наш подход сочетает чистоту сырых органических растительных компонентов с передовыми дерматологическими методиками.
+                    </p>
+                    <p class="font-sans text-gray-500 text-lg leading-relaxed mb-10">
+                        Каждый уход — это ритуал, созданный под уникальные ритмы вашей кожи и тела. Мы используем только ингредиенты из устойчивых источников: редкие орхидеи из Гималаев, минеральные глины Мёртвого моря и масла холодного отжима из Прованса.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-8 border-t border-aura-sage/20 pt-8">
+                        <div>
+                            <div class="font-serif text-3xl text-aura-charcoal mb-1">Без жестокости</div>
+                            <div class="font-sans text-xs uppercase tracking-widest text-aura-clay">Этичные стандарты</div>
+                        </div>
+                        <div>
+                            <div class="font-serif text-3xl text-aura-charcoal mb-1">Чистая красота</div>
+                            <div class="font-sans text-xs uppercase tracking-widest text-aura-clay">Без парабенов</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Menu (Accordion Style) -->
+    <section id="services" class="py-32 bg-aura-cream relative">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <span class="font-sans text-xs uppercase tracking-[0.3em] text-aura-clay mb-4 block">Меню</span>
+                <h2 class="font-serif text-5xl md:text-6xl text-aura-charcoal mb-6">Авторские процедуры</h2>
+                <div class="w-24 h-px bg-aura-gold mx-auto"></div>
+            </div>
+
+            <!-- Categories -->
+            <div class="flex flex-wrap justify-center gap-8 mb-16 font-sans text-xs uppercase tracking-widest">
+                <button class="pb-2 border-b-2 border-aura-charcoal text-aura-charcoal">Уходы за лицом</button>
+                <button class="pb-2 border-b-2 border-transparent text-gray-400 hover:text-aura-gold transition-colors">Уходы за телом</button>
+                <button class="pb-2 border-b-2 border-transparent text-gray-400 hover:text-aura-gold transition-colors">Эстетика</button>
+                <button class="pb-2 border-b-2 border-transparent text-gray-400 hover:text-aura-gold transition-colors">Для мужчин</button>
+            </div>
+
+            <!-- Facials Content -->
+            <div class="space-y-8">
+                <!-- Item 1 -->
+                <div class="group bg-white p-8 hover:shadow-lg transition-all duration-500 cursor-pointer border border-transparent hover:border-aura-sage/20 reveal">
+                    <div class="flex justify-between items-baseline mb-4">
+                        <h3 class="font-serif text-2xl text-aura-charcoal group-hover:text-aura-gold transition-colors">Фирменный уход «Сияние»</h3>
+                        <span class="font-sans text-sm font-bold text-aura-charcoal">$185</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <p class="font-sans text-sm text-gray-500 max-w-2xl leading-relaxed">
+                            Индивидуальное 90-минутное путешествие: двойное очищение, ультразвуковая эксфолиация, лимфодренажный массаж камнями розового кварца и увлажняющая альгинатная маска. Идеально для тусклой или обезвоженной кожи.
+                        </p>
+                        <span class="font-sans text-xs text-aura-clay uppercase tracking-widest hidden md:block">90 мин</span>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group bg-white p-8 hover:shadow-lg transition-all duration-500 cursor-pointer border border-transparent hover:border-aura-sage/20 reveal">
+                    <div class="flex justify-between items-baseline mb-4">
+                        <h3 class="font-serif text-2xl text-aura-charcoal group-hover:text-aura-gold transition-colors">Кислородная терапия обновления</h3>
+                        <span class="font-sans text-sm font-bold text-aura-charcoal">$210</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <p class="font-sans text-sm text-gray-500 max-w-2xl leading-relaxed">
+                            Инфузия чистого кислорода в сочетании с сывороткой с гиалуроновой кислотой мгновенно разглаживает мелкие морщины и возвращает коже молодое сияние. Идеально перед особыми событиями.
+                        </p>
+                        <span class="font-sans text-xs text-aura-clay uppercase tracking-widest hidden md:block">60 мин</span>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group bg-white p-8 hover:shadow-lg transition-all duration-500 cursor-pointer border border-transparent hover:border-aura-sage/20 reveal">
+                    <div class="flex justify-between items-baseline mb-4">
+                        <h3 class="font-serif text-2xl text-aura-charcoal group-hover:text-aura-gold transition-colors">Ботанический пилинг и скульптурирование</h3>
+                        <span class="font-sans text-sm font-bold text-aura-charcoal">$150</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <p class="font-sans text-sm text-gray-500 max-w-2xl leading-relaxed">
+                            Деликатный энзимный пилинг с экстрактами папайи и ананаса, за которым следует активный буккальный массаж для лифтинга и тонуса мышц лица.
+                        </p>
+                        <span class="font-sans text-xs text-aura-clay uppercase tracking-widest hidden md:block">45 мин</span>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="group bg-white p-8 hover:shadow-lg transition-all duration-500 cursor-pointer border border-transparent hover:border-aura-sage/20 reveal">
+                    <div class="flex justify-between items-baseline mb-4">
+                        <h3 class="font-serif text-2xl text-aura-charcoal group-hover:text-aura-gold transition-colors">LED-терапия как дополнение</h3>
+                        <span class="font-sans text-sm font-bold text-aura-charcoal">$45</span>
+                    </div>
+                    <div class="flex justify-between items-end">
+                        <p class="font-sans text-sm text-gray-500 max-w-2xl leading-relaxed">
+                            LED-терапия медицинского класса: борется с бактериями акне (синий свет) или стимулирует выработку коллагена (красный свет). Можно добавить к любому уходу за лицом.
+                        </p>
+                        <span class="font-sans text-xs text-aura-clay uppercase tracking-widest hidden md:block">20 мин</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#" class="inline-block border-b border-aura-charcoal pb-1 font-sans text-xs uppercase tracking-widest hover:text-aura-gold hover:border-aura-gold transition-all">Скачать полное меню в PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Ritual (Full Width) -->
+    <section id="rituals" class="py-32 bg-aura-sage text-white relative overflow-hidden">
+        <!-- Texture Overlay -->
+        <div class="absolute inset-0 bg-noise opacity-20"></div>
+        
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                    <span class="font-sans text-xs uppercase tracking-[0.3em] text-aura-cream/80 mb-4 block">Сезонный эксклюзив</span>
+                    <h2 class="font-serif text-5xl md:text-7xl mb-8 leading-none">«Золотой урожай» <br> — ритуал</h2>
+                    <p class="font-sans text-aura-cream/90 text-lg leading-relaxed mb-10 max-w-xl">
+                        Встретьте смену сезона этим согревающим 2,5-часовым ритуалом. Начнём с ванночки для ног с пряным чаем, продолжим тыквенным энзимным обёртыванием для тела и завершим массажем горячими камнями с маслом, настоянным на янтаре.
+                    </p>
+                    <ul class="space-y-4 font-serif text-xl mb-12">
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-leaf text-aura-cream/50 text-sm"></i> Эксфолиация всего тела</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-leaf text-aura-cream/50 text-sm"></i> Термальный глиняный кокон</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-leaf text-aura-cream/50 text-sm"></i>Уход за кожей головы и волосами</li>
+                    </ul>
+                    <a href="#book" class="inline-block bg-white text-aura-sage px-10 py-4 font-sans text-xs uppercase tracking-widest hover:bg-aura-gold hover:text-white transition-colors">
+                        Забронировать ритуал — $350
+                    </a>
+                </div>
+                <div class="order-1 lg:order-2 relative">
+                    <div class="absolute -inset-4 border border-white/20 rounded-t-full rounded-b-full transform rotate-3"></div>
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop" class="w-full h-[700px] object-cover rounded-t-full rounded-b-full shadow-2xl relative z-10" alt="Спа-ритуал">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery / Instagram Feed -->
+    <section class="py-32 bg-white">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="font-serif text-4xl text-aura-charcoal mb-2">Виды салона</h2>
+                    <p class="font-sans text-gray-500 text-sm tracking-wide">@AuraBotanica • #MyAuraMoment</p>
+                </div>
+                <a href="#" class="hidden md:block font-sans text-xs uppercase tracking-widest border-b border-gray-300 pb-1 hover:border-aura-gold transition-colors">Подпишитесь на нас</a>
+            </div>
+
+            <!-- Masonry Grid Layout -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[800px]">
+                <!-- Item 1 (Large) -->
+                <div class="col-span-2 row-span-2 relative group overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1603509204052-1f486259441e?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Интерьер">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                    <div class="absolute bottom-6 left-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <i class="fa-brands fa-instagram text-xl"></i>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="relative group overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Продукт">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+                </div>
+                <!-- Item 3 -->
+                <div class="relative group overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Деталь">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+                </div>
+                <!-- Item 4 (Tall) -->
+                <div class="row-span-2 relative group overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Портрет">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+                </div>
+                <!-- Item 5 -->
+                <div class="relative group overflow-hidden cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" alt="Масла">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Team / Experts -->
+    <section class="py-32 bg-aura-cream">
+        <div class="max-w-[1200px] mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="font-script text-3xl text-aura-gold">Наши мастера</span>
+                <h2 class="font-serif text-5xl text-aura-charcoal mt-2">Познакомьтесь со специалистами</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Expert 1 -->
+                <div class="text-center group">
+                    <div class="relative w-64 h-80 mx-auto mb-6 overflow-hidden rounded-t-full">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Специалист 1">
+                    </div>
+                    <h3 class="font-serif text-2xl text-aura-charcoal">Elise Laurent</h3>
+                    <p class="font-sans text-xs uppercase tracking-widest text-aura-clay mb-4">Ведущий косметолог-эстетист</p>
+                    <p class="font-sans text-sm text-gray-500 italic">«Кожа — зеркало души. Относитесь к ней с добротой».</p>
+                </div>
+
+                <!-- Expert 2 -->
+                <div class="text-center group">
+                    <div class="relative w-64 h-80 mx-auto mb-6 overflow-hidden rounded-t-full">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Специалист 2">
+                    </div>
+                    <h3 class="font-serif text-2xl text-aura-charcoal">Sarah Chen</h3>
+                    <p class="font-sans text-xs uppercase tracking-widest text-aura-clay mb-4">Массажист</p>
+                    <p class="font-sans text-sm text-gray-500 italic">«Исцеление начинается в тот момент, когда вы по-настоящему расслабляетесь».</p>
+                </div>
+
+                <!-- Expert 3 -->
+                <div class="text-center group">
+                    <div class="relative w-64 h-80 mx-auto mb-6 overflow-hidden rounded-t-full">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Специалист 3">
+                    </div>
+                    <h3 class="font-serif text-2xl text-aura-charcoal">Elena Rodriguez</h3>
+                    <p class="font-sans text-xs uppercase tracking-widest text-aura-clay mb-4">Холистический нутрициолог</p>
+                    <p class="font-sans text-sm text-gray-500 italic">«Красота питается изнутри».</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-white border-y border-aura-charcoal/5">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <i class="fa-solid fa-quote-left text-4xl text-aura-gold/30 mb-8"></i>
+            <blockquote class="font-serif text-3xl md:text-4xl text-aura-charcoal leading-relaxed mb-8">
+                «Настоящий оазис в городе. Уход «Сияние» преобразил мою кожу, но именно внимание к деталям и умиротворяющая атмосфера по-настоящему исцелили мой дух».
+            </blockquote>
+            <cite class="font-sans text-xs uppercase tracking-widest text-aura-clay not-italic">— Виктория С., редактор Vogue</cite>
+        </div>
+    </section>
+
+    <!-- Booking / Contact -->
+    <section id="book" class="py-32 bg-aura-cream relative">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row">
+                <!-- Form Side -->
+                <div class="p-12 md:p-16 md:w-1/2">
+                    <span class="font-sans text-xs uppercase tracking-widest text-aura-gold mb-2 block">Бронирование</span>
+                    <h2 class="font-serif text-4xl text-aura-charcoal mb-8">Начните своё путешествие</h2>
+                    
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-sans text-xs uppercase tracking-wide text-gray-500 mb-2">Имя</label>
+                                <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-aura-gold bg-transparent transition-colors">
+                            </div>
+                            <div>
+                                <label class="block font-sans text-xs uppercase tracking-wide text-gray-500 mb-2">Фамилия</label>
+                                <input type="text" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-aura-gold bg-transparent transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block font-sans text-xs uppercase tracking-wide text-gray-500 mb-2">Интересующая услуга</label>
+                            <select class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-aura-gold bg-transparent transition-colors">
+                                <option>Фирменный уход «Сияние»</option>
+                                <option>Массаж глубоких тканей</option>
+                                <option>Сезонный ритуал</option>
+                                <option>Консультация</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-sans text-xs uppercase tracking-wide text-gray-500 mb-2">Желаемая дата</label>
+                                <input type="date" class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-aura-gold bg-transparent transition-colors">
+                            </div>
+                            <div>
+                                <label class="block font-sans text-xs uppercase tracking-wide text-gray-500 mb-2">Время</label>
+                                <select class="w-full border-b border-gray-300 py-2 focus:outline-none focus:border-aura-gold bg-transparent transition-colors">
+                                    <option>Утро</option>
+                                    <option>День</option>
+                                    <option>Вечер</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="pt-6">
+                            <button type="submit" class="w-full bg-aura-charcoal text-white py-4 font-sans text-xs uppercase tracking-widest hover:bg-aura-gold transition-colors duration-300">
+                                Записаться на приём
+                            </button>
+                        </div>
+                        <p class="text-[10px] text-gray-400 text-center mt-4">
+                            * Консьерж свяжется с вами в течение 2 часов, чтобы подтвердить запись.
+                        </p>
+                    </form>
+                </div>
+                
+                <!-- Info Side -->
+                <div class="bg-aura-charcoal text-aura-cream p-12 md:p-16 md:w-1/2 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                    
+                    <div>
+                        <h3 class="font-serif text-3xl mb-8">Контакты</h3>
+                        <div class="space-y-6 font-sans text-sm font-light">
+                            <p>
+                                <strong class="block text-aura-gold uppercase text-xs tracking-widest mb-1">Адрес</strong>
+                                24 Rue de la Paix<br>
+                                75002 Paris, France
+                            </p>
+                            <p>
+                                <strong class="block text-aura-gold uppercase text-xs tracking-widest mb-1">Связаться</strong>
+                                +33 1 42 60 55 55<br>
+                                concierge@aurabotanica.com
+                            </p>
+                            <p>
+                                <strong class="block text-aura-gold uppercase text-xs tracking-widest mb-1">Часы работы</strong>
+                                Пн — Сб: 10:00 — 20:00<br>
+                                Вс: 11:00 — 17:00
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12">
+                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?q=80&w=1000&auto=format&fit=crop" class="w-full h-48 object-cover opacity-80 mix-blend-overlay grayscale" alt="Интерьер">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-aura-cream pt-24 pb-12 border-t border-aura-charcoal/10">
+        <div class="max-w-[1800px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-1">
+                    <div class="font-serif text-3xl text-aura-charcoal tracking-tighter italic mb-6">
+                        Aura <span class="text-aura-gold font-normal">Botanica</span>
+                    </div>
+                    <p class="font-sans text-gray-500 text-sm leading-relaxed mb-6">
+                        Мы возводим искусство заботы о себе на новый уровень. Приглашаем вас замедлиться, дышать и заново обрести природное равновесие в нашем холистическом салоне.
+                    </p>
+                    <div class="flex gap-4 text-aura-charcoal">
+                        <a href="#" class="w-10 h-10 border border-aura-charcoal/20 rounded-full flex items-center justify-center hover:bg-aura-charcoal hover:text-white transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 border border-aura-charcoal/20 rounded-full flex items-center justify-center hover:bg-aura-charcoal hover:text-white transition-all"><i class="fa-brands fa-pinterest"></i></a>
+                        <a href="#" class="w-10 h-10 border border-aura-charcoal/20 rounded-full flex items-center justify-center hover:bg-aura-charcoal hover:text-white transition-all"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div>
+                    <h5 class="font-sans text-xs font-bold uppercase tracking-widest text-aura-charcoal mb-6">Навигация</h5>
+                    <ul class="space-y-3 font-sans text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Наша история</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Процедуры</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Магазин</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Подарочные карты</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Пресса</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h5 class="font-sans text-xs font-bold uppercase tracking-widest text-aura-charcoal mb-6">Информация</h5>
+                    <ul class="space-y-3 font-sans text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Доставка & Возвраты</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Политика конфиденциальности</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Условия обслуживания</a></li>
+                        <li><a href="#" class="hover:text-aura-gold transition-colors">Вакансии</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h5 class="font-sans text-xs font-bold uppercase tracking-widest text-aura-charcoal mb-6">Дайджест</h5>
+                    <p class="mb-4 text-sm text-gray-500 leading-relaxed">
+                        Присоединяйтесь к нашему сообществу: советы по велнесу, эксклюзивные предложения и ранний доступ к новым ритуалам.
+                    </p>
+                    <div class="flex border-b border-aura-charcoal">
+                        <input type="email" placeholder="Адрес электронной почты" class="bg-transparent py-2 w-full focus:outline-none text-aura-charcoal font-sans text-sm">
+                        <button class="text-xs uppercase tracking-widest hover:text-aura-gold font-bold">Подписаться</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-aura-charcoal/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-sans text-gray-400">
+                <p>&copy; 2026 Aura Botanica. Все права защищены.</p>
+                <p class="mt-2 md:mt-0 font-serif italic">Сделано с любовью.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Preloader Logic
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 1000);
+            }, 2000);
+
+            // Navbar Scroll Effect
+            const navBg = document.getElementById('nav-bg');
+            const nav = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navBg.style.opacity = '1';
+                    nav.classList.add('py-2');
+                } else {
+                    navBg.style.opacity = '0';
+                    nav.classList.remove('py-2');
+                }
+            });
+
+            // Reveal on Scroll
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+
+<style>
+.psuk-contact{background:#14101f;border-top:2px solid #3a2f5c;padding:3rem 1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#ece7fa}
+.psuk-contact-inner{max-width:38rem;margin:0 auto}
+.psuk-contact-title{margin:0 0 .5rem;font-size:1.6rem;color:#ece7fa}
+.psuk-contact-sub{margin:0 0 1.25rem;color:#a99fc4;font-size:1rem}
+.psuk-contact-form label{display:block;font-size:13px;font-weight:600;color:#ece7fa;margin:10px 0 4px}
+.psuk-contact-form input,.psuk-contact-form textarea{display:block;width:100%;box-sizing:border-box;
+  background:#201b31;border:1px solid #3a2f5c;border-radius:8px;color:#ece7fa;
+  padding:10px 12px;font-size:15px;font-family:inherit}
+.psuk-contact-form input:focus,.psuk-contact-form textarea:focus{outline:none;border-color:#9d7bff}
+.psuk-contact-form textarea{resize:vertical;min-height:110px}
+.psuk-contact-form button{margin-top:16px;background:#9d7bff;color:#14101f;border:0;border-radius:10px;
+  font-weight:700;font-size:15px;padding:12px 26px;cursor:pointer}
+.psuk-contact-form button:hover{background:#c9b6ff}
+.psuk-contact-note{font-size:13px;color:#a99fc4;margin:14px 0 0}
+.psuk-contact-note a{color:#c9b6ff}
+.psuk-contact-status{font-size:14px;margin:10px 0 0;min-height:1.2em}
+.psuk-contact-status.psuk-ok{color:#9df0b6}
+.psuk-contact-status.psuk-err{color:#ff9d9d}
+</style>
+<section class="psuk-contact">
+<div class="psuk-contact-inner">
+<h2 class="psuk-contact-title">Контакты</h2>
+<p class="psuk-contact-sub">Вопросы о AURA BOTANICA? Напишите нам — отвечаем с нашего Gmail.</p>
+<form class="psuk-contact-form" method="post" data-psuk-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-psuk-email="carl.walker.pm@gmail.com" data-psuk-project="AURA BOTANICA" data-psuk-incomplete="Заполните, пожалуйста, все поля." data-psuk-sending="Отправка…" data-psuk-send="Отправить" data-psuk-autoresponse="Спасибо за обращение по AURA BOTANICA — мы скоро ответим. — PurpleShire.uk" data-psuk-thanks="Спасибо! Ваше сообщение отправлено. Мы отвечаем с нашего Gmail." data-psuk-failed="Что-то пошло не так. Попробуйте ещё раз или напишите на &lt;a href=&quot;mailto:carl.walker.pm@gmail.com&quot;&gt;carl.walker.pm@gmail.com&lt;/a&gt;.">
+<input type="hidden" name="_subject" value="[PurpleShire.uk] AURA BOTANICA — new website message">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Спасибо за обращение о проекте AURA BOTANICA — мы скоро ответим. — PurpleShire.uk">
+<input type="hidden" name="_autoresponse" value="Спасибо за обращение по AURA BOTANICA — мы скоро ответим. — PurpleShire.uk">
 <input type="hidden" name="_captcha" value="false">
-<label for="cf-name">Имя</label>
-<input type="text" id="cf-name" name="name" required autocomplete="name">
-<label for="cf-email">Email</label>
-<input type="email" id="cf-email" name="email" required autocomplete="email">
-<label for="cf-msg">Сообщение</label>
-<textarea id="cf-msg" name="message" required></textarea>
+<label>Имя<input type="text" name="name" required autocomplete="name"></label>
+<label>Email<input type="email" name="email" required autocomplete="email"></label>
+<label>Сообщение<textarea name="message" required></textarea></label>
 <button type="submit">Отправить</button>
-<p class="form-note">Или напишите напрямую: <a href="mailto:carl.walker.pm@gmail.com" style="color: var(--accent-soft);">carl.walker.pm@gmail.com</a></p>
+<p class="psuk-contact-note">Или напишите напрямую: <a href="mailto:carl.walker.pm@gmail.com">carl.walker.pm@gmail.com</a></p>
+<p class="psuk-contact-status"></p>
 </form>
 <noscript>
-<form method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] AURA BOTANICA — новое сообщение с сайта">
+<form class="psuk-contact-form" method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
+<input type="hidden" name="_subject" value="[PurpleShire.uk] AURA BOTANICA — new website message">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Спасибо за обращение о проекте AURA BOTANICA — мы скоро ответим. — PurpleShire.uk">
+<input type="hidden" name="_autoresponse" value="Спасибо за обращение по AURA BOTANICA — мы скоро ответим. — PurpleShire.uk">
 <input type="hidden" name="_captcha" value="false">
-<label for="cf-name-ns">Имя</label>
-<input type="text" id="cf-name-ns" name="name" required autocomplete="name">
-<label for="cf-email-ns">Email</label>
-<input type="email" id="cf-email-ns" name="email" required autocomplete="email">
-<label for="cf-msg-ns">Сообщение</label>
-<textarea id="cf-msg-ns" name="message" required></textarea>
+<label>Имя<input type="text" name="name" required autocomplete="name"></label>
+<label>Email<input type="email" name="email" required autocomplete="email"></label>
+<label>Сообщение<textarea name="message" required></textarea></label>
 <button type="submit">Отправить</button>
 </form>
 </noscript>
 </div>
-</div>
-</section><footer class="site-footer">
-  <div class="wrap">
-    <p>© <span id="year"></span> PurpleShire.uk — альфа-версия <span class="ver">· v2.3</span>. <a href="../../index.html" style="color: var(--accent-soft);">Назад на платформу</a></p>
-  </div>
-</footer>
-<script src="../../assets/site.js"></script>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var form=document.querySelector("form[data-psuk-ajax]");
+  if(!form)return;
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var email=form.getAttribute("data-psuk-email"),project=form.getAttribute("data-psuk-project");
+    var name=form.elements.name.value.trim(),sender=form.elements.email.value.trim(),msg=form.elements.message.value.trim();
+    var status=form.querySelector(".psuk-contact-status");
+    var btn=form.querySelector('button[type="submit"]');
+    status.className="psuk-contact-status";status.textContent="";
+    if(!name||!sender||!msg){status.classList.add("psuk-err");status.textContent=form.getAttribute("data-psuk-incomplete");return;}
+    btn.disabled=true;btn.textContent=form.getAttribute("data-psuk-sending");
+    fetch("https://formsubmit.co/ajax/"+email,{
+      method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({name:name,email:sender,message:msg,
+        _subject:"[PurpleShire.uk] "+project+" \u2014 new website message",
+        _template:"table",_honey:"",
+        _autoresponse:form.getAttribute("data-psuk-autoresponse")})
+    }).then(function(r){if(!r.ok)throw new Error("http "+r.status);return r.json();})
+    .then(function(){
+      form.innerHTML='<p class="psuk-contact-status psuk-ok">'+form.getAttribute("data-psuk-thanks")+"</p>";
+    })
+    .catch(function(){
+      status.classList.add("psuk-err");
+      status.innerHTML=form.getAttribute("data-psuk-failed");
+      btn.disabled=false;btn.textContent=form.getAttribute("data-psuk-send");
+    });
+  });
+})();
+</script>
 </body>
 </html>

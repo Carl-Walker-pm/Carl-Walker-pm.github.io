@@ -246,6 +246,261 @@ ul.ticks li::before { content: "✦"; color: var(--accent); position: absolute; 
 @media (min-width: 1050px) {
   .cards { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* --- Front-page blocks (front-page-blocks/assemble.py owns the front page) --- */
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+}
+.main-nav {
+  margin-left: auto;
+  display: flex;
+  gap: 1.25rem;
+}
+.main-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .92rem;
+  font-weight: 600;
+}
+.main-nav a:hover { color: var(--accent-soft); }
+.btn-nav {
+  padding: .55rem 1.1rem;
+  font-size: .88rem;
+  text-decoration: none;
+}
+@media (max-width: 699px) {
+  .main-nav { display: none; }
+  .btn-nav { display: none; }
+}
+/* Language switcher (EN <-> RU) */
+.lang-switch {
+  margin-left: 1rem;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  padding: .4rem .8rem;
+  white-space: nowrap;
+}
+.lang-switch:hover { color: var(--accent-soft); border-color: var(--accent); }
+.btn-nav { margin-left: .75rem; }
+@media (max-width: 699px) {
+  .lang-switch { margin-left: auto; }
+}
+
+/* Hero 7+5 */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.eyebrow {
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 .8rem;
+}
+.hero-visual {
+  background: linear-gradient(135deg, rgba(124,77,255,.14), rgba(124,77,255,.03));
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+}
+.visual-stack {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.visual-stack .v-arrow { color: var(--accent); font-weight: 400; }
+.visual-note { color: var(--muted); font-size: .88rem; margin: 1rem 0 0; }
+@media (min-width: 900px) {
+  .hero-grid { grid-template-columns: 7fr 5fr; }
+}
+.h-accent { color: var(--accent); }
+.hero-scroll {
+  display: inline-block;
+  align-self: center;
+  color: var(--muted);
+  font-size: .9rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 2px;
+}
+.hero-scroll:hover { color: var(--accent-soft); border-color: var(--accent); }
+.hero-stats {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 1.8rem 0 0;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid var(--card-border);
+}
+.hero-stats li { display: flex; flex-direction: column; gap: .15rem; }
+.hero-stats strong { font-size: 1.6rem; font-weight: 800; color: var(--text); }
+.hero-stats span { font-size: .78rem; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+.visual-kicker {
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1rem;
+}
+.visual-chain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.visual-chain li {
+  position: relative;
+  font-weight: 700;
+  font-size: 1.02rem;
+  padding: .45rem .9rem .45rem 2.6rem;
+  background: rgba(124,77,255,.08);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+}
+.visual-chain li + li { margin-top: .55rem; }
+.visual-chain li + li::before {
+  content: "";
+  position: absolute;
+  left: 1.35rem;
+  top: -.55rem;
+  width: 2px;
+  height: .55rem;
+  background: var(--accent);
+  opacity: .6;
+}
+.visual-chain li::after {
+  counter-increment: vstep;
+  content: counter(vstep, decimal-leading-zero);
+  position: absolute;
+  left: .8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: .72rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.visual-chain { counter-reset: vstep; }
+/* Hero polish — glow, eyebrow dot, tighter display type */
+.hero {
+  background:
+    radial-gradient(52rem 30rem at 12% 8%, rgba(124,77,255,.10), transparent 60%),
+    radial-gradient(40rem 26rem at 88% 20%, rgba(124,77,255,.07), transparent 60%);
+}
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: .55em; height: .55em;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: .6em;
+  vertical-align: .08em;
+  box-shadow: 0 0 12px var(--accent);
+}
+.hero h1 { letter-spacing: -.02em; }
+@media (min-width: 900px) { .hero h1 { font-size: 3.4rem; } }
+.hero-visual {
+  box-shadow: 0 18px 60px rgba(124,77,255,.16), inset 0 1px 0 rgba(255,255,255,.05);
+}
+/* Portfolio direction tags */
+.dir-tag {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .5rem;
+}
+
+/* Manifesto — full width, centered */
+.manifesto {
+  padding: 3rem 0;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  background: var(--bg-soft);
+}
+.manifesto-text {
+  font-size: 1.35rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 52rem;
+  margin: 0 auto;
+  color: var(--text);
+}
+@media (min-width: 700px) { .manifesto-text { font-size: 1.6rem; } }
+
+/* Pillars — 3 equal columns on desktop */
+@media (min-width: 900px) {
+  .cards.pillars { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Flagships — 6+6 */
+.cards.flagships-grid { grid-template-columns: 1fr; }
+@media (min-width: 700px) {
+  .cards.flagships-grid { grid-template-columns: repeat(2, 1fr); }
+  .cards.flagships-grid .flagship-card { grid-column: auto; }
+}
+
+/* Portfolio bento — 12-col grid: featured spans 8, the rest span 4 */
+.cards.bento { grid-template-columns: 1fr; }
+@media (min-width: 700px) {
+  .cards.bento { grid-template-columns: repeat(12, 1fr); }
+  .cards.bento .card { grid-column: span 6; }
+  .cards.bento .card-featured {
+    grid-column: span 12;
+    border: 2px solid var(--accent);
+    background: linear-gradient(135deg, rgba(124,77,255,.12), rgba(124,77,255,.03));
+  }
+}
+@media (min-width: 1050px) {
+  .cards.bento .card { grid-column: span 4; }
+  .cards.bento .card-featured { grid-column: span 8; }
+  .cards.bento .card-featured + .card { grid-column: span 4; }
+}
+
+/* Footer — 4 columns */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.footer-col h4 {
+  margin: 0 0 .6rem;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--accent-soft);
+}
+.footer-col a {
+  display: block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: .92rem;
+  margin: .3rem 0;
+}
+.footer-col a:hover { color: var(--text); }
+.footer-col p { color: var(--muted); font-size: .9rem; }
+.footer-base { border-top: 1px solid var(--card-border); padding-top: 1rem; }
+@media (min-width: 900px) {
+  .footer-grid { grid-template-columns: repeat(4, 1fr); }
+}
 """
 
 SITE_JS = r"""/* PurpleShire.uk alpha — shared behaviour */
@@ -322,14 +577,18 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
-def header(name, depth):
-    """depth: 0 for hub (purpleshireuk/), 1 for project landings."""
+def header(name, depth, slug=None):
+    """depth: 0 for hub (purpleshireuk/), 1 for project landings.
+    Project landings (depth 1) get a RU language switcher."""
     prefix = "../" if depth else ""
+    switcher = ""
+    if depth == 1 and slug:
+        switcher = '  <a class="lang-switch" href="../ru/projects/%s/">RU</a>\n' % esc(slug)
     return (
         '<header class="site-header wrap">\n'
         '  <a class="wordmark" href="%sindex.html">PurpleShire<span class="dot">.</span>uk</a>\n'
         '  <span class="badge-alpha">ALPHA</span>\n'
-        "</header>" % prefix
+        "%s</header>" % (prefix, switcher)
     )
 
 
@@ -560,7 +819,7 @@ def landing(project, site):
             % (esc(ext["url"]), target, esc(ext["label"]))
         )
     body = (
-        header(site["name"], 1)
+        header(site["name"], 1, project["slug"])
         + '<nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>\n'
         + '<section class="hero wrap">\n'
         "<h1>%s</h1>\n"
@@ -576,6 +835,151 @@ def landing(project, site):
         + footer(site["name"], 1, site.get("version"))
     )
     return page_shell("%s — PurpleShire.uk" % project["name"], body, 1)
+
+
+# ---------------- Russian mirror (purpleshireuk/ru/) ----------------
+
+def page_shell_ru(title, body, depth):
+    """depth: 0 for ru/ hub, 1 for ru/projects/<slug>/ landings."""
+    prefix = "../" if depth == 0 else "../../"
+    return (
+        "<!DOCTYPE html>\n"
+        '<html lang="ru">\n'
+        "<head>\n"
+        '<meta charset="utf-8">\n'
+        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        "<title>%s</title>\n"
+        '<link rel="stylesheet" href="%sassets/style.css">\n'
+        "</head>\n"
+        "<body>\n%s\n</body>\n</html>\n" % (esc(title), prefix, body)
+    )
+
+
+def header_ru(depth, slug=None):
+    """Header for the RU mirror, with an EN language switcher."""
+    prefix = "../" if depth == 0 else "../../"
+    en_link = "../index.html" if depth == 0 else "../../projects/%s/" % slug
+    return (
+        '<header class="site-header wrap">\n'
+        '  <a class="wordmark" href="%sindex.html">PurpleShire<span class="dot">.</span>uk</a>\n'
+        '  <span class="badge-alpha">ALPHA</span>\n'
+        '  <a class="lang-switch" href="%s">EN</a>\n'
+        "</header>" % (prefix, en_link)
+    )
+
+
+def footer_ru(depth, version=None):
+    prefix = "../" if depth == 0 else "../../"
+    ver = ' <span class="ver">· v%s</span>' % esc(version) if version else ""
+    return (
+        '<footer class="site-footer">\n'
+        '  <div class="wrap">\n'
+        '    <p>© <span id="year"></span> PurpleShire.uk — альфа-версия%s. '
+        '<a href="%sindex.html" style="color: var(--accent-soft);">Назад на платформу</a></p>\n'
+        "  </div>\n"
+        "</footer>\n"
+        '<script src="%sassets/site.js"></script>' % (ver, prefix, prefix)
+    )
+
+
+def contact_section_ru(project, email, depth):
+    """Contact form in Russian: same FormSubmit wiring as the EN version."""
+    subject = "[PurpleShire.uk] %s — новое сообщение с сайта" % project["name"]
+    autoresponse = (
+        "Спасибо за обращение о проекте %s — мы скоро ответим. — PurpleShire.uk"
+        % project["name"]
+    )
+    hidden = (
+        '<input type="hidden" name="_subject" value="%s">\n'
+        '<input type="hidden" name="_template" value="table">\n'
+        '<input type="hidden" name="_honey" value="">\n'
+        '<input type="hidden" name="_autoresponse" value="%s">\n'
+        '<input type="hidden" name="_captcha" value="false">'
+        % (esc(subject), esc(autoresponse))
+    )
+    return (
+        '<section class="section" id="contact">\n'
+        '<div class="wrap prose">\n'
+        "<h2>Контакты</h2>\n"
+        '<p>Вопросы о %s? Напишите нам — отвечаем с нашего Gmail.</p>\n'
+        '<div class="contact-box">\n'
+        '<form method="post" data-ajax '
+        'action="https://formsubmit.co/ajax/%s" data-email="%s" data-project="%s">\n'
+        "%s\n"
+        '<label for="cf-name">Имя</label>\n'
+        '<input type="text" id="cf-name" name="name" required autocomplete="name">\n'
+        '<label for="cf-email">Email</label>\n'
+        '<input type="email" id="cf-email" name="email" required autocomplete="email">\n'
+        '<label for="cf-msg">Сообщение</label>\n'
+        '<textarea id="cf-msg" name="message" required></textarea>\n'
+        '<button type="submit">Отправить</button>\n'
+        '<p class="form-note">Или напишите напрямую: '
+        '<a href="mailto:%s" style="color: var(--accent-soft);">%s</a></p>\n'
+        "</form>\n"
+        "<noscript>\n"
+        '<form method="post" action="https://formsubmit.co/%s">\n'
+        "%s\n"
+        '<label for="cf-name-ns">Имя</label>\n'
+        '<input type="text" id="cf-name-ns" name="name" required autocomplete="name">\n'
+        '<label for="cf-email-ns">Email</label>\n'
+        '<input type="email" id="cf-email-ns" name="email" required autocomplete="email">\n'
+        '<label for="cf-msg-ns">Сообщение</label>\n'
+        '<textarea id="cf-msg-ns" name="message" required></textarea>\n'
+        '<button type="submit">Отправить</button>\n'
+        "</form>\n"
+        "</noscript>\n"
+        "</div>\n"
+        "</div>\n"
+        "</section>"
+        % (
+            esc(project["name"]),
+            email,
+            email,
+            esc(project["name"]),
+            hidden,
+            email,
+            email,
+            email,
+            hidden,
+        )
+    )
+
+
+def landing_ru(project, site):
+    email = site["contactEmail"]
+    about = "\n".join("<p>%s</p>" % esc(p) for p in project["about"])
+    highlights = "\n".join(
+        "<li>%s</li>" % esc(h) for h in project.get("highlights", [])
+    )
+    external = ""
+    ext = project.get("external")
+    if ext:
+        external = (
+            '<p><a class="btn" href="%s" target="_blank" rel="noopener">%s →</a></p>\n'
+            % (esc(ext["url"]), esc(ext["label"]))
+        )
+    if project.get("has_en_demo"):
+        external += (
+            '<p><a class="btn btn-ghost" href="../../projects/%s/">Открыть EN-демо →</a></p>\n'
+            % esc(project["slug"])
+        )
+    body = (
+        header_ru(1, project["slug"])
+        + '<nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>\n'
+        + '<section class="hero wrap">\n'
+        "<h1>%s</h1>\n"
+        '<p class="lede">%s</p>\n'
+        '<span class="status-pill">%s</span>\n'
+        "</section>\n"
+        '<section class="section"><div class="wrap prose">\n'
+        "<h2>О проекте</h2>\n%s\n"
+        "<h2>Ключевое</h2>\n<ul class=\"ticks\">\n%s\n</ul>\n%s"
+        "</div></section>\n"
+        % (esc(project["name"]), esc(project["tagline"]), esc(project["status"]), about, highlights, external)
+        + contact_section_ru(project, email, 1)
+        + footer_ru(1, site.get("version"))
+    )
+    return page_shell_ru("%s — PurpleShire.uk" % project["name"], body, 1)
 
 
 def hub(data):
@@ -650,6 +1054,22 @@ def hub(data):
     return page_shell(site["hubTitle"], body, 0)
 
 
+# Slugs whose landings are built from Kirill's originals by build_liaf.py.
+# generate.py must NEVER write these (EN or RU) or it will clobber the
+# original-based pages. Same convention as ru/index.html (assemble_ru.py).
+LIAF_ORIGINAL_SLUGS = {
+    "aura-botanica", "aurelius", "future-proof-travel", "kinetic", "lumina",
+    "proso", "selene", "softhouse", "synthetix", "tao-school",
+    "unity-travel", "vantage", "velocity",
+}
+
+# Slugs whose landings are hand-built originals restored from
+# ~/workspace/your_files/ (Forge + University). generate.py must NEVER write
+# these (EN or RU) — the real landings were clobbered by a generate.py run on
+# 2026-09-13 and had to be restored.
+HAND_BUILT_SLUGS = {"ai-online-university", "ai-accelerator"}
+
+
 def write(path, content):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -660,15 +1080,28 @@ def write(path, content):
 def main():
     with open(os.path.join(BASE, "projects.json"), encoding="utf-8") as f:
         data = json.load(f)
-    write(os.path.join(OUT, "index.html"), hub(data))
+    # NOTE: the front page is owned by front-page-blocks/assemble.py — do not
+    # write index.html here or it will clobber the block-assembled page.
     write(os.path.join(ASSETS_DIR, "style.css"), STYLE_CSS)
     write(os.path.join(ASSETS_DIR, "site.js"), SITE_JS)
     for p in data["projects"]:
+        if p["slug"] in LIAF_ORIGINAL_SLUGS or p["slug"] in HAND_BUILT_SLUGS:
+            continue  # owned by build_liaf.py — never clobber the originals
         if p.get("source_html"):
             write(os.path.join(PROJECTS_DIR, p["slug"], "index.html"), raw_landing(p, data["site"]))
         else:
             write(os.path.join(PROJECTS_DIR, p["slug"], "index.html"), landing(p, data["site"]))
     print("done: %d landings" % len(data["projects"]))
+    # RU mirror: translated project landings. NOTE: ru/index.html is owned by
+    # front-page-blocks/ru/assemble_ru.py — do not write it here.
+    with open(os.path.join(BASE, "projects_ru.json"), encoding="utf-8") as f:
+        ru = json.load(f)
+    RU_PROJECTS_DIR = os.path.join(OUT, "ru", "projects")
+    for p in ru["projects"]:
+        if p["slug"] in LIAF_ORIGINAL_SLUGS or p["slug"] in HAND_BUILT_SLUGS:
+            continue  # owned by build_liaf.py — never clobber the translated originals
+        write(os.path.join(RU_PROJECTS_DIR, p["slug"], "index.html"), landing_ru(p, data["site"]))
+    print("done: %d RU landings" % len(ru["projects"]))
 
 
 if __name__ == "__main__":

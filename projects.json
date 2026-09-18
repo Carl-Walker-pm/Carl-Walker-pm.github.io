@@ -1,1 +1,490 @@
-{"projects":[{"about":["PurpleShire is an AI ontology platform that turns unstructured information — documents, reports, emails, contracts, archives, public records — into living knowledge graphs of People, Organizations, Projects, Contracts, Events, Locations, Assets and the connections between them.","As it ingests data, the platform proposes new ontology structures. Built for NGOs and civic organizations, investigative journalism, historical research, compliance and due diligence, public sector teams, and open-data initiatives.","Long-term vision: a Civic Intelligence Platform helping people and communities understand complex realities."],"highlights":["Entity → relationship extraction from raw documents","Self-proposing ontology structures as data grows","Knowledge-graph search and reasoning over connected facts","Built for civic, journalistic, and research use cases"],"name":"PurpleShire","section":"platform","slug":"purpleshire","status":"Alpha — in development","tagline":"From documents to understanding."},{"about":["Lucid Future is a fine-art photography shop built on a ~1,500-frame personal archive (2011–2013).","The 2027 wall calendar is listed on Etsy, and the \"2011 — Volume One\" photo book is coming next."],"highlights":["2027 wall calendar — listed on Etsy","\"2011 — Volume One\" photo book — in preparation","~1,500 frames of 2011–2013 photography"],"name":"Lucid Future","section":"platform","slug":"lucid-future","status":"2027 calendar live — photo book coming soon","tagline":"Fine-art photography, printed on demand."},{"about":["OPersona 2.0 is the Signature club's merch line — the author's \"All Events\" mug designs: AEC \"All Events Continuum\", AED \"All Events Diapason\", AEH \"All Events Horizon\".","Limited member drops from $49.99."],"highlights":["AEC — All Events Continuum","AED — All Events Diapason","AEH — All Events Horizon","Limited drops from $49.99 — founding members first"],"name":"OPersona 2.0 — Signature Club","section":"platform","slug":"opersona","status":"Founding member list open — launching soon","tagline":"Author's designs. Members-only drops."},{"about":["MOST is a Norwegian association for the rehabilitation of war-affected Russian speakers.","Nobody is thinking about the rehabilitation of Russians after the war — MOST exists to change that, building programs, partnerships, and funding for recovery."],"highlights":["Rehabilitation programs for war-affected Russian speakers","Partnerships with NGOs, funds, and welfare institutions","A long-term funding strategy — pilots first, scale later"],"name":"MOST","section":"most","slug":"most","status":"In formation — Norway","tagline":"Rehabilitation after the war. A bridge to recovery."},{"about":["Everydays is a 1,580-photo online gallery — daily photography from 2011–2013, presented as sixteen browsable collections."],"external":{"label":"Open the gallery","url":"https://carl-walker-pm.github.io/k/art/everydays/"},"highlights":["1,580 frames from 2011–2013","Sixteen browsable collections","A photographic diary of everyday life"],"name":"Everydays","section":"platform","slug":"everydays","status":"Live","tagline":"1,580 frames. One photographic diary."},{"about":["LUNAR_MALL is an experimental concept developed under the LIAF series. Previously hosted at liaf.ct.ws; currently offline and archived."],"highlights":["Digital experiment from the LIAF series","Currently archived — not accessible online"],"name":"LUNAR_MALL","section":"liaf","slug":"lunar-mall","status":"Archived — currently offline","tagline":"A concept from the LIAF series."},{"about":["PRAW Mutual is a mutual-aid community project in the LIAF series. The community page is live on Facebook."],"external":{"label":"Community page on Facebook","url":"https://www.facebook.com/people/PRAW-Mutual/61581888610134/"},"highlights":["Mutual-aid community project","Community page live on Facebook"],"name":"PRAW Mutual","section":"liaf","slug":"praw-mutual","status":"Community page live","tagline":"Mutual aid, organized."},{"about":["AED is a software project developed under the LIAF series, currently in private development."],"highlights":["Software experiment from the LIAF series","Private development — details to come"],"name":"AED","section":"liaf","slug":"aed-project","status":"In private development","tagline":"Software from the LIAF series."},{"slug":"lumina","name":"Lumina","tagline":"Digital creative agency.","status":"Concept — live demo","section":"liaf","about":["A digital creative agency website concept from the LIAF series — services, expertise, and client partnerships."],"highlights":["Services and expertise sections","\"Partners, not just providers\" positioning","Agency layout, ready for content"],"source_html":"sources/lumina.html"},{"slug":"selene","name":"SELENE Industrial","tagline":"Off-world extraction systems.","status":"Concept — live demo","section":"liaf","about":["A science-fiction industrial concept site for off-world extraction systems — heavy equipment, engineering challenges, and resource projections."],"highlights":["Heavy equipment division showcase","Engineering challenge narrative","Resource projections through 2030"],"source_html":"sources/selene.html"},{"slug":"synthetix","name":"SYNTHETIX","tagline":"Autonomous agent infrastructure.","status":"Concept — live demo","section":"liaf","about":["A concept site for autonomous agent infrastructure — \"Initialize Protocol\", built for developers."],"highlights":["Agent protocol concept","Developer-focused positioning","Dark terminal-inspired design"],"source_html":"sources/synthetix.html"},{"slug":"tao-school","name":"TAO School","tagline":"The way of future learning.","status":"Concept — live demo","section":"liaf","about":["A concept site for a school of future learning — philosophy, curriculum, environment, and masters."],"highlights":["Philosophy of future learning","Curriculum and environment","The masters"],"source_html":"sources/tao-school.html"},{"slug":"unity-travel","name":"Unity Travel","tagline":"Explore the world together.","status":"Concept — live demo","section":"liaf","about":["A travel website concept — curated destinations and trip planning with a personal touch."],"highlights":["Curated destinations","\"We don't just plan trips\" positioning","Adventure-ready booking flow"],"source_html":"sources/unity-travel.html"},{"slug":"vantage","name":"Vantage Estate Agents","tagline":"Luxury real estate.","status":"Concept — live demo","section":"liaf","about":["A luxury real estate agency concept — featured properties, neighborhoods, and team."],"highlights":["Featured properties","Top neighborhoods guide","Meet the team"],"source_html":"sources/vantage.html"},{"slug":"velocity","name":"Velocity Auto Rentals","tagline":"Premium car hire, USA.","status":"Concept — live demo","section":"liaf","about":["A premium car rental concept for the USA — featured vehicles, destinations, and premium services."],"highlights":["Featured vehicles","Popular destinations","Premium services"],"source_html":"sources/velocity.html"},{"slug":"future-proof-travel","name":"Future-Proof Travel","tagline":"Six services for the travelers of tomorrow.","status":"Concept — live demo","section":"liaf","about":["A travel services concept — six cutting-edge services designed for longevity and global travelers."],"highlights":["AI-powered personalized itineraries","Wellness & bio-adaptive travel","Eco-integrated experiences","Borderless smart visas","Work+travel hybrid packages","Immersive cultural simulations"],"source_html":"sources/future-proof-travel.html"},{"slug":"kinetic","name":"KINETIC","tagline":"Design, meaning, & entropy.","status":"Concept — live demo","section":"liaf","about":["A design concept site exploring design, meaning, and entropy."],"highlights":["Design-meets-entropy concept","Editorial-style layout"],"source_html":"sources/kinetic.html"},{"slug":"aurelius","name":"AURELIUS","tagline":"Quantitative capital management.","status":"Concept — live demo","section":"liaf","about":["A concept site for Aurelius Quantitative — a multi-strategy fund built on advanced algorithms and machine learning."],"highlights":["Multi-strategy fund narrative","Algorithms & machine learning positioning","Investor-grade layout"],"source_html":"sources/aurelius.html"},{"slug":"aura-botanica","name":"AURA BOTANICA","tagline":"Holistic beauty sanctuary.","status":"Concept — live demo","section":"liaf","about":["A concept site for a holistic beauty sanctuary — bespoke facials, massage therapy, and aesthetic treatments."],"highlights":["Organic luxury positioning","Facials, massage, aesthetic treatments","Sanctuary-of-calm design"],"source_html":"sources/aura-botanica.html"},{"slug":"proso","name":"ProSo","tagline":"A showcase for features and projects.","status":"Stub — work in progress","section":"liaf","about":["A starter showcase page for future features and projects, currently linking to the JavaArt generative-art pieces."],"highlights":["Project showcase scaffold","Links to JavaArt pieces"],"source_html":"sources/proso.html"},{"slug":"softhouse","name":"SoftHouse","tagline":"A minimal hub stub.","status":"Stub — work in progress","section":"liaf","about":["A minimal hub page — an early scaffold."],"highlights":["Early scaffold"],"source_html":"sources/softhouse.html"},{"slug":"unicorn-race","name":"Unicorn Race","tagline":"Startup funding rounds, called like horse races.","status":"Concept — live demo","section":"platform","about":["Unicorn Race is a sports-finance anime concept: startup funding rounds called like horse races — a digest of the startup world, potentially humorous.","The concept is growing into a \"race to a billion\": tracking contenders on their public journey toward a billion dollars, year over year."],"highlights":["Race-commentary ticker on funding rounds","Four fictional racer archetypes","Episode structure for the anime series","\"Race to a billion\" ranking concept in the works"],"source_html":"sources/unicorn-race.html"},{"slug":"ggg-plus","name":"GGG+","section":"forecasts","tagline":"The first project of the Forecasts direction.","status":"Announced — details coming soon","about":["GGG+ is the first project of the Forecasts direction on PurpleShire.uk.","Details are coming soon — leave a message below if you want to follow it."],"highlights":["First project of the Forecasts direction","Details coming soon"]},{"slug":"ai-accelerator","name":"PurpleShire Forge","section":"platform","flagship":true,"tagline":"PurpleShire's AI accelerator for entrepreneurs.","status":"Flagship — in development","about":["The flagship project of PurpleShire.uk: an accelerator for entrepreneurs building with AI — from idea to working product.","The program is being shaped right now. Leave a message below to follow the launch and get early access."],"highlights":["Flagship project of PurpleShire.uk","For entrepreneurs building with AI","Early access — details coming soon"]},{"slug":"ai-online-university","name":"PurpleShire University","section":"platform","flagship":true,"tagline":"PurpleShire's online university for the AI era.","status":"Flagship — in development","about":["The second flagship product of PurpleShire.uk: an online university teaching entrepreneurs and builders to work with AI.","The curriculum is being shaped right now. Leave a message below to follow the launch and get early access."],"highlights":["Flagship product of PurpleShire.uk","Online university for the AI era","Early access — details coming soon"]}],"sections":[{"id":"liaf","title":"LIAF","intro":"The design series — sixteen digital experiments and concept landings, each live on its own page."},{"id":"most","title":"MOST","intro":"The Norway direction — an association for the rehabilitation of war-affected Russian speakers."},{"id":"forecasts","title":"Forecasts","intro":"The PurpleShire.uk forecasting direction. First project: GGG+."},{"id":"platform","title":"Platform projects","intro":"Technology, photography, and merch from the PurpleShire.uk home base."}],"site":{"contactEmail":"carl.walker.pm@gmail.com","footer":"© <span id=\"year\"></span> PurpleShire.uk — alpha version.","heroHeading":"One platform, three directions.","heroSub":"PurpleShire.uk unites three equal pillars — LIAF, MOST, and Forecasts — design, rehabilitation, and foresight — each with its own projects and its own pages.","hubTitle":"PurpleShire.uk — One platform, three directions","liafIntro":"LIAF — an ongoing series of digital experiments and projects.","name":"PurpleShire.uk","version":"2.3"},"concept":{"title":"The concept","intro":"PurpleShire.uk is the home platform. Under one roof it unites three equal pillars: LIAF, MOST, and Forecasts.","directions":[{"n":"I","title":"LIAF","url":"#liaf","text":"The design series — sixteen digital experiments and concept landings, exploring ideas in the open. An equal pillar of the platform."},{"n":"II","title":"MOST","url":"#most","text":"The Norway NGO — rehabilitation of war-affected Russian speakers, registered in Norway. An equal pillar of the platform."},{"n":"III","title":"Forecasts","url":"#forecasts","text":"The forecasting direction — foresight projects on PurpleShire.uk. First project: GGG+. An equal pillar of the platform."}]}}
+{
+ "projects": [
+  {
+   "about": [
+    "PurpleShire is an AI ontology platform that turns unstructured information — documents, reports, emails, contracts, archives, public records — into living knowledge graphs of People, Organizations, Projects, Contracts, Events, Locations, Assets and the connections between them.",
+    "As it ingests data, the platform proposes new ontology structures. Built for NGOs and civic organizations, investigative journalism, historical research, compliance and due diligence, public sector teams, and open-data initiatives.",
+    "Long-term vision: a Civic Intelligence Platform helping people and communities understand complex realities."
+   ],
+   "highlights": [
+    "Entity → relationship extraction from raw documents",
+    "Self-proposing ontology structures as data grows",
+    "Knowledge-graph search and reasoning over connected facts",
+    "Built for civic, journalistic, and research use cases"
+   ],
+   "name": "PurpleShire",
+   "section": "platform",
+   "slug": "purpleshire",
+   "status": "Alpha — in development",
+   "tagline": "From documents to understanding."
+  },
+  {
+   "about": [
+    "Lucid Future is a fine-art photography shop built on a ~1,500-frame personal archive (2011–2013).",
+    "The 2027 wall calendar is listed on Etsy, and the \"2011 — Volume One\" photo book is coming next."
+   ],
+   "highlights": [
+    "2027 wall calendar — listed on Etsy",
+    "\"2011 — Volume One\" photo book — in preparation",
+    "~1,500 frames of 2011–2013 photography"
+   ],
+   "name": "Lucid Future",
+   "section": "platform",
+   "slug": "lucid-future",
+   "status": "2027 calendar live — photo book coming soon",
+   "tagline": "Fine-art photography, printed on demand."
+  },
+  {
+   "about": [
+    "OPersona 2.0 is the Signature club's merch line — the author's \"All Events\" mug designs: AEC \"All Events Continuum\", AED \"All Events Diapason\", AEH \"All Events Horizon\".",
+    "Limited member drops from $49.99."
+   ],
+   "highlights": [
+    "AEC — All Events Continuum",
+    "AED — All Events Diapason",
+    "AEH — All Events Horizon",
+    "Limited drops from $49.99 — founding members first"
+   ],
+   "name": "OPersona 2.0 — Signature Club",
+   "section": "platform",
+   "slug": "opersona",
+   "status": "Founding member list open — launching soon",
+   "tagline": "Author's designs. Members-only drops."
+  },
+  {
+   "about": [
+    "MOST is a Norwegian association for the rehabilitation of war-affected Russian speakers.",
+    "Nobody is thinking about the rehabilitation of Russians after the war — MOST exists to change that, building programs, partnerships, and funding for recovery."
+   ],
+   "highlights": [
+    "Rehabilitation programs for war-affected Russian speakers",
+    "Partnerships with NGOs, funds, and welfare institutions",
+    "A long-term funding strategy — pilots first, scale later"
+   ],
+   "name": "MOST",
+   "section": "most",
+   "slug": "most",
+   "status": "In formation — Norway",
+   "tagline": "Rehabilitation after the war. A bridge to recovery."
+  },
+  {
+   "about": [
+    "Everydays is a 1,580-photo online gallery — daily photography from 2011–2013, presented as sixteen browsable collections."
+   ],
+   "external": {
+    "label": "Open the gallery",
+    "url": "https://carl-walker-pm.github.io/k/art/everydays/"
+   },
+   "highlights": [
+    "1,580 frames from 2011–2013",
+    "Sixteen browsable collections",
+    "A photographic diary of everyday life"
+   ],
+   "name": "Everydays",
+   "section": "platform",
+   "slug": "everydays",
+   "status": "Live",
+   "tagline": "1,580 frames. One photographic diary."
+  },
+  {
+   "about": [
+    "LUNAR_MALL was a LIAF-series concept — a speculative retail environment set on the Moon.",
+    "The experiment is archived and currently offline; the concept notes remain part of the series."
+   ],
+   "highlights": [
+    "Speculative concept from the LIAF series",
+    "Archived — currently offline"
+   ],
+   "name": "LUNAR_MALL",
+   "section": "liaf",
+   "slug": "lunar-mall",
+   "status": "Archived — currently offline",
+   "tagline": "A concept from the LIAF series."
+  },
+  {
+   "about": [
+    "PRAW Mutual is a mutual-aid community in the LIAF series — people helping people, directly and without intermediaries.",
+    "The community page is live on Facebook: requests, offers of help, and local coordination in one place."
+   ],
+   "external": {
+    "label": "Community page on Facebook",
+    "url": "https://www.facebook.com/people/PRAW-Mutual/61581888610134/"
+   },
+   "highlights": [
+    "Mutual-aid community — direct help, no intermediaries",
+    "Community page live on Facebook",
+    "Requests and offers of help in one place"
+   ],
+   "name": "PRAW Mutual",
+   "section": "liaf",
+   "slug": "praw-mutual",
+   "status": "Community page live",
+   "tagline": "Mutual aid, organized."
+  },
+  {
+   "about": [
+    "AED is a software project in the LIAF series, currently in private development.",
+    "Details will be published when the first public build is ready."
+   ],
+   "highlights": [
+    "Software experiment from the LIAF series",
+    "Private development — public details to come"
+   ],
+   "name": "AED",
+   "section": "liaf",
+   "slug": "aed-project",
+   "status": "In private development",
+   "tagline": "Software from the LIAF series."
+  },
+  {
+   "slug": "lumina",
+   "name": "Lumina",
+   "tagline": "Digital creative agency.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A digital creative agency website concept from the LIAF series — services, expertise, and client partnerships."
+   ],
+   "highlights": [
+    "Services and expertise sections",
+    "\"Partners, not just providers\" positioning",
+    "Agency layout, ready for content"
+   ],
+   "source_html": "sources/lumina.html"
+  },
+  {
+   "slug": "selene",
+   "name": "SELENE Industrial",
+   "tagline": "Off-world extraction systems.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A science-fiction industrial concept site for off-world extraction systems — heavy equipment, engineering challenges, and resource projections."
+   ],
+   "highlights": [
+    "Heavy equipment division showcase",
+    "Engineering challenge narrative",
+    "Resource projections through 2030"
+   ],
+   "source_html": "sources/selene.html"
+  },
+  {
+   "slug": "synthetix",
+   "name": "SYNTHETIX",
+   "tagline": "Autonomous agent infrastructure.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A concept site for autonomous agent infrastructure — \"Initialize Protocol\", built for developers."
+   ],
+   "highlights": [
+    "Agent protocol concept",
+    "Developer-focused positioning",
+    "Dark terminal-inspired design"
+   ],
+   "source_html": "sources/synthetix.html"
+  },
+  {
+   "slug": "tao-school",
+   "name": "TAO School",
+   "tagline": "The way of future learning.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A concept site for a school of future learning — philosophy, curriculum, environment, and masters."
+   ],
+   "highlights": [
+    "Philosophy of future learning",
+    "Curriculum and environment",
+    "The masters"
+   ],
+   "source_html": "sources/tao-school.html"
+  },
+  {
+   "slug": "unity-travel",
+   "name": "Unity Travel",
+   "tagline": "Explore the world together.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A travel website concept — curated destinations and trip planning with a personal touch."
+   ],
+   "highlights": [
+    "Curated destinations",
+    "\"We don't just plan trips\" positioning",
+    "Adventure-ready booking flow"
+   ],
+   "source_html": "sources/unity-travel.html"
+  },
+  {
+   "slug": "vantage",
+   "name": "Vantage Estate Agents",
+   "tagline": "Luxury real estate.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A luxury real estate agency concept — featured properties, neighborhoods, and team."
+   ],
+   "highlights": [
+    "Featured properties",
+    "Top neighborhoods guide",
+    "Meet the team"
+   ],
+   "source_html": "sources/vantage.html"
+  },
+  {
+   "slug": "velocity",
+   "name": "Velocity Auto Rentals",
+   "tagline": "Premium car hire, USA.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A premium car rental concept for the USA — featured vehicles, destinations, and premium services."
+   ],
+   "highlights": [
+    "Featured vehicles",
+    "Popular destinations",
+    "Premium services"
+   ],
+   "source_html": "sources/velocity.html"
+  },
+  {
+   "slug": "future-proof-travel",
+   "name": "Future-Proof Travel",
+   "tagline": "Six services for the travelers of tomorrow.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A travel services concept — six cutting-edge services designed for longevity and global travelers."
+   ],
+   "highlights": [
+    "AI-powered personalized itineraries",
+    "Wellness & bio-adaptive travel",
+    "Eco-integrated experiences",
+    "Borderless smart visas",
+    "Work+travel hybrid packages",
+    "Immersive cultural simulations"
+   ],
+   "source_html": "sources/future-proof-travel.html"
+  },
+  {
+   "slug": "kinetic",
+   "name": "KINETIC",
+   "tagline": "Design, meaning, & entropy.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A design concept site exploring design, meaning, and entropy."
+   ],
+   "highlights": [
+    "Design-meets-entropy concept",
+    "Editorial-style layout"
+   ],
+   "source_html": "sources/kinetic.html"
+  },
+  {
+   "slug": "aurelius",
+   "name": "AURELIUS",
+   "tagline": "Quantitative capital management.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A concept site for Aurelius Quantitative — a multi-strategy fund built on advanced algorithms and machine learning."
+   ],
+   "highlights": [
+    "Multi-strategy fund narrative",
+    "Algorithms & machine learning positioning",
+    "Investor-grade layout"
+   ],
+   "source_html": "sources/aurelius.html"
+  },
+  {
+   "slug": "aura-botanica",
+   "name": "AURA BOTANICA",
+   "tagline": "Holistic beauty sanctuary.",
+   "status": "Concept — live demo",
+   "section": "liaf",
+   "about": [
+    "A concept site for a holistic beauty sanctuary — bespoke facials, massage therapy, and aesthetic treatments."
+   ],
+   "highlights": [
+    "Organic luxury positioning",
+    "Facials, massage, aesthetic treatments",
+    "Sanctuary-of-calm design"
+   ],
+   "source_html": "sources/aura-botanica.html"
+  },
+  {
+   "slug": "proso",
+   "name": "ProSo",
+   "tagline": "A showcase for features and projects.",
+   "status": "Stub — work in progress",
+   "section": "liaf",
+   "about": [
+    "A starter showcase page for future features and projects, currently linking to the JavaArt generative-art pieces."
+   ],
+   "highlights": [
+    "Project showcase scaffold",
+    "Links to JavaArt pieces"
+   ],
+   "source_html": "sources/proso.html"
+  },
+  {
+   "slug": "softhouse",
+   "name": "SoftHouse",
+   "tagline": "A minimal hub stub.",
+   "status": "Stub — work in progress",
+   "section": "liaf",
+   "about": [
+    "A minimal hub page — an early scaffold."
+   ],
+   "highlights": [
+    "Early scaffold"
+   ],
+   "source_html": "sources/softhouse.html"
+  },
+  {
+   "slug": "unicorn-race",
+   "name": "Unicorn Race",
+   "tagline": "Startup funding rounds, called like horse races.",
+   "status": "Concept — live demo",
+   "section": "platform",
+   "about": [
+    "Unicorn Race is a sports-finance anime concept: startup funding rounds called like horse races — a digest of the startup world, potentially humorous.",
+    "The concept is growing into a \"race to a billion\": tracking contenders on their public journey toward a billion dollars, year over year."
+   ],
+   "highlights": [
+    "Race-commentary ticker on funding rounds",
+    "Four fictional racer archetypes",
+    "Episode structure for the anime series",
+    "\"Race to a billion\" ranking concept in the works"
+   ],
+   "source_html": "sources/unicorn-race.html"
+  },
+  {
+   "slug": "ggg-plus",
+   "name": "GGG+",
+   "section": "forecasts",
+   "tagline": "The first project of the Forecasts direction.",
+   "status": "Announced — details coming soon",
+   "about": [
+    "GGG+ is the first project of the Forecasts direction on PurpleShire.uk.",
+    "Details are coming soon — leave a message below if you want to follow it."
+   ],
+   "highlights": [
+    "First project of the Forecasts direction",
+    "Details coming soon"
+   ]
+  },
+  {
+   "slug": "ai-accelerator",
+   "name": "PurpleShire Forge",
+   "section": "platform",
+   "flagship": true,
+   "tagline": "PurpleShire's AI accelerator for entrepreneurs.",
+   "status": "Flagship — in development",
+   "about": [
+    "The flagship project of PurpleShire.uk: an accelerator for entrepreneurs building with AI — from idea to working product.",
+    "The program is being shaped right now. Leave a message below to follow the launch and get early access."
+   ],
+   "highlights": [
+    "Flagship project of PurpleShire.uk",
+    "For entrepreneurs building with AI",
+    "Early access — details coming soon"
+   ]
+  },
+  {
+   "slug": "ai-online-university",
+   "name": "PurpleShire University",
+   "section": "platform",
+   "flagship": true,
+   "tagline": "PurpleShire's online university for the AI era.",
+   "status": "Flagship — in development",
+   "about": [
+    "The second flagship product of PurpleShire.uk: an online university teaching entrepreneurs and builders to work with AI.",
+    "The curriculum is being shaped right now. Leave a message below to follow the launch and get early access."
+   ],
+   "highlights": [
+    "Flagship product of PurpleShire.uk",
+    "Online university for the AI era",
+    "Early access — details coming soon"
+   ]
+  },
+  {
+   "about": [
+    "SynOp is a health consulting and brokerage practice built on a forward-thinking approach: innovation, creativity, and personalized service tailored to each client's unique needs.",
+    "The mission: to guide individuals and organizations through the evolving landscape of health with expertise, integrity, and a passion for well-being — empowering them to achieve their goals and thrive."
+   ],
+   "highlights": [
+    "Tailored health consulting and brokerage solutions",
+    "Core values: innovation, integrity, expertise, personalization, passion",
+    "Built for individuals and organizations navigating health"
+   ],
+   "name": "SynOp",
+   "section": "platform",
+   "slug": "synop",
+   "status": "Concept — site live",
+   "tagline": "Innovative health solutions with integrity and expertise.",
+   "external": {
+    "label": "Visit the SynOp site",
+    "url": "https://carlwalkerpm.wixsite.com/promis"
+   }
+  }
+ ],
+ "sections": [
+  {
+   "id": "liaf",
+   "title": "LIAF",
+   "intro": "The design series — sixteen digital experiments and concept landings, each live on its own page."
+  },
+  {
+   "id": "most",
+   "title": "MOST",
+   "intro": "The Norway direction — an association for the rehabilitation of war-affected Russian speakers."
+  },
+  {
+   "id": "forecasts",
+   "title": "Forecasts",
+   "intro": "The PurpleShire.uk forecasting direction. First project: GGG+."
+  },
+  {
+   "id": "platform",
+   "title": "Platform projects",
+   "intro": "Technology, photography, and merch from the PurpleShire.uk home base."
+  }
+ ],
+ "site": {
+  "contactEmail": "carl.walker.pm@gmail.com",
+  "footer": "© <span id=\"year\"></span> PurpleShire.uk — alpha version.",
+  "heroHeading": "One platform, three directions.",
+  "heroSub": "PurpleShire.uk unites three equal pillars — LIAF, MOST, and Forecasts — design, rehabilitation, and foresight — each with its own projects and its own pages.",
+  "hubTitle": "PurpleShire.uk — One platform, three directions",
+  "liafIntro": "LIAF — an ongoing series of digital experiments and projects.",
+  "name": "PurpleShire.uk",
+  "version": "2.3"
+ },
+ "concept": {
+  "title": "The concept",
+  "intro": "PurpleShire.uk is the home platform. Under one roof it unites three equal pillars: LIAF, MOST, and Forecasts.",
+  "directions": [
+   {
+    "n": "I",
+    "title": "LIAF",
+    "url": "#liaf",
+    "text": "The design series — sixteen digital experiments and concept landings, exploring ideas in the open. An equal pillar of the platform."
+   },
+   {
+    "n": "II",
+    "title": "MOST",
+    "url": "#most",
+    "text": "The Norway NGO — rehabilitation of war-affected Russian speakers, registered in Norway. An equal pillar of the platform."
+   },
+   {
+    "n": "III",
+    "title": "Forecasts",
+    "url": "#forecasts",
+    "text": "The forecasting direction — foresight projects on PurpleShire.uk. First project: GGG+. An equal pillar of the platform."
+   }
+  ]
+ }
+}

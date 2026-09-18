@@ -1,74 +1,125 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru"
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SoftHouse — PurpleShire.uk</title>
-<link rel="stylesheet" href="../../assets/style.css">
+<!-- ANALYTICS PLACEHOLDER
+  GA4, Microsoft Clarity, and PostHog snippets go here.
+  Standing rule: every page keeps its analytics counters.
+  build_liaf.py preserves this comment verbatim on every build. -->
+    <meta charset="UTF-8">
+    <title>SoftHouse</title>
 </head>
 <body>
-<header class="site-header wrap">
-  <a class="wordmark" href="../../index.html">PurpleShire<span class="dot">.</span>uk</a>
-  <span class="badge-alpha">ALPHA</span>
-  <a class="lang-switch" href="../../projects/softhouse/">EN</a>
-</header><nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>
-<section class="hero wrap">
-<h1>SoftHouse</h1>
-<p class="lede">Минималистичный хаб-заглушка.</p>
-<span class="status-pill">Заглушка — в работе</span>
-</section>
-<section class="section"><div class="wrap prose">
-<h2>О проекте</h2>
-<p>Минималистичная страница-хаб — ранний каркас.</p>
-<h2>Ключевое</h2>
-<ul class="ticks">
-<li>Ранний каркас</li>
-</ul>
-<p><a class="btn btn-ghost" href="../../projects/softhouse/">Открыть EN-демо →</a></p>
-</div></section>
-<section class="section" id="contact">
-<div class="wrap prose">
-<h2>Контакты</h2>
-<p>Вопросы о SoftHouse? Напишите нам — отвечаем с нашего Gmail.</p>
-<div class="contact-box">
-<form method="post" data-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-email="carl.walker.pm@gmail.com" data-project="SoftHouse">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] SoftHouse — новое сообщение с сайта">
+
+<style>
+.psuk-topbar{position:sticky;top:0;z-index:99999;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(14,11,24,.94);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-bottom:1px solid #3a2f5c;padding:0 16px;height:44px;box-sizing:border-box;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.psuk-topbar-back{color:#c9b6ff!important;text-decoration:none!important;font-size:13px;font-weight:600;line-height:1}
+.psuk-topbar-back:hover{color:#fff!important}
+.psuk-topbar-lang{color:#14101f!important;background:#9d7bff;text-decoration:none!important;
+  font-size:12px;font-weight:800;letter-spacing:.08em;padding:7px 16px;border-radius:999px;line-height:1}
+.psuk-topbar-lang:hover{background:#c9b6ff}
+</style>
+<div class="psuk-topbar">
+  <a class="psuk-topbar-back" href="../../index.html">&larr; PurpleShire.uk</a>
+  <a class="psuk-topbar-lang" href="../../projects/softhouse/index.html">EN</a>
+</div>
+
+    <h1>SoftHouse</h1>
+    <ul>
+        <li>
+          <a href="https://www.google.com" target>
+          <a href="https://www.wikipedia.org" target="_blank">
+          <a href="https://www.github.com" target>
+          </li>
+    </ul>
+
+<style>
+.psuk-contact{background:#14101f;border-top:2px solid #3a2f5c;padding:3rem 1.25rem;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#ece7fa}
+.psuk-contact-inner{max-width:38rem;margin:0 auto}
+.psuk-contact-title{margin:0 0 .5rem;font-size:1.6rem;color:#ece7fa}
+.psuk-contact-sub{margin:0 0 1.25rem;color:#a99fc4;font-size:1rem}
+.psuk-contact-form label{display:block;font-size:13px;font-weight:600;color:#ece7fa;margin:10px 0 4px}
+.psuk-contact-form input,.psuk-contact-form textarea{display:block;width:100%;box-sizing:border-box;
+  background:#201b31;border:1px solid #3a2f5c;border-radius:8px;color:#ece7fa;
+  padding:10px 12px;font-size:15px;font-family:inherit}
+.psuk-contact-form input:focus,.psuk-contact-form textarea:focus{outline:none;border-color:#9d7bff}
+.psuk-contact-form textarea{resize:vertical;min-height:110px}
+.psuk-contact-form button{margin-top:16px;background:#9d7bff;color:#14101f;border:0;border-radius:10px;
+  font-weight:700;font-size:15px;padding:12px 26px;cursor:pointer}
+.psuk-contact-form button:hover{background:#c9b6ff}
+.psuk-contact-note{font-size:13px;color:#a99fc4;margin:14px 0 0}
+.psuk-contact-note a{color:#c9b6ff}
+.psuk-contact-status{font-size:14px;margin:10px 0 0;min-height:1.2em}
+.psuk-contact-status.psuk-ok{color:#9df0b6}
+.psuk-contact-status.psuk-err{color:#ff9d9d}
+</style>
+<section class="psuk-contact">
+<div class="psuk-contact-inner">
+<h2 class="psuk-contact-title">Контакты</h2>
+<p class="psuk-contact-sub">Вопросы о SoftHouse? Напишите нам — отвечаем с нашего Gmail.</p>
+<form class="psuk-contact-form" method="post" data-psuk-ajax action="https://formsubmit.co/ajax/carl.walker.pm@gmail.com" data-psuk-email="carl.walker.pm@gmail.com" data-psuk-project="SoftHouse" data-psuk-incomplete="Заполните, пожалуйста, все поля." data-psuk-sending="Отправка…" data-psuk-send="Отправить" data-psuk-autoresponse="Спасибо за обращение по SoftHouse — мы скоро ответим. — PurpleShire.uk" data-psuk-thanks="Спасибо! Ваше сообщение отправлено. Мы отвечаем с нашего Gmail." data-psuk-failed="Что-то пошло не так. Попробуйте ещё раз или напишите на &lt;a href=&quot;mailto:carl.walker.pm@gmail.com&quot;&gt;carl.walker.pm@gmail.com&lt;/a&gt;.">
+<input type="hidden" name="_subject" value="[PurpleShire.uk] SoftHouse — new website message">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Спасибо за обращение о проекте SoftHouse — мы скоро ответим. — PurpleShire.uk">
+<input type="hidden" name="_autoresponse" value="Спасибо за обращение по SoftHouse — мы скоро ответим. — PurpleShire.uk">
 <input type="hidden" name="_captcha" value="false">
-<label for="cf-name">Имя</label>
-<input type="text" id="cf-name" name="name" required autocomplete="name">
-<label for="cf-email">Email</label>
-<input type="email" id="cf-email" name="email" required autocomplete="email">
-<label for="cf-msg">Сообщение</label>
-<textarea id="cf-msg" name="message" required></textarea>
+<label>Имя<input type="text" name="name" required autocomplete="name"></label>
+<label>Email<input type="email" name="email" required autocomplete="email"></label>
+<label>Сообщение<textarea name="message" required></textarea></label>
 <button type="submit">Отправить</button>
-<p class="form-note">Или напишите напрямую: <a href="mailto:carl.walker.pm@gmail.com" style="color: var(--accent-soft);">carl.walker.pm@gmail.com</a></p>
+<p class="psuk-contact-note">Или напишите напрямую: <a href="mailto:carl.walker.pm@gmail.com">carl.walker.pm@gmail.com</a></p>
+<p class="psuk-contact-status"></p>
 </form>
 <noscript>
-<form method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
-<input type="hidden" name="_subject" value="[PurpleShire.uk] SoftHouse — новое сообщение с сайта">
+<form class="psuk-contact-form" method="post" action="https://formsubmit.co/carl.walker.pm@gmail.com">
+<input type="hidden" name="_subject" value="[PurpleShire.uk] SoftHouse — new website message">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_honey" value="">
-<input type="hidden" name="_autoresponse" value="Спасибо за обращение о проекте SoftHouse — мы скоро ответим. — PurpleShire.uk">
+<input type="hidden" name="_autoresponse" value="Спасибо за обращение по SoftHouse — мы скоро ответим. — PurpleShire.uk">
 <input type="hidden" name="_captcha" value="false">
-<label for="cf-name-ns">Имя</label>
-<input type="text" id="cf-name-ns" name="name" required autocomplete="name">
-<label for="cf-email-ns">Email</label>
-<input type="email" id="cf-email-ns" name="email" required autocomplete="email">
-<label for="cf-msg-ns">Сообщение</label>
-<textarea id="cf-msg-ns" name="message" required></textarea>
+<label>Имя<input type="text" name="name" required autocomplete="name"></label>
+<label>Email<input type="email" name="email" required autocomplete="email"></label>
+<label>Сообщение<textarea name="message" required></textarea></label>
 <button type="submit">Отправить</button>
 </form>
 </noscript>
 </div>
-</div>
-</section><footer class="site-footer">
-  <div class="wrap">
-    <p>© <span id="year"></span> PurpleShire.uk — альфа-версия <span class="ver">· v2.3</span>. <a href="../../index.html" style="color: var(--accent-soft);">Назад на платформу</a></p>
-  </div>
-</footer>
-<script src="../../assets/site.js"></script>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var form=document.querySelector("form[data-psuk-ajax]");
+  if(!form)return;
+  form.addEventListener("submit",function(e){
+    e.preventDefault();
+    var email=form.getAttribute("data-psuk-email"),project=form.getAttribute("data-psuk-project");
+    var name=form.elements.name.value.trim(),sender=form.elements.email.value.trim(),msg=form.elements.message.value.trim();
+    var status=form.querySelector(".psuk-contact-status");
+    var btn=form.querySelector('button[type="submit"]');
+    status.className="psuk-contact-status";status.textContent="";
+    if(!name||!sender||!msg){status.classList.add("psuk-err");status.textContent=form.getAttribute("data-psuk-incomplete");return;}
+    btn.disabled=true;btn.textContent=form.getAttribute("data-psuk-sending");
+    fetch("https://formsubmit.co/ajax/"+email,{
+      method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({name:name,email:sender,message:msg,
+        _subject:"[PurpleShire.uk] "+project+" \u2014 new website message",
+        _template:"table",_honey:"",
+        _autoresponse:form.getAttribute("data-psuk-autoresponse")})
+    }).then(function(r){if(!r.ok)throw new Error("http "+r.status);return r.json();})
+    .then(function(){
+      form.innerHTML='<p class="psuk-contact-status psuk-ok">'+form.getAttribute("data-psuk-thanks")+"</p>";
+    })
+    .catch(function(){
+      status.classList.add("psuk-err");
+      status.innerHTML=form.getAttribute("data-psuk-failed");
+      btn.disabled=false;btn.textContent=form.getAttribute("data-psuk-send");
+    });
+  });
+})();
+</script>
 </body>
 </html>
