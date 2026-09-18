@@ -9,6 +9,7 @@ https://carl-walker-pm.github.io/purpleshireuk/).
 import html
 import json
 import os
+import re
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(BASE, "purpleshireuk")
@@ -606,19 +607,32 @@ def footer(name, depth, version=None):
     )
 
 
+GA4_SNIPPET = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C2W27FWRBQ');
+</script>
+"""
+
+
 def page_shell(title, body, depth):
     prefix = "../" if depth else ""
+    head = "<head>\n" + GA4_SNIPPET
     return (
         "<!DOCTYPE html>\n"
         '<html lang="en">\n'
-        "<head>\n"
-        '<meta charset="utf-8">\n'
+        + head
+        + '<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         "<title>%s</title>\n"
         '<link rel="stylesheet" href="%sassets/style.css">\n'
         "</head>\n"
-        "<body>\n%s\n</body>\n</html>\n" % (esc(title), prefix, body)
-    )
+        "<body>\n%s\n</body>\n</html>\n"
+    ) % (esc(title), prefix, body)
 
 
 def contact_section(project, email, depth):
@@ -801,6 +815,10 @@ def raw_landing(project, site):
     chrome = platform_chrome(project["name"], site["contactEmail"])
     idx = page.lower().rfind("</body>")
     page = page[:idx] + chrome + page[idx:]
+    # GA4: injected at build time; the source original stays untouched.
+    m = re.search(r"<head[^>]*>", page, re.IGNORECASE)
+    if m:
+        page = page[: m.end()] + "\n" + GA4_SNIPPET + page[m.end():]
     return page
 
 
@@ -842,17 +860,18 @@ def landing(project, site):
 def page_shell_ru(title, body, depth):
     """depth: 0 for ru/ hub, 1 for ru/projects/<slug>/ landings."""
     prefix = "../" if depth == 0 else "../../"
+    head = "<head>\n" + GA4_SNIPPET
     return (
         "<!DOCTYPE html>\n"
         '<html lang="ru">\n'
-        "<head>\n"
-        '<meta charset="utf-8">\n'
+        + head
+        + '<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         "<title>%s</title>\n"
         '<link rel="stylesheet" href="%sassets/style.css">\n'
         "</head>\n"
-        "<body>\n%s\n</body>\n</html>\n" % (esc(title), prefix, body)
-    )
+        "<body>\n%s\n</body>\n</html>\n"
+    ) % (esc(title), prefix, body)
 
 
 def header_ru(depth, slug=None):

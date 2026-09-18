@@ -56,7 +56,16 @@ ORIGINAL_SLUGS = {
 ANALYTICS_PLACEHOLDER = """<!-- ANALYTICS PLACEHOLDER
   GA4, Microsoft Clarity, and PostHog snippets go here.
   Standing rule: every page keeps its analytics counters.
-  build_liaf.py preserves this comment verbatim on every build. -->"""
+  build_liaf.py preserves this comment verbatim on every build. -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C2W27FWRBQ');
+</script>"""
 
 TOPBAR_CSS = """
 <style>

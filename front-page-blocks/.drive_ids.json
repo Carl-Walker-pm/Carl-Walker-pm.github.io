@@ -1,58 +1,58 @@
 {
- "01-header.html": {
-  "id": "1Gv8u9RzOgb6c5siSdTyYAljk3Rr8ZT9o",
-  "modifiedTime": "2026-09-13T16:24:37.288Z"
- },
- "02-hero.html": {
-  "id": "1_ggjYVgkdD0dZAPv1BMnJ1wAvKAp5krz",
-  "modifiedTime": "2026-09-13T16:01:11.444Z"
- },
- "03-manifesto.html": {
-  "id": "1XDXQ9E-oD11lCJkuibrJuIjLQVoGwa0F",
-  "modifiedTime": "2026-09-13T15:45:58.167Z"
- },
- "04-pillars.html": {
-  "id": "1AqnIxiWkzYP69uuytJ_lvtw1jwCa8Asg",
-  "modifiedTime": "2026-09-13T15:45:59.771Z"
- },
- "05-flagships.html": {
-  "id": "13s9gvEQWBkfCA57XWmkSnPagGNgYIcln",
-  "modifiedTime": "2026-09-13T15:46:01.291Z"
- },
- "06-portfolio.html": {
-  "id": "1Ns7-648wDAtLNuzsgIwVhboeJ1nFEQmX",
-  "modifiedTime": "2026-09-13T16:17:13.394Z"
- },
- "07-footer.html": {
-  "id": "1M0koX9XYGq1BsHD443gbiY-p8PtRR1PT",
-  "modifiedTime": "2026-09-13T16:17:17.736Z"
- },
- "ru/01-header.html": {
-  "id": "1DyGVcTu2cF04CoC6DrGF6fEIo-QitK8A",
-  "modifiedTime": "2026-09-13T16:24:40.480Z"
- },
- "ru/02-hero.html": {
-  "id": "1RXEwYUMFziIlo-44r7R2KUrXPdkD1LTV",
-  "modifiedTime": "2026-09-13T16:24:42.426Z"
- },
- "ru/03-manifesto.html": {
-  "id": "1x6dXyEdrqTG0snNpN1WALGgGmZczfzpF",
-  "modifiedTime": "2026-09-13T16:24:44.183Z"
- },
- "ru/04-pillars.html": {
-  "id": "1GD1W-MlxOM8wC_nVZOcoJQ8Jqcsl7O9w",
-  "modifiedTime": "2026-09-13T16:24:46.077Z"
- },
- "ru/05-flagships.html": {
-  "id": "1m2OcmND7ds43hSR1n3Y3yYwiMAQXY6nR",
-  "modifiedTime": "2026-09-13T16:24:48.097Z"
- },
- "ru/06-portfolio.html": {
-  "id": "1wP5Y3oXMCxw93a7W6MkdTj8Ma0w9fGPc",
-  "modifiedTime": "2026-09-13T16:24:50.219Z"
- },
- "ru/07-footer.html": {
-  "id": "1Eux2i2lLEyRdnyi4WTG-eW2dlX0l6tKw",
-  "modifiedTime": "2026-09-13T16:24:52.076Z"
- }
+  "01-header.html": {
+    "id": "1Gv8u9RzOgb6c5siSdTyYAljk3Rr8ZT9o",
+    "modifiedTime": "2026-09-13T16:24:37.288Z"
+  },
+  "02-hero.html": {
+    "id": "1_ggjYVgkdD0dZAPv1BMnJ1wAvKAp5krz",
+    "modifiedTime": "2026-09-13T16:01:11.444Z"
+  },
+  "03-manifesto.html": {
+    "id": "1XDXQ9E-oD11lCJkuibrJuIjLQVoGwa0F",
+    "modifiedTime": "2026-09-13T15:45:58.167Z"
+  },
+  "04-pillars.html": {
+    "id": "1AqnIxiWkzYP69uuytJ_lvtw1jwCa8Asg",
+    "modifiedTime": "2026-09-13T15:45:59.771Z"
+  },
+  "05-flagships.html": {
+    "id": "13s9gvEQWBkfCA57XWmkSnPagGNgYIcln",
+    "modifiedTime": "2026-09-13T15:46:01.291Z"
+  },
+  "06-portfolio.html": {
+    "id": "1Ns7-648wDAtLNuzsgIwVhboeJ1nFEQmX",
+    "modifiedTime": "2026-09-18T16:11:46.115Z"
+  },
+  "07-footer.html": {
+    "id": "1M0koX9XYGq1BsHD443gbiY-p8PtRR1PT",
+    "modifiedTime": "2026-09-13T16:17:17.736Z"
+  },
+  "ru/01-header.html": {
+    "id": "1DyGVcTu2cF04CoC6DrGF6fEIo-QitK8A",
+    "modifiedTime": "2026-09-13T16:24:40.480Z"
+  },
+  "ru/02-hero.html": {
+    "id": "1RXEwYUMFziIlo-44r7R2KUrXPdkD1LTV",
+    "modifiedTime": "2026-09-13T16:24:42.426Z"
+  },
+  "ru/03-manifesto.html": {
+    "id": "1x6dXyEdrqTG0snNpN1WALGgGmZczfzpF",
+    "modifiedTime": "2026-09-13T16:24:44.183Z"
+  },
+  "ru/04-pillars.html": {
+    "id": "1GD1W-MlxOM8wC_nVZOcoJQ8Jqcsl7O9w",
+    "modifiedTime": "2026-09-13T16:24:46.077Z"
+  },
+  "ru/05-flagships.html": {
+    "id": "1m2OcmND7ds43hSR1n3Y3yYwiMAQXY6nR",
+    "modifiedTime": "2026-09-13T16:24:48.097Z"
+  },
+  "ru/06-portfolio.html": {
+    "id": "1wP5Y3oXMCxw93a7W6MkdTj8Ma0w9fGPc",
+    "modifiedTime": "2026-09-18T16:11:51.359Z"
+  },
+  "ru/07-footer.html": {
+    "id": "1Eux2i2lLEyRdnyi4WTG-eW2dlX0l6tKw",
+    "modifiedTime": "2026-09-13T16:24:52.076Z"
+  }
 }
