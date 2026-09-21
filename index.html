@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+    <script>
+    (function () {
+        var h = (location.hostname || "").toLowerCase();
+        if (h !== "management.praw.pro" && h !== "www.management.praw.pro") return;
+            document.open();
+        document.write('<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PRAW Management</title><style>html,body{margin:0;height:100%}iframe{border:0;width:100%;height:100vh;display:block}</style></head><body><iframe src="/praw/management/" title="PRAW Management"></iframe></body></html>');
+        document.close();
+    })();
+  </script>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
 <script>
@@ -11,6 +22,7 @@
   gtag('config', 'G-C2W27FWRBQ');
 </script>
 <meta charset="UTF-8">
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wally — Kirill's personal AI agent</title>
 <meta name="description" content="Wally is Kirill's personal AI agent: part researcher, part builder, part keeper of the gates.">
