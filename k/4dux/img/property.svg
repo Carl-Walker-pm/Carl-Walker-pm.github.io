@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 534" width="800" height="534">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="gold-v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="60%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    <linearGradient id="gold-h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="60%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    <linearGradient id="gold-d" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+  
+  <!-- Blueprint grid, very subtle -->
+  <g stroke="rgba(201,168,76,0.18)" stroke-width="0.4" fill="none" opacity="0.35">
+    <line x1="0" y1="0" x2="0" y2="534"/><line x1="40" y1="0" x2="40" y2="534"/><line x1="80" y1="0" x2="80" y2="534"/><line x1="120" y1="0" x2="120" y2="534"/><line x1="160" y1="0" x2="160" y2="534"/><line x1="200" y1="0" x2="200" y2="534"/><line x1="240" y1="0" x2="240" y2="534"/><line x1="280" y1="0" x2="280" y2="534"/><line x1="320" y1="0" x2="320" y2="534"/><line x1="360" y1="0" x2="360" y2="534"/><line x1="400" y1="0" x2="400" y2="534"/><line x1="440" y1="0" x2="440" y2="534"/><line x1="480" y1="0" x2="480" y2="534"/><line x1="520" y1="0" x2="520" y2="534"/><line x1="560" y1="0" x2="560" y2="534"/><line x1="600" y1="0" x2="600" y2="534"/><line x1="640" y1="0" x2="640" y2="534"/><line x1="680" y1="0" x2="680" y2="534"/><line x1="720" y1="0" x2="720" y2="534"/><line x1="760" y1="0" x2="760" y2="534"/>
+    <line x1="0" y1="0" x2="800" y2="0"/><line x1="0" y1="40" x2="800" y2="40"/><line x1="0" y1="80" x2="800" y2="80"/><line x1="0" y1="120" x2="800" y2="120"/><line x1="0" y1="160" x2="800" y2="160"/><line x1="0" y1="200" x2="800" y2="200"/><line x1="0" y1="240" x2="800" y2="240"/><line x1="0" y1="280" x2="800" y2="280"/><line x1="0" y1="320" x2="800" y2="320"/><line x1="0" y1="360" x2="800" y2="360"/><line x1="0" y1="400" x2="800" y2="400"/><line x1="0" y1="440" x2="800" y2="440"/><line x1="0" y1="480" x2="800" y2="480"/><line x1="0" y1="520" x2="800" y2="520"/>
+  </g>
+  <!-- Ground line -->
+  <line x1="80" y1="400" x2="720" y2="400" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/>
+  <!-- Building — main body -->
+  <rect x="240" y="200" width="320" height="200" fill="#0a0f1e" stroke="#c9a84c" stroke-width="1.5" opacity="0.95"/>
+  <!-- Building — upper storey -->
+  <rect x="300" y="130" width="200" height="70" fill="#0a0f1e" stroke="#c9a84c" stroke-width="1.2" opacity="0.9"/>
+  <!-- Roof apex -->
+  <polygon points="370,72 400,130 430,130" fill="none" stroke="#c9a84c" stroke-width="1.5" opacity="0.8"/>
+  <line x1="260" y1="130" x2="540" y2="130" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+  <!-- Windows — ground floor -->
+  <rect x="265" y="240" width="55" height="70" fill="#c9a84c" opacity="0.07" stroke="#c9a84c" stroke-width="1"/>
+  <rect x="355" y="240" width="90" height="70" fill="#c9a84c" opacity="0.07" stroke="#c9a84c" stroke-width="1"/>
+  <rect x="480" y="240" width="55" height="70" fill="#c9a84c" opacity="0.07" stroke="#c9a84c" stroke-width="1"/>
+  <!-- Door -->
+  <rect x="362" y="330" width="76" height="70" fill="#c9a84c" opacity="0.08" stroke="#c9a84c" stroke-width="1.2"/>
+  <circle cx="428" cy="368" r="4" fill="#c9a84c" opacity="0.7"/>
+  <!-- Upper windows -->
+  <rect x="318" y="148" width="44" height="36" fill="#c9a84c" opacity="0.06" stroke="#c9a84c" stroke-width="0.8"/>
+  <rect x="438" y="148" width="44" height="36" fill="#c9a84c" opacity="0.06" stroke="#c9a84c" stroke-width="0.8"/>
+  <!-- Dimension lines -->
+  <line x1="195" y1="200" x2="195" y2="400" stroke="#c9a84c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.3"/>
+  <line x1="190" y1="200" x2="200" y2="200" stroke="#c9a84c" stroke-width="0.8" opacity="0.3"/>
+  <line x1="190" y1="400" x2="200" y2="400" stroke="#c9a84c" stroke-width="0.8" opacity="0.3"/>
+  <line x1="240" y1="445" x2="560" y2="445" stroke="#c9a84c" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.3"/>
+  <line x1="240" y1="440" x2="240" y2="450" stroke="#c9a84c" stroke-width="0.8" opacity="0.3"/>
+  <line x1="560" y1="440" x2="560" y2="450" stroke="#c9a84c" stroke-width="0.8" opacity="0.3"/>
+  <!-- Contract clause bracket on right -->
+  <rect x="590" y="220" width="80" height="5" rx="2" fill="#c9a84c" opacity="0.2"/>
+  <rect x="590" y="232" width="100" height="4" rx="2" fill="#c9a84c" opacity="0.15"/>
+  <rect x="590" y="244" width="90" height="4" rx="2" fill="#c9a84c" opacity="0.12"/>
+  <rect x="590" y="256" width="70" height="4" rx="2" fill="#c9a84c" opacity="0.1"/>
+  <line x1="585" y1="218" x2="585" y2="262" stroke="#c9a84c" stroke-width="1" opacity="0.3"/>
+
+</svg>

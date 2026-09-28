@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 534" width="800" height="534">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="gold-v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="60%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    <linearGradient id="gold-h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="60%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    <linearGradient id="gold-d" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+  
+  <!-- Background grid -->
+  <g stroke="rgba(201,168,76,0.18)" stroke-width="0.5" fill="none" opacity="0.5">
+    <line x1="0" y1="0" x2="0" y2="534"/><line x1="80" y1="0" x2="80" y2="534"/><line x1="160" y1="0" x2="160" y2="534"/><line x1="240" y1="0" x2="240" y2="534"/><line x1="320" y1="0" x2="320" y2="534"/><line x1="400" y1="0" x2="400" y2="534"/><line x1="480" y1="0" x2="480" y2="534"/><line x1="560" y1="0" x2="560" y2="534"/><line x1="640" y1="0" x2="640" y2="534"/><line x1="720" y1="0" x2="720" y2="534"/>
+  </g>
+  <!-- 7 columns representing 7 days -->
+  
+  <g transform="translate(96,0)">
+    <rect x="0" y="117" width="56" height="300" rx="4"
+      fill="url(#gold-v)"
+      stroke="#c9a84c"
+      stroke-width="1.5"
+      opacity="1"/>
+    <!-- Day label tick -->
+    <line x1="28" y1="107" x2="28" y2="117" stroke="#c9a84c" stroke-width="1.5" opacity="1"/>
+    <!-- Content lines inside column -->
+    <rect x="8" y="140" width="40" height="4" rx="2" fill="#0a0f1e" opacity="0.6"/><rect x="8" y="152" width="30" height="4" rx="2" fill="#0a0f1e" opacity="0.5"/><rect x="8" y="164" width="36" height="4" rx="2" fill="#0a0f1e" opacity="0.45"/><rect x="8" y="176" width="28" height="4" rx="2" fill="#0a0f1e" opacity="0.4"/>
+  </g>
+
+  <g transform="translate(184,0)">
+    <rect x="0" y="117" width="56" height="300" rx="4"
+      fill="#0a0f1e"
+      stroke="#c9a84c"
+      stroke-width="0.8"
+      opacity="0.19"/>
+    <!-- Day label tick -->
+    <line x1="28" y1="107" x2="28" y2="117" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+    <!-- Content lines inside column -->
+    <rect x="8" y="140" width="40" height="4" rx="2" fill="#c9a84c" opacity="0.12"/><rect x="8" y="152" width="30" height="4" rx="2" fill="#c9a84c" opacity="0.10"/><rect x="8" y="164" width="36" height="4" rx="2" fill="#c9a84c" opacity="0.08"/>
+  </g>
+
+  <g transform="translate(272,0)">
+    <rect x="0" y="117" width="56" height="300" rx="4"
+      fill="#0a0f1e"
+      stroke="#c9a84c"
+      stroke-width="0.8"
+      opacity="0.22999999999999998"/>
+    <!-- Day label tick -->
+    <line x1="28" y1="107" x2="28" y2="117" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+    <!-- Content lines inside column -->
+    <rect x="8" y="140" width="40" height="4" rx="2" fill="#c9a84c" opacity="0.12"/><rect x="8" y="152" width="30" height="4" rx="2" fill="#c9a84c" opacity="0.10"/><rect x="8" y="164" width="36" height="4" rx="2" fill="#c9a84c" opacity="0.08"/>
+  </g>
+
+  <g transform="translate(360,0)">
+    <rect x="0" y="117" width="56" height="300" rx="4"
+      fill="#0a0f1e"
+      stroke="#c9a84c"
+      stroke-width="0.8"
+      opacity="0.27"/>
+    <!-- Day label tick -->
+    <line x1="28" y1="107" x2="28" y2="117" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+    <!-- Content lines inside column -->
+    <rect x="8" y="140" width="40" height="4" rx="2" fill="#c9a84c" opacity="0.12"/><rect x="8" y="152" width="30" height="4" rx="2" fill="#c9a84c" opacity="0.10"/><rect x="8" y="164" width="36" height="4" rx="2" fill="#c9a84c" opacity="0.08"/>
+  </g>
+
+  <g transform="translate(448,0)">
+    <rect x="0" y="117" width="56" height="300" rx="4"
+      fill="#0a0f1e"
+      stroke="#c9a84c"
+      stroke-width="0.8"
+      opacity="0.31"/>
+    <!-- Day label tick -->
+    <line x1="28" y1="107" x2="28" y2="117" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+    <!-- Content lines inside column -->
+    <rect x="8" y="140" width="40" height="4" rx="2" fill="#c9a84c" opacity="0.12"/><rect x="8" y="152" width="30" height="4" rx="2" fill="#c9a84c" opacity="0.10"/><rect x="8" y="164" width="36" height="4" rx="2" fill="#c9a84c" opacity="0.08"/>
+  </g>
+
+  <g transform="translate(536,0)">
+    <rect x="0" y="117" width="56" height="300" rx="4"
+      fill="#0a0f1e"
+      stroke="#c9a84c"
+      stroke-width="0.8"
+      opacity="0.35"/>
+    <!-- Day label tick -->
+    <line x1="28" y1="107" x2="28" y2="117" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+    <!-- Content lines inside column -->
+    <rect x="8" y="140" width="40" height="4" rx="2" fill="#c9a84c" opacity="0.12"/><rect x="8" y="152" width="30" height="4" rx="2" fill="#c9a84c" opacity="0.10"/><rect x="8" y="164" width="36" height="4" rx="2" fill="#c9a84c" opacity="0.08"/>
+  </g>
+
+  <g transform="translate(624,0)">
+    <rect x="0" y="117" width="56" height="300" rx="4"
+      fill="#0a0f1e"
+      stroke="#c9a84c"
+      stroke-width="0.8"
+      opacity="0.39"/>
+    <!-- Day label tick -->
+    <line x1="28" y1="107" x2="28" y2="117" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+    <!-- Content lines inside column -->
+    <rect x="8" y="140" width="40" height="4" rx="2" fill="#c9a84c" opacity="0.12"/><rect x="8" y="152" width="30" height="4" rx="2" fill="#c9a84c" opacity="0.10"/><rect x="8" y="164" width="36" height="4" rx="2" fill="#c9a84c" opacity="0.08"/>
+  </g>
+  <!-- Baseline rule -->
+  <line x1="96" y1="417" x2="712" y2="417" stroke="#c9a84c" stroke-width="1" opacity="0.35"/>
+  <!-- Top rule -->
+  <line x1="96" y1="107" x2="712" y2="107" stroke="#c9a84c" stroke-width="0.8" opacity="0.25"/>
+  <!-- "1" label on first column -->
+  <rect x="107" y="68" width="34" height="28" rx="3" fill="#c9a84c" opacity="0.9"/>
+  <text x="124" y="88" font-family="system-ui,sans-serif" font-size="16" font-weight="700" fill="#0a0f1e" text-anchor="middle">1</text>
+
+</svg>

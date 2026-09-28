@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 534" width="800" height="534">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="gold-v" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="60%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    <linearGradient id="gold-h" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="60%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    <linearGradient id="gold-d" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8d08a"/>
+      <stop offset="100%" stop-color="#9b7d2e"/>
+    </linearGradient>
+    
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+  
+  <!-- Board pass shadow -->
+  <rect x="122" y="157" width="556" height="220" rx="8" fill="rgba(0,0,0,0.4)" transform="translate(6,8)"/>
+  <!-- Boarding pass body -->
+  <rect x="122" y="157" width="556" height="220" rx="8" fill="#0a0f1e" stroke="#c9a84c" stroke-width="1.5"/>
+  <!-- Perforation line -->
+  <line x1="500" y1="157" x2="500" y2="377" stroke="#c9a84c" stroke-width="1" stroke-dasharray="5,5" opacity="0.6"/>
+  <circle cx="500" cy="157" r="12" fill="#111827" stroke="#c9a84c" stroke-width="1.5"/>
+  <circle cx="500" cy="377" r="12" fill="#111827" stroke="#c9a84c" stroke-width="1.5"/>
+  <!-- Left panel -->
+  <rect x="148" y="183" width="100" height="8" rx="3" fill="#c9a84c" opacity="0.9"/>
+  <rect x="148" y="198" width="64" height="6" rx="2" fill="#c9a84c" opacity="0.4"/>
+  <!-- Route display -->
+  <text x="200" y="272" font-family="system-ui,sans-serif" font-size="42" font-weight="800" fill="#c9a84c" opacity="0.9" text-anchor="middle" letter-spacing="-1">A</text>
+  <line x1="240" y1="268" x2="340" y2="268" stroke="#c9a84c" stroke-width="1.5" opacity="0.5"/>
+  <polygon points="345,263 355,268 345,273" fill="#c9a84c" opacity="0.6"/>
+  <text x="430" y="272" font-family="system-ui,sans-serif" font-size="42" font-weight="800" fill="#c9a84c" opacity="0.9" text-anchor="middle" letter-spacing="-1">B</text>
+  <!-- Sub fields -->
+  <rect x="148" y="295" width="55" height="5" rx="2" fill="#c9a84c" opacity="0.2"/>
+  <rect x="148" y="307" width="80" height="7" rx="2" fill="#c9a84c" opacity="0.55"/>
+  <rect x="260" y="295" width="55" height="5" rx="2" fill="#c9a84c" opacity="0.2"/>
+  <rect x="260" y="307" width="65" height="7" rx="2" fill="#c9a84c" opacity="0.55"/>
+  <rect x="370" y="295" width="55" height="5" rx="2" fill="#c9a84c" opacity="0.2"/>
+  <rect x="370" y="307" width="45" height="7" rx="2" fill="#c9a84c" opacity="0.55"/>
+  <!-- Guarantee clause badge -->
+  <rect x="148" y="337" width="130" height="22" rx="3" fill="#c9a84c" opacity="0.12" stroke="#c9a84c" stroke-width="0.8"/>
+  <rect x="156" y="344" width="80" height="5" rx="2" fill="#c9a84c" opacity="0.5"/>
+  <!-- Right panel — stub -->
+  <rect x="520" y="183" width="90" height="7" rx="3" fill="#c9a84c" opacity="0.6"/>
+  <rect x="520" y="197" width="60" height="5" rx="2" fill="#c9a84c" opacity="0.3"/>
+  <!-- Barcode lines -->
+  <rect x="522" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.7"/>
+<rect x="526" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="530" y="230" width="1" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="534" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="538" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="542" y="230" width="1" height="80" rx="1" fill="#c9a84c" opacity="0.7"/>
+<rect x="546" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="550" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="554" y="230" width="1" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="558" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="562" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.7"/>
+<rect x="566" y="230" width="1" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="570" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="574" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="578" y="230" width="1" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="582" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.7"/>
+<rect x="586" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="590" y="230" width="1" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="594" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="598" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+<rect x="602" y="230" width="1" height="80" rx="1" fill="#c9a84c" opacity="0.7"/>
+<rect x="606" y="230" width="2" height="80" rx="1" fill="#c9a84c" opacity="0.35"/>
+  <rect x="520" y="324" width="92" height="5" rx="2" fill="#c9a84c" opacity="0.2"/>
+
+</svg>
