@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucid Future — коллекция Rainbow</title>
+<meta name="description" content="Коллекция Rainbow — радуги над открытой водой. Художественная фотография моря, печать на заказ в США.">
+<link rel="canonical" href="https://carl-walker-pm.github.io/k/lf/rainbow/">
+<meta property="og:title" content="Lucid Future — коллекция Rainbow">
+<meta property="og:description" content="Коллекция Rainbow — радуги над открытой водой. Художественная фотография моря, печать на заказ в США.">
+<meta property="og:url" content="https://carl-walker-pm.github.io/k/lf/rainbow/">
+<meta property="og:image" content="https://praw.pro/lf/img/rainbow-hero.jpg">
+<!-- Analytics: paste GA4 / Clarity / PostHog snippets here (placeholders retained on every rebuild) -->
+<!-- GA4: <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> -->
+<!-- Microsoft Clarity: <script>/* clarity snippet */</script> -->
+<!-- PostHog: <script>/* posthog snippet */</script> -->
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+:root{
+  --ink:#221a12; --muted:#6e5f4c; --faint:#ab9c83;
+  --paper:#fffdf8; --soft:#f8f2e6; --line:#e7dcc4;
+  --sea:#f59e0b; --indigo:#8b5cf6; --deep:#221527;
+  --grad:linear-gradient(100deg,#f43f5e,#f59e0b,#22c55e,#06b6d4,#8b5cf6);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --rad:26px;
+}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  color:var(--ink);background:var(--paper);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+img{display:block;max-width:100%;}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;height:64px;
+  background:rgba(255,255,255,.86);backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid var(--line);
+  transition:transform .35s var(--ease);}
+.nav.hide{transform:translateY(-100%);}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 28px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;}
+.brand{font-weight:800;font-size:14px;letter-spacing:.24em;text-decoration:none;}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.nav-links{display:flex;gap:30px;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{font-size:13px;font-weight:700;padding:10px 24px;border-radius:999px;
+  background:var(--ink);color:#fff;text-decoration:none;transition:transform .2s var(--ease),background .2s;}
+.nav-cta:hover{transform:translateY(-1px);background:#2a2f36;}
+body{padding-top:64px;}
+
+/* ---------- hero ---------- */
+.hero{padding:110px 0 90px;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 78% 22%,rgba(14,165,233,.10),transparent 32%),
+             radial-gradient(circle at 88% 78%,rgba(99,102,241,.10),transparent 28%),var(--paper);}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 26px;}
+.eyebrow .dot{display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:var(--grad);margin-right:10px;vertical-align:1px;}
+h1.hero-title{font-size:clamp(4rem,9vw,8.2rem);line-height:.86;font-weight:900;
+  letter-spacing:-.07em;margin:0 0 30px;}
+h1.hero-title span{display:block;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-sub{font-size:19px;line-height:1.6;color:var(--muted);max-width:480px;margin:0 0 38px;}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:999px;
+  font-size:15px;font-weight:700;text-decoration:none;border:none;cursor:pointer;
+  transition:transform .2s var(--ease),box-shadow .2s,background .2s;}
+.btn .arr{transition:transform .2s var(--ease);}
+.btn:hover .arr{transform:translateX(4px);}
+.btn-dark{background:var(--ink);color:#fff;}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(16,20,24,.22);}
+.btn-line{background:#fff;color:var(--ink);border:1px solid var(--line);}
+.btn-line:hover{border-color:var(--ink);}
+.hero-fig{margin:0;position:relative;}
+.hero-fig img{width:100%;height:min(72vh,640px);object-fit:cover;border-radius:32px;
+  box-shadow:0 40px 90px rgba(11,18,38,.22);}
+.hero-fig figcaption{margin-top:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);font-weight:600;}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);padding:20px 0;background:var(--paper);}
+.marquee-track{display:inline-block;animation:mq 32s linear infinite;
+  font-weight:800;font-size:15px;letter-spacing:.18em;text-transform:uppercase;}
+.marquee-track i{font-style:normal;margin:0 26px;color:var(--faint);}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- sections ---------- */
+.sec{padding:120px 0;}
+.sec-soft{background:var(--soft);}
+.sec-head{max-width:760px;margin:0 0 64px;}
+.sec-kick{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 20px;}
+.sec-kick em{font-style:normal;background:var(--grad);-webkit-background-clip:text;
+  background-clip:text;color:transparent;}
+h2.sec-title{font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:.95;font-weight:900;
+  letter-spacing:-.055em;margin:0 0 22px;}
+.sec-lede{font-size:18px;color:var(--muted);margin:0;max-width:620px;}
+
+/* ---------- collection grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s;}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 70px rgba(11,18,38,.12);}
+.card-img{aspect-ratio:4/3;overflow:hidden;background:var(--soft);}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.card:hover .card-img img{transform:scale(1.04);}
+.card-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.card-name{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;}
+.card-desc{font-size:14.5px;color:var(--muted);margin:0;flex:1;}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;
+  padding-top:18px;border-top:1px solid var(--line);}
+.price{font-size:17px;font-weight:800;}
+.price small{font-weight:600;color:var(--faint);font-size:12px;letter-spacing:.06em;}
+.order-link{font-size:14px;font-weight:700;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;}
+.order-link .arr{transition:transform .2s var(--ease);}
+.order-link:hover .arr{transform:translateX(4px);}
+.order-link:hover{text-decoration:underline;text-underline-offset:4px;}
+
+/* ---------- craft ---------- */
+.craft-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;}
+.craft{background:#fff;padding:44px 40px;}
+.craft h3{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0 0 12px;}
+.craft h3 .n{font-family:ui-monospace,"SF Mono",monospace;font-size:14px;font-weight:600;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  display:block;margin-bottom:14px;letter-spacing:.1em;}
+.craft p{margin:0;color:var(--muted);font-size:15.5px;max-width:420px;}
+
+/* ---------- steps ---------- */
+.step{display:grid;grid-template-columns:120px 1fr 1fr;gap:32px;align-items:center;
+  padding:44px 0;border-top:1px solid var(--line);}
+.step:last-child{border-bottom:1px solid var(--line);}
+.step-n{font-size:64px;font-weight:900;letter-spacing:-.06em;color:#e3e3dc;line-height:1;}
+.step h3{font-size:30px;font-weight:800;letter-spacing:-.03em;margin:0 0 10px;}
+.step p{margin:0;color:var(--muted);font-size:16px;max-width:520px;}
+.step-side{font-size:14px;font-weight:700;color:var(--ink);text-align:right;}
+
+/* ---------- big CTA ---------- */
+.cta-panel{background:var(--deep);color:#fff;border-radius:44px;padding:110px 70px;
+  position:relative;overflow:hidden;}
+.cta-panel::after{content:"";position:absolute;width:560px;height:560px;
+  background:linear-gradient(135deg,var(--sea),var(--indigo));filter:blur(110px);
+  opacity:.5;right:-220px;bottom:-280px;pointer-events:none;}
+.cta-kick{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin:0 0 28px;position:relative;z-index:2;}
+.cta-panel h2{font-size:clamp(3rem,7.5vw,7rem);line-height:.88;font-weight:900;
+  letter-spacing:-.06em;margin:0 0 28px;position:relative;z-index:2;}
+.cta-panel p{font-size:18px;color:rgba(255,255,255,.65);max-width:540px;margin:0 0 40px;
+  position:relative;z-index:2;}
+.btn-white{background:#fff;color:var(--ink);}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.35);}
+
+/* ---------- order ---------- */
+.order-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;margin-top:64px;}
+.order-card{background:#fff;padding:42px 36px;transition:background .25s;}
+.order-card:hover{background:var(--soft);}
+.order-card .on{font-family:ui-monospace,"SF Mono",monospace;font-size:14px;font-weight:600;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:.1em;}
+.order-card h3{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:16px 0 12px;}
+.order-card p{margin:0;color:var(--muted);font-size:15px;}
+.order-note{margin-top:28px;font-size:14px;color:var(--faint);text-align:center;}
+
+/* ---------- footer ---------- */
+footer{background:var(--deep);color:#fff;padding:70px 0 34px;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;}
+.foot-brand{font-weight:800;font-size:14px;letter-spacing:.24em;margin:0 0 18px;}
+.foot-brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.foot-tag{color:rgba(255,255,255,.55);font-size:14px;max-width:300px;margin:0;}
+footer h4{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin:0 0 18px;}
+footer .fl a{display:block;color:rgba(255,255,255,.72);text-decoration:none;font-size:14px;margin-bottom:12px;}
+footer .fl a:hover{color:#fff;}
+.foot-base{margin-top:54px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:12px;color:rgba(255,255,255,.4);}
+
+/* ---------- mobile CTA ---------- */
+.m-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(11,18,38,.96);backdrop-filter:blur(16px);
+  border-top:1px solid rgba(255,255,255,.1);}
+.m-cta .btn{width:100%;justify-content:center;}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;} .rv{opacity:1;transform:none;transition:none;}
+  .marquee-track{animation:none;} .btn,.card,.card-img img{transition:none;}
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:1020px){
+  .nav-links{display:none;}
+  .hero-grid{grid-template-columns:1fr;gap:48px;}
+  .hero-fig img{height:420px;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .step{grid-template-columns:80px 1fr;}
+  .step-side{display:none;}
+}
+@media(max-width:640px){
+  .hero{padding:80px 0 64px;}
+  .hero-fig img{height:320px;border-radius:24px;}
+  .sec{padding:84px 0;}
+  .grid{grid-template-columns:1fr;}
+  .craft-grid{grid-template-columns:1fr;}
+  .craft{padding:34px 28px;}
+  .order-grid{grid-template-columns:1fr;}
+  .cta-panel{padding:70px 30px;border-radius:30px;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .m-cta{display:block;}
+  body{padding-bottom:76px;}
+  .step{grid-template-columns:1fr;gap:12px;}
+  .step-n{font-size:44px;}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="/k/lf/">LUCID <b>FUTURE</b></a>
+    <nav class="nav-links">
+      <a href="#craft">Мастерство</a>
+      <a href="#process">Процесс</a>
+    </nav>
+    <a class="nav-cta" href="#order">Заказать</a>
+  </div>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow rv"><span class="dot"></span>Коллекция Rainbow — художественная фотография, печать на заказ</p>
+      <h1 class="hero-title rv"><span>Создавай.</span><span class="grad-text">Печатай.</span><span>Продавай.</span></h1>
+      <p class="hero-sub rv">Одно побережье, пойманное в свете после дождя и напечатанное по галерейному стандарту — на бумаге, ткани, керамике и хлопке. Каждая работа делается под ваш заказ — и только для вас.</p>
+      <div class="btn-row rv">
+        <a class="btn btn-dark" href="#order">Как заказать <span class="arr">→</span></a>
+        <a class="btn btn-line" href="#process">Как это работает</a>
+      </div>
+    </div>
+    <figure class="hero-fig rv">
+      <img src="https://praw.pro/lf/img/rainbow-hero.jpg" alt="Художественная фотография радуги над морем в раме" fetchpriority="high">
+      <figcaption>Радуга над водой — принт в раме, от $144</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Настоящие фотографии <i>✦</i> ИИ-изображения высшего класса <i>✦</i> Напечатано в США <i>✦</i> Архивные чернила <i>✦</i> Доставка с трекингом <i>✦</i> Брак? Перепечатаем <i>✦</i></span><span>Настоящие фотографии <i>✦</i> ИИ-изображения высшего класса <i>✦</i> Напечатано в США <i>✦</i> Архивные чернила <i>✦</i> Доставка с трекингом <i>✦</i> Брак? Перепечатаем <i>✦</i></span>
+  </div>
+</div>
+
+<!-- ============ CRAFT ============ -->
+<section class="sec sec-soft" id="craft">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">01 <em>—</em> Мастерство</p>
+      <h2 class="sec-title">Галерейный<br>стандарт.</h2>
+      <p class="sec-lede">Четыре обещания. Если работа не выдержит мою стену — она не поедет на вашу.</p>
+    </div>
+    <div class="craft-grid">
+      <div class="craft rv">
+        <h3><span class="n">01</span>Настоящие фотографии. Лучшие ИИ-изображения.</h3>
+        <p>Каждый морской пейзаж начинается с моей собственной фотографии — радуга над настоящей водой после настоящего дождя, — и с ИИ-изображениями, которыми мы гордимся.</p>
+      </div>
+      <div class="craft rv">
+        <h3><span class="n">02</span>Напечатано в США.</h3>
+        <p>Каждый заказ печатается под заказ партнёрами в США на архивных бумаге и чернилах — чёткие файлы, честный цвет.</p>
+      </div>
+      <div class="craft rv">
+        <h3><span class="n">03</span>Брак? Перепечатаем.</h3>
+        <p>Повредилось в пути или брак печати — напишите мне, пришлите фото, и замена пойдёт в производство. Без форм и допросов.</p>
+      </div>
+      <div class="craft rv">
+        <h3><span class="n">04</span>Сделано под ваш заказ.</h3>
+        <p>Панорама шире стандарта, принт под готовую раму, полный комплект для офиса — нестандартные размеры тоже делаем.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">02 <em>—</em> Процесс</p>
+      <h2 class="sec-title">От мысли —<br>к вещи.</h2>
+    </div>
+    <div class="rv">
+      <div class="step">
+        <div class="step-n">01</div>
+        <div><h3>Выберите работу.</h3><p>Скажите, какую работу хотите, — или напишите с индивидуальным запросом. Вопросы — тому, кто это создал.</p></div>
+        <div class="step-side">Начните с идеи.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <div><h3>Мы печатаем.</h3><p>Я лично подтверждаю заказ, вручную размещаю печать и проверяю её до производства. PayPal или Stripe-ссылка — на ваш выбор.</p></div>
+        <div class="step-side">Сделано под ваш заказ.</div>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <div><h3>Она ваша.</h3><p>Трекинг от станка до порога, упаковка для хрупкого искусства. Подарочная упаковка и открытка от руки по запросу — отправим сразу получателю, если хотите.</p></div>
+        <div class="step-side">Остальное делает море.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIG CTA ============ -->
+<section class="wrap" style="padding-bottom:120px;">
+  <div class="cta-panel rv">
+    <p class="cta-kick">Ваша следующая работа начинается здесь</p>
+    <h2>Сделайте радугу<br>своей.</h2>
+    <p>Одно побережье, никаких догадок. Скажите, что хотите, — я лично подтверждаю каждый заказ, и ваша работа едет к вам с трекингом.</p>
+    <a class="btn btn-white" href="#order">Как заказать <span class="arr">→</span></a>
+  </div>
+</section>
+
+<!-- ============ ORDER ============ -->
+<section class="sec sec-soft" id="order" style="padding-top:120px;">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:center;max-width:760px;margin-left:auto;margin-right:auto;">
+      <p class="sec-kick">03 <em>—</em> Как заказать</p>
+      <h2 class="sec-title">Три шага —<br>и она ваша.</h2>
+      <p class="sec-lede" style="margin-left:auto;margin-right:auto;">Каждый заказ оформляется вручную и подтверждается человеком.</p>
+    </div>
+    <div class="order-grid rv">
+      <div class="order-card">
+        <div class="on">01</div>
+        <h3>Скажите, что хотите</h3>
+        <p>Выберите свою работу — или напишите мне с индивидуальным запросом. Вопросы о работе — тому, кто её создал.</p>
+      </div>
+      <div class="order-card">
+        <div class="on">02</div>
+        <h3>Планируем работу</h3>
+        <p>Я лично подтверждаю заказ, вручную размещаю печать и проверяю её до производства. PayPal или Stripe-ссылка — на ваш выбор.</p>
+      </div>
+      <div class="order-card">
+        <div class="on">03</div>
+        <h3>Вы получаете работу</h3>
+        <p>Напечатано в США, трекинг от станка до порога, упаковка для хрупкого искусства. Приехало с браком? Перепечатаем.</p>
+      </div>
+    </div>
+    <p class="order-note rv">Без регистрации · Расчёт доставки до оплаты · Доступна подарочная отправка</p>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">LUCID <b>FUTURE</b></p>
+        <p class="foot-tag">Коллекция Rainbow — радуги над морем, из архива 2011–2013. Печать по требованию в США, ручная проверка.</p>
+      </div>
+      <div class="fl"><h4>Мастерство</h4><a href="#craft">Галерейный стандарт</a><a href="#craft">ИИ-изображения</a><a href="#craft">Печать в США</a></div>
+      <div class="fl"><h4>Заказ</h4><a href="#order">Как заказать</a><a href="#process">Процесс</a><a href="#order">Подарочная отправка</a></div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Lucid Future. Все фотографии — настоящие кадры из архива.</span>
+      <span>Создавай. Печатай. Продавай. — Напечатано в США</span>
+    </div>
+  </div>
+</footer>
+
+<div class="m-cta"><a class="btn btn-dark" href="#order">Как заказать <span class="arr">→</span></a></div>
+
+<script>
+// nav hides on scroll down, returns on scroll up
+(function(){var n=document.getElementById('nav'),last=0;
+addEventListener('scroll',function(){var y=scrollY;
+if(y>last&&y>140){n.classList.add('hide');}else{n.classList.remove('hide');}
+last=y;},{passive:true});})();
+// scroll reveal
+(function(){var els=document.querySelectorAll('.rv');
+if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in');});return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(en){
+if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1});
+els.forEach(function(x){io.observe(x);});})();
+</script>
+</body>
+</html>

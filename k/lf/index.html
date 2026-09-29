@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lucid Future — художественная фотография, печать на заказ</title>
+<meta name="description" content="Lucid Future — дом художественной фотографии. Коллекции Stormy, Rainbow и Winter, печать на заказ в США — а также диджитал, брендинг и коллаборации.">
+<link rel="canonical" href="https://praw.pro/lf/">
+<meta property="og:title" content="Lucid Future — художественная фотография, печать на заказ">
+<meta property="og:description" content="Коллекции Stormy, Rainbow и Winter — художественная фотография моря, печать на заказ в США.">
+<meta property="og:url" content="https://carl-walker-pm.github.io/k/lf/">
+<meta property="og:image" content="https://praw.pro/lf/img/framed-print.jpg">
+<!-- Analytics: paste GA4 / Clarity / PostHog snippets here (placeholders retained on every rebuild) -->
+<!-- GA4: <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> -->
+<!-- Microsoft Clarity: <script>/* clarity snippet */</script> -->
+<!-- PostHog: <script>/* posthog snippet */</script> -->
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+:root{
+  --ink:#101418; --muted:#5c6470; --faint:#9aa2ad;
+  --paper:#ffffff; --soft:#f6f6f4; --line:#e5e5df;
+  --sea:#0ea5e9; --indigo:#6366f1; --deep:#0b1226;
+  --grad:linear-gradient(100deg,var(--sea),var(--indigo));
+  --ease:cubic-bezier(.22,1,.36,1);
+  --rad:26px;
+}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  color:var(--ink);background:var(--paper);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+img{display:block;max-width:100%;}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;height:64px;
+  background:rgba(255,255,255,.86);backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid var(--line);
+  transition:transform .35s var(--ease);}
+.nav.hide{transform:translateY(-100%);}
+.nav-in{max-width:1180px;margin:0 auto;padding:0 28px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;}
+.brand{font-weight:800;font-size:14px;letter-spacing:.24em;text-decoration:none;}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.nav-links{display:flex;gap:30px;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-cta{font-size:13px;font-weight:700;padding:10px 24px;border-radius:999px;
+  background:var(--ink);color:#fff;text-decoration:none;transition:transform .2s var(--ease),background .2s;}
+.nav-cta:hover{transform:translateY(-1px);background:#2a2f36;}
+body{padding-top:64px;}
+
+/* ---------- hero ---------- */
+.hero{padding:110px 0 90px;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 78% 22%,rgba(14,165,233,.10),transparent 32%),
+             radial-gradient(circle at 88% 78%,rgba(99,102,241,.10),transparent 28%),var(--paper);}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 26px;}
+.eyebrow .dot{display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:var(--grad);margin-right:10px;vertical-align:1px;}
+h1.hero-title{font-size:clamp(4rem,9vw,8.2rem);line-height:.86;font-weight:900;
+  letter-spacing:-.07em;margin:0 0 30px;}
+h1.hero-title span{display:block;}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-sub{font-size:19px;line-height:1.6;color:var(--muted);max-width:480px;margin:0 0 38px;}
+.btn-row{display:flex;gap:14px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:999px;
+  font-size:15px;font-weight:700;text-decoration:none;border:none;cursor:pointer;
+  transition:transform .2s var(--ease),box-shadow .2s,background .2s;}
+.btn .arr{transition:transform .2s var(--ease);}
+.btn:hover .arr{transform:translateX(4px);}
+.btn-dark{background:var(--ink);color:#fff;}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(16,20,24,.22);}
+.btn-line{background:#fff;color:var(--ink);border:1px solid var(--line);}
+.btn-line:hover{border-color:var(--ink);}
+.hero-fig{margin:0;position:relative;}
+.hero-fig img{width:100%;height:min(72vh,640px);object-fit:cover;border-radius:32px;
+  box-shadow:0 40px 90px rgba(11,18,38,.22);}
+.hero-fig figcaption{margin-top:14px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);font-weight:600;}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--ink);padding:20px 0;background:var(--paper);}
+.marquee-track{display:inline-block;animation:mq 32s linear infinite;
+  font-weight:800;font-size:15px;letter-spacing:.18em;text-transform:uppercase;}
+.marquee-track i{font-style:normal;margin:0 26px;color:var(--faint);}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ---------- sections ---------- */
+.sec{padding:120px 0;}
+.sec-soft{background:var(--soft);}
+.sec-head{max-width:760px;margin:0 0 64px;}
+.sec-kick{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 20px;}
+.sec-kick em{font-style:normal;background:var(--grad);-webkit-background-clip:text;
+  background-clip:text;color:transparent;}
+h2.sec-title{font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:.95;font-weight:900;
+  letter-spacing:-.055em;margin:0 0 22px;}
+.sec-lede{font-size:18px;color:var(--muted);margin:0;max-width:620px;}
+
+/* ---------- collection grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;
+  display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s;}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 70px rgba(11,18,38,.12);}
+.card-img{aspect-ratio:4/3;overflow:hidden;background:var(--soft);}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.card:hover .card-img img{transform:scale(1.04);}
+.card-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.card-name{font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0;}
+.card-desc{font-size:14.5px;color:var(--muted);margin:0;flex:1;}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;
+  padding-top:18px;border-top:1px solid var(--line);}
+.price{font-size:17px;font-weight:800;}
+.price small{font-weight:600;color:var(--faint);font-size:12px;letter-spacing:.06em;}
+.order-link{font-size:14px;font-weight:700;text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;}
+.order-link .arr{transition:transform .2s var(--ease);}
+.order-link:hover .arr{transform:translateX(4px);}
+.order-link:hover{text-decoration:underline;text-underline-offset:4px;}
+
+/* ---------- craft ---------- */
+.craft-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;}
+.craft{background:#fff;padding:44px 40px;}
+.craft h3{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0 0 12px;}
+.craft h3 .n{font-family:ui-monospace,"SF Mono",monospace;font-size:14px;font-weight:600;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  display:block;margin-bottom:14px;letter-spacing:.1em;}
+.craft p{margin:0;color:var(--muted);font-size:15.5px;max-width:420px;}
+
+/* ---------- steps ---------- */
+.step{display:grid;grid-template-columns:120px 1fr 1fr;gap:32px;align-items:center;
+  padding:44px 0;border-top:1px solid var(--line);}
+.step:last-child{border-bottom:1px solid var(--line);}
+.step-n{font-size:64px;font-weight:900;letter-spacing:-.06em;color:#e3e3dc;line-height:1;}
+.step h3{font-size:30px;font-weight:800;letter-spacing:-.03em;margin:0 0 10px;}
+.step p{margin:0;color:var(--muted);font-size:16px;max-width:520px;}
+.step-side{font-size:14px;font-weight:700;color:var(--ink);text-align:right;}
+
+/* ---------- big CTA ---------- */
+.cta-panel{background:var(--deep);color:#fff;border-radius:44px;padding:110px 70px;
+  position:relative;overflow:hidden;}
+.cta-panel::after{content:"";position:absolute;width:560px;height:560px;
+  background:linear-gradient(135deg,var(--sea),var(--indigo));filter:blur(110px);
+  opacity:.5;right:-220px;bottom:-280px;pointer-events:none;}
+.cta-kick{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin:0 0 28px;position:relative;z-index:2;}
+.cta-panel h2{font-size:clamp(3rem,7.5vw,7rem);line-height:.88;font-weight:900;
+  letter-spacing:-.06em;margin:0 0 28px;position:relative;z-index:2;}
+.cta-panel p{font-size:18px;color:rgba(255,255,255,.65);max-width:540px;margin:0 0 40px;
+  position:relative;z-index:2;}
+.btn-white{background:#fff;color:var(--ink);}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 18px 44px rgba(0,0,0,.35);}
+
+/* ---------- order ---------- */
+.order-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;margin-top:64px;}
+.order-card{background:#fff;padding:42px 36px;transition:background .25s;}
+.order-card:hover{background:var(--soft);}
+.order-card .on{font-family:ui-monospace,"SF Mono",monospace;font-size:14px;font-weight:600;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:.1em;}
+.order-card h3{font-size:22px;font-weight:800;letter-spacing:-.02em;margin:16px 0 12px;}
+.order-card p{margin:0;color:var(--muted);font-size:15px;}
+.order-note{margin-top:28px;font-size:14px;color:var(--faint);text-align:center;}
+
+/* ---------- footer ---------- */
+footer{background:var(--deep);color:#fff;padding:70px 0 34px;}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;}
+.foot-brand{font-weight:800;font-size:14px;letter-spacing:.24em;margin:0 0 18px;}
+.foot-brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.foot-tag{color:rgba(255,255,255,.55);font-size:14px;max-width:300px;margin:0;}
+footer h4{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);margin:0 0 18px;}
+footer .fl a{display:block;color:rgba(255,255,255,.72);text-decoration:none;font-size:14px;margin-bottom:12px;}
+footer .fl a:hover{color:#fff;}
+.foot-base{margin-top:54px;padding-top:26px;border-top:1px solid rgba(255,255,255,.1);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-size:12px;color:rgba(255,255,255,.4);}
+
+/* ---------- mobile CTA ---------- */
+.m-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(11,18,38,.96);backdrop-filter:blur(16px);
+  border-top:1px solid rgba(255,255,255,.1);}
+.m-cta .btn{width:100%;justify-content:center;}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;} .rv{opacity:1;transform:none;transition:none;}
+  .marquee-track{animation:none;} .btn,.card,.card-img img{transition:none;}
+}
+
+/* ---------- responsive ---------- */
+@media(max-width:1020px){
+  .nav-links{display:none;}
+  .hero-grid{grid-template-columns:1fr;gap:48px;}
+  .hero-fig img{height:420px;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+  .step{grid-template-columns:80px 1fr;}
+  .step-side{display:none;}
+}
+@media(max-width:640px){
+  .hero{padding:80px 0 64px;}
+  .hero-fig img{height:320px;border-radius:24px;}
+  .sec{padding:84px 0;}
+  .grid{grid-template-columns:1fr;}
+  .craft-grid{grid-template-columns:1fr;}
+  .craft{padding:34px 28px;}
+  .order-grid{grid-template-columns:1fr;}
+  .cta-panel{padding:70px 30px;border-radius:30px;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+  .m-cta{display:block;}
+  body{padding-bottom:76px;}
+  .step{grid-template-columns:1fr;gap:12px;}
+  .step-n{font-size:44px;}
+}
+
+
+/* ---------- collection cards ---------- */
+.col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.col-card{display:block;background:var(--paper);border:1px solid var(--line);border-radius:var(--rad);
+  overflow:hidden;text-decoration:none;color:var(--ink);
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);}
+.col-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px -24px rgba(11,18,38,.28);}
+.col-card img{width:100%;height:230px;object-fit:cover;display:block;}
+.col-body{padding:26px 26px 30px;}
+.col-body h3{margin:0 0 8px;font-size:24px;letter-spacing:-.01em;}
+.col-body p{margin:0 0 18px;color:var(--muted);}
+.col-go{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;}
+@media(max-width:860px){.col-grid{grid-template-columns:1fr;}.col-card img{height:200px;}}
+/* ---------- collab rows ---------- */
+.collab{display:flex;gap:26px;align-items:baseline;padding:30px 0;border-top:1px solid var(--line);}
+.collab:last-child{border-bottom:1px solid var(--line);}
+.collab h3{margin:0 0 6px;font-size:22px;letter-spacing:-.01em;}
+.collab p{margin:0;color:var(--muted);max-width:640px;}
+.collab .c-tag{flex:0 0 auto;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);}
+@media(max-width:700px){.collab{flex-direction:column;gap:10px;}}
+
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">LUCID <b>FUTURE</b></a>
+    <nav class="nav-links">
+      <a href="#collections">Коллекции</a>
+      <a href="#digital">Диджитал</a>
+      <a href="#branding">Брендинг</a>
+      <a href="#collaborations">Коллаборации</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow rv"><span class="dot"></span>Дом художественной фотографии</p>
+      <h1 class="hero-title rv"><span>Lucid</span><span class="grad-text">Future.</span></h1>
+      <p class="hero-sub rv">Морская фотография из архива 2011–2013 — печать на заказ на бумаге, ткани, керамике и хлопке. Теперь — диджитал, брендинг и коллаборации.</p>
+      <div class="btn-row rv">
+        <a class="btn btn-dark" href="#collections">Смотреть коллекции <span class="arr">&rarr;</span></a>
+        <a class="btn btn-line" href="#collaborations">Коллаборации</a>
+      </div>
+    </div>
+    <figure class="hero-fig rv">
+      <img src="https://praw.pro/lf/img/framed-print.jpg" alt="Художественная фотография штормового моря в раме" fetchpriority="high">
+      <figcaption>Lucid Future — коллекция Stormy</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Коллекция Stormy <i>&#10022;</i> Коллекция Rainbow <i>&#10022;</i> Коллекция Winter <i>&#10022;</i> Диджитал <i>&#10022;</i> Брендинг <i>&#10022;</i> Коллаборации <i>&#10022;</i></span><span>Коллекция Stormy <i>&#10022;</i> Коллекция Rainbow <i>&#10022;</i> Коллекция Winter <i>&#10022;</i> Диджитал <i>&#10022;</i> Брендинг <i>&#10022;</i> Коллаборации <i>&#10022;</i></span>
+  </div>
+</div>
+
+<!-- ============ COLLECTIONS ============ -->
+<section class="sec" id="collections">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">01 <em>&mdash;</em> Коллекции</p>
+      <h2 class="sec-title">Три настроения.<br>Одно море.</h2>
+      <p class="sec-lede">Каждая коллекция — отдельная страница: свой свет, своя палитра, своя погода.</p>
+    </div>
+    <div class="col-grid">
+      <a class="col-card rv" href="/k/lf/stormy/">
+        <img src="https://praw.pro/lf/img/framed-print.jpg" alt="Коллекция Stormy — принт штормового моря в раме" loading="lazy">
+        <div class="col-body"><h3>Коллекция Stormy</h3><p>Тёмная вода, настоящие штормы. Одиннадцать типов товаров, печать на заказ.</p><span class="col-go">Войти <span class="arr">&rarr;</span></span></div>
+      </a>
+      <a class="col-card rv" href="/k/lf/rainbow/">
+        <img src="https://praw.pro/lf/img/rainbow-hero.jpg" alt="Коллекция Rainbow — принт радуги над морем в раме" loading="lazy">
+        <div class="col-body"><h3>Коллекция Rainbow</h3><p>Свет после дождя. Радуги над открытой водой.</p><span class="col-go">Войти <span class="arr">&rarr;</span></span></div>
+      </a>
+      <a class="col-card rv" href="/k/lf/winter/">
+        <img src="https://praw.pro/lf/img/winter-hero.jpg" alt="Коллекция Winter — принт замёрзшего зимнего моря в раме" loading="lazy">
+        <div class="col-body"><h3>Коллекция Winter</h3><p>Море спит. Замёрзшие берега в бледном свете.</p><span class="col-go">Войти <span class="arr">&rarr;</span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DIGITAL ============ -->
+<section class="sec sec-soft" id="digital">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">02 <em>&mdash;</em> Диджитал</p>
+      <h2 class="sec-title">Сделано для<br>экранов.</h2>
+      <p class="sec-lede">Обои, работы для экранов и печатная графика — для устройств и стен, с которыми вы живёте. Сейчас в разработке — сначала коллекции.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRANDING ============ -->
+<section class="sec" id="branding">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">03 <em>&mdash;</em> Брендинг</p>
+      <h2 class="sec-title">У дома<br>есть знак.</h2>
+      <p class="sec-lede">Визуальная айдентика Lucid Future — знак, палитра, голос. Сейчас в разработке.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COLLABORATIONS ============ -->
+<section class="sec sec-soft" id="collaborations">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="sec-kick">04 <em>&mdash;</em> Коллаборации</p>
+      <h2 class="sec-title">Создано<br>вместе с другими.</h2>
+      <p class="sec-lede">Lucid Future растёт через партнёрства с родственными проектами.</p>
+    </div>
+    <div class="rv">
+      <div class="collab">
+        <span class="c-tag">Скоро</span>
+        <div><h3>Lucid Future &times; OPersona 2.0</h3><p>Коллаборация дома фотографии и сервиса проверки личности. Подробности — скоро.</p></div>
+      </div>
+      <div class="collab">
+        <span class="c-tag">Скоро</span>
+        <div><h3>Ещё коллаборации</h3><p>В разработке — это место зарезервировано.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIG CTA ============ -->
+<section class="wrap" style="padding-bottom:120px;">
+  <div class="cta-panel rv">
+    <p class="cta-kick">Начните с моря</p>
+    <h2>Выберите свою<br>коллекцию.</h2>
+    <p>Три коллекции, одно побережье, никаких догадок. Шагните в погоду, которая вам по душе, — каждая работа печатается на заказ и подтверждается вручную.</p>
+    <a class="btn btn-white" href="/k/lf/stormy/">Коллекция Stormy <span class="arr">&rarr;</span></a>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">LUCID <b>FUTURE</b></p>
+        <p class="foot-tag">Дом художественной фотографии — коллекции, диджитал, брендинг и коллаборации.</p>
+      </div>
+      <div class="fl"><h4>Коллекции</h4><a href="/k/lf/stormy/">Stormy</a><a href="/k/lf/rainbow/">Rainbow</a><a href="/k/lf/winter/">Winter</a></div>
+      <div class="fl"><h4>Дом</h4><a href="#digital">Диджитал</a><a href="#branding">Брендинг</a><a href="#collaborations">Коллаборации</a></div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Lucid Future. Все фотографии — настоящие кадры из архива.</span>
+      <span>Напечатано в США</span>
+    </div>
+  </div>
+</footer>
+
+<div class="m-cta"><a class="btn btn-dark" href="#collections">Смотреть коллекции <span class="arr">&rarr;</span></a></div>
+
+<script>
+// nav hides on scroll down, returns on scroll up
+(function(){var n=document.getElementById('nav'),last=0;
+addEventListener('scroll',function(){var y=scrollY;
+if(y>last&&y>140){n.classList.add('hide');}else{n.classList.remove('hide');}
+last=y;},{passive:true});})();
+// scroll reveal
+(function(){var els=document.querySelectorAll('.rv');
+if(!('IntersectionObserver' in window)){els.forEach(function(x){x.classList.add('in');});return;}
+var io=new IntersectionObserver(function(es){es.forEach(function(en){
+if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1});
+els.forEach(function(x){io.observe(x);});})();
+
+</script>
+</body>
+</html>
