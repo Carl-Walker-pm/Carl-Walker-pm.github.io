@@ -1,48 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Quantum Equations — a deep-tech studio turning frontier science into working products. New technology, new solutions, across the whole spectrum.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://carl-walker-pm.github.io/k/q/">
+<meta property="og:title" content="Quantum Equations — New Technology. New Solutions.">
+<meta property="og:description" content="A deep-tech studio: quantum computing, photonics, advanced materials, AI — from equation to shipped product.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%237c3aed'/%3E%3Cstop offset='.25' stop-color='%232563eb'/%3E%3Cstop offset='.5' stop-color='%2306b6d4'/%3E%3Cstop offset='.75' stop-color='%23eab308'/%3E%3Cstop offset='1' stop-color='%23ef4444'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='12' fill='%230a0f1e'/%3E%3Crect x='10' y='26' width='44' height='12' rx='6' fill='url(%23g)'/%3E%3C/svg%3E">
 <title>Quantum Equations — New Technology. New Solutions.</title>
-<meta name="description" content="Quantum Equations: new technology, new solutions — a wide spectrum.">
 <!-- analytics: GA4 / Clarity / PostHog — install when the Measurement ID is available (standing rule: never drop counters in a rebuild) -->
 <style>
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{height:100%;}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
-    background:#0b0e17; color:#eef1f7; line-height:1.6;
-    display:flex; flex-direction:column; min-height:100vh;
-  }
-  .spectrum{
-    height:6px;
-    background:linear-gradient(90deg,#7c3aed,#2563eb,#06b6d4,#22c55e,#eab308,#f97316,#ef4444);
-  }
-  main{flex:1; display:flex; align-items:center; justify-content:center; text-align:center; padding:48px 24px;}
-  .hero{max-width:720px;}
-  .eyebrow{letter-spacing:6px; font-size:12px; text-transform:uppercase; color:#8b93a7; margin-bottom:24px;}
-  h1{font-size:clamp(40px,7vw,68px); font-weight:700; letter-spacing:-1px; margin-bottom:20px;}
-  h1 .q{background:linear-gradient(90deg,#a78bfa,#60a5fa,#67e8f9,#6ee7b7,#fde047,#fdba74,#fca5a5);
-    -webkit-background-clip:text; background-clip:text; color:transparent;}
-  .tag{font-size:clamp(18px,3vw,24px); color:#c7cddc; margin-bottom:12px;}
-  .tag strong{color:#fff; font-weight:600;}
-  .wide{font-size:15px; letter-spacing:3px; text-transform:uppercase; color:#8b93a7; margin-top:28px;}
-  .soon{margin-top:40px; font-size:14px; color:#6b7280;}
-  footer{border-top:1px solid #1c2233; padding:20px 24px; text-align:center; font-size:13px; color:#6b7280;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-size-adjust:100%}
+:root{
+  --void:#0a0f1e; --void-2:#111827; --void-3:#1c2540;
+  --paper:#ffffff; --paper-2:#f7f7f5; --paper-3:#efefeb;
+  --ink:#0a0f1e; --ink-2:#2d3550; --ink-3:#6b7280; --ink-4:#9ca3af;
+  --gold:#c9a84c; --gold-l:#e8d08a;
+  --spectrum:linear-gradient(90deg,#7c3aed,#2563eb,#06b6d4,#22c55e,#eab308,#f97316,#ef4444);
+  --rule-dark:rgba(255,255,255,.07); --rule-light:rgba(0,0,0,.07);
+  --font:-apple-system,"Inter","Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono","Fira Code",monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --nav-h:60px; --max:1100px; --gutter:clamp(24px,5vw,64px);
+}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--font);cursor:pointer}
+/* reveal */
+.r{opacity:0;transform:translateY(20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r.in{opacity:1;transform:none}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}.r.d4{transition-delay:.32s}
+@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}}
+/* nav */
+.nav{position:fixed;inset:0 0 auto;z-index:100;height:var(--nav-h);background:rgba(10,15,30,.93);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--rule-dark);transition:transform .35s var(--ease)}
+.nav.hide{transform:translateY(-100%)}
+.nav__in{max-width:var(--max);margin:0 auto;height:100%;padding:0 var(--gutter);display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav__brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav__mark{width:32px;height:32px;border-radius:7px;background:var(--spectrum);flex-shrink:0}
+.nav__name{font-size:13px;letter-spacing:.22em;font-weight:700;color:var(--paper);text-transform:uppercase}
+.nav__links{display:flex;align-items:center;gap:28px;flex:1;justify-content:center}
+.nav__links a{font-size:12px;letter-spacing:.06em;font-weight:500;color:rgba(255,255,255,.38);transition:color .18s;white-space:nowrap;min-height:44px;display:flex;align-items:center}
+.nav__links a:hover{color:rgba(255,255,255,.85)}
+.nav__cta{font-size:13px;font-weight:600;letter-spacing:.03em;color:#fff;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.22);padding:10px 22px;border-radius:2px;transition:all .2s;white-space:nowrap;flex-shrink:0;min-height:44px;display:inline-flex;align-items:center}
+.nav__cta:hover{background:#fff;color:var(--void);border-color:#fff}
+@media(max-width:760px){.nav__links{display:none}}
+/* hero */
+.hero{background:var(--void);min-height:100svh;padding:calc(var(--nav-h) + 80px) var(--gutter) 100px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero__in{max-width:var(--max);margin:0 auto;width:100%;position:relative;z-index:2}
+.eyebrow{font-size:12px;letter-spacing:.34em;font-weight:600;color:rgba(255,255,255,.42);text-transform:uppercase;margin-bottom:26px}
+.hero h1{font-size:clamp(44px,7.5vw,84px);line-height:1.04;letter-spacing:-.02em;color:#fff;font-weight:700;max-width:14ch;margin-bottom:28px}
+.hero h1 .grad{background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero__sub{font-size:clamp(17px,2.2vw,21px);line-height:1.65;color:rgba(255,255,255,.62);max-width:620px;margin-bottom:44px}
+.hero__ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 34px;font-size:15px;font-weight:600;border-radius:3px;transition:all .2s;border:1px solid transparent}
+.btn--solid{background:#fff;color:var(--void)}
+.btn--solid:hover{background:var(--gold-l)}
+.btn--ghost{border-color:rgba(255,255,255,.28);color:#fff}
+.btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.specbar{max-width:var(--max);margin:0 auto;width:100%;position:relative;z-index:2}
+.specbar__track{height:10px;border-radius:5px;background:var(--spectrum);margin-bottom:14px}
+.specbar__labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.4);text-transform:uppercase;flex-wrap:wrap;gap:8px}
+.hero__eq{position:absolute;right:-40px;top:12%;font-family:var(--mono);font-size:15px;color:rgba(255,255,255,.10);line-height:2.4;user-select:none;pointer-events:none;white-space:pre;text-align:right}
+@media(max-width:760px){.hero__eq{display:none}}
+/* sections */
+.sec{padding:clamp(72px,10vw,128px) var(--gutter)}
+.sec__in{max-width:var(--max);margin:0 auto}
+.sec--paper{background:var(--paper-2)}
+.sec--void{background:var(--void);color:#fff}
+.sec--dark{background:var(--void-2);color:#fff}
+.sec-h{font-size:clamp(34px,5vw,56px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin-bottom:20px;max-width:20ch}
+.sec-h--light{color:#fff}
+.sec-lede{font-size:clamp(16px,2vw,19px);color:var(--ink-3);max-width:640px;margin-bottom:56px}
+.sec--void .sec-lede,.sec--dark .sec-lede{color:rgba(255,255,255,.6)}
+/* spectrum bands */
+.bands{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.band{background:var(--paper);border:1px solid var(--rule-light);border-radius:6px;padding:28px;position:relative;overflow:hidden;transition:transform .25s var(--ease),box-shadow .25s}
+.band:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(10,15,30,.10)}
+.band::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:var(--band,var(--spectrum))}
+.band__wave{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-4);text-transform:uppercase;margin-bottom:10px}
+.band h3{font-size:21px;margin-bottom:10px;letter-spacing:-.01em}
+.band p{font-size:15px;color:var(--ink-3)}
+/* offerings */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.card{background:rgba(255,255,255,.035);border:1px solid var(--rule-dark);border-radius:6px;padding:32px;display:flex;flex-direction:column;transition:transform .25s var(--ease),border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22)}
+.card__code{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--gold-l);margin-bottom:14px}
+.card h3{font-size:23px;margin-bottom:6px;letter-spacing:-.01em;color:#fff}
+.card__tag{font-size:14px;color:rgba(255,255,255,.5);margin-bottom:16px}
+.card p{font-size:15px;color:rgba(255,255,255,.66);flex:1;margin-bottom:24px}
+.card__link{font-size:14px;font-weight:600;color:#fff;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px;align-self:flex-start;min-height:44px;display:inline-flex;align-items:center}
+.card__link:hover{border-color:#fff}
+/* method steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0;border:1px solid var(--rule-light);border-radius:6px;overflow:hidden;background:var(--paper)}
+.step{padding:36px 30px;border-left:1px solid var(--rule-light)}
+.step:first-child{border-left:none}
+.step__n{font-family:var(--mono);font-size:13px;color:var(--ink-4);letter-spacing:.2em;margin-bottom:16px}
+.step h3{font-size:20px;margin-bottom:10px}
+.step p{font-size:15px;color:var(--ink-3)}
+@media(max-width:760px){.step{border-left:none;border-top:1px solid var(--rule-light)}.step:first-child{border-top:none}}
+/* for whom */
+.who{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.who__item{background:var(--paper);border:1px solid var(--rule-light);border-radius:6px;padding:32px}
+.who__item h3{font-size:21px;margin-bottom:10px}
+.who__item p{font-size:15px;color:var(--ink-3)}
+/* why */
+.why__big{font-size:clamp(24px,3.4vw,36px);line-height:1.45;color:#fff;max-width:26ch;font-weight:500}
+.why__big em{font-style:normal;background:var(--spectrum);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
+.why__small{margin-top:28px;font-size:16px;color:rgba(255,255,255,.55);max-width:620px}
+/* faq */
+.faq{max-width:760px}
+.faq details{background:var(--paper);border:1px solid var(--rule-light);border-radius:6px;margin-bottom:12px;overflow:hidden}
+.faq summary{cursor:pointer;list-style:none;padding:22px 26px;font-size:17px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:44px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:24px;font-weight:300;color:var(--ink-4);flex-shrink:0}
+.faq details[open] summary::after{content:"–"}
+.faq .a{padding:0 26px 24px;font-size:15px;color:var(--ink-3)}
+/* contact */
+.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+@media(max-width:860px){.contact__grid{grid-template-columns:1fr;gap:40px}}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.field__input,.field__textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);border-radius:3px;color:#fff;font-size:16px;font-family:var(--font);padding:15px 18px;min-height:52px;transition:border-color .2s}
+.field__textarea{min-height:150px;resize:vertical}
+.field__input:focus,.field__textarea:focus{outline:none;border-color:rgba(255,255,255,.5)}
+.sent-msg{display:none;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.4);color:#bbf7d0;padding:18px 22px;border-radius:4px;font-size:15px;margin-bottom:24px}
+.sent-msg.show{display:block}
+.contact__note{font-size:15px;color:rgba(255,255,255,.55);max-width:420px}
+.contact__note strong{color:#fff}
+/* footer */
+footer{background:var(--void);border-top:1px solid var(--rule-dark);padding:36px var(--gutter);color:rgba(255,255,255,.4);font-size:13px}
+.foot__in{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot__bar{height:4px;background:var(--spectrum);border-radius:2px;margin-bottom:24px;max-width:var(--max);margin-left:auto;margin-right:auto}
 </style>
 </head>
 <body>
-<div class="spectrum" aria-hidden="true"></div>
-<main>
-  <div class="hero">
-    <div class="eyebrow">Quantum Equations</div>
-    <h1><span class="q">Quantum Equations</span></h1>
-    <p class="tag"><strong>New Technology.</strong> <strong>New Solutions.</strong></p>
-    <p class="wide">Wide spectrum</p>
-    <p class="soon">More soon.</p>
+<nav class="nav" id="nav">
+  <div class="nav__in">
+    <a class="nav__brand" href="#top" aria-label="Quantum Equations home">
+      <span class="nav__mark" aria-hidden="true"></span>
+      <span class="nav__name">Quantum Equations</span>
+    </a>
+    <div class="nav__links">
+      <a href="#spectrum">Spectrum</a>
+      <a href="#offerings">Offerings</a>
+      <a href="#method">Method</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a class="nav__cta" href="#contact">Start a project</a>
   </div>
-</main>
-<div class="spectrum" aria-hidden="true"></div>
-<footer>&copy; 2026 Quantum Equations</footer>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero__eq" aria-hidden="true">iħ ∂ψ/∂t = Ĥψ
+E = hν = hc/λ
+Δx·Δp ≥ ħ/2
+S = k·log W
+∇×E = −∂B/∂t</div>
+  <div class="hero__in">
+    <p class="eyebrow r">A deep-tech studio</p>
+    <h1 class="r d1">New technology.<br><span class="grad">New solutions.</span></h1>
+    <p class="hero__sub r d2">Quantum Equations turns frontier science into working products — quantum computing, photonics, advanced materials, and AI — across the whole spectrum, from the first equation to the shipped product.</p>
+    <div class="hero__ctas r d3">
+      <a class="btn btn--solid" href="#spectrum">Explore the spectrum</a>
+      <a class="btn btn--ghost" href="#contact">Start a project</a>
+    </div>
+  </div>
+  <div class="specbar r d4">
+    <div class="specbar__track" aria-hidden="true"></div>
+    <div class="specbar__labels" aria-hidden="true">
+      <span>Radio</span><span>Microwave</span><span>Infrared</span><span>Visible</span><span>Ultraviolet</span><span>X-ray</span><span>Gamma</span>
+    </div>
+  </div>
+</header>
+
+<section class="sec sec--paper" id="spectrum">
+  <div class="sec__in">
+    <h2 class="sec-h r">One spectrum.<br>Seven frontiers.</h2>
+    <p class="sec-lede r d1">Every technology we touch lives somewhere on the electromagnetic spectrum. So does our lab program — each band is a research track with its own people, tools, and prototypes. Wide spectrum isn't a slogan here; it's the org chart.</p>
+    <div class="bands">
+      <div class="band r d1" style="--band:#7c3aed">
+        <p class="band__wave">10³ m — Radio</p>
+        <h3>Communications</h3>
+        <p>Long-range links, software-defined radio, and sensing at a distance — the quiet end of the spectrum, doing heavy lifting.</p>
+      </div>
+      <div class="band r d2" style="--band:#2563eb">
+        <p class="band__wave">10⁻² m — Microwave</p>
+        <h3>Radar &amp; RF</h3>
+        <p>Radar, RF engineering, and wireless systems that keep working where ordinary Wi-Fi gives up.</p>
+      </div>
+      <div class="band r d3" style="--band:#06b6d4">
+        <p class="band__wave">10⁻⁵ m — Infrared</p>
+        <h3>Thermal imaging</h3>
+        <p>Spectroscopy and thermal vision — reading heat as data, from industrial inspection to night sight.</p>
+      </div>
+      <div class="band r d1" style="--band:#22c55e">
+        <p class="band__wave">10⁻⁶ m — Visible</p>
+        <h3>Photonics</h3>
+        <p>Lasers, optical systems, and optical computing — light treated as hardware, not just illumination.</p>
+      </div>
+      <div class="band r d2" style="--band:#eab308">
+        <p class="band__wave">10⁻⁸ m — Ultraviolet</p>
+        <h3>Materials</h3>
+        <p>Lithography, surface processing, and chemistry driven by light — where photons become tools.</p>
+      </div>
+      <div class="band r d3" style="--band:#f97316">
+        <p class="band__wave">10⁻¹⁰ m — X-ray</p>
+        <h3>Inspection</h3>
+        <p>Non-destructive testing and imaging — seeing inside structures without opening them.</p>
+      </div>
+      <div class="band r d1" style="--band:#ef4444">
+        <p class="band__wave">10⁻¹² m — Gamma</p>
+        <h3>Fundamentals</h3>
+        <p>Particle detection and foundational research — the far edge of what can currently be measured.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--void" id="offerings">
+  <div class="sec__in">
+    <h2 class="sec-h sec-h--light r">Products and services.<br>Built, not pitched.</h2>
+    <p class="sec-lede r d1">Four ways to work with the studio — from a two-week audit to a full product partnership. Every engagement ends with something you can run, not a deck you can file.</p>
+    <div class="cards">
+      <div class="card r d1">
+        <p class="card__code">QE·AUDIT</p>
+        <h3>Quantum-readiness audit</h3>
+        <p class="card__tag">Two weeks · fixed scope</p>
+        <p>We map your stack and show exactly where quantum and quantum-inspired methods move the needle — and honestly, where they don't. You get a ranked roadmap, not a sales deck.</p>
+        <a class="card__link" href="#contact">Start with an audit</a>
+      </div>
+      <div class="card r d2">
+        <p class="card__code">QE·SAFE</p>
+        <h3>Post-quantum migration</h3>
+        <p class="card__tag">Security · standards-based</p>
+        <p>Quantum computers will break today's encryption. We inventory your cryptography and migrate you to post-quantum standards — before that day matters.</p>
+        <a class="card__link" href="#contact">Secure your stack</a>
+      </div>
+      <div class="card r d3">
+        <p class="card__code">QE·SPRINT</p>
+        <h3>Applied R&amp;D sprint</h3>
+        <p class="card__tag">Six weeks · one hard problem</p>
+        <p>From equation to working prototype in six weeks. One hard problem, one senior team, and a demo you can touch at the end — measured on the bench, not on slides.</p>
+        <a class="card__link" href="#contact">Book a sprint</a>
+      </div>
+      <div class="card r d4">
+        <p class="card__code">QE·BUILD</p>
+        <h3>Product partnership</h3>
+        <p class="card__tag">Milestone-based · IP transfer</p>
+        <p>For the prototypes that prove out: we stay and build the product with you — engineering, documentation, and full transfer, so your team can run it alone.</p>
+        <a class="card__link" href="#contact">Build with us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="method">
+  <div class="sec__in">
+    <h2 class="sec-h r">Equation → Prototype → Product.</h2>
+    <p class="sec-lede r d1">The studio runs one method, end to end. It is deliberately boring — the excitement belongs in the results.</p>
+    <div class="steps">
+      <div class="step r d1">
+        <p class="step__n">01</p>
+        <h3>The equation</h3>
+        <p>We start from first principles — the papers, the math, the physics — and find the version of your problem that technology can actually solve.</p>
+      </div>
+      <div class="step r d2">
+        <p class="step__n">02</p>
+        <h3>The model</h3>
+        <p>Simulation first: quantum-inspired algorithms and classical models that prove the approach before anyone buys hardware.</p>
+      </div>
+      <div class="step r d3">
+        <p class="step__n">03</p>
+        <h3>The prototype</h3>
+        <p>Built and measured in our lab. If it doesn't work on the bench, it doesn't ship — no exceptions, no hand-waving.</p>
+      </div>
+      <div class="step r d4">
+        <p class="step__n">04</p>
+        <h3>The product</h3>
+        <p>Engineered, documented, and transferred. You own the IP; we make sure your team can run everything we leave behind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--paper" id="for-whom">
+  <div class="sec__in">
+    <h2 class="sec-h r">Who we build for.</h2>
+    <p class="sec-lede r d1">Three kinds of teams keep coming back — different starting points, same destination.</p>
+    <div class="who">
+      <div class="who__item r d1">
+        <h3>Research labs</h3>
+        <p>You have the science. We bring the product engineering that gets it out of the lab and into the world — without diluting the research.</p>
+      </div>
+      <div class="who__item r d2">
+        <h3>Deep-tech startups</h3>
+        <p>Senior R&amp;D capacity without hiring a whole lab. Sprints and builds that plug into your roadmap and your cap table stays yours.</p>
+      </div>
+      <div class="who__item r d3">
+        <h3>Industry</h3>
+        <p>Quantum-readiness, sensing upgrades, and post-quantum security for plants, grids, and fleets — technology that pays for itself in operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--void" id="why">
+  <div class="sec__in">
+    <h2 class="sec-h sec-h--light r">Most labs publish.<br>Most agencies integrate.</h2>
+    <p class="why__big r d1">We do the <em>middle</em> — the part where equations become things you can ship.</p>
+    <p class="why__small r d2">Quantum Equations exists because the distance from a paper to a product is where most frontier technology dies — and crossing it is a discipline of its own. New technology deserves better than a PDF. It deserves a product.</p>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="sec__in">
+    <h2 class="sec-h r">Questions.</h2>
+    <p class="sec-lede r d1">The honest answers, up front.</p>
+    <div class="faq">
+      <details class="r d1">
+        <summary>Do you use real quantum hardware?</summary>
+        <p class="a">When it helps. Most near-term value comes from quantum-inspired algorithms running on classical hardware — we'll tell you honestly which camp your problem falls into before you spend anything.</p>
+      </details>
+      <details class="r d2">
+        <summary>What does it cost?</summary>
+        <p class="a">Audits and sprints are fixed-scope and quoted up front. Builds are partnered and milestone-based. No hourly black boxes, no surprise invoices.</p>
+      </details>
+      <details class="r d3">
+        <summary>Who owns the IP?</summary>
+        <p class="a">You do. Everything we build for you is documented and transferred; we keep no background IP over your product.</p>
+      </details>
+      <details class="r d1">
+        <summary>How fast can we start?</summary>
+        <p class="a">Audits start within two weeks of first contact. Sprints run one at a time — send us your equation and we'll find the slot.</p>
+      </details>
+      <details class="r d2">
+        <summary>We're not a tech company. Is this for us?</summary>
+        <p class="a">If your problem touches sensing, optimization, materials, or security, probably. The audit exists to answer exactly that question — including "no."</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--dark" id="contact">
+  <div class="sec__in">
+    <div class="contact__grid">
+      <div>
+        <h2 class="sec-h sec-h--light r">Send us<br>your equation.</h2>
+        <p class="contact__note r d1">One paragraph is enough. <strong>We read everything</strong> and reply within two business days.</p>
+      </div>
+      <div class="r d2">
+        <div class="sent-msg" id="sent">✓ Received — we'll reply within two business days.</div>
+        <form action="https://formsubmit.co/admin@4dux.net" method="POST" id="qe-form">
+          <input type="hidden" name="_subject" value="New Quantum Equations inquiry">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://carl-walker-pm.github.io/k/q/?sent=1">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input class="field__input" type="text" id="f-name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input class="field__input" type="email" id="f-email" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="f-org">Organization <span style="opacity:.5">(optional)</span></label>
+            <input class="field__input" type="text" id="f-org" name="organization" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="f-msg">What are you trying to build?</label>
+            <textarea class="field__textarea" id="f-msg" name="message" required></textarea>
+          </div>
+          <button class="btn btn--solid" type="submit" style="width:100%">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot__bar" aria-hidden="true"></div>
+  <div class="foot__in">
+    <span>&copy; 2026 Quantum Equations</span>
+    <span>New technology. New solutions.</span>
+  </div>
+</footer>
+
+<script>
+// scroll reveal
+(function(){
+  var els=document.querySelectorAll('.r');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e);});
+})();
+// hide nav on scroll down
+(function(){
+  var nav=document.getElementById('nav'),last=0;
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY;
+    if(y>140&&y>last){nav.classList.add('hide');}else{nav.classList.remove('hide');}
+    last=y;
+  },{passive:true});
+})();
+// ?sent=1 thank-you state (URL-driven: safe in any webview, no storage)
+(function(){
+  try{
+    if(new URLSearchParams(window.location.search).get('sent')==='1'){
+      var m=document.getElementById('sent');if(m)m.classList.add('show');
+      var f=document.getElementById('qe-form');if(f)f.style.display='none';
+      var c=document.getElementById('contact');if(c)c.scrollIntoView();
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
