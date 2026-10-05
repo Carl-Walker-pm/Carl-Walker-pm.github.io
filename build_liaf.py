@@ -3,7 +3,6 @@
 
 For each of the 13 LIAF projects with an original in sources/, writes
   purpleshireuk/projects/<slug>/index.html            (EN, from sources/)
-  purpleshireuk/ru/projects/<slug>/index.html         (RU, from ru-sources/)
 
 The original design is kept 100% intact (markup, styles, scripts, CDNs).
 Injected platform chrome, all classes prefixed `psuk-` so they can never
@@ -12,8 +11,7 @@ clash with the original's CSS:
   1. Analytics placeholder comment in <head> (standing rule).
   2. Slim PurpleShire top bar as the first element in <body>
      (position:sticky so it never covers the original design, z-index high):
-     EN: "← PurpleShire.uk" -> ../../index.html,  "RU" pill -> ../../ru/projects/<slug>/index.html
-     RU: "← PurpleShire.uk" -> ../../index.html,  "EN" pill -> ../../projects/<slug>/index.html
+     "← PurpleShire.uk" -> ../../index.html (no language pill — EN only)
   3. Contact section before </body>: heading + short line + form wired
      exactly like generate.py's contact_section (FormSubmit AJAX + <noscript>
      fallback, carl.walker.pm@gmail.com).
@@ -21,10 +19,10 @@ clash with the original's CSS:
 demo.html in each project dir stays untouched.
 
 The 3 LIAF projects WITHOUT originals (praw-mutual, lunar-mall, aed-project)
-are owned by generate.py (landing()/landing_ru()). generate.py must NOT write
-the 13 slugs below (clobber guard) — same convention as ru/index.html.
+are owned by generate.py (landing()). generate.py must NOT write
+the 13 slugs below (clobber guard).
 
-Usage: python3 build_liaf.py        # builds EN + RU
+Usage: python3 build_liaf.py        # builds EN landings
 """
 
 import html
@@ -34,7 +32,6 @@ import re
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(BASE, "purpleshireuk")
-RU_OUT = os.path.join(BASE, "purpleshireuk", "ru")
 
 # slug -> source file stem. The 3 LIAF projects without originals are NOT here.
 ORIGINAL_SLUGS = {
@@ -141,45 +138,28 @@ CONTACT_JS = """
 """
 
 
-def topbar(slug, lang):
+def topbar(slug):
     """Slim platform bar, first element in <body>."""
-    if lang == "ru":
-        lang_pill = '<a class="psuk-topbar-lang" href="../../projects/%s/index.html">EN</a>' % slug
-    else:
-        lang_pill = '<a class="psuk-topbar-lang" href="../../ru/projects/%s/index.html">RU</a>' % slug
     return (
         TOPBAR_CSS
         + '<div class="psuk-topbar">\n'
         + '  <a class="psuk-topbar-back" href="../../index.html">&larr; PurpleShire.uk</a>\n'
-        + "  %s\n" % lang_pill
         + "</div>\n"
     )
 
 
-def contact_section(name, email, lang):
+def contact_section(name, email):
     """Contact section before </body>, FormSubmit wiring identical to generate.py."""
-    if lang == "ru":
-        title, sub = "Контакты", "Вопросы о %s? Напишите нам — отвечаем с нашего Gmail." % name
-        l_name, l_email, l_msg = "Имя", "Email", "Сообщение"
-        send, sending = "Отправить", "Отправка…"
-        incomplete = "Заполните, пожалуйста, все поля."
-        thanks = "Спасибо! Ваше сообщение отправлено. Мы отвечаем с нашего Gmail."
-        failed = "Что-то пошло не так. Попробуйте ещё раз или напишите на"
-        autoresponse = (
-            "Спасибо за обращение по %s — мы скоро ответим. — PurpleShire.uk" % name
-        )
-        note = "Или напишите напрямую:"
-    else:
-        title, sub = "Contact", "Questions about %s? Send us a message — we reply from our Gmail." % name
-        l_name, l_email, l_msg = "Name", "Email", "Message"
-        send, sending = "Send message", "Sending…"
-        incomplete = "Please fill in all fields."
-        thanks = "Thank you! Your message is on its way. We reply from our Gmail."
-        failed = "Sorry — something went wrong. Please try again or write to"
-        autoresponse = (
-            "Thanks for reaching out about %s — we will get back to you soon. — PurpleShire.uk" % name
-        )
-        note = "Or email us directly:"
+    title, sub = "Contact", "Questions about %s? Send us a message — we reply from our Gmail." % name
+    l_name, l_email, l_msg = "Name", "Email", "Message"
+    send, sending = "Send message", "Sending…"
+    incomplete = "Please fill in all fields."
+    thanks = "Thank you! Your message is on its way. We reply from our Gmail."
+    failed = "Sorry — something went wrong. Please try again or write to"
+    autoresponse = (
+        "Thanks for reaching out about %s — we will get back to you soon. — PurpleShire.uk" % name
+    )
+    note = "Or email us directly:"
 
     def esc(s):
         return html.escape(s, quote=True)
@@ -238,16 +218,9 @@ def contact_section(name, email, lang):
     )
 
 
-def build_one(slug, name, email, src_path, dest_path, lang):
+def build_one(slug, name, email, src_path, dest_path):
     with open(src_path, encoding="utf-8") as f:
         page = f.read()
-
-    if lang == "ru":
-        # translated originals carry lang="en" — flip the document language
-        page = re.sub(r'<html([^>]*)>', lambda m: "<html" + m.group(1).replace('lang="en"', 'lang="ru"'),
-                      page, count=1, flags=re.IGNORECASE)
-        if 'lang="ru"' not in page.lower():
-            page = re.sub(r"<html", '<html lang="ru"', page, count=1, flags=re.IGNORECASE)
 
     # 1. analytics placeholder right after <head>
     m = re.search(r"<head[^>]*>", page, flags=re.IGNORECASE)
@@ -259,13 +232,13 @@ def build_one(slug, name, email, src_path, dest_path, lang):
     m = re.search(r"<body[^>]*>", page, flags=re.IGNORECASE)
     if not m:
         raise ValueError("%s: no <body> found" % src_path)
-    page = page[: m.end()] + "\n" + topbar(slug, lang) + page[m.end():]
+    page = page[: m.end()] + "\n" + topbar(slug) + page[m.end():]
 
     # 3. contact section before </body>
     idx = page.lower().rfind("</body>")
     if idx == -1:
         raise ValueError("%s: no </body> found" % src_path)
-    page = page[:idx] + contact_section(name, email, lang) + page[idx:]
+    page = page[:idx] + contact_section(name, email) + page[idx:]
 
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w", encoding="utf-8") as f:
@@ -284,17 +257,7 @@ def main():
         # EN from Kirill's original
         build_one(slug, name, email,
                   os.path.join(BASE, "sources", stem + ".html"),
-                  os.path.join(OUT, "projects", slug, "index.html"),
-                  "en")
-        # RU from the translated original
-        ru_src = os.path.join(BASE, "ru-sources", stem + ".html")
-        if not os.path.isfile(ru_src):
-            print("SKIP RU (no translated source yet):", slug)
-            continue
-        build_one(slug, name, email,
-                  ru_src,
-                  os.path.join(RU_OUT, "projects", slug, "index.html"),
-                  "ru")
+                  os.path.join(OUT, "projects", slug, "index.html"))
     print("done")
 
 

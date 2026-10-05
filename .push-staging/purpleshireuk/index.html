@@ -8,6 +8,15 @@
   GA4, Microsoft Clarity, and PostHog snippets go here.
   Standing rule: every page keeps its analytics counters.
   assemble.py preserves this comment verbatim on every build. -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C2W27FWRBQ');
+</script>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -21,6 +30,7 @@
       <a href="#flagships">Flagships</a>
       <a href="#portfolio">Portfolio</a>
     </nav>
+    <a class="lang-switch" href="ru/index.html">RU</a>
     <a class="btn btn-nav" href="projects/ai-accelerator/">PurpleShire Forge →</a>
   </div>
 </header>
@@ -29,19 +39,29 @@
   <div class="wrap hero-grid">
     <div class="hero-main">
       <p class="eyebrow">PurpleShire.uk · alpha</p>
-      <h1>One platform, three directions.</h1>
-      <p class="lede">PurpleShire.uk unites three equal pillars — LIAF, MOST, and Forecasts — design, rehabilitation, and foresight — each with its own projects and its own pages.</p>
-      <p class="hero-cta"><a class="btn" href="projects/ai-accelerator/">PurpleShire Forge →</a> <a class="btn btn-ghost" href="projects/ai-online-university/">PurpleShire University →</a></p>
+      <h1>One platform, <span class="h-accent">three directions.</span></h1>
+      <p class="lede">Design, rehabilitation, foresight — LIAF, MOST, and Forecasts live under one roof, each with its own projects and its own pages.</p>
+      <p class="hero-cta">
+        <a class="btn" href="projects/ai-accelerator/">PurpleShire Forge →</a>
+        <a class="btn btn-ghost" href="projects/ai-online-university/">PurpleShire University →</a>
+        <a class="hero-scroll" href="#pillars">Explore the directions ↓</a>
+      </p>
+      <ul class="hero-stats">
+        <li><strong>28</strong><span>projects</span></li>
+        <li><strong>3</strong><span>pillars</span></li>
+        <li><strong>1</strong><span>thesis</span></li>
+      </ul>
     </div>
     <div class="hero-visual">
-      <div class="visual-stack">
-        <span>ontology</span><span class="v-arrow">→</span>
-        <span>knowledge graph</span><span class="v-arrow">→</span>
-        <span>memory</span><span class="v-arrow">→</span>
-        <span>agents</span><span class="v-arrow">→</span>
-        <span>forecasting</span>
-      </div>
-      <p class="visual-note">The PurpleShire thesis: LLMs are the interface, the graph is the memory, the ontology is the understanding.</p>
+      <p class="visual-kicker">The PurpleShire thesis</p>
+      <ol class="visual-chain">
+        <li>ontology</li>
+        <li>knowledge graph</li>
+        <li>memory</li>
+        <li>agents</li>
+        <li>forecasting</li>
+      </ol>
+      <p class="visual-note">LLMs are the interface, the graph is the memory, the ontology is the understanding.</p>
     </div>
   </div>
 </section>
@@ -92,149 +112,178 @@
 </a>
 </div>
 </div></section>
-<!-- BLOCK 06 — portfolio · grid: bento (featured 8 + one 4, then uniform 4-col cards) -->
+<!-- BLOCK 06 — portfolio · grid: ONE bento (featured 8 + one 4, then uniform 4-col cards) -->
 <section class="section" id="portfolio"><div class="wrap">
 <h2>Portfolio</h2>
-<p class="section-intro">Every PurpleShire.uk project lives here — grouped by direction.</p>
-<h3 class="portfolio-group" id="liaf">LIAF</h3>
-<p class="section-intro">The design series — sixteen digital experiments and concept landings, each live on its own page.</p>
+<p class="section-intro">Every PurpleShire.uk project lives here — twenty-eight projects, one grid.</p>
 <div class="cards bento">
 <a class="card card-featured" href="projects/praw-mutual/">
+<span class="dir-tag">LIAF</span>
 <h3>PRAW Mutual</h3>
 <p class="tagline">Mutual aid, organized.</p>
 <p class="status">Community page live</p>
 </a>
+<a class="card" href="projects/everydays/">
+<span class="dir-tag">Platform</span>
+<h3>Everydays</h3>
+<p class="tagline">1,580 frames. One photographic diary.</p>
+<p class="status">Live</p>
+</a>
 <a class="card" href="projects/lunar-mall/">
+<span class="dir-tag">LIAF</span>
 <h3>LUNAR_MALL</h3>
 <p class="tagline">A concept from the LIAF series.</p>
 <p class="status">Archived — currently offline</p>
 </a>
 <a class="card" href="projects/aed-project/">
+<span class="dir-tag">LIAF</span>
 <h3>AED</h3>
 <p class="tagline">Software from the LIAF series.</p>
 <p class="status">In private development</p>
 </a>
 <a class="card" href="projects/lumina/">
+<span class="dir-tag">LIAF</span>
 <h3>Lumina</h3>
 <p class="tagline">Digital creative agency.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/selene/">
+<span class="dir-tag">LIAF</span>
 <h3>SELENE Industrial</h3>
 <p class="tagline">Off-world extraction systems.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/synthetix/">
+<span class="dir-tag">LIAF</span>
 <h3>SYNTHETIX</h3>
 <p class="tagline">Autonomous agent infrastructure.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/tao-school/">
+<span class="dir-tag">LIAF</span>
 <h3>TAO School</h3>
 <p class="tagline">The way of future learning.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/unity-travel/">
+<span class="dir-tag">LIAF</span>
 <h3>Unity Travel</h3>
 <p class="tagline">Explore the world together.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/vantage/">
+<span class="dir-tag">LIAF</span>
 <h3>Vantage Estate Agents</h3>
 <p class="tagline">Luxury real estate.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/velocity/">
+<span class="dir-tag">LIAF</span>
 <h3>Velocity Auto Rentals</h3>
 <p class="tagline">Premium car hire, USA.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/future-proof-travel/">
+<span class="dir-tag">LIAF</span>
 <h3>Future-Proof Travel</h3>
 <p class="tagline">Six services for the travelers of tomorrow.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/kinetic/">
+<span class="dir-tag">LIAF</span>
 <h3>KINETIC</h3>
 <p class="tagline">Design, meaning, &amp; entropy.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/aurelius/">
+<span class="dir-tag">LIAF</span>
 <h3>AURELIUS</h3>
 <p class="tagline">Quantitative capital management.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/aura-botanica/">
+<span class="dir-tag">LIAF</span>
 <h3>AURA BOTANICA</h3>
 <p class="tagline">Holistic beauty sanctuary.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/proso/">
+<span class="dir-tag">LIAF</span>
 <h3>ProSo</h3>
 <p class="tagline">A showcase for features and projects.</p>
 <p class="status">Stub — work in progress</p>
 </a>
 <a class="card" href="projects/softhouse/">
+<span class="dir-tag">LIAF</span>
 <h3>SoftHouse</h3>
 <p class="tagline">A minimal hub stub.</p>
 <p class="status">Stub — work in progress</p>
 </a>
-</div>
-<h3 class="portfolio-group" id="most">MOST</h3>
-<p class="section-intro">The Norway direction — an association for the rehabilitation of war-affected Russian speakers.</p>
-<div class="cards bento">
-<a class="card card-featured" href="projects/most/">
+<a class="card" href="projects/most/">
+<span class="dir-tag">MOST</span>
 <h3>MOST</h3>
 <p class="tagline">Rehabilitation after the war. A bridge to recovery.</p>
 <p class="status">In formation — Norway</p>
 </a>
-</div>
-<h3 class="portfolio-group" id="forecasts">Forecasts</h3>
-<p class="section-intro">The PurpleShire.uk forecasting direction. First project: GGG+.</p>
-<div class="cards bento">
-<a class="card card-featured" href="projects/ggg-plus/">
+<a class="card" href="projects/ggg-plus/">
+<span class="dir-tag">Forecasts</span>
 <h3>GGG+</h3>
 <p class="tagline">The first project of the Forecasts direction.</p>
 <p class="status">Announced — details coming soon</p>
 </a>
-</div>
-<h3 class="portfolio-group" id="platform">Platform projects</h3>
-<p class="section-intro">Technology, photography, and merch from the PurpleShire.uk home base.</p>
-<div class="cards bento">
-<a class="card card-featured" href="projects/everydays/">
-<h3>Everydays</h3>
-<p class="tagline">1,580 frames. One photographic diary.</p>
-<p class="status">Live</p>
-</a>
 <a class="card" href="projects/purpleshire/">
+<span class="dir-tag">Platform</span>
 <h3>PurpleShire</h3>
 <p class="tagline">From documents to understanding.</p>
 <p class="status">Alpha — in development</p>
 </a>
 <a class="card" href="projects/lucid-future/">
+<span class="dir-tag">Platform</span>
 <h3>Lucid Future</h3>
 <p class="tagline">Fine-art photography, printed on demand.</p>
 <p class="status">2027 calendar live — photo book coming soon</p>
 </a>
 <a class="card" href="projects/opersona/">
+<span class="dir-tag">Platform</span>
 <h3>OPersona 2.0 — Signature Club</h3>
 <p class="tagline">Author&#x27;s designs. Members-only drops.</p>
 <p class="status">Founding member list open — launching soon</p>
 </a>
 <a class="card" href="projects/unicorn-race/">
+<span class="dir-tag">Platform</span>
 <h3>Unicorn Race</h3>
 <p class="tagline">Startup funding rounds, called like horse races.</p>
 <p class="status">Concept — live demo</p>
 </a>
 <a class="card" href="projects/ai-accelerator/">
+<span class="dir-tag">Platform</span>
 <h3>PurpleShire Forge</h3>
 <p class="tagline">PurpleShire&#x27;s AI accelerator for entrepreneurs.</p>
 <p class="status">Flagship — in development</p>
 </a>
 <a class="card" href="projects/ai-online-university/">
+<span class="dir-tag">Platform</span>
 <h3>PurpleShire University</h3>
 <p class="tagline">PurpleShire&#x27;s online university for the AI era.</p>
 <p class="status">Flagship — in development</p>
+</a>
+<a class="card" href="projects/synop/">
+<span class="dir-tag">Platform</span>
+<h3>SynOp</h3>
+<p class="tagline">Innovative health solutions with integrity and expertise.</p>
+<p class="status">Concept — site live</p>
+</a>
+<a class="card" href="projects/cgoa/">
+<span class="dir-tag">LIAF</span>
+<h3>CGoA</h3>
+<p class="tagline">8th wonder of the world: the Celestial Garden of Aurora.</p>
+<p class="status">Concept — art live</p>
+</a>
+<a class="card" href="projects/the-quantum-park/">
+<span class="dir-tag">LIAF</span>
+<h3>The Quantum Park</h3>
+<p class="tagline">A crystalline cyber-dragon roams a neon city under a giant moon.</p>
+<p class="status">Concept — art live</p>
 </a>
 </div>
 </div></section>
@@ -247,9 +296,9 @@
     </div>
     <div class="footer-col">
       <h4>Directions</h4>
-      <a href="#liaf">LIAF</a>
-      <a href="#most">MOST</a>
-      <a href="#forecasts">Forecasts</a>
+      <a href="#pillars">LIAF</a>
+      <a href="#pillars">MOST</a>
+      <a href="#pillars">Forecasts</a>
     </div>
     <div class="footer-col">
       <h4>Flagships</h4>

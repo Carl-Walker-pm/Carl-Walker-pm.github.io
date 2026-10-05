@@ -87,6 +87,17 @@ body {
   color: var(--muted);
   max-width: 42rem;
 }
+.hero-img {
+  margin: 2rem auto;
+  max-width: 720px;
+}
+.hero-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
 .hero .status-pill {
   display: inline-block;
   margin-top: 1rem;
@@ -579,17 +590,13 @@ def esc(s):
 
 
 def header(name, depth, slug=None):
-    """depth: 0 for hub (purpleshireuk/), 1 for project landings.
-    Project landings (depth 1) get a RU language switcher."""
+    """depth: 0 for hub (purpleshireuk/), 1 for project landings."""
     prefix = "../" if depth else ""
-    switcher = ""
-    if depth == 1 and slug:
-        switcher = '  <a class="lang-switch" href="../ru/projects/%s/">RU</a>\n' % esc(slug)
     return (
         '<header class="site-header wrap">\n'
         '  <a class="wordmark" href="%sindex.html">PurpleShire<span class="dot">.</span>uk</a>\n'
         '  <span class="badge-alpha">ALPHA</span>\n'
-        "%s</header>" % (prefix, switcher)
+        "</header>" % prefix
     )
 
 
@@ -836,169 +843,38 @@ def landing(project, site):
             '<p><a class="btn" href="%s"%s rel="noopener">%s →</a></p>\n'
             % (esc(ext["url"]), target, esc(ext["label"]))
         )
-    body = (
-        header(site["name"], 1, project["slug"])
-        + '<nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>\n'
-        + '<section class="hero wrap">\n'
+    hero_img = ""
+    if project.get("image"):
+        hero_img = (
+            '<figure class="hero-img wrap">\n'
+            '<img src="%s" alt="%s">\n'
+            "</figure>\n" % (esc(project["image"]), esc(project["name"]))
+        )
+    hero = (
+        '<section class="hero wrap">\n'
         "<h1>%s</h1>\n"
         '<p class="lede">%s</p>\n'
         '<span class="status-pill">%s</span>\n'
         "</section>\n"
+        % (esc(project["name"]), esc(project["tagline"]), esc(project["status"]))
+    )
+    content = (
         '<section class="section"><div class="wrap prose">\n'
         "<h2>About</h2>\n%s\n"
         "<h2>Highlights</h2>\n<ul class=\"ticks\">\n%s\n</ul>\n%s"
         "</div></section>\n"
-        % (esc(project["name"]), esc(project["tagline"]), esc(project["status"]), about, highlights, external)
+        % (about, highlights, external)
+    )
+    body = (
+        header(site["name"], 1, project["slug"])
+        + '<nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>\n'
+        + hero
+        + hero_img
+        + content
         + contact_section(project, email, 1)
         + footer(site["name"], 1, site.get("version"))
     )
     return page_shell("%s — PurpleShire.uk" % project["name"], body, 1)
-
-
-# ---------------- Russian mirror (purpleshireuk/ru/) ----------------
-
-def page_shell_ru(title, body, depth):
-    """depth: 0 for ru/ hub, 1 for ru/projects/<slug>/ landings."""
-    prefix = "../" if depth == 0 else "../../"
-    head = "<head>\n" + GA4_SNIPPET
-    return (
-        "<!DOCTYPE html>\n"
-        '<html lang="ru">\n'
-        + head
-        + '<meta charset="utf-8">\n'
-        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        "<title>%s</title>\n"
-        '<link rel="stylesheet" href="%sassets/style.css">\n'
-        "</head>\n"
-        "<body>\n%s\n</body>\n</html>\n"
-    ) % (esc(title), prefix, body)
-
-
-def header_ru(depth, slug=None):
-    """Header for the RU mirror, with an EN language switcher."""
-    prefix = "../" if depth == 0 else "../../"
-    en_link = "../index.html" if depth == 0 else "../../projects/%s/" % slug
-    return (
-        '<header class="site-header wrap">\n'
-        '  <a class="wordmark" href="%sindex.html">PurpleShire<span class="dot">.</span>uk</a>\n'
-        '  <span class="badge-alpha">ALPHA</span>\n'
-        '  <a class="lang-switch" href="%s">EN</a>\n'
-        "</header>" % (prefix, en_link)
-    )
-
-
-def footer_ru(depth, version=None):
-    prefix = "../" if depth == 0 else "../../"
-    ver = ' <span class="ver">· v%s</span>' % esc(version) if version else ""
-    return (
-        '<footer class="site-footer">\n'
-        '  <div class="wrap">\n'
-        '    <p>© <span id="year"></span> PurpleShire.uk — альфа-версия%s. '
-        '<a href="%sindex.html" style="color: var(--accent-soft);">Назад на платформу</a></p>\n'
-        "  </div>\n"
-        "</footer>\n"
-        '<script src="%sassets/site.js"></script>' % (ver, prefix, prefix)
-    )
-
-
-def contact_section_ru(project, email, depth):
-    """Contact form in Russian: same FormSubmit wiring as the EN version."""
-    subject = "[PurpleShire.uk] %s — новое сообщение с сайта" % project["name"]
-    autoresponse = (
-        "Спасибо за обращение о проекте %s — мы скоро ответим. — PurpleShire.uk"
-        % project["name"]
-    )
-    hidden = (
-        '<input type="hidden" name="_subject" value="%s">\n'
-        '<input type="hidden" name="_template" value="table">\n'
-        '<input type="hidden" name="_honey" value="">\n'
-        '<input type="hidden" name="_autoresponse" value="%s">\n'
-        '<input type="hidden" name="_captcha" value="false">'
-        % (esc(subject), esc(autoresponse))
-    )
-    return (
-        '<section class="section" id="contact">\n'
-        '<div class="wrap prose">\n'
-        "<h2>Контакты</h2>\n"
-        '<p>Вопросы о %s? Напишите нам — отвечаем с нашего Gmail.</p>\n'
-        '<div class="contact-box">\n'
-        '<form method="post" data-ajax '
-        'action="https://formsubmit.co/ajax/%s" data-email="%s" data-project="%s">\n'
-        "%s\n"
-        '<label for="cf-name">Имя</label>\n'
-        '<input type="text" id="cf-name" name="name" required autocomplete="name">\n'
-        '<label for="cf-email">Email</label>\n'
-        '<input type="email" id="cf-email" name="email" required autocomplete="email">\n'
-        '<label for="cf-msg">Сообщение</label>\n'
-        '<textarea id="cf-msg" name="message" required></textarea>\n'
-        '<button type="submit">Отправить</button>\n'
-        '<p class="form-note">Или напишите напрямую: '
-        '<a href="mailto:%s" style="color: var(--accent-soft);">%s</a></p>\n'
-        "</form>\n"
-        "<noscript>\n"
-        '<form method="post" action="https://formsubmit.co/%s">\n'
-        "%s\n"
-        '<label for="cf-name-ns">Имя</label>\n'
-        '<input type="text" id="cf-name-ns" name="name" required autocomplete="name">\n'
-        '<label for="cf-email-ns">Email</label>\n'
-        '<input type="email" id="cf-email-ns" name="email" required autocomplete="email">\n'
-        '<label for="cf-msg-ns">Сообщение</label>\n'
-        '<textarea id="cf-msg-ns" name="message" required></textarea>\n'
-        '<button type="submit">Отправить</button>\n'
-        "</form>\n"
-        "</noscript>\n"
-        "</div>\n"
-        "</div>\n"
-        "</section>"
-        % (
-            esc(project["name"]),
-            email,
-            email,
-            esc(project["name"]),
-            hidden,
-            email,
-            email,
-            email,
-            hidden,
-        )
-    )
-
-
-def landing_ru(project, site):
-    email = site["contactEmail"]
-    about = "\n".join("<p>%s</p>" % esc(p) for p in project["about"])
-    highlights = "\n".join(
-        "<li>%s</li>" % esc(h) for h in project.get("highlights", [])
-    )
-    external = ""
-    ext = project.get("external")
-    if ext:
-        external = (
-            '<p><a class="btn" href="%s" target="_blank" rel="noopener">%s →</a></p>\n'
-            % (esc(ext["url"]), esc(ext["label"]))
-        )
-    if project.get("has_en_demo"):
-        external += (
-            '<p><a class="btn btn-ghost" href="../../projects/%s/">Открыть EN-демо →</a></p>\n'
-            % esc(project["slug"])
-        )
-    body = (
-        header_ru(1, project["slug"])
-        + '<nav class="breadcrumb wrap"><a href="../index.html">← PurpleShire.uk</a></nav>\n'
-        + '<section class="hero wrap">\n'
-        "<h1>%s</h1>\n"
-        '<p class="lede">%s</p>\n'
-        '<span class="status-pill">%s</span>\n'
-        "</section>\n"
-        '<section class="section"><div class="wrap prose">\n'
-        "<h2>О проекте</h2>\n%s\n"
-        "<h2>Ключевое</h2>\n<ul class=\"ticks\">\n%s\n</ul>\n%s"
-        "</div></section>\n"
-        % (esc(project["name"]), esc(project["tagline"]), esc(project["status"]), about, highlights, external)
-        + contact_section_ru(project, email, 1)
-        + footer_ru(1, site.get("version"))
-    )
-    return page_shell_ru("%s — PurpleShire.uk" % project["name"], body, 1)
 
 
 def hub(data):
@@ -1074,8 +950,8 @@ def hub(data):
 
 
 # Slugs whose landings are built from Kirill's originals by build_liaf.py.
-# generate.py must NEVER write these (EN or RU) or it will clobber the
-# original-based pages. Same convention as ru/index.html (assemble_ru.py).
+# generate.py must NEVER write these or it will clobber the
+# original-based pages.
 LIAF_ORIGINAL_SLUGS = {
     "aura-botanica", "aurelius", "future-proof-travel", "kinetic", "lumina",
     "proso", "selene", "softhouse", "synthetix", "tao-school",
@@ -1084,7 +960,7 @@ LIAF_ORIGINAL_SLUGS = {
 
 # Slugs whose landings are hand-built originals restored from
 # ~/workspace/your_files/ (Forge + University). generate.py must NEVER write
-# these (EN or RU) — the real landings were clobbered by a generate.py run on
+# these — the real landings were clobbered by a generate.py run on
 # 2026-09-13 and had to be restored.
 HAND_BUILT_SLUGS = {"ai-online-university", "ai-accelerator"}
 
@@ -1111,16 +987,6 @@ def main():
         else:
             write(os.path.join(PROJECTS_DIR, p["slug"], "index.html"), landing(p, data["site"]))
     print("done: %d landings" % len(data["projects"]))
-    # RU mirror: translated project landings. NOTE: ru/index.html is owned by
-    # front-page-blocks/ru/assemble_ru.py — do not write it here.
-    with open(os.path.join(BASE, "projects_ru.json"), encoding="utf-8") as f:
-        ru = json.load(f)
-    RU_PROJECTS_DIR = os.path.join(OUT, "ru", "projects")
-    for p in ru["projects"]:
-        if p["slug"] in LIAF_ORIGINAL_SLUGS or p["slug"] in HAND_BUILT_SLUGS:
-            continue  # owned by build_liaf.py — never clobber the translated originals
-        write(os.path.join(RU_PROJECTS_DIR, p["slug"], "index.html"), landing_ru(p, data["site"]))
-    print("done: %d RU landings" % len(ru["projects"]))
 
 
 if __name__ == "__main__":
