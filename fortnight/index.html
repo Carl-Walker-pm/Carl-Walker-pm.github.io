@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fortnight — Spokane's Private Matchmaker</title>
+<meta name="description" content="Fortnight is Spokane's private, human-led matchmaking service. One matchmaker, one client at a time. Your first hand-picked introduction within two weeks.">
+<meta property="og:title" content="Fortnight — Spokane's Private Matchmaker">
+<meta property="og:description" content="One matchmaker. One client at a time. Your first hand-picked introduction within two weeks.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#111110;
+  --paper:#f5f1e8;
+  --paper-dim:#e9e2d2;
+  --blood:#7a1f1f;
+  --grey:#6b675c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'Courier Prime',monospace;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:'Cormorant Garamond',serif}
+.wrap{max-width:1060px;margin:0 auto;padding:0 24px}
+/* ---------- hero ---------- */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('img/hero.jpg') center/cover no-repeat;
+  filter:grayscale(1) brightness(.5);
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(17,17,16,.96) 8%, rgba(17,17,16,.45) 55%, rgba(17,17,16,.25) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding:0 24px 64px;max-width:1060px;margin:0 auto;width:100%}
+.eyebrow{
+  font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--paper-dim);
+  margin-bottom:22px;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:500;
+  font-size:clamp(64px,14vw,168px);
+  line-height:.95;letter-spacing:.01em;
+  margin-bottom:18px;
+}
+.hero h1 em{color:var(--blood);font-style:italic}
+.hero .lede{
+  font-size:clamp(15px,2.4vw,19px);
+  max-width:620px;color:var(--paper-dim);margin-bottom:36px;
+}
+.btn{
+  display:inline-block;
+  font-family:'Courier Prime',monospace;font-size:14px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--paper);text-decoration:none;
+  border:1px solid var(--paper);padding:18px 38px;
+  transition:background .25s,color .25s;
+  background:transparent;cursor:pointer;
+}
+.btn:hover{background:var(--paper);color:var(--ink)}
+.btn-solid{background:var(--blood);border-color:var(--blood)}
+.btn-solid:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+.scroll-hint{
+  position:absolute;bottom:26px;right:30px;z-index:2;
+  font-size:11px;letter-spacing:.3em;color:var(--grey);text-transform:uppercase;
+  writing-mode:vertical-rl;
+}
+/* ---------- manifesto ---------- */
+.manifesto{
+  padding:110px 0;
+  border-top:1px solid #2a2925;border-bottom:1px solid #2a2925;
+  text-align:center;
+}
+.manifesto p{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(24px,4.6vw,42px);line-height:1.35;max-width:820px;margin:0 auto;
+}
+.manifesto p strong{color:var(--blood);font-weight:600}
+/* ---------- sections ---------- */
+section.block{padding:100px 0}
+.kicker{
+  font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--blood);
+  margin-bottom:20px;
+}
+h2.title{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(36px,6vw,64px);line-height:1.05;margin-bottom:26px;
+}
+.prose{max-width:680px;color:var(--paper-dim);font-size:16px}
+.prose p+p{margin-top:18px}
+/* promise */
+.promise-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:10px;
+}
+.promise-img{
+  width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1);
+  border:1px solid #2a2925;
+}
+.fortnight-def{
+  border-left:2px solid var(--blood);padding-left:28px;margin:34px 0;
+  font-style:italic;color:var(--paper);
+}
+.fortnight-def .word{font-family:'Cormorant Garamond',serif;font-size:30px;font-style:normal}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border:1px solid #2a2925}
+.step{padding:44px 34px;border-right:1px solid #2a2925}
+.step:last-child{border-right:none}
+.step .num{
+  font-family:'Cormorant Garamond',serif;font-size:56px;color:var(--blood);line-height:1;margin-bottom:20px;
+}
+.step h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;margin-bottom:14px}
+.step p{font-size:14px;color:var(--paper-dim)}
+/* discretion */
+.discretion{background:var(--paper);color:var(--ink)}
+.discretion .kicker{color:var(--blood)}
+.discretion h2.title{color:var(--ink)}
+.discretion .prose{color:#3d3a33}
+.discretion .seal{
+  display:flex;gap:26px;align-items:flex-start;margin-top:40px;flex-wrap:wrap;
+}
+.seal-card{
+  flex:1;min-width:220px;border:1px solid #c9c0a8;padding:28px;
+}
+.seal-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;margin-bottom:10px}
+.seal-card p{font-size:13.5px;color:#3d3a33}
+/* who */
+.who-list{margin-top:44px;display:grid;gap:0;border-top:1px solid #2a2925}
+.who-item{
+  padding:30px 6px;border-bottom:1px solid #2a2925;
+  display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:baseline;
+}
+.who-item .n{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--blood)}
+.who-item p{font-size:16px;color:var(--paper-dim)}
+.who-item p strong{color:var(--paper);font-weight:700}
+/* form */
+.apply{background:#0c0c0b;border-top:1px solid #2a2925}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;margin-top:50px}
+.field{margin-bottom:24px}
+.field label{display:block;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--grey);margin-bottom:10px}
+.field input,.field textarea{
+  width:100%;background:transparent;border:1px solid #3a382f;color:var(--paper);
+  font-family:'Courier Prime',monospace;font-size:15px;padding:15px 16px;outline:none;
+  transition:border-color .2s;
+}
+.field input:focus,.field textarea:focus{border-color:var(--blood)}
+.field textarea{min-height:110px;resize:vertical}
+.form-note{font-size:13px;color:var(--grey);margin-top:22px;font-style:italic}
+.form-ok{
+  display:none;border:1px solid var(--blood);padding:34px;margin-top:10px;
+  font-family:'Cormorant Garamond',serif;font-size:24px;font-style:italic;
+}
+/* faq */
+.faq-item{border-bottom:1px solid #2a2925;padding:28px 6px}
+.faq-item h3{
+  font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:20px;
+}
+.faq-item h3 .pm{color:var(--blood);font-family:'Courier Prime',monospace;font-size:20px}
+.faq-item .a{display:none;padding-top:16px;color:var(--paper-dim);font-size:15px;max-width:720px}
+.faq-item.open .a{display:block}
+/* footer */
+footer{border-top:1px solid #2a2925;padding:60px 0 40px;text-align:center}
+footer .wordmark{font-family:'Cormorant Garamond',serif;font-size:34px;margin-bottom:12px}
+footer p{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--grey)}
+footer .fine{margin-top:26px;font-size:12px;color:#4a473e;letter-spacing:.06em;text-transform:none}
+@media(max-width:820px){
+  .promise-grid,.form-grid{grid-template-columns:1fr;gap:40px}
+  .steps{grid-template-columns:1fr}
+  .step{border-right:none;border-bottom:1px solid #2a2925}
+  .step:last-child{border-bottom:none}
+  .who-item{grid-template-columns:40px 1fr}
+  section.block{padding:70px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">Spokane &middot; Private Matchmaking</div>
+    <h1>Fort<em>night</em></h1>
+    <p class="lede">One matchmaker. One client at a time.<br>Your first hand-picked introduction within two weeks.</p>
+    <a class="btn btn-solid" href="#apply">Request a private consultation</a>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</header>
+
+<div class="manifesto">
+  <div class="wrap">
+    <p>Dating apps turned love into a slot machine.<br><strong>Fortnight</strong> turns it back into an introduction.</p>
+  </div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">The promise</div>
+    <h2 class="title serif">Fourteen days.</h2>
+    <div class="promise-grid">
+      <div>
+        <div class="prose">
+          <p>A fortnight is fourteen days — and it's the promise this service is named for. From our first conversation to your first curated introduction: two weeks.</p>
+          <p>No endless scrolling. No small talk with strangers. No performing for an algorithm. One human being who listens to who you are — then opens exactly one right door.</p>
+        </div>
+        <div class="fortnight-def">
+          <div class="word">fort·night</div>
+          <div>/ˈfɔːrtnaɪt/ — noun</div>
+          <div>a period of fourteen days. also: the time it takes<br>to meet someone who matters.</div>
+        </div>
+      </div>
+      <div>
+        <img class="promise-img" src="img/letter.jpg" alt="A handwritten letter, black and white">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">How it works</div>
+    <h2 class="title serif">Three steps. All human.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">I.</div>
+        <h3>The conversation</h3>
+        <p>A private, unhurried one-on-one consultation. Who you are, what you're looking for, what you won't settle for. Nothing is written down without your word.</p>
+      </div>
+      <div class="step">
+        <div class="num">II.</div>
+        <h3>The curation</h3>
+        <p>I meet people. I listen. When someone fits what you described — truly fits — I make the introduction. One at a time. Never a catalog, never a feed.</p>
+      </div>
+      <div class="step">
+        <div class="num">III.</div>
+        <h3>The refinement</h3>
+        <p>After every introduction, we talk. What worked, what didn't, what surprised you. Each introduction sharper than the last — because I'm learning you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block discretion">
+  <div class="wrap">
+    <div class="kicker">Discretion</div>
+    <h2 class="title serif">No one knows you're looking.</h2>
+    <div class="prose">
+      <p>Your name appears nowhere. No public profiles, no photos online, no trace. Introductions happen quietly, between people who've both chosen to be there.</p>
+    </div>
+    <div class="seal">
+      <div class="seal-card">
+        <h4>Signed confidentiality</h4>
+        <p>Every engagement begins with a signed confidentiality agreement. Discretion isn't a promise here — it's paperwork.</p>
+      </div>
+      <div class="seal-card">
+        <h4>Your photos, your call</h4>
+        <p>No photograph of you is ever shared without your explicit permission, for each introduction, every time.</p>
+      </div>
+      <div class="seal-card">
+        <h4>One client at a time</h4>
+        <p>No database to leak, no list to buy. Your story lives in one conversation, with one person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Who it's for</div>
+    <h2 class="title serif">For people done with the apps.</h2>
+    <div class="who-list">
+      <div class="who-item">
+        <div class="n">01</div>
+        <p><strong>Professionals with full lives.</strong> Your time is the scarcest thing you own. Spend it on the date, not on the search.</p>
+      </div>
+      <div class="who-item">
+        <div class="n">02</div>
+        <p><strong>Private people.</strong> You'd never put your heart on a public profile. Here, you don't have to.</p>
+      </div>
+      <div class="who-item">
+        <div class="n">03</div>
+        <p><strong>Anyone who believes</strong> the right person is worth a real introduction — not a right swipe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block apply" id="apply">
+  <div class="wrap">
+    <div class="kicker">Begin</div>
+    <h2 class="title serif">Request your private consultation.</h2>
+    <div class="form-grid">
+      <div>
+        <div class="prose">
+          <p>Tell me a little about yourself. Everything you share stays between us — this is the first act of discretion, not the last.</p>
+          <p>I read every request personally and reply within two days. If we're a fit, we'll arrange your consultation.</p>
+        </div>
+      </div>
+      <div>
+        <form id="intake" action="https://formsubmit.co/ajax/admin@4dux.net" method="POST">
+          <input type="hidden" name="_subject" value="Fortnight — new consultation request">
+          <input type="text" name="_honey" style="display:none">
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input id="f-email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span style="text-transform:none;letter-spacing:0">(optional)</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="f-age">Age</label>
+            <input id="f-age" name="age" type="number" min="18" max="120" required>
+          </div>
+          <div class="field">
+            <label for="f-about">A little about you</label>
+            <textarea id="f-about" name="about" required placeholder="Who you are, in your own words."></textarea>
+          </div>
+          <div class="field">
+            <label for="f-looking">Who are you hoping to meet?</label>
+            <textarea id="f-looking" name="looking_for" required placeholder="Describe them honestly — no performance needed."></textarea>
+          </div>
+          <button class="btn btn-solid" type="submit">Send privately</button>
+          <p class="form-note">No profiles created. Nothing shared. This message goes to one person.</p>
+        </form>
+        <div class="form-ok" id="form-ok">
+          Received. I'll read it personally and reply within two days.<br>— Fortnight
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="kicker">Questions</div>
+    <h2 class="title serif">Asked, answered.</h2>
+    <div style="margin-top:40px" id="faq">
+      <div class="faq-item">
+        <h3>How much does it cost? <span class="pm">+</span></h3>
+        <div class="a">Every engagement is personal, so pricing is discussed privately during your consultation. There are no hidden fees and no subscriptions — one clear arrangement, agreed before anything begins.</div>
+      </div>
+      <div class="faq-item">
+        <h3>How fast is the first introduction? <span class="pm">+</span></h3>
+        <div class="a">Within a fortnight of our first conversation. That's the promise the name makes — fourteen days from hello to a hand-picked introduction.</div>
+      </div>
+      <div class="faq-item">
+        <h3>I'm a private person. How discreet is this? <span class="pm">+</span></h3>
+        <div class="a">Completely. No public profiles, no photos shared without your explicit permission each time, and a signed confidentiality agreement before we begin. No one knows you're looking unless you tell them.</div>
+      </div>
+      <div class="faq-item">
+        <h3>What if the introductions aren't right? <span class="pm">+</span></h3>
+        <div class="a">Then we talk — honestly — and adjust. If something isn't working, you hear it from me directly, not from silence. The refinement after every introduction is the whole point of doing this humanly.</div>
+      </div>
+      <div class="faq-item">
+        <h3>Do you work outside Spokane? <span class="pm">+</span></h3>
+        <div class="a">Spokane is home. Nearby cities can be arranged — mention it in your request and we'll discuss it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="wordmark serif">Fortnight</div>
+    <p>Spokane, Washington &middot; Private matchmaking</p>
+    <p class="fine">© 2026 Fortnight. Every story stays between us.</p>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item h3').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const item=h.parentElement;
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.pm').textContent='+';});
+    if(!open){item.classList.add('open');h.querySelector('.pm').textContent='–';}
+  });
+});
+document.getElementById('intake').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const form=e.target;
+  const btn=form.querySelector('button[type=submit]');
+  btn.disabled=true;btn.textContent='Sending…';
+  try{
+    const res=await fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)});
+    if(res.ok){form.style.display='none';document.getElementById('form-ok').style.display='block';}
+    else{btn.disabled=false;btn.textContent='Send privately';alert('Something went wrong — please try again.');}
+  }catch(err){btn.disabled=false;btn.textContent='Send privately';alert('Something went wrong — please try again.');}
+});
+</script>
+</body>
+</html>
