@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Оцифровка сознания — видеокассеты, AI и архив фотографий</title>
+<meta name="description" content="Оцифровываем видеокассеты, подключаем искусственный интеллект и наводим порядок в тысячах фотографий. Ваша память — в цифровом архиве, который не выцветает.">
+<style>
+  :root{
+    --ink:#101826; --ink-soft:#43536b; --paper:#f6f4ee; --card:#ffffff;
+    --gold:#c9a227; --gold-deep:#a8861c; --line:#e5e0d2; --navy:#101c30;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:Georgia,'Times New Roman',serif; color:var(--ink); background:var(--paper); line-height:1.65;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  header.top{border-bottom:1px solid var(--line); background:var(--paper); position:sticky; top:0; z-index:10;}
+  header.top .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px;}
+  .brand{font-size:24px; letter-spacing:3px; font-weight:bold;}
+  .brand small{display:block; font-size:10px; letter-spacing:4px; color:var(--ink-soft); font-weight:normal;}
+  nav a{margin-left:22px; text-decoration:none; color:var(--ink-soft); font-size:15px;}
+  nav a:hover{color:var(--ink);}
+  .btn{display:inline-block; background:var(--ink); color:#fff; padding:12px 28px; text-decoration:none; border-radius:3px; font-family:inherit; font-size:16px; border:1px solid var(--ink); cursor:pointer;}
+  .btn:hover{background:var(--navy);}
+  .btn.gold{background:var(--gold); border-color:var(--gold); color:#141414; font-weight:bold;}
+  .btn.gold:hover{background:var(--gold-deep);}
+  .hero{background:var(--navy); color:#f2eee1; padding:0; text-align:center; position:relative; overflow:hidden;}
+  .hero img.bg{width:100%; max-height:520px; object-fit:cover; display:block; opacity:.92;}
+  .hero .inner{padding:72px 0 80px;}
+  .hero .eyebrow{letter-spacing:5px; font-size:12px; color:var(--gold); text-transform:uppercase; margin-bottom:18px;}
+  .hero h1{font-size:54px; line-height:1.15; max-width:860px; margin:0 auto 20px; font-weight:normal;}
+  .hero h1 em{font-style:italic; color:var(--gold);}
+  .hero p.sub{font-size:19px; max-width:660px; margin:0 auto 36px; color:#cfc9b8;}
+  .hero .cta-row a{margin:0 8px;}
+  .strip{background:var(--gold); color:#141414; padding:18px 0;}
+  .strip .wrap{display:flex; justify-content:center; gap:48px; flex-wrap:wrap; font-size:17px; text-align:center;}
+  .strip strong{font-size:24px; display:block;}
+  .strip span.lbl{font-size:13px; letter-spacing:2px; text-transform:uppercase;}
+  section{padding:72px 0;}
+  h2.sec{font-size:34px; font-weight:normal; text-align:center; margin-bottom:12px;}
+  p.lead{text-align:center; color:var(--ink-soft); max-width:700px; margin:0 auto 48px; font-size:18px;}
+  .pic{max-width:960px; margin:0 auto 48px; border-radius:4px; overflow:hidden; border:1px solid var(--line);}
+  .pic img{width:100%; display:block;}
+  .pic figcaption{background:var(--card); padding:12px 20px; font-size:14px; color:var(--ink-soft); text-align:center; font-style:italic;}
+  .steps{counter-reset:step; list-style:none; max-width:860px; margin:0 auto;}
+  .steps li{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--gold); margin-bottom:12px; padding:18px 22px; display:flex; gap:18px; align-items:flex-start; border-radius:3px;}
+  .steps .n{counter-increment:step; font-size:30px; color:var(--gold-deep); min-width:52px; font-weight:bold;}
+  .steps .n::before{content:counter(step, decimal-leading-zero);}
+  .steps .t{flex:1;}
+  .steps .t strong{display:block; font-size:18px; margin-bottom:4px;}
+  .steps .t p{color:var(--ink-soft); font-size:15px;}
+  .grid3{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; max-width:960px; margin:0 auto;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:4px; padding:28px;}
+  .card h3{font-size:20px; margin-bottom:10px; font-weight:normal;}
+  .card h3 .ico{color:var(--gold-deep); margin-right:8px;}
+  .card p{color:var(--ink-soft); font-size:15px;}
+  .card .pic{margin:0 0 18px;}
+  .faq{max-width:760px; margin:0 auto;}
+  .faq details{background:var(--card); border:1px solid var(--line); border-radius:3px; margin-bottom:10px; padding:16px 20px;}
+  .faq summary{cursor:pointer; font-size:17px;}
+  .faq details p{color:var(--ink-soft); margin-top:10px; font-size:15px;}
+  .ctaband{background:var(--navy); color:#f2eee1; text-align:center; padding:72px 0;}
+  .ctaband h2{font-size:36px; font-weight:normal; margin-bottom:14px;}
+  .ctaband p{color:#cfc9b8; margin-bottom:30px; font-size:18px;}
+  form.req{max-width:560px; margin:0 auto; text-align:left;}
+  form.req label{display:block; font-size:14px; letter-spacing:1px; color:#cfc9b8; margin:18px 0 6px; text-transform:uppercase;}
+  form.req input, form.req textarea, form.req select{width:100%; padding:12px 14px; font-size:16px; font-family:inherit; border:1px solid #3a4a63; border-radius:3px; background:#0b1424; color:#f2eee1;}
+  form.req textarea{min-height:120px; resize:vertical;}
+  footer{padding:36px 0; border-top:1px solid var(--line); font-size:13px; color:var(--ink-soft);}
+  footer .wrap{display:flex; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+  footer .disc{max-width:640px;}
+  @media(max-width:640px){ .hero h1{font-size:36px;} nav{display:none;} }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">K/L<small>ОЦИФРОВКА ПАМЯТИ</small></div>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#process">Как это работает</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#start" class="btn" style="padding:8px 20px; margin-left:22px;">Оцифровать архив</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <img class="bg" src="img/hero.jpg" alt="Видеокассеты, растворяющиеся в цифровом свете">
+  <div class="wrap inner">
+    <div class="eyebrow">Сервис сохранения памяти</div>
+    <h1>Оцифровка <em>сознания.</em><br>Пока плёнка ещё жива.</h1>
+    <p class="sub">Мы оцифровываем видеокассеты, подключаем искусственный интеллект и наводим порядок в тысячах ваших фотографий. Всё, что вы помните, — в архиве, который не выцветает, не рвётся и не теряется.</p>
+    <div class="cta-row">
+      <a href="#start" class="btn gold">Оцифровать архив</a>
+      <a href="#services" class="btn" style="background:transparent; border-color:#8a8574;">Что мы делаем</a>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="wrap">
+    <div><strong>Видеокассеты</strong><span class="lbl">оцифровка</span></div>
+    <div><strong>Искусственный интеллект</strong><span class="lbl">распознавание и восстановление</span></div>
+    <div><strong>Фотографии</strong><span class="lbl">сортировка и архив</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2 class="sec">Плёнка умирает молча</h2>
+    <p class="lead">Магнитная лента видеокассет разрушается за 10–25 лет. Краски фотографий выцветают, бумага желтеет, а коробки с семейными архивами пылятся на антресолях. Каждый год ожидания — это кадры, которые уже никогда не вернуть.</p>
+    <figure class="pic">
+      <img src="img/vhs.jpg" alt="Оцифровка видеокассеты">
+      <figcaption>Каждая кассета — это часы жизни, записанные на ленту, которая не вечна.</figcaption>
+    </figure>
+    <div class="grid3">
+      <div class="card"><h3><span class="ico">◆</span>Кассеты размагничиваются</h3><p>Сигнал слабеет с каждым годом. То, что ещё можно спасти сегодня, через пять лет станет шумом.</p></div>
+      <div class="card"><h3><span class="ico">◆</span>Фотографии хаотичны</h3><p>Тысячи снимков без дат, без имён, без порядка. Найти нужный — всё равно что искать иголку в стоге сена.</p></div>
+      <div class="card"><h3><span class="ico">◆</span>Память не гуглится</h3><p>Пока архив лежит в коробке, им никто не пользуется. Оцифрованная память живёт: её смотрят, ею делятся, её наследуют.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="background:#efece2;">
+  <div class="wrap">
+    <h2 class="sec">Три услуги — один архив</h2>
+    <p class="lead">Каждую можно заказать отдельно. Вместе они превращают коробки с прошлым в живой цифровой архив.</p>
+    <div class="grid3">
+      <div class="card">
+        <figure class="pic"><img src="img/vhs.jpg" alt="Оцифровка видеокассет"></figure>
+        <h3><span class="ico">◆</span>Оцифровка видеокассет</h3>
+        <p>VHS, Video8, MiniDV и другие форматы — в чистый цифровой файл. Покадровая оцифровка, удаление шумов, стабилизация. Оригиналы возвращаем вместе с цифровыми копиями.</p>
+      </div>
+      <div class="card">
+        <figure class="pic"><img src="img/restored.jpg" alt="Восстановленная фотография"></figure>
+        <h3><span class="ico">◆</span>Подключение AI</h3>
+        <p>Искусственный интеллект распознаёт лица и сцены, восстанавливает повреждённые кадры, повышает чёткость старых записей. Машина делает рутину — человек остаётся автором воспоминаний.</p>
+      </div>
+      <div class="card">
+        <figure class="pic"><img src="img/photos.jpg" alt="AI-сортировка фотографий"></figure>
+        <h3><span class="ico">◆</span>Сортировка фотографий</h3>
+        <p>Тысячи снимков раскладываем по людям, датам и событиям. Хаос превращается в архив, где каждая фотография находится за секунды.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2 class="sec">Как это работает</h2>
+    <p class="lead">Шесть шагов — от коробки на антресоли до архива, который можно смотреть с телефона.</p>
+    <ol class="steps">
+      <li><span class="n"></span><div class="t"><strong>Вы описываете архив</strong><p>Напишите, что у вас есть: сколько кассет, какие форматы, сколько фотографий. Этого достаточно для оценки.</p></div></li>
+      <li><span class="n"></span><div class="t"><strong>Носители едут к нам</strong><p>Кассеты и фотоальбомы передаются в работу. Каждый носитель маркируется — ничего не потеряется и не перепутается.</p></div></li>
+      <li><span class="n"></span><div class="t"><strong>Оцифровка</strong><p>Кассеты переводятся в цифровой формат покадрово. Фотографии сканируются в высоком разрешении.</p></div></li>
+      <li><span class="n"></span><div class="t"><strong>AI-обработка</strong><p>Искусственный интеллект распознаёт лица, сцены и даты, восстанавливает повреждённые кадры, убирает шумы.</p></div></li>
+      <li><span class="n"></span><div class="t"><strong>Сортировка и архив</strong><p>Материалы раскладываются по людям, событиям и годам. Вы получаете структурированный архив с поиском.</p></div></li>
+      <li><span class="n"></span><div class="t"><strong>Возврат и доступ</strong><p>Оригиналы возвращаются вам. Цифровой архив доступен с любого устройства — смотреть, делиться, наследовать.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section style="background:#efece2;">
+  <div class="wrap">
+    <h2 class="sec">Почему это важно</h2>
+    <p class="lead">Архив — это не ностальгия. Это сознание семьи, записанное внешним носителем.</p>
+    <div class="grid3">
+      <div class="card"><h3><span class="ico">◆</span>Для детей и внуков</h3><p>Они никогда не видели деда молодым. Оцифрованный архив — это встреча, которая иначе не состоится.</p></div>
+      <div class="card"><h3><span class="ico">◆</span>Против забвения</h3><p>Человеческая память стирается за поколение. Цифровая — нет, если о ней позаботиться вовремя.</p></div>
+      <div class="card"><h3><span class="ico">◆</span>Порядок вместо хаоса</h3><p>AI делает то, на что у человека ушли бы месяцы: разбирает тысячи файлов за дни и не устаёт.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2 class="sec">Вопросы</h2>
+    <p class="lead">Короткие ответы.</p>
+    <div class="faq">
+      <details><summary>Какие форматы кассет вы принимаете?</summary><p>VHS, Video8, MiniDV и большинство бытовых форматов. Если сомневаетесь в своём формате — опишите его в заявке, подскажем.</p></details>
+      <details><summary>Что происходит с оригиналами?</summary><p>Все оригиналы — кассеты, фотографии, альбомы — возвращаются вам после оцифровки. Мы храним только цифровые копии, которые вы забрали.</p></details>
+      <details><summary>Как AI сортирует фотографии?</summary><p>Нейросеть распознаёт лица, группирует снимки по людям, определяет примерные даты и события. Затем архив проверяется человеком — машина не решает за вас, что важно.</p></details>
+      <details><summary>Сколько времени это занимает?</summary><p>Зависит от объёма архива. Небольшая коллекция — дни, семейный архив за десятилетия — недели. Точный срок называем после описания архива.</p></details>
+      <details><summary>Сколько это стоит?</summary><p>Стоимость зависит от количества носителей и объёма работы. Опишите свой архив в форме ниже — ответим с оценкой.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="ctaband" id="start">
+  <div class="wrap">
+    <h2>Начните с описания архива</h2>
+    <p>Напишите, что у вас хранится, — ответим с оценкой сроков и стоимости.</p>
+    <form class="req" action="https://formsubmit.co/admin@4dux.net" method="POST">
+      <input type="hidden" name="_subject" value="K/L — заявка на оцифровку архива">
+      <input type="hidden" name="_captcha" value="false">
+      <label for="name">Ваше имя</label>
+      <input id="name" name="name" type="text" required>
+      <label for="email">Email для ответа</label>
+      <input id="email" name="email" type="email" required>
+      <label for="type">Что оцифровываем</label>
+      <select id="type" name="type">
+        <option>Видеокассеты</option>
+        <option>Фотографии</option>
+        <option>Кассеты + фотографии</option>
+        <option>Другое</option>
+      </select>
+      <label for="msg">Опишите архив</label>
+      <textarea id="msg" name="message" placeholder="Сколько кассет, какие форматы, примерно сколько фотографий…" required></textarea>
+      <div style="margin-top:26px; text-align:center;">
+        <button type="submit" class="btn gold">Отправить заявку</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="font-size:18px;">K/L<small>ОЦИФРОВКА ПАМЯТИ</small></div>
+    <p class="disc">K/L — сервис оцифровки семейных архивов: видеокассеты, фотографии, AI-обработка. Мы сохраняем носители информации, а не предоставляем юридические услуги.</p>
+  </div>
+</footer>
+
+</body>
+</html>
