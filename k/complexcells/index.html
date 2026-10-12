@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Complex Cells</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body { width:100%; height:100%; overflow:hidden; background:#04121e;
+    font-family:-apple-system,'Segoe UI',Roboto,sans-serif; color:#e8f4f1;
+    touch-action:none; user-select:none; -webkit-user-select:none; }
+  #game { position:fixed; inset:0; display:block; }
+  .overlay { position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(2,10,18,.82); backdrop-filter:blur(6px); z-index:10; padding:20px; }
+  .panel { max-width:520px; width:100%; text-align:center; background:rgba(8,30,44,.9);
+    border:1px solid rgba(52,211,153,.35); border-radius:20px; padding:34px 28px;
+    box-shadow:0 0 60px rgba(52,211,153,.15); }
+  .panel h1 { font-size:34px; letter-spacing:3px; margin-bottom:6px;
+    background:linear-gradient(90deg,#34d399,#a3e635); -webkit-background-clip:text;
+    background-clip:text; color:transparent; }
+  .panel .sub { color:#9fd8c2; font-size:14px; margin-bottom:18px; }
+  .panel p { font-size:14px; line-height:1.6; color:#cfe8de; margin-bottom:14px; }
+  .panel .keys { font-size:12px; color:#8fb8a8; margin-bottom:20px; }
+  .btn { display:inline-block; font-size:17px; font-weight:700; letter-spacing:1px;
+    padding:14px 34px; margin:6px; border:none; border-radius:14px; cursor:pointer;
+    color:#04121e; background:linear-gradient(90deg,#34d399,#a3e635);
+    box-shadow:0 4px 24px rgba(52,211,153,.4); transition:transform .1s; }
+  .btn:active { transform:scale(.96); }
+  .btn.alt { background:rgba(255,255,255,.08); color:#e8f4f1;
+    border:1px solid rgba(255,255,255,.25); box-shadow:none; }
+  .btn.danger { background:linear-gradient(90deg,#f87171,#fb923c); color:#1a0b05; }
+  #choice .panel { border-color:rgba(251,191,36,.5); box-shadow:0 0 60px rgba(251,191,36,.15); }
+  #choice h2 { font-size:22px; margin-bottom:8px; color:#fde68a; }
+  .hidden { display:none !important; }
+  #hud { position:fixed; top:0; left:0; right:0; z-index:5; display:flex; gap:10px;
+    align-items:center; padding:10px 14px; pointer-events:none; font-size:13px; }
+  .pill { background:rgba(4,18,30,.75); border:1px solid rgba(255,255,255,.15);
+    border-radius:999px; padding:6px 14px; display:flex; align-items:center; gap:8px; }
+  #energybar { width:110px; height:10px; border-radius:6px; background:rgba(255,255,255,.12); overflow:hidden; }
+  #energyfill { height:100%; width:80%; border-radius:6px;
+    background:linear-gradient(90deg,#34d399,#a3e635); transition:width .2s; }
+  .mito { width:14px; height:14px; border-radius:50%; background:#fb923c;
+    box-shadow:0 0 8px #fb923c; display:inline-block; }
+  .mito.empty { background:rgba(255,255,255,.12); box-shadow:none; }
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud" class="hidden">
+  <div class="pill"><span>Energy</span><div id="energybar"><div id="energyfill"></div></div></div>
+  <div class="pill" id="mitopill"><span class="mito empty"></span><span class="mito empty"></span><span class="mito empty"></span></div>
+  <div class="pill"><span id="score">Prey 0</span></div>
+</div>
+
+<div id="start" class="overlay">
+  <div class="panel">
+    <h1>COMPLEX CELLS</h1>
+    <div class="sub">2 billion years ago · the Proterozoic ocean</div>
+    <p>You are a single cell in a young, hungry ocean. Engulf smaller cells — then choose: <b>digest</b> them for energy now, or <b>enslave</b> them as symbionts for powers later. Collect <b>3 mitochondria</b> and grow large enough to form a nucleus — and become the first <b>eukaryote</b>.</p>
+    <p class="keys">Move: mouse / touch / WASD / arrows &nbsp;·&nbsp; Avoid the big red predators &nbsp;·&nbsp; Don't starve</p>
+    <button class="btn" id="startBtn">DIVE IN</button>
+  </div>
+</div>
+
+<div id="choice" class="overlay hidden">
+  <div class="panel">
+    <h2>Engulfed a respiring bacterium!</h2>
+    <p>It's alive inside you. Digest it for a burst of energy — or enslave it as a <b>mitochondrion</b>: permanent energy regen and speed.</p>
+    <button class="btn" id="digestBtn">DIGEST (+30 energy)</button>
+    <button class="btn alt" id="enslaveBtn">ENSLAVE (symbiont)</button>
+  </div>
+</div>
+
+<div id="end" class="overlay hidden">
+  <div class="panel">
+    <h1 id="endTitle">EUKARYOTE!</h1>
+    <div class="sub" id="endSub"></div>
+    <p id="endText"></p>
+    <button class="btn" id="againBtn">EVOLVE AGAIN</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+let W = 0, H = 0;
+function resize(){ W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize); resize();
+
+// ---------- audio (tiny blips) ----------
+let AC = null;
+function beep(freq, dur, type){
+  try{
+    if(!AC) AC = new (window.AudioContext||window.webkitAudioContext)();
+    const o = AC.createOscillator(), g = AC.createGain();
+    o.type = type||'sine'; o.frequency.value = freq;
+    g.gain.setValueAtTime(0.12, AC.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, AC.currentTime + dur);
+    o.connect(g); g.connect(AC.destination);
+    o.start(); o.stop(AC.currentTime + dur);
+  }catch(e){}
+}
+
+// ---------- state ----------
+let running=false, paused=false, over=false;
+let prey=[], mitos=[], preds=[], snow=[];
+let score=0, t=0;
+const player = { x:0,y:0, r:18, vx:0,vy:0, energy:80, maxEnergy:100,
+                 symbionts:0, speed:1, wob:0, targetX:0, targetY:0 };
+const keys = {};
+const MAXSYM = 3, WIN_R = 30;
+
+function rnd(a,b){ return a + Math.random()*(b-a); }
+function dist(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
+
+function spawnSnow(){
+  snow = [];
+  for(let i=0;i<70;i++) snow.push({x:rnd(0,W), y:rnd(0,H), r:rnd(1,2.6), s:rnd(4,16), o:rnd(.1,.35)});
+}
+function mkPrey(){ return {x:rnd(30,W-30), y:rnd(30,H-30), r:rnd(6,10), vx:rnd(-14,14), vy:rnd(-14,14), wob:rnd(0,6)}; }
+function mkMito(){ return {x:rnd(30,W-30), y:rnd(30,H-30), r:rnd(7,9), vx:rnd(-12,12), vy:rnd(-12,12), wob:rnd(0,6)}; }
+function mkPred(){ const r=rnd(30,46); return {x:rnd(60,W-60), y:rnd(60,H-60), r, vx:rnd(-22,22), vy:rnd(-22,22), wob:rnd(0,6)}; }
+
+function reset(){
+  player.x = W/2; player.y = H/2; player.r = 18;
+  player.vx = player.vy = 0; player.energy = 80;
+  player.symbionts = 0; player.speed = 1;
+  player.targetX = W/2; player.targetY = H/2;
+  prey=[]; mitos=[]; preds=[]; score=0; t=0; over=false;
+  for(let i=0;i<14;i++) prey.push(mkPrey());
+  for(let i=0;i<5;i++) mitos.push(mkMito());
+  for(let i=0;i<3;i++) preds.push(mkPred());
+  spawnSnow();
+  updateHUD();
+}
+
+// ---------- input ----------
+window.addEventListener('keydown', e=>{ keys[e.key.toLowerCase()]=true; });
+window.addEventListener('keyup',   e=>{ keys[e.key.toLowerCase()]=false; });
+function pointTo(x,y){ player.targetX=x; player.targetY=y; }
+canvas.addEventListener('mousemove', e=>pointTo(e.clientX,e.clientY));
+canvas.addEventListener('touchstart', e=>{ const t=e.touches[0]; pointTo(t.clientX,t.clientY); }, {passive:true});
+canvas.addEventListener('touchmove',  e=>{ const t=e.touches[0]; pointTo(t.clientX,t.clientY); e.preventDefault(); }, {passive:false});
+
+// ---------- HUD ----------
+const energyfill = document.getElementById('energyfill');
+const mitopill = document.getElementById('mitopill');
+const scoreEl = document.getElementById('score');
+function updateHUD(){
+  energyfill.style.width = Math.max(0, player.energy/player.maxEnergy*100) + '%';
+  energyfill.style.background = player.energy < 25
+    ? 'linear-gradient(90deg,#f87171,#fb923c)' : 'linear-gradient(90deg,#34d399,#a3e635)';
+  const dots = mitopill.querySelectorAll('.mito');
+  dots.forEach((d,i)=>d.classList.toggle('empty', i >= player.symbionts));
+  scoreEl.textContent = 'Prey ' + score;
+}
+
+// ---------- choice modal ----------
+const choiceEl = document.getElementById('choice');
+function offerChoice(){
+  paused = true; choiceEl.classList.remove('hidden');
+  document.getElementById('digestBtn').onclick = ()=>{
+    choiceEl.classList.add('hidden'); paused=false;
+    player.energy = Math.min(player.maxEnergy, player.energy+30);
+    beep(300,.15,'triangle'); updateHUD();
+  };
+  document.getElementById('enslaveBtn').onclick = ()=>{
+    choiceEl.classList.add('hidden'); paused=false;
+    if(player.symbionts < MAXSYM){
+      player.symbionts++;
+      player.speed = 1 + player.symbionts*0.08;
+      beep(520,.2,'sine'); setTimeout(()=>beep(780,.25,'sine'),120);
+    } else {
+      player.energy = Math.min(player.maxEnergy, player.energy+30);
+    }
+    updateHUD(); checkWin();
+  };
+}
+
+// ---------- end ----------
+function endGame(win, reason){
+  over = true; running = false;
+  const endEl = document.getElementById('end');
+  document.getElementById('endTitle').textContent = win ? 'EUKARYOTE!' : 'EXTINCT';
+  document.getElementById('endSub').textContent = win
+    ? '3 mitochondria enslaved · nucleus formed' : reason;
+  document.getElementById('endText').textContent = win
+    ? 'Your cell just did what no cell had done before: it swallowed another living cell and kept it. Every animal, plant, fungus — and you — descends from this moment. Score: '+score+' prey.'
+    : 'The Proterozoic ocean is unforgiving. Score: '+score+' prey. Try again — evolution rewards persistence.';
+  endEl.classList.remove('hidden');
+  beep(win?660:160,.5, win?'sine':'sawtooth');
+}
+function checkWin(){
+  if(over) return;
+  if(player.symbionts>=MAXSYM && player.r>=WIN_R) endGame(true);
+}
+
+// ---------- update ----------
+function step(dt){
+  t += dt;
+  // movement: keys override pointer
+  let ax=0, ay=0;
+  if(keys['a']||keys['arrowleft']) ax-=1;
+  if(keys['d']||keys['arrowright']) ax+=1;
+  if(keys['w']||keys['arrowup']) ay-=1;
+  if(keys['s']||keys['arrowdown']) ay+=1;
+  const sp = 165*player.speed;
+  if(ax||ay){
+    const n=Math.hypot(ax,ay);
+    player.vx = ax/n*sp; player.vy = ay/n*sp;
+  } else {
+    const dx=player.targetX-player.x, dy=player.targetY-player.y, d=Math.hypot(dx,dy);
+    if(d>4){ player.vx=dx/d*Math.min(sp,d*4); player.vy=dy/d*Math.min(sp,d*4); }
+    else { player.vx*=0.9; player.vy*=0.9; }
+  }
+  player.x += player.vx*dt; player.y += player.vy*dt;
+  player.x = Math.max(player.r, Math.min(W-player.r, player.x));
+  player.y = Math.max(player.r, Math.min(H-player.r, player.y));
+  player.wob += dt*6;
+
+  const moving = Math.hypot(player.vx,player.vy) > 20;
+  player.energy -= (moving?2.6:1.0)*dt;
+  player.energy += player.symbionts*0.55*dt;
+  player.energy = Math.min(player.maxEnergy, player.energy);
+
+  // drifters
+  for(const arr of [prey,mitos,preds]) for(const c of arr){
+    c.x += c.vx*dt; c.y += c.vy*dt; c.wob += dt*5;
+    if(c.x<c.r||c.x>W-c.r) c.vx*=-1;
+    if(c.y<c.r||c.y>H-c.r) c.vy*=-1;
+    c.x=Math.max(c.r,Math.min(W-c.r,c.x)); c.y=Math.max(c.r,Math.min(H-c.r,c.y));
+  }
+  // keep populations up
+  if(prey.length<14 && Math.random()<dt*1.2) prey.push(mkPrey());
+  if(mitos.length<5 && Math.random()<dt*0.5) mitos.push(mkMito());
+  if(preds.length<3 && Math.random()<dt*0.15) preds.push(mkPred());
+
+  // engulf prey
+  for(let i=prey.length-1;i>=0;i--){
+    const c=prey[i];
+    if(dist(player,c) < player.r && player.r > c.r*1.15){
+      prey.splice(i,1);
+      player.energy=Math.min(player.maxEnergy,player.energy+12);
+      player.r=Math.min(34,player.r+0.55); score++;
+      beep(440,.1,'triangle'); updateHUD(); checkWin();
+    }
+  }
+  // engulf mito candidates
+  for(let i=mitos.length-1;i>=0;i--){
+    const c=mitos[i];
+    if(dist(player,c) < player.r && player.r > c.r*1.15){
+      mitos.splice(i,1);
+      if(player.symbionts<MAXSYM){ offerChoice(); }
+      else { player.energy=Math.min(player.maxEnergy,player.energy+30); beep(300,.12,'triangle'); }
+      updateHUD(); break;
+    }
+  }
+  // predators
+  for(const p of preds){
+    if(dist(player,p) < p.r){
+      if(p.r > player.r*1.6){ endGame(false,'Engulfed by a larger predator.'); return; }
+      if(p.r > player.r*1.05){
+        player.energy -= 34*dt*3;
+        const d=Math.max(1,dist(player,p));
+        player.x += (player.x-p.x)/d*260*dt; player.y += (player.y-p.y)/d*260*dt;
+        if(Math.random()<dt*6) beep(140,.12,'sawtooth');
+      }
+    }
+  }
+  if(player.energy<=0){ player.energy=0; endGame(false,'Starved in the dark water.'); return; }
+  updateHUD();
+}
+
+// ---------- draw ----------
+function blob(x,y,r,wob,fill,stroke){
+  ctx.beginPath();
+  const N=14;
+  for(let i=0;i<=N;i++){
+    const a=i/N*Math.PI*2;
+    const rr=r*(1+0.07*Math.sin(a*3+wob)+0.05*Math.cos(a*2-wob*1.3));
+    const px=x+Math.cos(a)*rr, py=y+Math.sin(a)*rr;
+    i?ctx.lineTo(px,py):ctx.moveTo(px,py);
+  }
+  ctx.closePath(); ctx.fillStyle=fill; ctx.fill();
+  if(stroke){ ctx.strokeStyle=stroke; ctx.lineWidth=2; ctx.stroke(); }
+}
+function draw(){
+  const g=ctx.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,'#06283a'); g.addColorStop(1,'#03141f');
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+  for(const s of snow){
+    s.y+=s.s*0.016; if(s.y>H){s.y=-4;s.x=Math.random()*W;}
+    ctx.globalAlpha=s.o; ctx.fillStyle='#9fd8c2';
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,7); ctx.fill();
+  }
+  ctx.globalAlpha=1;
+  for(const c of prey) blob(c.x,c.y,c.r,c.wob,'rgba(52,211,153,.5)','rgba(52,211,153,.8)');
+  for(const c of mitos){
+    blob(c.x,c.y,c.r,c.wob,'rgba(251,146,60,.45)','rgba(251,146,60,.9)');
+    ctx.fillStyle='#fdba74'; ctx.beginPath(); ctx.arc(c.x,c.y,c.r*0.35,0,7); ctx.fill();
+  }
+  for(const c of preds) blob(c.x,c.y,c.r,c.wob,'rgba(248,113,113,.4)','rgba(248,113,113,.85)');
+  // player
+  const pr=player.r;
+  blob(player.x,player.y,pr,player.wob,'rgba(163,230,53,.28)','rgba(163,230,53,.95)');
+  // symbionts orbiting inside
+  for(let i=0;i<player.symbionts;i++){
+    const a=t*1.6+i*(Math.PI*2/MAXSYM);
+    const sx=player.x+Math.cos(a)*pr*0.45, sy=player.y+Math.sin(a)*pr*0.45;
+    ctx.fillStyle='#fb923c'; ctx.shadowColor='#fb923c'; ctx.shadowBlur=10;
+    ctx.beginPath(); ctx.arc(sx,sy,5,0,7); ctx.fill(); ctx.shadowBlur=0;
+  }
+  // nucleus hint when close to winning
+  if(player.symbionts>=MAXSYM){
+    ctx.strokeStyle='rgba(253,224,71,.9)'; ctx.lineWidth=2;
+    ctx.beginPath(); ctx.arc(player.x,player.y,pr*0.4,t,t+5.5); ctx.fill();
+    ctx.globalAlpha=.25; ctx.fillStyle='#fde047';
+    ctx.beginPath(); ctx.arc(player.x,player.y,pr*0.4,0,7); ctx.fill(); ctx.globalAlpha=1;
+  }
+}
+
+// ---------- loop ----------
+let last=0;
+function loop(ts){
+  if(!running) return;
+  const dt=Math.min(0.05,(ts-last)/1000||0.016); last=ts;
+  if(!paused && !over) step(dt);
+  draw();
+  requestAnimationFrame(loop);
+}
+
+// ---------- buttons ----------
+document.getElementById('startBtn').onclick = ()=>{
+  beep(440,.15,'sine');
+  document.getElementById('start').classList.add('hidden');
+  document.getElementById('hud').classList.remove('hidden');
+  reset(); running=true; last=performance.now();
+  requestAnimationFrame(loop);
+};
+document.getElementById('againBtn').onclick = ()=>{
+  document.getElementById('end').classList.add('hidden');
+  reset(); running=true; last=performance.now();
+  requestAnimationFrame(loop);
+};
+spawnSnow();
+</script>
+</body>
+</html>
