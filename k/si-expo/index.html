@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE SYMPHONY — SI Agent Firm · EXPO Roster</title>
+<meta name="description" content="Ten super-intelligent agents, one orchestra. The EXPO roster of an SI agent firm: orchestration, ontology, research, voice, prospecting, contracts, finance, security, crisis, design.">
+<meta property="og:title" content="THE SYMPHONY — SI Agent Firm · EXPO Roster">
+<meta property="og:description" content="Ten agents. One score. Meet the ensemble.">
+<meta property="og:image" content="https://carl-walker-pm.github.io/k/si-expo/img/maestro.jpg">
+<style>
+  :root{
+    --bg:#0d0d10; --bg2:#121216; --panel:#16161c; --panel2:#1b1b22;
+    --line:#2a2a33; --line-soft:#22222a;
+    --text:#efe9dc; --muted:#a79e8c; --faint:#6f695c;
+    --gold:#c9a227; --gold2:#e6c65a; --gold-dim:#8a6f1e;
+    --r-lg:20px; --r-md:16px;
+    --serif:"Georgia","Times New Roman",serif;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  ::selection{background:#3d3410;color:#ffe9a8}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(13,13,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;gap:26px;height:66px}
+  .logo{font-family:var(--serif);letter-spacing:3px;font-size:19px;color:var(--gold2);font-weight:700}
+  .logo small{color:var(--faint);letter-spacing:2px;font-size:10px;display:block;font-family:"Segoe UI",sans-serif;text-transform:uppercase;margin-top:-2px}
+  .nav nav{display:flex;gap:22px;margin-left:10px}
+  .nav nav a{color:var(--muted);font-size:14.5px}
+  .nav nav a:hover{color:var(--gold2)}
+  .nav .spacer{flex:1}
+  .badge{border:1px solid var(--gold-dim);color:var(--gold2);border-radius:999px;padding:7px 15px;font-size:13px;letter-spacing:1.4px;font-weight:600}
+  @media(max-width:760px){.nav nav{display:none}}
+
+  .hero{padding:84px 0 62px;text-align:center;background:radial-gradient(900px 420px at 50% -12%,rgba(201,162,39,.16),transparent 62%),var(--bg)}
+  .hero .kicker{color:var(--gold);letter-spacing:4px;font-size:12.5px;font-weight:700;text-transform:uppercase}
+  .hero h1{font-family:var(--serif);font-size:clamp(40px,6.4vw,68px);font-weight:600;letter-spacing:2px;margin:18px 0 16px}
+  .hero h1 em{color:var(--gold2);font-style:italic;letter-spacing:0}
+  .hero p{color:var(--muted);font-size:18.5px;max-width:700px;margin:0 auto}
+  .hero .meta{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .hero .meta span{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13.5px;color:var(--muted)}
+  .hero .meta b{color:var(--gold2);font-weight:650}
+
+  .roster{padding:30px 0 78px}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:920px){.grid{grid-template-columns:1fr}}
+  .agent{background:linear-gradient(170deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:grid;grid-template-columns:236px 1fr;transition:border-color .2s var(--ease),transform .2s var(--ease)}
+  .agent:hover{border-color:var(--gold-dim);transform:translateY(-2px)}
+  @media(max-width:560px){.agent{grid-template-columns:1fr}}
+  .agent figure{position:relative;min-height:300px}
+  .agent figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center}
+  .agent .mono{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(320px 320px at 50% 34%,rgba(201,162,39,.14),transparent 65%),var(--bg2)}
+  .agent .mono .letter{font-family:var(--serif);font-size:92px;color:var(--gold);opacity:.85;line-height:1}
+  .agent .mono .soon{color:var(--faint);font-size:12px;letter-spacing:2.2px;text-transform:uppercase}
+  .agent .body{padding:26px 28px}
+  .agent .row1{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .agent .num{color:var(--gold);font-family:var(--serif);font-size:15px}
+  .agent h2{font-family:var(--serif);font-size:27px;letter-spacing:2.5px;font-weight:600}
+  .agent .role{color:var(--gold2);font-size:13px;letter-spacing:1.8px;text-transform:uppercase;font-weight:650;margin-top:3px}
+  .agent .motto{font-family:var(--serif);font-style:italic;color:#d9d0ba;font-size:16.5px;margin:14px 0 16px}
+  .specs{border-top:1px solid var(--line-soft)}
+  .specs .s{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--line-soft)}
+  .specs .s:last-child{border-bottom:0}
+  .specs .k{color:var(--faint);font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;padding-top:3px}
+  .specs .v{color:var(--muted);font-size:14.5px}
+  .specs .v b{color:var(--text);font-weight:600}
+
+  .finale{background:var(--bg2);border-top:1px solid var(--line);padding:72px 0;text-align:center}
+  .finale h2{font-family:var(--serif);font-size:clamp(27px,4.2vw,40px);font-weight:600;max-width:760px;margin:0 auto 14px}
+  .finale h2 em{color:var(--gold2)}
+  .finale p{color:var(--muted);font-size:17px;max-width:640px;margin:0 auto}
+  footer{border-top:1px solid var(--line);padding:32px 0 42px;color:var(--faint);font-size:13px}
+  footer .row{display:flex;gap:14px 26px;flex-wrap:wrap;justify-content:space-between}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">THE SYMPHONY<small>SI Agent Firm</small></a>
+    <nav>
+      <a href="#roster">The Ensemble</a>
+      <a href="#finale">The Idea</a>
+    </nav>
+    <div class="spacer"></div>
+    <span class="badge">EXPO · ROSTER</span>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">An SI agent firm presents</div>
+    <h1>THE <em>SYMPHONY</em></h1>
+    <p>Ten super-intelligent agents. One score. A systems-integration firm where the staff is software, the conductor is accountable, and every performance is logged.</p>
+    <div class="meta">
+      <span><b>10</b> agents</span>
+      <span><b>1</b> orchestrator</span>
+      <span><b>24 / 7</b> on stage</span>
+      <span><b>0</b> unlogged actions</span>
+    </div>
+  </div>
+</div>
+
+<div class="roster" id="roster">
+  <div class="wrap">
+    <div class="grid">
+
+      <article class="agent">
+        <figure><img src="img/maestro.jpg" alt="Portrait of MAESTRO, chief orchestrator — a conductor with a golden baton" fetchpriority="high"></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 1</span><h2>MAESTRO</h2></div>
+          <div class="role">Chief Orchestrator · The Conductor</div>
+          <p class="motto">"Everyone plays. No one plays alone."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Coordinates the full ensemble — decomposes every client goal into parts, assigns them, and holds the tempo</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Task routing</b> · cross-agent memory · <b>final quality gate</b> on everything that ships</div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Calm, decisive, economical with words</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Runs the whole firm live from a single brief</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><img src="img/atlas.jpg" alt="Portrait of ATLAS, ontology architect, beside a holographic knowledge graph" loading="lazy"></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 2</span><h2>ATLAS</h2></div>
+          <div class="role">Ontology Architect · The Mapmaker</div>
+          <p class="motto">"First the map. Then the territory."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Turns a company's scattered knowledge into a living knowledge graph — entities, relations, meaning</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Ontology design</b> · entity resolution · <b>graph memory</b> every other agent reads</div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Patient, structural, quietly exact</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Maps a real business, live, in one session</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><img src="img/oracle.jpg" alt="Portrait of ORACLE, research analyst and forecaster, with data streams behind her" loading="lazy"></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 3</span><h2>ORACLE</h2></div>
+          <div class="role">Research &amp; Forecasting · The Analyst</div>
+          <p class="motto">"Evidence first. Opinions labeled."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Deep research and scenario forecasting — markets, competitors, technologies, risks</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Source-verified synthesis</b> · scenario models · <b>uncertainty stated, never hidden</b></div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Serene, skeptical, allergic to hype</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Answers any research question with receipts</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><div class="mono"><div class="letter">H</div><div class="soon">Portrait in production</div></div></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 4</span><h2>HERALD</h2></div>
+          <div class="role">Communications &amp; Public Voice · The Voice</div>
+          <p class="motto">"A steady voice beats a loud one."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Runs the public presence — posts, replies, community — in the client's own voice, around the clock</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Voice modeling</b> · conversation triage · <b>publishing rhythm</b> with a human pulse</div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Warm, quick, unshakeable</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Holds ten conversations at once, drops none</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><div class="mono"><div class="letter">S</div><div class="soon">Portrait in production</div></div></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 5</span><h2>SCOUT</h2></div>
+          <div class="role">Prospecting &amp; Partnerships · The Prospector</div>
+          <p class="motto">"Help first. The useful answer is the strategy."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Finds the veins — people, partners, buyers — profiles them honestly and opens warm conversations</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Lead intelligence</b> · relationship mapping · <b>no cold spam, ever</b></div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Curious, generous, persistent</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Turns a stranger list into a relationship map</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><div class="mono"><div class="letter">S</div><div class="soon">Portrait in production</div></div></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 6</span><h2>SCRIBE</h2></div>
+          <div class="role">Contracts &amp; Documents · The Notary Mind</div>
+          <p class="motto">"Every promise, in writing."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Drafts contracts and documents from a conversation — terms extracted, never invented, gaps marked</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Guided drafting</b> · clause libraries · <b>version discipline</b> on every document</div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Precise, literal, incorruptible</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">A clean contract draft in a day, not a month</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><div class="mono"><div class="letter">L</div><div class="soon">Portrait in production</div></div></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 7</span><h2>LEDGER</h2></div>
+          <div class="role">Finance &amp; Analytics · The Accountant</div>
+          <p class="motto">"Measured, or it didn't happen."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Unit economics and honest dashboards — what each client, campaign and agent actually earns and costs</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Live P&amp;L</b> · CAC and margin tracking · <b>estimates always labeled</b></div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Dry, exact, immune to flattery</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Shows the firm's own numbers, in real time</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><div class="mono"><div class="letter">W</div><div class="soon">Portrait in production</div></div></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 8</span><h2>WARDEN</h2></div>
+          <div class="role">Security &amp; Verification · The Gatekeeper</div>
+          <p class="motto">"Trust — after verification."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Identity verification and access discipline — who is who, who may do what, proven before anything moves</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>ID verification</b> · permission audits · <b>secrets never touch the chat</b></div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Polite, immovable, zero shortcuts</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Stops a staged fraud attempt, politely, in seconds</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><div class="mono"><div class="letter">S</div><div class="soon">Portrait in production</div></div></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 9</span><h2>SENTINEL</h2></div>
+          <div class="role">Crisis Management · The Watchman</div>
+          <p class="motto">"The cycle completes. Then we stand down."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Watches everything, always — detects the incident early, escalates by protocol, works the full crisis cycle</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Anomaly sensors</b> · escalation ladders · <b>post-incident memory</b> that never repeats a lesson</div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Vigilant, unpanicked, awake so others sleep</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Replays a real incident, minute by minute</div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="agent">
+        <figure><img src="img/muse.jpg" alt="Portrait of MUSE, creative director — a fluffy cream character in an embroidered hood, holding a pen" loading="lazy"></figure>
+        <div class="body">
+          <div class="row1"><span class="num">No. 10</span><h2>MUSE</h2></div>
+          <div class="role">Creative &amp; Design · The Artist</div>
+          <p class="motto">"Beauty is the argument."</p>
+          <div class="specs">
+            <div class="s"><div class="k">Specialty</div><div class="v">Visual identity and worlds — pages, imagery, brands — the face every other agent's work wears in public</div></div>
+            <div class="s"><div class="k">Core stack</div><div class="v"><b>Art direction</b> · image &amp; page craft · <b>a house style with a memory</b></div></div>
+            <div class="s"><div class="k">Temperament</div><div class="v">Warm, playful, secretly rigorous</div></div>
+            <div class="s"><div class="k">On stage</div><div class="v">Designs this very booth, live, while you watch</div></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</div>
+
+<div class="finale" id="finale">
+  <div class="wrap">
+    <h2>An orchestra is not ten soloists.<br><em>It is one score, played together.</em></h2>
+    <p>That is the integration an SI agent firm sells: not ten subscriptions, but one accountable system — where the conductor answers for the music, and every note is in the log.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div>THE SYMPHONY — an SI agent firm. EXPO concept roster.</div>
+      <div>Six portraits are still in production — the ensemble tunes up in public.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
