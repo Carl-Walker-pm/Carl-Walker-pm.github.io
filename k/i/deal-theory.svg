@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1680 1180" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
+<defs>
+  <radialGradient id="bg" cx="50%" cy="38%" r="85%">
+    <stop offset="0%" stop-color="#141D47"/><stop offset="55%" stop-color="#0B1130"/>
+    <stop offset="100%" stop-color="#060A1E"/>
+  </radialGradient>
+  <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#FFE1A1"/><stop offset="100%" stop-color="#F5A83D"/>
+  </linearGradient>
+  <linearGradient id="cy" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#7DEBFF"/><stop offset="100%" stop-color="#2B7FFF"/>
+  </linearGradient>
+  <linearGradient id="vi" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#C4A6FF"/><stop offset="100%" stop-color="#7A3DFF"/>
+  </linearGradient>
+  <linearGradient id="banner" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#2B7FFF"/><stop offset="50%" stop-color="#7A3DFF"/>
+    <stop offset="100%" stop-color="#F5A83D"/>
+  </linearGradient>
+  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="10" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#7DEBFF"/>
+  </marker>
+  <marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M0,0 L10,5 L0,10 z" fill="#FFC95C"/>
+  </marker>
+</defs>
+<rect width="1680" height="1180" fill="url(#bg)"/>
+<g fill="#FFFFFF" opacity="0.5">
+  <circle cx="140" cy="90" r="1.6"/><circle cx="520" cy="55" r="1.2"/><circle cx="1010" cy="80" r="1.5"/>
+  <circle cx="1420" cy="60" r="1.2"/><circle cx="1600" cy="200" r="1.5"/><circle cx="60" cy="330" r="1.2"/>
+  <circle cx="1640" cy="700" r="1.3"/><circle cx="820" cy="40" r="1.1"/><circle cx="300" cy="160" r="1.1"/>
+</g>
+<rect x="26" y="26" width="1628" height="1128" rx="28" fill="none" stroke="#33448C" stroke-width="1.5" stroke-dasharray="3 9"/>
+<text x="1618" y="58" font-size="12.5" letter-spacing="3" fill="#5F74AC" text-anchor="end" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">THE SYSTEM &#183; RELATIONSHIPS &#183; RULES &#183; INCENTIVES</text>
+<text x="840" y="98" font-size="58" font-weight="800" letter-spacing="6" fill="#FFFFFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">DEAL THEORY</text>
+<text x="840" y="132" font-size="17" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Negotiation &#183; Scenario Management &#183; Decision-Making</text>
+<g font-size="13" font-weight="700" letter-spacing="2">
+  <rect x="468" y="152" width="168" height="30" rx="15" fill="#111A3E" stroke="#2B7FFF"/><text x="552" y="172" fill="#7DEBFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">TACTICAL</text>
+  <rect x="652" y="152" width="168" height="30" rx="15" fill="#111A3E" stroke="#7A3DFF"/><text x="736" y="172" fill="#C4A6FF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">STRATEGIC</text>
+  <rect x="836" y="152" width="168" height="30" rx="15" fill="#111A3E" stroke="#3DDBA8"/><text x="920" y="172" fill="#3DDBA8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">SYSTEMIC</text>
+  <rect x="1020" y="152" width="168" height="30" rx="15" fill="#111A3E" stroke="#F5A83D"/><text x="1104" y="172" fill="#FFC95C" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">TEMPORAL</text>
+</g>
+<text x="1018" y="200" font-size="12.5" font-weight="700" letter-spacing="1.5" fill="#C4A6FF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">MEDIATION EXPANDS THE SPACE ITSELF</text>
+
+<g>
+  <rect x="64" y="238" width="300" height="556" rx="20" fill="#0D1533" stroke="#2B7FFF" stroke-width="1.5"/>
+  <text x="214" y="278" font-size="15" font-weight="800" letter-spacing="2.5" fill="#7DEBFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">EXISTING STATE</text>
+  <text x="214" y="300" font-size="12" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">the state of affairs both parties</text>
+  <text x="214" y="318" font-size="12" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">seek to change</text>
+  <circle cx="162" cy="392" r="47" fill="url(#cy)" opacity="0.9"/>
+  <circle cx="266" cy="392" r="47" fill="url(#vi)" opacity="0.85"/>
+  <text x="162" y="386" font-size="15" font-weight="800" fill="#06122E" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">PARTY</text>
+  <text x="162" y="406" font-size="15" font-weight="800" fill="#06122E" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">A</text>
+  <text x="266" y="386" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">PARTY</text>
+  <text x="266" y="406" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">B</text>
+  <g font-size="13.5" fill="#EAF2FF">
+    <rect x="92" y="478" width="244" height="38" rx="10" fill="#131E47"/><text x="214" y="502" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Resources</text>
+    <rect x="92" y="528" width="244" height="38" rx="10" fill="#131E47"/><text x="214" y="552" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Constraints</text>
+    <rect x="92" y="578" width="244" height="38" rx="10" fill="#131E47"/><text x="214" y="602" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Expectations</text>
+    <rect x="92" y="628" width="244" height="38" rx="10" fill="#131E47"/><text x="214" y="652" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Interests</text>
+    <rect x="92" y="678" width="244" height="38" rx="10" fill="#131E47"/><text x="214" y="702" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Vision of the desired future</text>
+  </g>
+  <text x="214" y="756" font-size="12" fill="#5F74AC" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Positions evolve - even before</text>
+  <text x="214" y="774" font-size="12" fill="#5F74AC" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">any agreement is reached</text>
+</g>
+
+<g>
+  <path d="M372,516 L404,516" stroke="#7DEBFF" stroke-width="3" marker-end="url(#ar)"/>
+  <polygon points="592,300 736,516 592,732 448,516" fill="#101B45" stroke="url(#cy)" stroke-width="2.5" filter="url(#glow)"/>
+  <polygon points="592,300 592,732 448,516" fill="#7DEBFF" opacity="0.07"/>
+  <polygon points="592,300 736,516 592,516" fill="#C4A6FF" opacity="0.08"/>
+  <text x="592" y="478" font-size="21" font-weight="800" letter-spacing="1.5" fill="#FFFFFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">NEGOTIATION</text>
+  <text x="592" y="506" font-size="12.5" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">the process itself - not just</text>
+  <text x="592" y="524" font-size="12.5" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">the road to a deal</text>
+  <text x="592" y="560" font-size="13" fill="#7DEBFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Explore interests</text>
+  <text x="592" y="584" font-size="13" fill="#C4A6FF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Develop alternatives</text>
+  <text x="592" y="608" font-size="13" fill="#3DDBA8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Reshape perceptions</text>
+  <text x="592" y="268" font-size="12.5" fill="#5F74AC" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">QUALITY = HOW WELL ALTERNATIVES</text>
+  <text x="592" y="286" font-size="12.5" fill="#5F74AC" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">ARE EVALUATED AND CHOSEN</text>
+</g>
+
+<g>
+  <path d="M744,516 L796,516" stroke="#7DEBFF" stroke-width="3" marker-end="url(#ar)"/>
+  <rect x="792" y="220" width="452" height="592" rx="24" fill="none" stroke="#9D6BFF" stroke-width="2" stroke-dasharray="8 7"/>
+  <rect x="810" y="238" width="416" height="556" rx="20" fill="#0D1533" stroke="#3A4A8F" stroke-width="1.5"/>
+  <text x="1018" y="278" font-size="15" font-weight="800" letter-spacing="2.5" fill="#C4A6FF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">SCENARIO SPACE</text>
+  <text x="1018" y="300" font-size="12" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">every scenario: conditions + interests + actions</text>
+  <text x="1018" y="318" font-size="12" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">+ constraints + probable consequences</text>
+  
+  <g>
+    <rect x="834" y="336" width="368" height="94" rx="14" fill="#111A3E" stroke="#3A4A8F" stroke-width="1.5"/>
+    <text x="850" y="363" font-size="16" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Scenario 1 - The Default</text>
+    <text x="850" y="383" font-size="12" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">the obvious course of events</text>
+    <text x="850" y="402" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">T</text><rect x="864" y="394" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="394" width="42" height="8" rx="4" fill="#FF6B8A"/><text x="850" y="415" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">P</text><rect x="864" y="407" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="407" width="21" height="8" rx="4" fill="#3DDBA8"/><text x="850" y="428" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">C</text><rect x="864" y="420" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="420" width="21" height="8" rx="4" fill="#FFC95C"/>
+  </g>
+  
+  <g>
+    <rect x="834" y="442" width="368" height="94" rx="14" fill="#111A3E" stroke="#3A4A8F" stroke-width="1.5"/>
+    <text x="850" y="469" font-size="16" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Scenario 2 - The Push</text>
+    <text x="850" y="489" font-size="12" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">demand more, concede less</text>
+    <text x="850" y="508" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">T</text><rect x="864" y="500" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="500" width="52" height="8" rx="4" fill="#FF6B8A"/><text x="850" y="521" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">P</text><rect x="864" y="513" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="513" width="31" height="8" rx="4" fill="#3DDBA8"/><text x="850" y="534" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">C</text><rect x="864" y="526" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="526" width="42" height="8" rx="4" fill="#FFC95C"/>
+  </g>
+
+  <g>
+    <rect x="834" y="548" width="368" height="94" rx="14" fill="#241B06" stroke="url(#gold)" stroke-width="2.5" filter="url(#glow)"/>
+    <polygon points="862,558 865,566 873,566 867,571 869,579 862,574 855,579 857,571 851,566 859,566" fill="#FFC95C"/>
+    <text x="882" y="575" font-size="16" font-weight="800" fill="#FFC95C" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">THE MIDDLE GROUND</text>
+    <text x="882" y="595" font-size="12" fill="#E8D9AE" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">not a compromise - a solution that did not</text>
+    <text x="882" y="611" font-size="12" fill="#E8D9AE" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">exist in the original framing</text>
+    <text x="882" y="632" font-size="12" font-weight="700" fill="#FFC95C" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">MAXIMUM POTENTIAL &#183; LOW TENSION &#183; SHARED COST</text>
+  </g>
+  
+  <g>
+    <rect x="834" y="654" width="368" height="94" rx="14" fill="#111A3E" stroke="#3A4A8F" stroke-width="1.5"/>
+    <text x="850" y="681" font-size="16" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Scenario N - The Walk-Away</text>
+    <text x="850" y="701" font-size="12" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">deliberate no-deal, options preserved</text>
+    <text x="850" y="720" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">T</text><rect x="864" y="712" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="712" width="21" height="8" rx="4" fill="#FF6B8A"/><text x="850" y="733" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">P</text><rect x="864" y="725" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="725" width="31" height="8" rx="4" fill="#3DDBA8"/><text x="850" y="746" font-size="10" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">C</text><rect x="864" y="738" width="52" height="8" rx="4" fill="#1B2650"/><rect x="864" y="738" width="10" height="8" rx="4" fill="#FFC95C"/>
+  </g>
+  <text x="1018" y="782" font-size="12" fill="#5F74AC" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">The default scenario is never inevitable</text>
+</g>
+
+<g>
+  <path d="M1252,440 C1280,440 1280,380 1304,380" stroke="#FFC95C" stroke-width="3" fill="none" marker-end="url(#arg)"/>
+  <path d="M1252,600 C1280,600 1280,640 1304,640" stroke="#C4A6FF" stroke-width="3" fill="none" marker-end="url(#ar)"/>
+  <rect x="1300" y="300" width="316" height="128" rx="18" fill="#122B1E" stroke="#3DDBA8" stroke-width="2"/>
+  <text x="1458" y="352" font-size="26" font-weight="800" letter-spacing="3" fill="#3DDBA8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">DEAL</text>
+  <text x="1458" y="378" font-size="12.5" fill="#9FD8C4" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">an agreement is reached - nothing more</text>
+  <text x="1458" y="396" font-size="12.5" fill="#9FD8C4" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">is yet known about its value</text>
+  <rect x="1300" y="580" width="316" height="128" rx="18" fill="#1D1440" stroke="#9D6BFF" stroke-width="2"/>
+  <text x="1458" y="632" font-size="26" font-weight="800" letter-spacing="3" fill="#C4A6FF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">NO DEAL</text>
+  <text x="1458" y="658" font-size="12.5" fill="#CDBBF5" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">a deliberate choice - can be the</text>
+  <text x="1458" y="676" font-size="12.5" fill="#CDBBF5" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">best outcome of a negotiation</text>
+  <text x="1458" y="472" font-size="13" font-weight="700" letter-spacing="1.5" fill="#FFFFFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">NEITHER IS SUCCESS OR FAILURE</text>
+  <text x="1458" y="500" font-size="12.5" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Judge by consequences - how positions</text>
+  <text x="1458" y="518" font-size="12.5" fill="#9FB4D8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">changed, and what followed</text>
+  <text x="1458" y="548" font-size="12.5" fill="#5F74AC" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">FOUR KINDS OF CHANGE:</text>
+  <g font-size="14" font-weight="700">
+    <rect x="1300" y="730" width="150" height="52" rx="12" fill="#122B1E" stroke="#3DDBA8"/>
+    <text x="1375" y="763" fill="#3DDBA8" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">+ GAIN</text>
+    <rect x="1466" y="730" width="150" height="52" rx="12" fill="#33121F" stroke="#FF6B8A"/>
+    <text x="1541" y="763" fill="#FF6B8A" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">- LOSS</text>
+    <rect x="1300" y="794" width="150" height="52" rx="12" fill="#131E47" stroke="#7DEBFF"/>
+    <text x="1375" y="827" fill="#7DEBFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">= PRESERVE</text>
+    <rect x="1466" y="794" width="150" height="52" rx="12" fill="#241B06" stroke="#FFC95C"/>
+    <text x="1541" y="827" fill="#FFC95C" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">* TRANSFORM</text>
+  </g>
+</g>
+
+<g>
+  <rect x="64" y="872" width="1552" height="86" rx="18" fill="#0D1533" stroke="#33448C"/>
+  <text x="840" y="862" font-size="13" font-weight="800" letter-spacing="2.5" fill="#FFFFFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">THE INFORMED CHOICE - SEVEN STEPS, THEN THE LOOP REOPENS</text>
+  
+  <g>
+    <circle cx="100" cy="912" r="17" fill="url(#gold)"/>
+    <text x="100" y="919" font-size="16" font-weight="800" fill="#231600" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">1</text>
+    <text x="130" y="908" font-size="14.5" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Define the situation</text>
+    <text x="130" y="928" font-size="11.5" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">and the desired change</text>
+  </g><text x="274" y="920" font-size="18" fill="#3A4A8F" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">&gt;</text>
+  <g>
+    <circle cx="318" cy="912" r="17" fill="url(#gold)"/>
+    <text x="318" y="919" font-size="16" font-weight="800" fill="#231600" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">2</text>
+    <text x="348" y="908" font-size="14.5" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Separate the layers</text>
+    <text x="348" y="928" font-size="11.5" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">positions / interests / limits</text>
+  </g><text x="492" y="920" font-size="18" fill="#3A4A8F" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">&gt;</text>
+  <g>
+    <circle cx="536" cy="912" r="17" fill="url(#gold)"/>
+    <text x="536" y="919" font-size="16" font-weight="800" fill="#231600" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">3</text>
+    <text x="566" y="908" font-size="14.5" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Build both scenarios</text>
+    <text x="566" y="928" font-size="11.5" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">deal - and no-deal</text>
+  </g><text x="710" y="920" font-size="18" fill="#3A4A8F" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">&gt;</text>
+  <g>
+    <circle cx="754" cy="912" r="17" fill="url(#gold)"/>
+    <text x="754" y="919" font-size="16" font-weight="800" fill="#231600" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">4</text>
+    <text x="784" y="908" font-size="14.5" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Weigh every scenario</text>
+    <text x="784" y="928" font-size="11.5" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">gains / losses / risks</text>
+  </g><text x="928" y="920" font-size="18" fill="#3A4A8F" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">&gt;</text>
+  <g>
+    <circle cx="972" cy="912" r="17" fill="url(#gold)"/>
+    <text x="972" y="919" font-size="16" font-weight="800" fill="#231600" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">5</text>
+    <text x="1002" y="908" font-size="14.5" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Create new options</text>
+    <text x="1002" y="928" font-size="11.5" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">change terms, expand space</text>
+  </g><text x="1146" y="920" font-size="18" fill="#3A4A8F" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">&gt;</text>
+  <g>
+    <circle cx="1190" cy="912" r="17" fill="url(#gold)"/>
+    <text x="1190" y="919" font-size="16" font-weight="800" fill="#231600" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">6</text>
+    <text x="1220" y="908" font-size="14.5" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Choose deliberately</text>
+    <text x="1220" y="928" font-size="11.5" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">short-term + long-term</text>
+  </g><text x="1364" y="920" font-size="18" fill="#3A4A8F" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">&gt;</text>
+  <g>
+    <circle cx="1408" cy="912" r="17" fill="url(#gold)"/>
+    <text x="1408" y="919" font-size="16" font-weight="800" fill="#231600" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">7</text>
+    <text x="1438" y="908" font-size="14.5" font-weight="700" fill="#EAF2FF" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Reassess</text>
+    <text x="1438" y="928" font-size="11.5" fill="#9FB4D8" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">as circumstances evolve</text>
+  </g>
+  <rect x="64" y="986" width="1552" height="100" rx="18" fill="url(#banner)" opacity="0.92"/>
+  <text x="840" y="1028" font-size="21" font-weight="800" letter-spacing="2" fill="#FFFFFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">BEYOND THE DEAL</text>
+  <text x="840" y="1058" font-size="14.5" fill="#F2ECFF" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Do we make deals to change the conditions of an existing system - or change the system itself to make different deals possible?</text>
+  <text x="840" y="1136" font-size="12.5" fill="#5F74AC" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">Deal Theory &#183; Kirill Minin &#183; 2026 - Evaluate not whether a deal was concluded, but how positions changed and what consequences followed.</text>
+</g>
+</svg>
