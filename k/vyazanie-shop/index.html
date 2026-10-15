@@ -60,6 +60,10 @@
   button{margin-top:18px;width:100%;font-family:Verdana,sans-serif;font-size:16px;background:var(--acc);color:#fff;border:none;border-radius:10px;padding:14px;cursor:pointer}
   button:hover{background:#9c4a26}
   .mailbig{font-size:22px;color:var(--acc);text-decoration:none;border-bottom:1px dashed var(--rose)}
+  .batch-hidden{display:none}
+  section.reveal{animation:fadeUp .9s ease both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  #moreHint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--dark);color:#fdf6ec;padding:9px 18px;border-radius:999px;font-size:14px;opacity:.92;z-index:50;transition:opacity .6s;pointer-events:none}
   footer{border-top:1px solid var(--line);margin-top:54px;padding:24px 0 44px;color:#a08a76;font-size:14.5px;text-align:center}
 </style>
 </head>
@@ -1544,5 +1548,49 @@
 </footer>
 
 </div>
+<div id="moreHint">листайте вниз — дальше ещё тепло ↓</div>
+<script>
+(function(){
+  var BATCH=10;
+  var secs=Array.prototype.slice.call(document.querySelectorAll('main section'));
+  var shown=0;
+  secs.forEach(function(s){ s.classList.add('batch-hidden'); });
+  var main=document.querySelector('main');
+  var sentinel=document.createElement('div');
+  sentinel.style.height='1px';
+  main.appendChild(sentinel);
+  var hint=document.getElementById('moreHint');
+  function reveal(){
+    var n=0;
+    while(shown<secs.length && n<BATCH){
+      var s=secs[shown++];
+      s.classList.remove('batch-hidden');
+      s.classList.add('reveal');
+      main.insertBefore(sentinel, s.nextSibling ? null : null);
+      n++;
+    }
+    // keep sentinel after the last visible section
+    var last=secs[Math.min(shown,secs.length)-1];
+    if(last && last.nextSibling!==sentinel){ main.insertBefore(sentinel, last.nextSibling); }
+    if(shown>=secs.length){
+      if(window.__knitObs){ window.__knitObs.disconnect(); }
+      if(hint){ hint.style.opacity='0'; setTimeout(function(){ hint.remove(); },700); }
+    }
+  }
+  reveal();
+  if('IntersectionObserver' in window && shown<secs.length){
+    window.__knitObs=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ reveal(); }
+    },{rootMargin:'700px 0px'});
+    window.__knitObs.observe(sentinel);
+  } else {
+    while(shown<secs.length){ reveal(); }
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(a){ while(shown<secs.length){ reveal(); } }
+  });
+})();
+</script>
 </body>
 </html>
