@@ -66,6 +66,26 @@
   #moreHint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--dark);color:#fdf6ec;padding:9px 18px;border-radius:999px;font-size:14px;opacity:.92;z-index:50;transition:opacity .6s;pointer-events:none}
   footer{border-top:1px solid var(--line);margin-top:54px;padding:24px 0 44px;color:#a08a76;font-size:14.5px;text-align:center}
 </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C2W27FWRBQ');</script>
+<style>
+html{scroll-behavior:smooth}
+.cta-row{margin:22px 0 6px;text-align:center}
+.cta-btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:18px;font-weight:600;padding:14px 30px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.cta-btn:hover{filter:brightness(1.07)}
+.cta-line{text-align:center;color:var(--muted);font-size:15px;margin-top:10px}
+#stickyBar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--dark);color:#fdf6ec;display:none;align-items:center;justify-content:center;gap:14px;padding:10px 14px;box-shadow:0 -4px 18px rgba(0,0,0,.25)}
+#stickyBar.show{display:flex}
+#stickyBar .sb-t{font-size:15.5px}
+#stickyBar .sb-b{background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:9px 20px;border-radius:999px;font-size:15.5px;white-space:nowrap}
+#stickyBar .sb-x{background:none;border:none;color:#fdf6ec;font-size:18px;cursor:pointer;opacity:.75;padding:4px 6px}
+#moreHint{bottom:74px !important}
+.qp{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.qp button{border:1.5px solid var(--accent);background:#fff;color:var(--ink);border-radius:999px;padding:7px 14px;font-size:14.5px;cursor:pointer;font-family:inherit}
+.qp button:hover{background:var(--accent);color:#fff}
+.form-note{color:var(--muted);font-size:15px;margin:-6px 0 14px}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -82,6 +102,8 @@
     <span class="chip">✂️ Заказы <b>по вашим меркам</b></span>
     <span class="chip">🔧 <b>Ремонт</b> любимых вещей</span>
   </div>
+
+  <div class="cta-row"><a class="cta-btn" data-cta href="#order">Написать Наде — обсудить заказ</a><div class="cta-line">Вещи от 70 kr · Ответ в течение дня · Доставка по всему миру</div></div>
 </header>
 
 <section>
@@ -289,8 +311,9 @@
   </div>
 </section>
 
-<section>
+<section id="order">
   <h2>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -313,7 +336,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -491,6 +516,7 @@
 
 <section>
   <h2><span class="n">30</span>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -513,7 +539,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -686,6 +714,7 @@
 
 <section>
   <h2>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -708,7 +737,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -877,6 +908,7 @@
 
 <section>
   <h2>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -899,7 +931,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -908,6 +942,7 @@
 
 <section>
   <h2><span class="n">61</span>И ещё раз — напишите Наде</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -930,7 +965,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -1088,6 +1125,7 @@
 
 <section>
   <h2>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -1110,7 +1148,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -1276,6 +1316,7 @@
 
 <section>
   <h2>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -1298,7 +1339,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -1450,6 +1493,7 @@
 
 <section>
   <h2>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -1472,7 +1516,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -1616,6 +1662,7 @@
 
 <section>
   <h2>Обратная связь</h2>
+  <p class="form-note">Отвечаем в течение дня. Без спама — только разговор о вашей вещи.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Напишите Наде 💌</h3>
     <p>Заказ, вопрос, фотография вещи на ремонт или просто отзыв — заполните форму, и письмо придёт прямо на почту Нади:</p>
@@ -1638,7 +1685,9 @@
         <option>Другое</option>
       </select>
       <label for="f-msg">Сообщение</label>
-      <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Здравствуйте! Хочу заказать носки. Для кого: … Размер: … Цвет: …">🧦 Носки</button><button type="button" data-fill="Здравствуйте! Хочу заказать шарф или шапку. Для кого: … Цвет: …">🧣 Шарф или шапка</button><button type="button" data-fill="Здравствуйте! Хочу заказать плед в подарок. Размер: … Цвет: … К какому дню: …">🎁 Плед в подарок</button><button type="button" data-fill="Здравствуйте! Нужен ремонт вязаной вещи. Что случилось: …">🔧 Ремонт вещи</button></div>
+    <textarea id="f-msg" name="Сообщение" required placeholder="Что хотите связать? Для кого, какой размер и цвет? Если на ремонт — пара слов о вещи."></textarea>
       <button type="submit">Отправить Наде ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Надя отвечает лично, обычно в течение одного-двух дней.</p>
@@ -1702,6 +1751,30 @@
     var a=e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if(a){ while(shown<secs.length){ reveal(); } }
   });
+})();
+</script>
+
+<div id="stickyBar"><span class="sb-t">Связать что-нибудь тёплое?</span><a class="sb-b" data-cta href="#order">Написать Наде</a><button class="sb-x" aria-label="×">✕</button></div>
+<script>
+(function(){
+  var bar=document.getElementById('stickyBar');
+  function onScroll(){ if(window.scrollY>600){bar.classList.add('show');} }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  bar.querySelector('.sb-x').addEventListener('click',function(){bar.remove();});
+  document.addEventListener('click',function(e){
+    var c=e.target.closest ? e.target.closest('[data-cta]') : null;
+    if(c && window.gtag){ gtag('event','order_cta_click'); }
+    var b=e.target.closest ? e.target.closest('.qp button') : null;
+    if(b){
+      var form=b.closest('form'); if(!form) return;
+      var ta=form.querySelector('textarea'); if(!ta) return;
+      ta.value=b.getAttribute('data-fill'); ta.focus();
+      if(window.gtag){ gtag('event','quick_pick'); }
+    }
+  });
+  document.addEventListener('submit',function(e){
+    if(window.gtag){ gtag('event','form_submit'); }
+  }, true);
 })();
 </script>
 </body>
