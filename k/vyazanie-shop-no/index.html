@@ -1,0 +1,1708 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strikkebutikk — varme, strikket for hånd | Nadias butikk</title>
+<meta name="description" content="Strikkebutikk: gensere, skjerf, luer, sokker, pledd og barneklær strikket for hånd av naturlig ull. Katalog, garn, mål, gavesett, reparasjon av strikkeplagg. Strikket av Nadia, Norge. Bestilling og tilbakemelding — rett fra denne siden.">
+<style>
+  :root{--bg:#fbf6ef;--card:#ffffff;--line:#ead9c2;--ink:#43302a;--dim:#8a7364;--acc:#b4552d;--rose:#c98a8a;--soft:#f5ead9}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px}
+  header{padding:54px 0 8px;text-align:center}
+  .kicker{font-family:Verdana,sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--acc)}
+  h1{font-size:46px;line-height:1.15;font-weight:normal;margin:16px 0 12px}
+  h1 em{color:var(--acc);font-style:italic}
+  .sub{font-size:19px;color:var(--dim);max-width:620px;margin:0 auto}
+  .hero{width:100%;border-radius:18px;margin:28px 0 6px;box-shadow:0 12px 40px rgba(67,48,42,.15)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0 4px}
+  .chip{font-family:Verdana,sans-serif;font-size:13px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 15px}
+  .chip b{color:var(--acc)}
+  section{margin:48px 0}
+  h2{font-size:29px;font-weight:normal;margin-bottom:10px}
+  h2 .n{color:var(--rose);font-style:italic;margin-right:10px}
+  .lead{color:var(--dim);font-size:17px;margin-bottom:18px;max-width:720px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:700px){.grid,.grid3{grid-template-columns:1fr}h1{font-size:32px}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{font-size:19px;font-weight:normal;margin-bottom:6px}
+  .card p,.card li{font-size:15.5px;color:var(--dim)}
+  .card ul{margin-left:18px}
+  .price{font-family:Verdana,sans-serif;font-size:14px;color:var(--acc);margin-top:10px;display:block}
+  .meta{font-family:Verdana,sans-serif;font-size:12.5px;color:var(--dim);margin-top:6px;display:block}
+  .tag{font-family:Verdana,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:8px}
+  .fig{width:100%;border-radius:16px;box-shadow:0 8px 30px rgba(67,48,42,.13)}
+  .figcap{font-size:14px;color:var(--dim);text-align:center;margin-top:8px;font-style:italic}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:700px){.gallery{grid-template-columns:1fr}}
+  .gallery img{width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 6px 22px rgba(67,48,42,.12)}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15.5px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-family:Verdana,sans-serif;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--acc);background:var(--soft)}
+  tr:last-child td{border-bottom:none}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .steps5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:700px){.steps,.steps5{grid-template-columns:1fr}}
+  .step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
+  .step b{display:block;font-size:28px;color:var(--acc);font-weight:normal}
+  .step h3{font-size:16.5px;font-weight:normal;margin:4px 0}
+  .step p{font-size:14.5px;color:var(--dim)}
+  .care li{font-size:16px;margin:7px 0 7px 20px}
+  .faq .card{margin-bottom:12px}
+  .order{background:var(--card);border:2px dashed var(--rose);border-radius:16px;padding:26px;text-align:center}
+  .order p{font-size:16.5px;color:var(--dim);max-width:580px;margin:8px auto}
+  form{max-width:620px;margin:18px auto 0;text-align:left}
+  label{font-family:Verdana,sans-serif;font-size:13px;color:var(--dim);display:block;margin:14px 0 5px}
+  input,select,textarea{width:100%;font-family:Georgia,serif;font-size:16px;color:var(--ink);background:#fffdf9;border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+  textarea{min-height:120px;resize:vertical}
+  button{margin-top:18px;width:100%;font-family:Verdana,sans-serif;font-size:16px;background:var(--acc);color:#fff;border:none;border-radius:10px;padding:14px;cursor:pointer}
+  button:hover{background:#9c4a26}
+  .mailbig{font-size:22px;color:var(--acc);text-decoration:none;border-bottom:1px dashed var(--rose)}
+  .batch-hidden{display:none}
+  section.reveal{animation:fadeUp .9s ease both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  #moreHint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--dark);color:#fdf6ec;padding:9px 18px;border-radius:999px;font-size:14px;opacity:.92;z-index:50;transition:opacity .6s;pointer-events:none}
+  footer{border-top:1px solid var(--line);margin-top:54px;padding:24px 0 44px;color:#a08a76;font-size:14.5px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Håndarbeid · Norge</div>
+  <h1>Strikkebutikk — <em>varme i hver maske</em></h1>
+  <p class="sub">Gensere, skjerf, sokker og pledd, strikket for hånd av naturlig ull. Ingen fabrikk — bare hender, pinner og tid lagt ned i hvert eneste plagg.</p>
+  <img class="hero" src="../vyazanie-shop/hero.webp" alt="Nøster av myk ull i pastellfarger, trepinner og en sammenbrettet strikkegenser ved vinduet">
+  <div class="chips">
+    <span class="chip">🧶 <b>100 % håndarbeid</b></span>
+    <span class="chip">🐑 Naturlig <b>ull og merino</b></span>
+    <span class="chip">🎁 Fin <b>som gave</b></span>
+    <span class="chip">✂️ Bestillinger <b>etter dine mål</b></span>
+    <span class="chip">🔧 <b>Reparasjon</b> av favorittplagg</span>
+  </div>
+</header>
+
+<section>
+  <h2><span class="n">01</span>Hvorfor håndarbeid</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">Materiale</span><h3>Bare naturgarn</h3><p>Ull, merino, alpakka, bomull. Ingen knirkende syntetikk: naturfibre varmer, puster og blir ikke elektriske.</p></div>
+    <div class="card"><span class="tag">Ett eneste eksemplar</span><h3>Det finnes ingen maken</h3><p>Hvert plagg strikkes i ett eksemplar, til én bestemt person. Små særpreg ved håndarbeidet er ikke feil — det er mesterens signatur.</p></div>
+    <div class="card"><span class="tag">Levetid</span><h3>Årevis, ikke én sesong</h3><p>En fabrikkgenser strekker seg i løpet av vinteren. En håndstrikket genser varer i 5–10 år ved vanlig stell og overlever moten mer enn én gang.</p></div>
+    <div class="card"><span class="tag">Økologi</span><h3>Langsom mote</h3><p>Et plagg laget på bestilling støver ikke ned på et lager og havner ikke på dynga etter en måned. Garnrester blir til barneplagg og prøvelapper — helt uten svinn.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Katalog</h2>
+  <p class="lead">Prisene er veiledende («fra»): den nøyaktige prisen avhenger av størrelse, garn og mønster og avtales ved bestilling. Tidene gjelder bestilling «fra bunnen av».</p>
+  <img class="fig" src="../vyazanie-shop/sweaters.webp" alt="En stabel sammenbrettede strikkegensere med skandinaviske mønstre">
+  <p class="figcap">Gensere med skandinaviske mønstre er butikkens varemerke.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Varme</span><h3>Gensere og jakker</h3><p>Klassiske og med skandinaviske mønstre, av ren ull eller myk merino. De varmer på ordentlig — prøvd gjennom norske vintre.</p><span class="meta">Sammensetning: ull / merino · Tid: 2–4 uker</span><span class="price">fra 1 200 kr</span></div>
+    <div class="card"><span class="tag">Kos</span><h3>Skjerf og snoder</h3><p>Lange skjerf, snoder som går to ganger rundt, sjal. Ensafarget eller med fletter — under kåpen og til hverdags.</p><span class="meta">Sammensetning: merino / alpakka · Tid: 4–8 dager</span><span class="price">fra 450 kr</span></div>
+    <div class="card"><span class="tag">Til hodet</span><h3>Luer</h3><p>Varme luer med oppbrett, med eller uten dusk. Voksen- og barnestørrelser, og parsett til hele familien.</p><span class="meta">Sammensetning: merino · Tid: 2–4 dager</span><span class="price">fra 350 kr</span></div>
+    <div class="card"><span class="tag">Varme til føttene</span><h3>Sokker og votter</h3><p>Ekte ullsokker — hjemme, i støvlene, på fisketur og på tur. Votter og vanter med mønster.</p><span class="meta">Sammensetning: sokkeull med nylon · Tid: 3–5 dager</span><span class="price">fra 250 kr</span></div>
+    <div class="card"><span class="tag">Til hjemmet</span><h3>Pledd og hjemmekos</h3><p>Store pledd i grov strikk, putetrekk, koppevarmere. Et hjem man har lyst til å komme tilbake til.</p><span class="meta">Sammensetning: ull / bomull · Tid: 1–3 uker</span><span class="price">fra 900 kr</span></div>
+    <div class="card"><span class="tag">Til de minste</span><h3>Barneplagg</h3><p>Sparkebukser, babysokker, luer og leker av allergivennlig barnegarn. Mildt mot huden — og mot besteforeldres hjerter.</p><span class="meta">Sammensetning: barnemerino / bomull · Tid: 3–7 dager</span><span class="price">fra 300 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Galleri</h2>
+  <p class="lead">Strukturer, farger og stemning — på nært hold. Slik ser ekte håndarbeid ut.</p>
+  <div class="gallery">
+    <img src="../vyazanie-shop/texture.webp" alt="Nærbilde av strikkede strukturer: fletter, jacquard og ribb">
+    <img src="../vyazanie-shop/yarn.webp" alt="En palett av garnnøster i naturgarn i ulike farger">
+    <img src="../vyazanie-shop/hands.webp" alt="Mesterens hender strikker et skjerf med flettemønster">
+    <img src="../vyazanie-shop/home.webp" alt="Strikket pledd og puter i en koselig stue">
+    <img src="../vyazanie-shop/baby.webp" alt="Babysokker, lue og pledd til barn i pastellfarger">
+    <img src="../vyazanie-shop/gift.webp" alt="Gavesett med strikkede plagg i en eske med bånd">
+    <img src="../vyazanie-shop/men.webp" alt="En mann i strikkegenser med skandinavisk mønster">
+    <img src="../vyazanie-shop/dog.webp" alt="En hund i strikkegenser">
+    <img src="../vyazanie-shop/toys.webp" alt="Håndstrikkede leker">
+    <img src="../vyazanie-shop/lesson.webp" alt="Strikkeundervisning mellom generasjoner">
+    <img src="../vyazanie-shop/tools.webp" alt="En strikkers verktøy">
+    <img src="../vyazanie-shop/grandma.webp" alt="Bestemor og barnebarn velger garn sammen">
+    <img src="../vyazanie-shop/booties.webp" alt="En rad med strikkede babysokker">
+    <img src="../vyazanie-shop/cat.webp" alt="En katt sover på et strikket pledd">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Materialer og garn</h2>
+  <img class="fig" src="../vyazanie-shop/yarn.webp" alt="Nøster av ull og merino, lagt ut etter farge">
+  <p class="figcap">Verkstedets palett: fra rolige naturtoner til dype nordiske farger.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Klassikeren</span><h3>Saueull</h3><p>Den varmeste og mest slitesterke. Til gensere, sokker og pledd. Den «biter» litt — og nettopp derfor varmer den så godt.</p></div>
+    <div class="card"><span class="tag">Ømhet</span><h3>Merino</h3><p>Fin ull fra merinosau: myk, stikker ikke, passer til barn og sensitiv hud. Til luer, skjerf og barneplagg.</p></div>
+    <div class="card"><span class="tag">Luksus</span><h3>Alpakka</h3><p>Lettere og varmere enn saueull, med en edel glans. Til skjerf og jakker «for finere bruk».</p></div>
+    <div class="card"><span class="tag">Luft</span><h3>Mohair</h3><p>Et dunlett slør til lette, nesten vektløse plagg. Strikkes ofte sammen med silke eller merino.</p></div>
+    <div class="card"><span class="tag">Sommer</span><h3>Bomull og lin</h3><p>Til den varme årstiden: topper, barneplagg, hjemmetekstiler. Ikke for varmt, og lett å vaske.</p></div>
+    <div class="card"><span class="tag">Praktisk</span><h3>Sokkegarn</h3><p>Ull med et innslag av nylon: sokkene slites ikke ut på én sesong og holder formen. Hjemme, på tur, på fiske.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">05</span>Slik tar du mål</h2>
+  <img class="fig" src="../vyazanie-shop/measure.webp" alt="Målebånd på en sammenbrettet strikkegenser og en notatbok">
+  <p class="figcap">Fem minutter med målebåndet — og plagget sitter som om det har vært strikket til deg i årevis.</p>
+  <p class="lead">Målene tas med et mykt målebånd, uten å stramme. Er du usikker — skriv i skjemaet nedenfor, så hjelper vi deg.</p>
+  <table>
+    <tr><th>Plagg</th><th>Hva du måler</th><th>Hvordan</th></tr>
+    <tr><td>Lue</td><td>Hodeomkrets</td><td>Over brynene og rundt den mest framtredende delen av bakhodet</td></tr>
+    <tr><td>Sokker</td><td>Fotlengde</td><td>Fra hælen til tuppen av stortåa, stående</td></tr>
+    <tr><td>Votter</td><td>Håndflateomkrets</td><td>Rundt fingerknokene, uten tommelen</td></tr>
+    <tr><td>Skjerf / snod</td><td>Ønsket lengde</td><td>Et vanlig skjerf er 150–180 cm; en snod går én eller to ganger rundt</td></tr>
+    <tr><td>Genser</td><td>Brystvidde + lengde</td><td>Brystet måles på det bredeste punktet; lengden fra skulderen til ønsket kant nede</td></tr>
+    <tr><td>Pledd</td><td>Størrelse</td><td>Til barn — 80×100 cm; til lenestolen — 130×170; til sengen — fra 150×200</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Sesongutvalg</h2>
+  <img class="fig" src="../vyazanie-shop/colors.webp" alt="Garnnøster i dype farger med papirlapper på en hylle">
+  <p class="figcap">Fjord om vinteren, Honning om høsten: utvalgene settes sammen etter sesong og etter menneske.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">❄️ Høst – vinter</span><h3>Nordisk sett</h3><p>Genser med jacquard, lue og votter i samme fargeskala, tykke sokker. Alt du trenger når det allerede er mørkt klokken fire om ettermiddagen.</p></div>
+    <div class="card"><span class="tag">🌿 Vår – sommer</span><h3>Lett sett</h3><p>Topper og jakker i bomull til kveldene, barneplagg i bomull, tynne pledd til verandaen og pikniken.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">07</span>Gavesett</h2>
+  <img class="fig" src="../vyazanie-shop/gift.webp" alt="En gaveeske med strikket lue, votter og sokker">
+  <p class="figcap">Hvert sett pakkes i en eske med kort — du kan signere det for hånd.</p>
+  <div class="grid3" style="margin-top:18px">
+    <div class="card"><h3>«Varm kveld»</h3><p>Pledd + to par hjemmesokker. Til innflytting og vinterhøytider.</p><span class="price">fra 1 300 kr</span></div>
+    <div class="card"><h3>«Til babyen»</h3><p>Babysokker, lue og et lite pledd av barnegarn. Til fødsel og dåp.</p><span class="price">fra 650 kr</span></div>
+    <div class="card"><h3>«Mot nord»</h3><p>Lue, votter og sokker i samme fargeskala. Til fiskeren, turgåeren og alle som lever vinteren på ordentlig.</p><span class="price">fra 800 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">08</span>Om mesteren</h2>
+  <img class="fig" src="../vyazanie-shop/hands.webp" alt="Mesterens hender strikker et skjerf med flettemønster med trepinner">
+  <p class="figcap">Hver maske — for hånd. Derfor finnes det aldri to helt like plagg.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:17px;color:var(--ink)">Jeg heter <strong>Nadia</strong>. Jeg bor i Norge og har strikket hele livet — først til mine egne barn, så til barnebarna, og nå til alle som setter pris på ekte ting. Jeg arbeider bare med naturgarn: ull, merino, alpakka. Hvert plagg strikkes i ett eneste eksemplar, sakte og med kjærlighet — og varer i årevis, ikke bare én sesong.</p>
+    <p style="font-size:17px;color:var(--ink);margin-top:10px">I en genser går det flere titalls timer med arbeid og om lag to kilometer garn. Jeg jager ikke etter antall: heller ett plagg som blir brukt og tatt vare på, enn ti «til engangsbruk».</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">09</span>Slik blir et plagg til</h2>
+  <div class="steps5">
+    <div class="step"><b>1</b><h3>Idé</h3><p>Vi snakker om modell, farge og hvem det strikkes til</p></div>
+    <div class="step"><b>2</b><h3>Prøvelapp</h3><p>Det strikkes en prøvefirkant: vi sjekker mønster og strikkefasthet</p></div>
+    <div class="step"><b>3</b><h3>Strikking</h3><p>Hovedarbeidet — dager eller uker, maske for maske</p></div>
+    <div class="step"><b>4</b><h3>Etterarbeid</h3><p>Montering, damping og kontroll av hver minste detalj</p></div>
+    <div class="step"><b>5</b><h3>Innpakking</h3><p>Vi pakker det vakkert inn og sender det til deg</p></div>
+  </div>
+  <img class="fig" src="../vyazanie-shop/texture.webp" alt="Strukturer i strikkede flater i nærbilde" style="margin-top:18px">
+  <p class="figcap">Fletter, jacquard, ribb: mønsteret velges etter plagget og etter karakteren til den som skal eie det.</p>
+</section>
+
+<section>
+  <h2><span class="n">10</span>Skreddersydd bestilling</h2>
+  <img class="fig" src="../vyazanie-shop/timeline.webp" alt="Hender strikker en genser, ved siden av står en liten kalender">
+  <p class="figcap">En skreddersydd bestilling begynner med en samtale — og går i ditt tempo, ikke fabrikkens.</p>
+  <p class="lead">Vil du ha en genser «som på bildet», men i din farge og din størrelse? Det er slik de beste plaggene blir til.</p>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Fortell om ideen</h3><p>Hva vi strikker, til hvem, hvilken farge og størrelse. Du kan sende et bilde som eksempel — gjennom skjemaet nedenfor.</p></div>
+    <div class="step"><b>2</b><h3>Vi velger garn</h3><p>Vi finner sammensetning og fargetone som passer budsjettet og sesongen din; og regner ut nøyaktig pris og tid.</p></div>
+    <div class="step"><b>3</b><h3>Vi strikker og sender</h3><p>Forsendelse i Norge og til hele verden. Før sending får du et bilde av det ferdige plagget.</p></div>
+  </div>
+  <table style="margin-top:18px">
+    <tr><th>Plagg</th><th>Vanlig tid</th><th>Merknad</th></tr>
+    <tr><td>Lue, votter</td><td>2–4 dager</td><td>Kan haste, til en høytidsdag</td></tr>
+    <tr><td>Sokker</td><td>3–5 dager</td><td>Parbestillinger til familien — med rabatt etter avtale</td></tr>
+    <tr><td>Skjerf, snod</td><td>4–8 dager</td><td>Avhenger av mønster og lengde</td></tr>
+    <tr><td>Barneplagg</td><td>3–7 dager</td><td>Bare allergivennlig garn</td></tr>
+    <tr><td>Pledd</td><td>1–3 uker</td><td>Store størrelser avtales for seg</td></tr>
+    <tr><td>Genser, jakke</td><td>2–4 uker</td><td>Jacquard og fletter — nærmere den øvre grensen</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">11</span>Reparasjon og restaurering</h2>
+  <img class="fig" src="../vyazanie-shop/restore.webp" alt="Hender restaurerer en strikkegenser med nål og tråd i samme farge">
+  <p class="figcap">Maske til maske: et elsket plagg kommer tilbake til livet, ikke opp på hylla.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Er favorittgenseren slitt på albuene? Har bestemors pledd fått besøk av møll? Ikke skynd deg å skille deg av med ting som har en historie.</p>
+    <ul style="margin-top:8px">
+      <li>stopping og kunstferdig restaurering av slitte steder;</li>
+      <li>utskifting av strikk på sokker og ermer, ny strikk i halsen;</li>
+      <li>forlengelse av barneplagg «med vokseplass baklengs» — og forkorting av voksenplagg;</li>
+      <li>omstrikking av et gammelt plagg til et nytt: vi rekker det opp og strikker det på nytt av det samme garnet.</li>
+    </ul>
+    <p style="margin-top:8px">Send et bilde av plagget gjennom skjemaet nedenfor — vi vurderer ærlig, før arbeidet begynner, om det lar seg gjøre og hva reparasjonen vil koste.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">12</span>Slik steller du ull</h2>
+  <img class="fig" src="../vyazanie-shop/carewash.webp" alt="En strikkegenser i en balje med vann, ved siden av ligger sammenbrettede håndklær">
+  <p class="figcap">Sjelden, skånsomt, i lunkent vann — og ullen varer i årevis.</p>
+  <div class="card care">
+    <ul>
+      <li><strong>Vask sjelden og skånsomt:</strong> for hånd eller i maskin på ullprogram, i kjølig vann, med et spesialmiddel.</li>
+      <li><strong>Ikke vri opp:</strong> klem vannet forsiktig ut i et håndkle.</li>
+      <li><strong>Tørk flatt</strong> på et håndkle, form plagget til — unna radiatoren.</li>
+      <li><strong>Oppbevar sammenbrettet</strong>, ikke på kleshenger; om sommeren — med lavendel eller sedertre mot møll.</li>
+      <li><strong>Luft det ut:</strong> ull elsker frisk luft og blir ofte «vasket» bare av en tur ut på balkongen.</li>
+      <li><strong>Nupper</strong> fjernes med en nuppefjerner eller en myk børste — ikke med fingrene.</li>
+      <li><strong>Flekker</strong> bør klappes tørre med en gang, ikke gnis: ull liker ikke friksjon når den er våt.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">13</span>Levering og betaling</h2>
+  <img class="fig" src="../vyazanie-shop/parcel.webp" alt="Et strikket plagg pakket inn i papir og bundet med hyssing, med et kort til">
+  <p class="figcap">Papir, hyssing og et kort signert for hånd: slik reiser plagget hjem til deg.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">Levering</span><h3>I Norge og til hele verden</h3><p>Innen Norge — med posten (Posten), vanligvis 2–5 dager. Til resten av verden — etter avtale, tidene avhenger av landet. Hver pakke pakkes slik at det er en glede å åpne den.</p></div>
+    <div class="card"><span class="tag">Betaling</span><h3>Etter avtale ved bestilling</h3><p>En skreddersydd bestilling starter etter forskuddsbetaling for garnet; resten — før det ferdige plagget sendes. Detaljer (Vipps, bankoverføring, PayPal) avtales personlig ved bestilling.</p></div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2><span class="n">14</span>Ofte stilte spørsmål</h2>
+  <div class="card"><h3>Kan du strikke etter et bilde fra internett?</h3><p>Ja, i de fleste tilfeller. Send bildet gjennom skjemaet nedenfor — vi sier ærlig hva som blir helt likt, og hva som må tilpasses.</p></div>
+  <div class="card"><h3>Jeg har mitt eget garn. Tar du jobben?</h3><p>Ja, hvis det er nok garn og det passer til plagget. Vi regner på det sammen før arbeidet begynner.</p></div>
+  <div class="card"><h3>Hva om plagget ikke passer i størrelsen?</h3><p>Derfor tar vi målene så nøye i starten. Er feilen vår — lager vi det på nytt. Var målene unøyaktige, snakker vi om tilpassing.</p></div>
+  <div class="card"><h3>Strikker du til allergikere og nyfødte?</h3><p>Ja: barnemerino og ubehandlet bomull, mykt og allergivennlig. Nevn det i bestillingen.</p></div>
+  <div class="card"><h3>Kan jeg bestille i siste liten, til en bestemt dato?</h3><p>Små plagg (lue, votter, sokker) rekker vi ofte på noen få dager. Skriv så tidlig som mulig — vi sier ærlig om vi rekker det.</p></div>
+  <div class="card"><h3>Gir du rabatt når man bestiller flere plagg?</h3><p>For familiesett og parbestillinger — ja, etter avtale. Bare spør, ikke vær beskjeden.</p></div>
+</section>
+
+<section>
+  <section>
+  <h2><span class="n">15</span>Til menn</h2>
+  <img class="fig" src="../vyazanie-shop/men.webp" alt="En mann i mørkegrønn strikkegenser med skandinavisk mønster ved vinduet i et vinterhus">
+  <p class="figcap">Menn bruker strikk i tiår etter tiår — når plagget er strikket ærlig og etter mål.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Karakter</span><h3>Gensere uten overflødig pynt</h3><p>Dype naturfarger, strenge mønstre, tett strikk. En genser som passer like godt i fjellet som ved familiebordet.</p><span class="price">fra 1 400 kr</span></div>
+    <div class="card"><span class="tag">Praksis</span><h3>Sokker og luer til egne gjøremål</h3><p>Fiske, jakt, arbeid ute, vinterreiser. Forsterket hæl, høy ribbekant, ingen kompromisser når det gjelder varme.</p><span class="price">fra 250 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Kontakt oss</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-postadressen din (for svar)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av en ny ting</option>
+        <option>Spesialbestilling</option>
+        <option>Reparasjon av en ting</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en dag eller to.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">16</span>Familiesett</h2>
+  <img class="fig" src="../vyazanie-shop/family.webp" alt="Strikkede familiegensere i samme farge, fra stor til liten">
+  <p class="figcap">Én farge, ett garn — og hele familien på ett fotografi.</p>
+  <p class="lead">Like mønstre til hele familien — til bilder, feiringer og bare for gleden av «vi er et lag».</p>
+  <div class="grid">
+    <div class="card"><h3>Mamma, pappa, barn</h3><p>Gensere eller luer i samme fargeskala og mønster til hele familien. Størrelser — fra de minste til bestefar; mønsteret skaleres til hver enkelt ting.</p></div>
+    <div class="card"><h3>Par — ting til to</h3><p>To skjerf, to luer eller votter «for to» — til årsdag, bryllup eller bare sånn, uten anledning.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">17</span>Til kjæledyrene</h2>
+  <img class="fig" src="../vyazanie-shop/dog.webp" alt="En liten hund i en rustrød strikket genser på en treveranda">
+  <p class="figcap">Hunder fryser også om vinteren — særlig små og korthårede.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Til hunder</span><h3>Gensere etter kjæledyrets mål</h3><p>Strikkes etter tre mål: rygglengde, bryst- og halsomkrets. Hemmer ikke bevegelsen, er lette å ta på, og tåler vask uten å klage.</p><span class="price">fra 300 kr</span></div>
+    <div class="card"><span class="tag">Til katter og smådyr</span><h3>Lette vester</h3><p>Til sphynxer, valper og eldre dyr som trenger ekstra varme hjemme og på tur.</p><span class="price">fra 250 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">18</span>Strikkede leker</h2>
+  <img class="fig" src="../vyazanie-shop/toys.webp" alt="Strikkede leker: en bamse, en hare og et pinnsvin på et strikket teppe">
+  <p class="figcap">Bamser, harer og pinnsvin som blir klemt i årevis og gitt videre til de yngre.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Lekene strikkes av mykt, allergivennlig garn, med broderte (ikke påsydde) øyne — trygt for de aller minste. Fyllet er moderne og allergivennlig. Hver leke kan få sin egen «karakter»: farge, et lite skjerf, en brodert navnebokstav.</p>
+    <span class="price">fra 280 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">19</span>Til høytider og begivenheter</h2>
+  <img class="fig" src="../vyazanie-shop/holiday.webp" alt="Strikket pynt på et festbord med lys">
+  <p class="figcap">En fest bygges av små ting, laget på forhånd og med kjærlighet.</p>
+  <div class="grid3">
+    <div class="card"><span class="tag">Fødsel</span><h3>Til dåp og det første året</h3><p>Dåpssett, tepper «til hjemkomsten» og små tøfler i gaveeske. Ting som tas vare på i familien.</p></div>
+    <div class="card"><span class="tag">Bryllup</span><h3>Skjøre ting til bruden</h3><p>Håndlagde sjal og stolaer i blondestrikk — over skuldrene, til fotografering og som et minne om dagen.</p></div>
+    <div class="card"><span class="tag">Jubileer</span><h3>Et teppe med historie</h3><p>Et stort teppe til en rund dag: farger og mønstre med mening nettopp for dette mennesket kan strikkes inn. Bestill 1–2 måneder i forveien.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">20</span>For bedriftskunder</h2>
+  <img class="fig" src="../vyazanie-shop/corporate.webp" alt="En stabel like strikkede skjerf i firmafarger">
+  <p class="figcap">Like — men hvert enkelt er strikket for hånd. Det merker bedrifter.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Varme gaver til ansatte og partnere som ikke havner i skrivebordsskuffen: ullsokker, luer og skjerf i bedriftens farger.</p>
+    <ul style="margin-top:8px">
+      <li>fra 10 like produkter — egne betingelser;</li>
+      <li>fargene tilpasses deres visuelle profil;</li>
+      <li>hvert produkt — med et kort og, om ønskelig, mottakerens navn;</li>
+      <li>til nyttårsbestillinger åpner påmeldingen i september — håndarbeid lages ikke over natten.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">21</span>Mesterklasser og opplæring</h2>
+  <img class="fig" src="../vyazanie-shop/lesson.webp" alt="Strikketime: en eldre mester lærer en ung kvinne å strikke ved et bord med te">
+  <p class="figcap">Et håndverk lever så lenge det gis videre.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Fra null</span><h3>De første maskene</h3><p>En individuell time: hvordan man holder pinnene, legger opp masker og strikker den første tingen — et skjerf man ikke skammer seg over å bruke.</p></div>
+    <div class="card"><span class="tag">For viderekomne</span><h3>Mønstre og teknikker</h3><p>Fletter, jacquard, raglan ovenfra, pen montering. Vi går gjennom nettopp den teknikken som ikke vil seg etter oppskriftene.</p></div>
+  </div>
+  <p class="lead" style="margin-top:14px">Form og pris for timene avtales personlig — skriv via kontaktskjemaet hva du vil lære.</p>
+</section>
+
+<section>
+  <h2><span class="n">22</span>Slik pakker vi gaver</h2>
+  <img class="fig" src="../vyazanie-shop/gift.webp" alt="En gaveeske med strikkede ting, bundet med bånd">
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Inkludert i bestillingen</h3><p>Krafteske eller papirpose, silkepapir, hyssing og en kvist lavendel. Et kort med noen ord fra mesteren.</p></div>
+    <div class="card"><h3>Fra deg</h3><p>Vi skriver kortet med din tekst og sender gaven rett til mottakeren — uten prislapper og unødvendige papirer. Overraskelsen forblir en overraskelse.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">23</span>Verkstedets palett</h2>
+  <img class="fig" src="../vyazanie-shop/mittens.webp" alt="Håndstrikkede votter og hansker på et skjerf ved døren">
+  <p class="figcap">Vottene venter ved døren. Hendene som skal ta dem på, sover ennå.</p>
+  <img class="fig" src="../vyazanie-shop/yarn.webp" alt="En palett av garnnøster: fra krem til dyp burgunder">
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Nord</span><h3>Naturlige og rolige</h3><p>Krem, grå stein, mose, fjordens dype blå. Farger som aldri blir kjedelige og passer til hele garderoben.</p></div>
+    <div class="card"><span class="tag">Varme</span><h3>Varme aksenter</h3><p>Terrakotta, sennep, burgunder, rust. For dem som liker at tingen er synlig og glad.</p></div>
+  </div>
+  <p class="lead" style="margin-top:14px">Fant du ikke fargen din? Garn bestilles til din bestilling — send en fargeprøve eller et fotografi, så finner vi det nærmeste vi kan.</p>
+</section>
+
+<section>
+  <h2><span class="n">24</span>Bestillingskalender</h2>
+  <img class="fig" src="../vyazanie-shop/ordcal.webp" alt="En papirkalender med notater ved siden av en garnkurv">
+  <p class="figcap">Datoer i kalenderen er løfter. Vi skriver dem ned og holder dem.</p>
+  <p class="lead">Håndarbeid liker god tid. Her er ærlige peilemerker på når det er best å bestille:</p>
+  <table>
+    <tr><th>Anledning</th><th>Bestill senest</th><th>Hva vi rekker</th></tr>
+    <tr><td>Jul og nyttår</td><td>oktober — november</td><td>Gensere og sett; i desember — bare små ting</td></tr>
+    <tr><td>Bursdag</td><td>2–3 uker før</td><td>Nesten alt, unntatt store tepper</td></tr>
+    <tr><td>Et barn blir født</td><td>2 uker før</td><td>«Til babyen»-sett og tepper</td></tr>
+    <tr><td>Bryllup</td><td>1–2 måneder før</td><td>Sjal, stolaer, par — ting til to</td></tr>
+    <tr><td>Til vinteren for deg selv</td><td>september — oktober</td><td>En genser til den første kulden — akkurat i tide</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">25</span>Strikking og helse</h2>
+  <img class="fig" src="../vyazanie-shop/health.webp" alt="Hender strikker i en lenestol, ved siden av en kopp urtete">
+  <p class="figcap">Hendene arbeider. Hodet hviler. Pusten blir jevnere av seg selv.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Litt om selve håndverket — hvorfor strikking ikke går av moten på hundrevis av år:</p>
+    <ul style="margin-top:8px">
+      <li><strong>Ro:</strong> de rytmiske maskebevegelsene virker som meditasjon og hjelper å koble om etter en tung dag;</li>
+      <li><strong>Smidige fingre:</strong> finmotorikken holder leddene i hendene bevegelige;</li>
+      <li><strong>Klart hode:</strong> å telle masker og lese mønstre er gymnastikk for oppmerksomheten og hukommelsen;</li>
+      <li><strong>Synlig resultat:</strong> i en verden av skjermer gir en ting man kan ta på og gi bort en særlig følelse av fullføring.</li>
+    </ul>
+    <p style="margin-top:8px">Derfor bærer hver ting fra butikken også med seg mesterens gode humør. Det er bevist: i dårlig humør blir det ingen strikking.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">26</span>Strikkerens lille ordbok</h2>
+  <table>
+    <tr><th>Ord</th><th>Hva det betyr</th></tr>
+    <tr><td>Jacquard</td><td>Fargemønster som strikkes med flere tråder samtidig — de velkjente «skandinaviske» snøfnuggene og reinsdyrene</td></tr>
+    <tr><td>Fletter (aran)</td><td>Voluminøse maskeflettinger; de kom fra de irske øyene, der hvert mønster var en families signatur</td></tr>
+    <tr><td>Raglan</td><td>En måte å strikke en genser ovenfra uten sømmer på skuldrene — sitter særlig pent</td></tr>
+    <tr><td>Våt varmebehandling</td><td>Tingens siste «frisyre»: vask, tørking i fasong og lett damp</td></tr>
+    <tr><td>Hespe og nøste</td><td>Formene garnet lever i før det blir til en ting</td></tr>
+    <tr><td>Prøvelapp</td><td>En liten strikket firkant på 10×10 cm: etter den telles maskene, slik at tingen sitter nøyaktig etter mål</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">27</span>Våre prinsipper</h2>
+  <img class="fig" src="../vyazanie-shop/principles.webp" alt="Hender holder et nøste naturlig ull over et trebord">
+  <p class="figcap">Naturlig garn, trepinner, ingen overflødige ord og materialer.</p>
+  <div class="grid">
+    <div class="card"><h3>Ærlige tidsfrister</h3><p>Bedre å oppgi en reell frist enn å love det umulige. Er køen lang — sier vi det rett ut og foreslår alternativer.</p></div>
+    <div class="card"><h3>Ærlige priser</h3><p>Prisen består av garnet og arbeidstimene. Ingen påslag «for merket»: du betaler for materialet og mesterens hender.</p></div>
+    <div class="card"><h3>Foto før sending</h3><p>Den ferdige tingen fotograferer vi og sender til deg før den sendes. Ingen overraskelser i pakken — unntatt de hyggelige.</p></div>
+    <div class="card"><h3>En ting kan tas opp igjen</h3><p>Er noe galt med passformen eller stellet etter måneder? Skriv til oss. Håndarbeid er en relasjon, ikke én transaksjon.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">28</span>For faste kunder</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">For dem som kommer tilbake — en særlig holdning:</p>
+    <ul style="margin-top:8px">
+      <li>målene dine og favorittfargene oppbevares i verkstedet — en ny bestilling gjøres på to meldinger;</li>
+      <li>prioritet i køen før høytidene for dem som har bestilt før;</li>
+      <li>små gleder uten anledning: til nye bestillinger — et par hjemmesokker eller en leke til den lille i gave, etter avtale;</li>
+      <li>familiesett til barn som vokser: vi strikker videre og forlenger ting barnet har vokst fra — billigere enn en ny ting.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">29</span>Overraskelsesbestilling: gi i hemmelighet</h2>
+  <img class="fig" src="../vyazanie-shop/surprise.webp" alt="En gavepakke med en lapp ved døren">
+  <p class="figcap">En gave som ikke engang mottakeren vet om. Før døren åpnes.</p>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Størrelsen — umerkelig</h3><p>Vi forteller deg hvordan du finner størrelsen på lue, sokker eller genser uten å røpe overraskelsen: etter en gammel ting mottakeren har</p></div>
+    <div class="step"><b>2</b><h3>Vi strikker i stillhet</h3><p>Ingen merknader og ingen brev til mottakeren. Foto av den ferdige tingen — bare til deg</p></div>
+    <div class="step"><b>3</b><h3>Levering til mottakeren</h3><p>Vi sender rett til festens adresse, med et kort fra deg og uten prislapp</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">30</span>Kontakt oss</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-postadressen din (for svar)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av en ny ting</option>
+        <option>Spesialbestilling</option>
+        <option>Reparasjon av en ting</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en dag eller to.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">31</span>Mesterens ord</h2>
+  <div class="card">
+    <p style="font-size:17.5px;color:var(--ink)">Takk for at du er her. Har du kommet til disse linjene — da er vi på samme vei: du tror også at ting kan være langsomme, ærlige og varme.</p>
+    <p style="font-size:17.5px;color:var(--ink);margin-top:10px">Skriv til meg — via skjemaet eller med et vanlig brev. Fortell hva du vil ha strikket, og til hvem. Resten finner vi ut sammen, uten hast. Din Nadia. 🧶</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">32</span>Månedens produkt</h2>
+  <img class="fig" src="../vyazanie-shop/sweaters.webp" alt="En stabel gensere med skandinaviske mønstre">
+  <p class="figcap">Kveld. Den første snøen utenfor vinduet. På stolryggen venter en genser.</p>
+  <div class="card" style="margin-top:18px">
+    <span class="tag">Verkstedets valg</span>
+    <h3>Genseren «Nord»</h3>
+    <p style="font-size:16.5px;color:var(--ink)">Det finnes ting man ikke bruker — man bor i dem. Denne genseren strikkes langsomt, rundt, uten en eneste søm på skuldrene, av ren ull som lukter eng og regn. Mønsteret — snøfnugg og stjerner, som klippet ut av papir i barndommen.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Den tas på i den første snøen, når byen blir stille og vinduene gule. I den går man etter brød og i fjellet, sitter ved peisen og møter soloppganger på verandaen. Den går aldri av moten, fordi den aldri var på moten: den er bare varm, ærlig og ens egen.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Denne måneden følger det med et par sokker i samme tone til hver «Nord» — av samme garnparti, strikket i de samme stille kveldene.</p>
+    <span class="price">fra 1 500 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">33</span>Gavekort</h2>
+  <img class="fig" src="../vyazanie-shop/giftcert.webp" alt="Et gavekort og et garnnøste på bordet">
+  <p class="figcap">Et gavekort kommer aldri for sent. Og tingen det brukes på, blir likevel strikket for hånd.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Noen ganger er den beste gaven ikke en ting, men muligheten til å velge selv. Et gavekort er et løfte om varme som mottakeren gjør om til en genser, et sjal eller et par sokker når hun eller han vil, og i akkurat den fargen som drømmes om.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Vi gjør det til et vakkert kort, skrevet for hånd, eller et stille brev på e-post — slik det er roligst for deg. Gavekortet har ingen frist: håndarbeid liker ikke hast, og å velge tingen er også en del av gleden. Dekker ikke gavebeløpet hele tingen, kan man bare betale mellomlegget; blir det noe til overs — venter resten til neste bestilling, om så til neste vinter.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">En slik gave bommer ikke på størrelsen. Den bommer i det hele tatt ikke: den sier — «velg varme til deg selv».</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">34</span>Sett til hjemkomsten fra fødeavdelingen</h2>
+  <img class="fig" src="../vyazanie-shop/baby.webp" alt="Et strikket babysett i pastellfarger">
+  <p class="figcap">Et teppe, en lue og små tøfler. Alt er lite. Alt er for første gang.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Den første dagen hjemme lukter melk, vasket tøy og en stillhet der alle går på tå hev. Til denne dagen strikker vi et sett: et mykt teppe, en lue og små tøfler i samme fargeskala — av babymerino og bomull som ikke stikker og ikke er redd for hyppig vask.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">I et slikt teppe tar man det første bildet. Det tas vare på i årevis etterpå — sammenbrettet, i en skuff med de viktigste tingene, og tas frem når barnet har vokst til, bare for å holde det i hendene og undre seg over hvor lite alt var.</p>
+    <span class="price">fra 700 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">35</span>Hvordan velge størrelse til en gave</h2>
+  <img class="fig" src="../vyazanie-shop/giftsize.webp" alt="En genser lagt ut for stille oppmåling med målebånd">
+  <p class="figcap">Størrelsen på favorittgenseren måles på fem minutter, og uten et eneste spørsmål.</p>
+  <p class="lead">Rolig, og helt uten panikk: de fleste strikkede gaver trenger overhodet ingen nøyaktige mål.</p>
+  <div class="grid">
+    <div class="card"><h3>Ting som ikke kan gå galt</h3><p>Skjerf, snood, teppe, hjemmesokker — de trenger ingen størrelse, de trenger farge og mykhet. Er gaven en overraskelse, begynn med dem: de passer alltid perfekt, fordi de sitter på stemningen.</p></div>
+    <div class="card"><h3>Ett mål — og alt er avgjort</h3><p>For en lue holder det med hodets omkrets, og den røper enhver gammel lue mottakeren har. For sokker — fotens lengde: den forteller innleggssålen i skoen. Ett tall, tatt i en rolig stund, — og plagget sitter som støpt.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">36</span>Sjeldent garn til din bestilling</h2>
+  <img class="fig" src="../vyazanie-shop/rareyarn.webp" alt="Sjeldent garn av kasjmir og silke i dype farger">
+  <p class="figcap">Slikt garn ligger ikke på hyller. Det kommer for ett menneske.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Noen ganger begynner et plagg ikke med et mønster, men med én eneste nyanse, sett i en drøm eller på et gammelt fotografi: fargen på havet i september, fargen på bestemors sjal, fargen på himmelen før snøen.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Til slike bestillinger henter vi garn spesielt: kasjmir, merino med silke, jakull, sjeldne fargestoffer fra små fabrikker. Det reiser til oss i ukevis — og det er helt normalt. Et plagg som fødes så langsomt, tjener siden i årtier, og hver maske husker hvem alt ble satt i gang for.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send et bilde av fargen, eller fortell om den med ord. Vi finner så nært som garn kan komme.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">37</span>Sjal og stolaer</h2>
+  <img class="fig" src="../vyazanie-shop/shawl.webp" alt="Hullede strikkede sjal på en trestol ved vinduet">
+  <p class="figcap">Et sjal tørker ved vinduet, og lyset går gjennom mønsteret som gjennom et glassmaleri.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Sjalet er det eldste og mest tålmodige av alle strikkede plagg. Det strikkes i ukevis, maske for maske, til mønsteret ligner frostroser på glass. Det finnes ikke én overflødig tråd i det: bare luft, varme og mønster.</p>
+  </div>
+  <div class="grid" style="margin-top:16px">
+    <div class="card"><h3>Til hverdags</h3><p>Varme stolaer av merino og alpakka — over skuldrene om kvelden, når huset sover og du vil sitte litt til med en bok.</p><span class="price">fra 600 kr</span></div>
+    <div class="card"><h3>Til fest</h3><p>Hullede sjal av mohair med silke — nesten vektløse. De bæres i bryllup og på høytider, og tas siden varsomt vare på i papir, slik man tar vare på brev.</p><span class="price">fra 900 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">38</span>Vester og ermeløse plagg</h2>
+  <img class="fig" src="../vyazanie-shop/vests.webp" alt="Strikkede vester på kleshengere av tre">
+  <p class="figcap">En vest er varme som ikke hindrer hendene i å leve sitt eget liv.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Vesten er plagget til folk som gjør alt med hendene. Den varmer rygg og bryst, og lar armene være frie: til verkstedet, hagen, fisketuren, til bestefar som i en alder av åtti fortsatt ikke sitter stille.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Vi strikker dem tette, med dype lommer, i rolige farger — «som før i tiden», bare med bedre passform. En slik vest bæres ikke til fest. Den bæres hver dag, og i det ligger dens fest.</p>
+    <span class="price">fra 800 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">39</span>Et hjem som omfavner</h2>
+  <img class="fig" src="../vyazanie-shop/kidscarnival.webp" alt="Barn i strikkede karnevalsluer med ører">
+  <p class="figcap">En fest du kan ta på deg: ører, haler og ikke ett eneste misfornøyd ansikt.</p>
+  <p class="lead">Et hjem blir et hjem ikke av møbler, men av små ting som hender berører.</p>
+  <div class="grid3">
+    <div class="card"><h3>Servietter og løpere</h3><p>Av bomull, heklet og strikket. Et bord dekket med en slik serviett ser straks ut som om noen er ventet i huset.</p></div>
+    <div class="card"><h3>Grytekluter og underlag</h3><p>Tette og doble, i muntre kjøkkenfarger. En varm tekanne, en stille kveld, lukten av bakst — av slike minutter består hyggen.</p></div>
+    <div class="card"><h3>Strikkede kurver</h3><p>Til garn, til småting, til badet. I dem ser selv rot ut som en plan.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">40</span>Små hjemlige ting</h2>
+  <img class="fig" src="../vyazanie-shop/home.webp" alt="En koselig stue med strikkede ting og te">
+  <p class="figcap">Damp over koppen, stillhet, og ingen steder å skynde seg til.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Koppetrekk</h3><p>Te i et slikt trekk avkjøles langsommere, og koppen brenner ikke håndflaten. En liten ting som gis «bare sånn» — og som brukes hver dag.</p><span class="price">fra 90 kr</span></div>
+    <div class="card"><h3>«Klær» til tekannen</h3><p>Som i barndommen: en tekanne i strikket trekk trekker lenger og står på bordet som en fullverdig deltaker i testunden.</p><span class="price">fra 180 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">41</span>Fra ditt eget garn</h2>
+  <img class="fig" src="../vyazanie-shop/ownyarn.webp" alt="Garnnøster fra kunden i en veske på verkstedbordet">
+  <p class="figcap">Garnet ditt vet allerede hva det vil bli. Vi bare hjelper det.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">I nesten hvert hjem finnes det en skuff der nøster har ligget i årevis «til en gang». De ble kjøpt med håp, tatt vare på med kjærlighet og aldri rørt. Det er ingen bebreidelse — det er et utsatt plagg som bare ventet på sin time.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send dem til oss. Vi ser på sammensetning og mengde, sier ærlig hva som kan bli av det — et skjerf, en vest, barneklær — og strikker det. Du betaler bare for arbeidet, og garnet blir endelig det det drømte om å bli da det ble valgt i butikken.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Noen ganger ligger det en historie i slike nøster: mamma valgte dem, de ble brakt med fra en reise. Et plagg strikket av dem bærer denne varmen dobbelt.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">42</span>Redning av plagg etter vask</h2>
+  <img class="fig" src="../vyazanie-shop/rescue.webp" alt="Hender som forsiktig strekker en våt strikket genser på håndklær">
+  <p class="figcap">Varmt vann, et håndkle og tålmodighet. Millimeter for millimeter — tilbake i form.</p>
+  <p class="lead">Ikke skynd deg å ta farvel. Strikkede plagg kan tilgi feil — hvis man går rolig frem.</p>
+  <div class="grid">
+    <div class="card"><h3>Plagget har krympet</h3><p>Det hender: du tar opp av vannet ikke en genser, men barnekopien av den. Noen ganger kan den reddes — varmt vann, et mildt middel, tålmodighet og langsom strekking etter formen, millimeter for millimeter. Send et bilde og garnets sammensetning: vi sier ærlig, og uten løfter, om det finnes håp. Noen ganger — gjør det det.</p></div>
+    <div class="card"><h3>Plagget har strukket seg</h3><p>Det lar seg oftere redde. Riktig vask og tørking på et håndkle, i stillhet og uten radiator, gir formen tilbake bedre enn noen ord. Og strikk som er lei av å holde, strikker vi rett og slett på nytt — og plagget sitter igjen som den første dagen.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">43</span>Fotoreportasje underveis</h2>
+  <img class="fig" src="../vyazanie-shop/progress.webp" alt="En telefon med et bilde av arbeidet ved siden av en halvferdig genser">
+  <p class="figcap">Ventingen skal ikke være stillhet: her er garnet, her er prøven, her er halve veien.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Når et plagg strikkes til deg, skal ventingen ikke være stillhet. Om du ønsker det, sender vi bilder underveis: her er garnet som er valgt til deg. Her er en prøve — ti ganger ti centimeter av den fremtidige genseren. Her er halve arbeidet, her er et erme, her ligger det ferdige plagget og tørker etter vask.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Særlig elsker de som bestiller en gave på avstand dette: du ser overraskelsen bli til, kveld for kveld, og når den sendes, kjenner du den bedre enn om du hadde kjøpt den ferdig i en butikk.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">44</span>En gave til en kollega</h2>
+  <img class="fig" src="../vyazanie-shop/set.webp" alt="Et sett strikkede tilbehør i samme fargeskala: lue, skjerf og votter">
+  <p class="figcap">Tre ting i samme farge ligger ved siden av hverandre og sier ingenting om hvor varme de blir til vinteren.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Nøytralt og varmt</h3><p>Det finnes gaver som ikke setter noen i forlegenhet: sokker, en lue, et skjerf i en rolig farge. De gis til sjefen og til en venn på kontoret med samme letthet — fordi varme aldri blir for personlig.</p></div>
+    <div class="card"><h3>Et sett i samme fargeskala</h3><p>Lue, skjerf og votter, strikket av samme garn, ser ut som en gjennomtenkt tanke. Og det er nettopp den beste gaven til en kollega: ikke dyr, men gjennomtenkt.</p><span class="price">fra 1 100 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">45</span>Til hytta og hagen</h2>
+  <img class="fig" src="../vyazanie-shop/garden.webp" alt="En vest og høye sokker ved en stol på verandaen, en morgenhage i dugg">
+  <p class="figcap">Dugg, drivhus og te som blir kaldere raskere enn du rekker å drikke den.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Det finnes klær for byen, og det finnes klær — for tidlige morgener med dugg, for drivhuset, for verandaen der teen blir kald raskere enn du rekker å drikke den. En vest det ikke er synd på. Sokker litt høyere, nedi støvlene. En lue som har sett mer enn én høst.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Til disse plaggene tar vi den ærligste ullen — praktisk, som ikke viser skitt, og som ikke krever forsiktig behandling. Den er ikke redd for arbeid. Den er strikket for det.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Kontakt</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>En bestilling, et spørsmål, et bilde av et plagg til reparasjon eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-postadressen din (for svar)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av et nytt plagg</option>
+        <option>En individuell bestilling</option>
+        <option>Reparasjon av et plagg</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av én til to dager.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">46</span>Til reisen</h2>
+  <img class="fig" src="../vyazanie-shop/travel.webp" alt="En åpen koffert: en snood av merino, strikkede sokker og en bok">
+  <p class="figcap">Lettere enn en bok — og redningen på hvert fly og hvert tog.</p>
+  <div class="grid">
+    <div class="card"><h3>Kompakt varme</h3><p>En tynn snood av merino og et par sokker veier mindre enn en bok, og redder deg på hvert fly, hvert tog og i hver ventehall der klimaanlegget ikke kjenner nåde. Veien blir kortere når føttene er varme.</p></div>
+    <div class="card"><h3>Et teppe til bilen</h3><p>Et lite teppe bor i bagasjerommet og venter på sin time: en piknik i veikanten, venting på en ferge, et barn som har sovnet i baksetet. En ting man ikke tenker på — før den redder kvelden.</p><span class="price">fra 700 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">47</span>Til turer og sport</h2>
+  <img class="fig" src="../vyazanie-shop/running.webp" alt="En morgenløper med pannebånd av merino i en stille gate">
+  <p class="figcap">En morgenrunde gjennom den sovende byen — i stillhet og i varme.</p>
+  <p class="lead">Bevegelse i kald luft er en egen glede, når man er riktig kledd: varmt, men ikke hett; tørt, men ikke tett.</p>
+  <div class="grid3">
+    <div class="card"><h3>Pannebånd og luer til løping</h3><p>Merino leder bort fukt og holder ørene varme i vinden. En morgenrunde gjennom den sovende byen — i stillhet og i varme.</p></div>
+    <div class="card"><h3>Leggvarmere</h3><p>Til dans, yoga og bare utenpå skoene: leggen og ankelen elsker varme ikke mindre enn halsen.</p></div>
+    <div class="card"><h3>Pulsvanter</h3><p>Fingrene er frie — til båndet, nøklene, telefonen; hendene er likevel varme. Turen avbrytes ikke av «vent litt, jeg skal ta av votten».</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">48</span>Til tvillinger</h2>
+  <img class="fig" src="../vyazanie-shop/twins.webp" alt="To nesten like strikkede babysett ved siden av hverandre">
+  <p class="figcap">To sett. Én forskjell — fargen på dusken. Hver av dem har noe som bare er sitt.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">To like små — og to nesten like sett. Nesten — fordi det i hvert av dem finnes én liten forskjell: fargen på dusken, en brodert bokstav, en stripe på tøffelen. For ikke å forveksle dem. For at hver av dem fra første dag skal ha noe som bare er sitt.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Foreldre til tvillinger sier at slike ting siden tas vare på i par — og etter mange år forteller de historien bedre enn fotografier.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">49</span>Klær til dukker</h2>
+  <img class="fig" src="../vyazanie-shop/doll.webp" alt="En dukke i strikket kjole og en miniatyrlue på en barneseng">
+  <p class="figcap">Også en kjær dukke har klær etter sesongen.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Hver kjær dukke bør ha klær etter sesongen — det vet enhver bestemor og ethvert barnebarn. Kjoler, gensere og ørsmå luer strikkes etter målene til akkurat din dukke: send høyden og omkretsen hennes, resten finner vi på sammen med den lille eieren.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Dette er små ting med stor mening: de lærer omsorg bedre enn noen ord.</p>
+    <span class="price">fra 120 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">50</span>Buketter som ikke visner</h2>
+  <img class="fig" src="../vyazanie-shop/bouquet.webp" alt="En bukett strikkede blomster i en glassvase">
+  <p class="figcap">Tulipaner av garn står i vasen og ber ikke om vann. Bare av og til — om å bli sett på.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Strikkede blomster faller ikke av på fredag. De står i uker, sesonger, år — på bordet til den du ga dem til, og minner stille om deg hver eneste dag.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">De gis til dem som er allergiske mot pollen. Til dem som reiser bort og ikke kan vanne levende blomster. Til dem som rett og slett liker at skjønnheten ikke tar slutt. Én blomst, en liten bukett eller en hel komposisjon — i en vase som også kan velges som gave.</p>
+    <span class="price">fra 150 kr per blomst</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">51</span>Festpynt hele året</h2>
+  <img class="fig" src="../vyazanie-shop/xmas.webp" alt="Strikket juletrepynt og strømper til gaver på grener av et juletre">
+  <p class="figcap">Pynt som ikke knuser. Den henges på treet hvert år, og hvert år minnes man noe godt.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Jul</h3><p>Strikkede kuler, stjerner og strømper til gaver på peishyllen. De overlever barn, barnebarn og mer enn ett juletre — og blir det der «som i barndommen», bare nå for de neste.</p></div>
+    <div class="card"><h3>Påske og vår</h3><p>Strikkede egg, høner og lette servietter i vårens farger. Et bord dekket til fest, langsomt og med kjærlighet, lukter av hjem.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">52</span>Ting med navn</h2>
+  <img class="fig" src="../vyazanie-shop/named.webp" alt="Strikket barneteppe med brodert navn i hjørnet">
+  <p class="figcap">En brodert bokstav endrer alt: teppet blir rett og slett noens eget.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En brodert bokstav endrer alt. Teppet blir «Misjas teppe». En genser med bryllupsdatoen i mønsteret slutter å være et klesplagg og blir et dokument — bare varmt og mykt.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Vi strikker inn eller broderer barnets navn, initialer, en minnedato — bokstav for bokstav, langsomt, slik man signerer et brev for hånd. Slike ting gir man ikke bort og kaster ikke. De tas vare på, gis videre, og man forteller om dem: «dette ble strikket da du ble født».</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">53</span>Slik oppbevarer du strikk om sommeren</h2>
+  <img class="fig" src="../vyazanie-shop/storage.webp" alt="Sammenbrettede strikkegensere i en skuff med en kvist lavendel">
+  <p class="figcap">Sommeren er tiden da ulltingene sover. Ved siden av ligger lavendel.</p>
+  <p class="lead">Sommeren er tiden da ulltingene sover. Legg dem riktig bort, så våkner de til høsten som nye.</p>
+  <div class="card care">
+    <ul>
+      <li>Før oppbevaring er det best å vaske plagget eller i det minste lufte det: møll velger nettopp det som er brukt.</li>
+      <li>Brett sammen — ikke heng opp: kleshengere strekker strikket stoff i løpet av én sesong.</li>
+      <li>Ved siden av — lavendel, sedertre eller et lite såpestykke i en bomullspose: stille, med duft av hjem, og det holder møllen unna.</li>
+      <li>Ta dem frem én gang i løpet av sommeren og luft dem i frisk luft. Ting, akkurat som mennesker, liker å bli husket.</li>
+      <li>I verkstedet kan du bestille oppbevaringsposer i bomull — enkle, pustende, i toner som passer til tingene dine.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">54</span>Først — en prøvelapp</h2>
+  <img class="fig" src="../vyazanie-shop/swatch.webp" alt="Liten strikket prøvelapp ved siden av en konvolutt">
+  <p class="figcap">Ti ganger ti centimeter av fremtiden — den kommer til deg i et vanlig brev.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En stor ting bør ikke begynne med en stor risiko. Hvis du er i tvil om fargen, mønsteret eller følelsen av garnet, strikker vi en liten prøvelapp — ti ganger ti centimeter av fremtiden — og sender den til deg i et vanlig brev.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Du legger den inntil kåpen din. Holder den i hendene morgen og kveld, i ulikt lys. Lever med den en dag eller to — og beslutningen kommer av seg selv, rolig og uten tvil. Prisen på prøvelappen regner vi inn i prisen på plagget når du bestiller det.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">55</span>Bestilling uten skjema</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Skjemaene på denne siden er til for enkelhets skyld, ikke i stedet for en samtale. Hvis du foretrekker det på den gamle måten, skriver du bare et vanlig brev til <a href="mailto:nadandre@live.com">nadandre@live.com</a>: med dine egne ord, i hvilken rekkefølge du vil — hva du ønsker, til hvem og til hvilken dag.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Det er et menneske som svarer, ikke et program: det samme mennesket som senere skal holde strikkepinnene. Noen ganger er brevvekslingen om en fremtidig ting allerede halve varmen i den.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">56</span>Hva prisen består av</h2>
+  <p class="lead">Ingen hemmeligheter og ingen liten skrift. Prisen på en håndlaget ting er garn og tid. Nesten ingenting mer.</p>
+  <table>
+    <tr><th>Del av prisen</th><th>Hva det er</th></tr>
+    <tr><td>Garn</td><td>Den nøyaktige prisen på nøstene til akkurat din ting. På forespørsel viser vi kvitteringene — det er ingenting å skjule.</td></tr>
+    <tr><td>Arbeid</td><td>Timer ved strikkepinnene. En genser er førti til åtti timer med stille arbeid: flere uker med kvelder.</td></tr>
+    <tr><td>Ferdigstilling</td><td>Montering, vask og forming, knapper og tilbehør, og innpakningen som tingen reiser til deg i.</td></tr>
+    <tr><td>Levering</td><td>Etter portoens faktiske pris. Ikke én krone ekstra.</td></tr>
+  </table>
+  <p class="lead" style="margin-top:12px">Derfor kan en håndlaget ting ikke koste det samme som en fabrikklaget. Men deler du prisen på årene den vil tjene deg, viser den seg å være billigere enn nesten alt annet i garderoben.</p>
+</section>
+
+<section>
+  <h2><span class="n">57</span>Hvis garnet tar slutt midt i arbeidet</h2>
+  <img class="fig" src="../vyazanie-shop/yarnout.webp" alt="Genser under arbeid: det ene ermet er strikket i kontrastgarn">
+  <p class="figcap">Garnet tok slutt — og tingen fant sin egen vri.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Det skjer i ethvert strikkeliv: tingen er nesten ferdig, bare ett erme gjenstår — og garnet er borte. Og i butikkene finnes det ikke lenger. Motet synker — akkurat til det øyeblikket en utvei viser seg.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send oss resten av nøstet og et bilde av tingen. Vi finner et garn som ligger så nær som mulig i farge og karakter — og finnes det ikke et nøyaktig treff, finner vi på en vakker vri: kontrastermer, en stripe, en kant i en annen nyanse. Svært ofte er det nettopp denne tvungne vrien som blir det man senere elsker tingen mest for.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">58</span>Ting til fotograferinger</h2>
+  <img class="fig" src="../vyazanie-shop/photosession.webp" alt="Familie i like strikkede gensere på en fotografering">
+  <p class="figcap">Like gensere. Forskjellige mennesker. Én historie for alle.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Fotografier holder mennesker unge, og tingene på dem — varme. Like gensere på hele familien. En nyfødt som sover i et strikket teppe. En hund i en genser som matcher eierens.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Fortell oss om fotograferingen på forhånd: vi velger farger som spiller godt sammen og med bakgrunnen, og rekker å strikke alt til den avtalte dagen. Og etterpå lever disse tingene videre sitt vanlige liv — og hver gang du tar dem på, vil du huske den dagen.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">59</span>Farger på skjermen</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Et ærlig ord om farger: skjermen lyver litt. Det samme nøstet er blått på telefonen, nesten fiolett på datamaskinen, og i virkeligheten, i dagslys, viser det seg plutselig å være dypt som vann.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Derfor fotograferer vi garnet i vanlig dagslys for viktige bestillinger, ved siden av kjente gjenstander. Og er beslutningen alvorlig, finnes prøvelappen (avsnitt 54): en liten firkant av ekte garn som kommer til deg i et brev og forteller hele sannheten om fargen.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">60</span>Små bestillinger — med stor kjærlighet</h2>
+  <img class="fig" src="../vyazanie-shop/smallorder.webp" alt="Ett par strikkede sokker, pakket inn som en gave">
+  <p class="figcap">Ett par sokker — og like mye oppmerksomhet i dem som i en genser.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Ett par sokker. Ett trekk til et krus. Én leke til barnebarnet som bor i en annen by. Det finnes ingen bestillinger som er «for små» — det finnes mennesker som trenger akkurat denne lille tingen nå.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Halvparten av våre faste kunder begynte en gang med ett par sokker. Små ting strikkes på de samme stille kveldene og med den samme oppmerksomheten — de blir bare ferdige litt raskere.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Tilbakemelding</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>Bestilling, spørsmål, et bilde av en ting til reparasjon eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias innboks:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-posten din (for svar)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av en ny ting</option>
+        <option>Spesialbestilling</option>
+        <option>Reparasjon av en ting</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en til to dager.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">61</span>Og én gang til — skriv til Nadia</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>Bestilling, spørsmål, et bilde av en ting til reparasjon eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias innboks:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-posten din (for svar)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av en ny ting</option>
+        <option>Spesialbestilling</option>
+        <option>Reparasjon av en ting</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en til to dager.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">62</span>Mesterens verktøy</h2>
+  <img class="fig" src="../vyazanie-shop/tools.webp" alt="Strikkepinner av bambus, tre og metall, en saks og et målebånd på linstoff">
+  <p class="figcap">Pinnene ligger på linstoffet og venter på kvelden, når det blir stille i huset.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Hvert garn har sine pinner. Bambus holder forsiktig på glatt silke. Glatt metall fører ullen lett. Varmt tre kjøler ikke fingrene på en lang vinterkveld.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">I verkstedet finnes det flere dusin par, og hvert par kjenner sitt arbeid. Gamle pinner kastes ikke: de har sitt eget minne, og maskene glir jevnere av dem, som ord fra et velkjent språk.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">63</span>Hvorfor maskene blir jevne</h2>
+  <img class="fig" src="../vyazanie-shop/stitches.webp" alt="Nærbilde av perfekt jevne strikkemasker med en linjal">
+  <p class="figcap">Ingen hemmelighet: en prøvelapp, telling av omganger og hender som kjenner tråden.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Ingen hemmelighet: før hver ting — en liten prøvelapp. Deretter telling av omganger, ikke på øyemål. Og en størrelse som kontrolleres underveis, mens tingen ennå kan rettes med én bevegelse.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Håndarbeid er også presisjon. Det gjøres bare ikke av en maskin, men av hender som gjennom tiår har lært å kjenne trådens spenning slik en musiker kjenner en streng.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">64</span>Gave til bestemor</h2>
+  <img class="fig" src="../vyazanie-shop/grandma.webp" alt="Bestemor med barnebarnet velger garnnøster ved et bord">
+  <p class="figcap">To par hender over garnnøstene. De eldre velger fargen, de yngre suger til seg hvordan det gjøres: langsomt og med kjærlighet.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Sjal eller stola</h3><p>Over skuldrene — hjemme med en bok, i teateret, på en kveldstur. En lett ting som holder rundt deg på dine vegne når du er langt unna.</p></div>
+    <div class="card"><h3>Varme sokker og tøfler</h3><p>Med myk, løs ribbekant, for føtter som blir mest slitne i løpet av dagen. Omsorg du kjenner hver kveld når du tar av deg skoene.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">65</span>Babytøfler: de første skoene</h2>
+  <img class="fig" src="../vyazanie-shop/booties.webp" alt="En rad med bittesmå strikkede babytøfler i pastellfarger på en hylle">
+  <p class="figcap">De får plass i én håndflate. Begge på én gang.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Babytøflene strikkes etter lengden på den lille foten, med litt ekstra rom — babyer vokser fortere enn garn tørker. Fargene går fra stille pasteller til klare farger, «som de voksne»: de første tingene har lov til å være festlige.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Et par babytøfler er den raskeste gaven til en nyfødt, og kanskje den mest langlivede: de brukes ikke lenge, men tas vare på resten av livet.</p>
+    <span class="price">fra 150 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">66</span>Kattene godkjenner</h2>
+  <img class="fig" src="../vyazanie-shop/cat.webp" alt="Rød katt sover på et tykt strikket teppe i en lenestol">
+  <p class="figcap">Sjefskontrolløren for kvalitet sjekker hvert teppe personlig. Som oftest i søvne.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Bor det en katt i huset, forblir et strikket teppe ikke ditt særlig lenge. Det er en lov eldre enn oss alle: katter finner den varmeste tingen i huset på én kveld og gjør den til sin — endelig og uten forhandlinger.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Derfor bestiller mange et teppe nummer to, litt mindre, et «katteteppe». Og til hjem med dyr anbefaler vi garn som rolig tåler hyppig vask: skjønnhet er skjønnhet, men livet går sin gang.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">67</span>Hetter og balaklavaer</h2>
+  <img class="fig" src="../vyazanie-shop/hood.webp" alt="Barn i en strikket hette-balaklava på vintertur">
+  <p class="figcap">Ingenting glir, ingenting løsner, ingenting blir borte. Bare røde kinn.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En avtakbar hette i merino er en lue og et skjerf som har sluttet å krangle og blitt enige. Ingenting glir i vinden, ingenting løsner i farten, ingenting forsvinner i garderoben.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Foreldre setter særlig pris på dem: et barn i hette er beskyttet overalt, fra issen til brystet. Og voksne som går til fots om vinteren og kjenner prisen på vind fra fjorden.</p>
+    <span class="price">fra 400 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">68</span>Halsvarmere: varme uten volum</h2>
+  <img class="fig" src="../vyazanie-shop/dickey.webp" alt="Strikket halsvarmer over en åpen jakke">
+  <p class="figcap">En stille ting: dekker hals og bryst — og krever ikke å bli rettet på.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En halsvarmer er en stille ting. Den dekker halsen og brystet under jakken, men skaper ikke ekstra volum, samler seg ikke i folder og krever ikke å bli rettet på.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Den elskes av sjåfører, syklister og alle som gjør seg klare i farten og kler på seg underveis. Tatt på om morgenen — og glemt til kvelden. Slik skal en god ting være.</p>
+    <span class="price">fra 320 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">69</span>Poncho</h2>
+  <img class="fig" src="../vyazanie-shop/poncho.webp" alt="Kvinne i en strikket poncho med en kopp te på verandaen om kvelden">
+  <p class="figcap">Poncho, veranda, te. Kvelden trenger ingenting mer.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En poncho trenger ikke å kneppes, tilpasses eller overtales til å sitte riktig. Sleng den over skuldrene — så finner den selv ut hvordan den skal ligge. I den er det like rolig for en spinkel jente som for bestefaren hennes.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Det er klær for langsomme timer: en kveld på verandaen, veien hjem, lenestolen ved peisen. En poncho roper ikke om seg selv. Den varmer bare — og det er nok.</p>
+    <span class="price">fra 950 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">70</span>Bolero og skuldervarmere</h2>
+  <img class="fig" src="../vyazanie-shop/bolero.webp" alt="Kvinne i en strikket blondebolero over en aftenkjole">
+  <p class="figcap">Den skjuler ikke antrekket, men fullfører det — slik siste linje fullfører et brev.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Noen ganger er kjolen fullkommen, men skuldrene fryser. Til slike kvelder finnes boleroen: en kort cape i blondestrikk som ikke skjuler antrekket, men fullfører det, slik siste linje fullfører et brev.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Skuldervarmere i mohair med silke veier nesten ingenting og kan brettes sammen til en håndflates størrelse — de tas med «for sikkerhets skyld» og bæres hele kvelden.</p>
+    <span class="price">fra 550 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">71</span>Sommertopper og lette bluser</h2>
+  <img class="fig" src="../vyazanie-shop/summertop.webp" alt="Kvinne i en lett strikket topp på et morgenmarked">
+  <p class="figcap">Morgen, marked, stoff varmet av solen. Sommeren bor også i slike ting.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Strikking handler ikke bare om vinter. Bomull og lin puster, blondemønster slipper luft og lys igjennom, og en håndlaget sommerting sitter slik ingen fabrikklaget ting sitter.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Slike topper brukes i årevis: de strekker seg ikke i løpet av en sesong og mister ikke utseendet etter vask. Morgen, marked, lukten av stoff varmet av solen — noen ganger er det nettopp i slike ting sommeren oppbevares.</p>
+    <span class="price">fra 600 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">72</span>Strikkede kjoler og skjørt</h2>
+  <img class="fig" src="../vyazanie-shop/dressknit.webp" alt="En strikket kjole ved et lyst vindu om morgenen">
+  <p class="figcap">En kjole ved vinduet. Den vet allerede hvem den tilhører.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En kjole som er strikket etter kroppen, ligner ikke på noen kjole fra butikken. Den hverken henger eller strammer — den følger mennesket den er strikket til, slik en kjær vane følger henne.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Slike ting bestiller man ikke i hast. Først en samtale, mål, garnet mellom fingrene. Så uker med stille arbeid. Men deretter bæres kjolen i årevis — og hver gang litt annerledes, og hver gang passer den.</p>
+    <span class="price">fra 1 800 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">73</span>Vesker og ryggsekker</h2>
+  <img class="fig" src="../vyazanie-shop/totebag.webp" alt="En strikket veske av fast bomull på et bord">
+  <p class="figcap">Den holder formen, karakteren og alt man legger i den.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En veske av fast bomull holder formen, karakteren og alt man legger i den. Inni er det fôr og en lomme til telefonen, så man slipper å lete på bunnen mens man står i kassen.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Slike vesker eldes vakkert: de sprekker ikke, de flasser ikke — de blir bare mykere og kjærere, som en favorittbok.</p>
+    <span class="price">fra 350 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">74</span>Etuier til alt</h2>
+  <img class="fig" src="../vyazanie-shop/cases.webp" alt="Strikkede etuier til briller, telefon og bok">
+  <p class="figcap">En telefon i et slikt etui finner man i vesken med følelsen — på varmen fra garnet.</p>
+  <div class="grid">
+    <div class="card"><h3>Til briller og telefon</h3><p>Et mykt strikket trekk beskytter mot riper og kulde. Og en telefon i et slikt etui finner man i vesken med følelsen — på varmen fra garnet.</p><span class="price">fra 110 kr</span></div>
+    <div class="card"><h3>Til bøker og nettbrett</h3><p>Etuiet strikkes i nøyaktig din størrelse — til din bok, ditt nettbrett. Med klaff og en knapp det er godt å kneppe igjen, sakte.</p><span class="price">fra 160 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">75</span>Bokmerker for bokelskere</h2>
+  <img class="fig" src="../vyazanie-shop/bookmark.webp" alt="Et strikket bokmerke med dusk i en åpen bok">
+  <p class="figcap">Det husker alle sidene der du sovnet.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Et tynt strikket bokmerke med dusk lever inne i boken i årevis. Det husker alle sidene der du sovnet, og alle sidene der du ikke fikk sove.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">De bestilles ofte i sett — til seg selv og alle man deler bøker med. En liten gave som ikke roper om seg selv, men bare blir værende lenge.</p>
+    <span class="price">fra 70 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2>Tilbakemelding</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>En bestilling, et spørsmål, et bilde av noe som skal repareres eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-posten din (til svaret)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av noe nytt</option>
+        <option>Spesialbestilling</option>
+        <option>Reparasjon av et plagg</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av én til to dager.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">76</span>Sokker til gaver — på peishyllen</h2>
+  <img class="fig" src="../vyazanie-shop/stocking.webp" alt="Store strikkede sokker til gaver på peisen">
+  <p class="figcap">Sokken henger tom — og nettopp derfor full: av forventning.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En stor strikket sokk over peisen er et løfte om fest som synes langveis fra. I den gjemmes små gaver, og hver desembermorgen er det noen i huset som titter nedi — bare sånn, for sikkerhets skyld.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">På hver sokk står et navn. Til barna, til foreldrene, til katten. Etter år tas disse sokkene frem fra boksen med juletrepynt, og huset dufter igjen av mandariner og forventning.</p>
+    <span class="price">fra 290 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">77</span>Til fiske og jakt</h2>
+  <img class="fig" src="../vyazanie-shop/fishing.webp" alt="En fisker ved et innsjø i grålysningen, i strikket lue og pulsvanter">
+  <p class="figcap">Tåke over vannet og lang venting ved hullet — det er for et slikt liv de er strikket.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">På vannet og i skogen prøves klær raskt. Mørke farger som ikke viser skitt. Høye sokker, så det ikke trekker. En lue som ikke er redd for regn. Pulsvanter der hendene er frie til arbeidet.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Det gjør ikke vondt å ta disse tingene med i skogen — og det er deres verdighet: de er strikket ikke til hyllen, men til et liv med tåke over innsjøen og lang venting ved hullet.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">78</span>Til sykkel og motorsykkel</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Vind i fart finner hver sprekk i klærne. En balaklava av tynn merino, en hals og leggvarmere lukker nettopp de stedene den når først.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Ingenting flagrer, sklir ned eller forstyrrer blikket på veien. Veien liker for øvrig at man tenker på den — og ikke på en frossen nakke.</p>
+    <span class="price">fra 280 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">79</span>Til musikere</h2>
+  <img class="fig" src="../vyazanie-shop/musician.webp" alt="En musikers hender i strikkede pulsvanter på en gitar">
+  <p class="figcap">Musikken skal ikke vente på at hendene blir varme.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Kalde hender spiller dårligere — det vet alle som har øvd i en uoppvarmet sal eller opptrådt ute i november. Pulsvantene lar fingrene være frie, mens hendene holdes varme.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Gitarister, pianister, fiolinister: musikken skal ikke vente på at hendene blir varme.</p>
+    <span class="price">fra 200 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">80</span>Til fotografer</h2>
+  <img class="fig" src="../vyazanie-shop/photographer.webp" alt="En fotograf i vintergrålysning, i hansker med åpne fingre">
+  <p class="figcap">Øyeblikket venter ikke. Hendene er klare.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Grålysningen om vinteren er vakker og nådeløs. Hansker med fingre som kan brettes tilbake, lar deg skru nøyaktig på kameraets hjul — og straks gjemme fingrene i varmen igjen, uten å ta hanskene helt av.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Strikket nøyaktig etter hånden din, verken henger eller strammer de. Øyeblikket venter ikke. Hendene er klare.</p>
+    <span class="price">fra 240 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">81</span>Til gartnere</h2>
+  <img class="fig" src="../vyazanie-shop/gardener.webp" alt="En gartner i strikket vest med lommer i morgenhagen">
+  <p class="figcap">Alt ekte vokser sakte. Hagen lærer det samme som strikkingen vet.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Morgenen i hagen begynner før solen har varmet jorden. En vest med store lommer — til beskjæringssaksen, hanskene og telefonen — og en varm rygg gjør denne morgenen ikke til en prøvelse, men til en glede.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Hagen lærer for øvrig det viktigste strikkingen vet: alt ekte vokser sakte, og det nytter ikke å skynde på det.</p>
+    <span class="price">fra 750 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">82</span>Lommer — etter din beskrivelse</h2>
+  <img class="fig" src="../vyazanie-shop/pocket.webp" alt="En hånd legger en telefon i innerlommen på en strikket vest med glidelås">
+  <p class="figcap">En ting som er tegnet rundt livet ditt — ikke omvendt.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Alle har noe de alltid bærer med seg: telefon, nøkler, pass, medisin, et lommetørkle til barnebarnet. Fabrikklær kjenner ikke vanene dine. Det som er strikket på bestilling — kjenner dem.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">En innerlomme med glidelås. En skjult liten lomme i skjerfet — til kortet. En dyp lomme i vesten, der ingenting faller ut når du bøyer deg. Fortell hva du bærer med deg — så tegnes plagget rundt livet ditt, og ikke omvendt.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">83</span>En vott til to</h2>
+  <img class="fig" src="../vyazanie-shop/sharedmitten.webp" alt="Et par holder hender i én stor strikket vott på vintertur">
+  <p class="figcap">To hender i én vott. Frosten kan bare se på.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Én stor vott, laget slik at to kan holde hender inni den. Den ser ut som en spøk — til du tar den på en vintertur og forstår at det er det varmeste i verden.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Den gis til par på bryllupsdagen, til et vinterbryllup og bare sånn — som en tillatelse til å gå lenger, hånd i hånd, mens frosten kniper i kinnene.</p>
+    <span class="price">fra 260 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">84</span>Til turer med hunden</h2>
+  <img class="fig" src="../vyazanie-shop/dogwalk.webp" alt="Morgentur: et menneske i pulsvanter og en hund i strikket genser">
+  <p class="figcap">En liten seremoni som dagen begynner med.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Morgenturen med hunden venter ikke mens du ordner hanskene. Pulsvanter der båndet sitter trygt. En vest med lomme til poser og den godbiten som gjør noens morgen.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Og til selve hunden — en genser i samme farge som din (avsnitt 17). En felles tur ut i den stille vintergården — en liten seremoni som dagen begynner med.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">85</span>Sokker til å sove i</h2>
+  <img class="fig" src="../vyazanie-shop/sleepsocks.webp" alt="Myke sokker til å sove i på sengekanten om kvelden">
+  <p class="figcap">De bestilles til foreldre — og så ringer de en torsdag, etter den første varme natten.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Kalde føtter er søvnens fiende, det vet alle. Sokker av myk alpakka og merino, helt uten en stram strikk, varmer på én kveld og blir på hele natten.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">De bestilles ofte ikke til seg selv, men til foreldrene — og det er en av de gavene man ringer og takker for etterpå. Ikke på bursdagen. Bare en torsdag, etter den første varme natten.</p>
+    <span class="price">fra 230 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">86</span>Myke sokker med løs strikk</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Det finnes føtter som trenger ikke skjønnhet, men hensyn: slitne, ømfintlige, eldre. Til dem — en bred, myk strikk som ikke klemmer, og en flat søm som ikke gnager.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Slike sokker vises ikke frem. De bare bæres hver dag, til man slutter å tenke på føttene — og det er det fineste komplimentet et plagg kan få.</p>
+    <span class="price">fra 240 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">87</span>Tøfler med såle</h2>
+  <img class="fig" src="../vyazanie-shop/slippers.webp" alt="Strikkede tøfler med filtsåle ved sengen om morgenen">
+  <p class="figcap">Skritt gjennom morgenhuset vekker ingen.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Strikket overdel, såle av filt eller skinn. Varmt, stille og ikke glatt — skritt gjennom morgenhuset vekker ingen.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Hjemmesko er det mest brukte i garderoben, om man regner ærlig. La dem være vakre: de sees oftere enn finskoene.</p>
+    <span class="price">fra 380 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">88</span>Ankelsokker og hjemmeballerinaer</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Lette som sokker og nette som små sko. Ankelsokker brukes hjemme, tas med på yoga og på reise — i kofferten tar de plassen til ett par sokker, men gir kos som fullverdige hjemmesko.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Gjesteankelsokker ved døren er en liten tradisjon i gjestfrie hjem: et menneske kommer inn — og får det straks varmt.</p>
+    <span class="price">fra 210 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">89</span>Tepper og soveplasser til dyr</h2>
+  <img class="fig" src="../vyazanie-shop/cat2.webp" alt="En katt sover på et strikket teppe i en kurv ved vinduet">
+  <p class="figcap">Plassen er valgt. Plassen er tatt. Plassen er godkjent.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Et lite, fast teppe til kurven, til vinduskarmen, til reiseburet. Dyret velger sitt sted selv — vi gjør bare stedet varmt.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Garnet til slike tepper er ikke redd for klør og hyppig vask. Og katten, som kjent fra avsnitt 66, prøver uansett ditt teppe først. Deretter, motvillig, går den med på sitt eget.</p>
+    <span class="price">fra 300 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">90</span>Sett til lenestolen</h2>
+  <img class="fig" src="../vyazanie-shop/armchair.webp" alt="Et hjørne ved lenestolen med strikket teppe, pute og hjemmesokker">
+  <p class="figcap">Stolen er gjort klar for kvelden: teppe, pute og stillhet.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Et teppe, en pute og et par hjemmesokker i samme fargeskala. Med én bestilling skapes et sted man vil vende tilbake til hver kveld: stolen ved vinduet, lampen, boken — og alt annet får vente.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Et slikt sett gis ved innflytting og til foreldre. Og også — til seg selv. Hvert menneske bør ha en stol der verden blir litt langsommere.</p>
+    <span class="price">fra 1 250 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2>Tilbakemelding</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>En bestilling, et spørsmål, et bilde av noe som skal repareres eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-posten din (til svaret)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av noe nytt</option>
+        <option>Spesialbestilling</option>
+        <option>Reparasjon av et plagg</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av én til to dager.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">91</span>Takkegaver</h2>
+  <img class="fig" src="../vyazanie-shop/thankyou.webp" alt="Et strikket sjal som gave, med et takkekort">
+  <p class="figcap">Det finnes mennesker man ikke får sagt det viktigste til med konfekt.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Det finnes mennesker man ikke får sagt det viktigste til med en eske konfekt: læreren som la merke til barnet ditt; legen som ikke ga opp hendene; barnepasseren som barna kaller sin andre bestemor.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Til dem — et sjal, et skjerf eller et par sokker i håndarbeid, og et kort fra deg. Slike gaver settes ikke på en hylle. De bæres — og hver gang husker man hvorfor de ble gitt.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">92</span>Merkelapp med navn</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Inni hvert plagg som lages på bestilling, kan det bo en liten stofflapp: navnet til den det er strikket til, en dato og noen få ord. Ingen ser den. Men den er der — som en lapp lagt igjen i lommen på en frakk.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Etter år, når plagget tas frem fra skuffen og brettes ut, er det nettopp lappen som forteller hvor det kommer fra, og hvorfor det ble tatt så godt vare på.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">93</span>Hvordan ting tåler posten</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Et strikket plagg reiser rolig. Det brettes uten skarpe kanter, pakkes i papir og drar i tett emballasje — gjennom sorteringer, biler og, hender det, halve kontinentet.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Det er ikke redd for verken risting eller frost i lasterommet: det er skapt for et nordlig liv. Ta det ut av pakken, rist det, la det ligge en time — og det er igjen det samme som lå på verkstedbordet.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">94</span>Leveringstider til verden</h2>
+  <p class="lead">Posten, som strikkingen, liker ikke hast. Her er dens vanlige, ærlige tempo:</p>
+  <table>
+    <tr><th>Hvor</th><th>Vanlig posttid</th></tr>
+    <tr><td>Norge</td><td>2–5 dager</td></tr>
+    <tr><td>Europa</td><td>5–12 dager</td></tr>
+    <tr><td>USA og Canada</td><td>10–20 dager</td></tr>
+    <tr><td>Resten av verden</td><td>etter avtale — spør ved bestilling</td></tr>
+  </table>
+  <p class="lead" style="margin-top:12px">Til disse dagene legges strikketiden — derfor begynner vi å snakke om gaver til en bestemt dato i god tid, i rolige uker (avsnitt 24).</p>
+</section>
+
+<section>
+  <h2><span class="n">95</span>Betaling fra utlandet</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Hvis du bor i et annet land, blir vi enige om en praktisk måte sammen: internasjonal bankoverføring eller PayPal. Uten hastverk, uten liten skrift, med svar på alle spørsmål før du betaler noe som helst.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">96</span>Hastebestillinger</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Det hender: en fest om en uke, og ingen gave. Skriv med en gang, samme dag. En liten ting — en lue, sokker, en leke — lar seg ofte strikke og sende i tide, hvis det første døgnet ikke går tapt til tvil.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Vi sier det ærlig den første dagen: om vi tar det på oss eller ikke. Hvis ikke — foreslår vi et gavekort, som aldri kommer for sent.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">97</span>To like ting</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En ting i par er ikke «det samme en gang til». Begge strikkes rett etter hverandre, av samme parti garn, så fargen stemmer helt — ikke omtrent: garn fra ulike partier kan skille med en halv tone, som bare synes når de ligger side om side.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">I tid tar to ting omtrent halvannen. Som med folk i et par — sammen går alt litt lettere.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">98</span>For klubber, kor og lag</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Like luer og skjerf i klubbens farger binder folk sammen roligere og sikrere enn noen uniform. De tas på før start, før man går på scenen, før fellesbildet — og plutselig fremstår laget som ett.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Et idrettslag, et kor, en turgruppe: fortell oss om fargene deres i god tid; håndarbeid liker litt spillerom — så er alt klart til dagen deres.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">99</span>Strikket kleskode</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En håndstrikket ting kan være velkledd. En cardigan som holder skulderlinjen. Et sjal som fullfører kveldsantrekket i stedet for å krangle med det. En vest som får skjorten til å se tilfeldig ryddig ut.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Hemmeligheten ligger i garnet og passformen: rolige farger, ren finish, ingenting overflødig. Da leses strikk ikke som «hjemmelaget», men som «sitt eget».</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">100</span>Den hundrede bolken</h2>
+  <img class="fig" src="../vyazanie-shop/hundred.webp" alt="Et bord med strikkede gaver, klare til å gis bort">
+  <p class="figcap">Hundre bolker senere er bordet fortsatt fullt — som den første kvelden.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Du har nådd den hundrede bolken. Stopp et sekund og se hvor mange anledninger til å gi bort noe strikket som får plass i ett helt vanlig liv.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Bursdag og innflytting. Den første snøen og det første barnet. Jubileum — og bare en tirsdag man vil gjøre varmere. Pensjon og første studieår. Flytting til en kald by — og veien hjem igjen. En anledning trenger man ikke lete etter. En strikket ting betyr i seg selv én ting: «jeg tenkte nettopp på deg».</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">101</span>Gaveideer under 300 kr</h2>
+  <p class="lead">Et lite budsjett er ingen hindring. Små ting gis med like mye varme som store.</p>
+  <div class="card"><ul>
+    <li>bokmerke — fra 70 kr</li>
+    <li>trekk til krus — fra 90 kr</li>
+    <li>babytøfler — fra 150 kr</li>
+    <li>en strikket blomst som ikke visner — fra 150 kr</li>
+    <li>sokker eller votter — fra 250 kr</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2><span class="n">102</span>Gaveideer: 300–600 kr</h2>
+  <p class="lead">Et mellomstort budsjett rekker allerede til en hel ting, en man vil bruke hele vinteren.</p>
+  <div class="card"><ul>
+    <li>lue i merino — fra 350 kr</li>
+    <li>snood eller hals — fra 320 kr</li>
+    <li>votter med fleece — fra 390 kr</li>
+    <li>koseleke — fra 300 kr</li>
+    <li>tøfler med såle — fra 380 kr</li>
+    <li>veske i bomull — fra 350 kr</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2><span class="n">103</span>Gaveideer: 600 kr og oppover</h2>
+  <p class="lead">Store gaver gis sjelden og huskes lenge. Her er ting som blir hos et menneske i årevis.</p>
+  <div class="card"><ul>
+    <li>skjerf eller stola — fra 600–650 kr</li>
+    <li>vest — fra 750 kr</li>
+    <li>poncho — fra 950 kr</li>
+    <li>pledd — fra 1 200 kr</li>
+    <li>genser — fra 1 300 kr</li>
+    <li>sett til lenestolen — fra 1 250 kr</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2><span class="n">104</span>En gave til den som har alt</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Han har alt som selges. Igjen står det som ikke selges ferdig: en ting skapt bare for ham. Hans mål, hans farge, hans vaner — tatt hensyn til i lommene og i ermelengden.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Slike mennesker lar seg ikke imponere av pris. De røres av oppmerksomhet — og oppmerksomhet kan ikke kjøpes, den kan bare legges ned, time for time, maske for maske.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">105</span>Gaver på avstand</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Mamma i et annet land. En datter som har reist bort for å studere. En venn på den andre siden av havet. Skriv inn mottakerens adresse — så reiser pakken rett til ham, med et kort fra deg inni.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Du får ikke se tingen med egne øyne. Men du vet hvilken kveld den pakkes opp — og det er nesten det samme som å være der.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Tilbakemelding</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-posten din (for svar)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av en ny ting</option>
+        <option>Individuell bestilling</option>
+        <option>Reparasjon av en ting</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis innen én til to dager.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">106</span>Et brev i pakken</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Til hver pakke kan det legges ved et brev. Teksten din — skrevet for hånd med vår hånd, eller skrevet ut, alt etter hva som føles roligst for deg. Det kan også være kort: tre linjer sier noen ganger mer enn en side.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Ting glemmes. Ord som kom sammen med dem — nesten aldri.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">107</span>Koseleker for voksne</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Voksne trenger leker ikke mindre enn barn. De innrømmer det bare sjeldnere. En koseleke bor ved puten, reiser i bilen, venter på arbeidstolen på tunge dager.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">De gis til studenter før eksamen, til venner før en flytting, til en selv — uten anledning. Det som rett og slett trøster, trenger ingen god anledning.</p>
+    <span class="price">fra 300 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">108</span>Varmeflasker og varme hjelpere</h2>
+  <img class="fig" src="../vyazanie-shop/warmer.webp" alt="En varmeflaske i strikket trekk på sengen">
+  <p class="figcap">To minutter — og varmen holder i nesten en time.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Et strikket trekk til en varmeflaske eller en flaske med varmt vann. Inni — linfrø eller kirsebærsteiner som varmes i mikrobølgeovnen: to minutter, og varmen holder i nesten en time.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Mot magen, mot korsryggen, i en kald seng en halvtime før leggetid. En måte å varme seg på som er gammel som verden — og fortsatt en av de ærligste.</p>
+    <span class="price">fra 240 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">109</span>Lavendelpose</h2>
+  <img class="fig" src="../vyazanie-shop/lavender.webp" alt="Strikkede poser med tørket lavendel på lin">
+  <p class="figcap">Lavendel i små poser dufter av en sommer man bestemte seg for å bevare.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En liten strikket pose med tørket lavendel. Den legges i skuffen med sengetøy, henges i skapet, gjemmes i kofferten.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Duften holder i månedsvis, og klemmer man litt på posen, våkner den igjen. En pose legges ofte gratis ved store bestillinger: ro skal ikke ha noen inngangsterskel.</p>
+    <span class="price">fra 60 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">110</span>Ting for vått vær</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Vestkysten av Norge kjenner regn bedre enn noen værmelding. Ull er den eneste fiberen som varmer selv når den er våt: den trekker til seg fukt og holder på varmen når syntetiske stoffer for lengst har gitt opp.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For slike dager — votter og sokker med litt nylon for styrke, og tett strikk som holder vinden ute. Du kommer våt hjem, men ikke frossen.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">111</span>Knapper som forandrer alt</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Den samme tingen med ulike knapper — to forskjellige ting. Tre gjør cardiganen hjemmekoselig, metall gjør den urban, horn — nesten festfin.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Ved bestilling viser vi 2–3 knappalternativer til nettopp din ting. Det er den siste detaljen, og den velges langsomt — slik man setter et siste punktum: når man allerede vet hva det ble.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">112</span>Glidelåser og lukninger</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En vest eller cardigan kan lages med glidelås, med knapper eller helt uten lukning — den kastes over skuldrene og holder seg selv. Det avgjøres før arbeidet begynner, og vi snakker om hvordan du liker å ha slike ting: å lukke raskt med én hånd, eller i ro og mak, knapp for knapp.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Lukkingen er tingens rytme. Vi finner den som passer til din.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">113</span>Reparasjon av lukninger</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En ødelagt glidelås betyr ikke slutten for en ting. Den skiftes ut, og en god genser lever videre — noen ganger enda lenger enn med den første: den nye lukningen velges sterkere enn den gamle.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send et bilde — så sier vi hva som kan gjøres. Ting skal ikke dø på grunn av en detalj.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">114</span>Å friske opp en gammel ting</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En elsket genser kan bli din igjen uten å strikkes helt på nytt. Strikk nye mansjetter der de gamle har strukket seg. Sett lapper på albuene — i skinn eller semsket, de bærer verdigheten av et liv som er levd. Bytt knappene til noen som vil eldes vakkert sammen med tingen.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Noen ganger trenger en ting ingen ny fremtid. Den trenger at fortiden repareres.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">115</span>Fra en gammel ting — en ny</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Mammas genser, som ingen lenger bruker, kan rekkes opp — langsomt, nøste for nøste — og av ullen kan det strikkes votter til barnebarna hennes. Tråden bevarer varmen fra hendene som strikket den først.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Dette er arbeid om minner mer enn om strikking. Slike bestillinger snakker vi om med særlig varsomhet — og vi gjør dem først, utenom køen.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">116</span>Barneting å vokse i</h2>
+  <img class="fig" src="../vyazanie-shop/childsweater.webp" alt="Et barn i strikket genser, mamma retter på mansjetten">
+  <p class="figcap">Mansjetter brettes opp i dag — og foldes ned i morgen, når armene har vokst.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">En god barnegenser kan vokse. Mansjetter som brettes opp, slippes ned etter hvert som armene vokser. Lengden er lagt inn med litt ekstra. Festene på babytøflene — med plass til å vokse.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Et barn vokser fort. Men en ting strikket med litt ekstra rekker å bli elsket — og det er det eneste som virkelig kreves av barneklær.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">117</span>Vask av barneting</h2>
+  <div class="card care">
+    <p style="font-size:16.5px;color:var(--ink)">Et kort notat til foreldre — den samme roen som for voksenting:</p>
+    <ul>
+      <li>Gel uten kraftig lukt; barnehud hører dufter sterkere enn vår.</li>
+      <li>Vann 30 °C, «ull»-program — eller bare en balje og hender.</li>
+      <li>Skyll til vannet er helt klart.</li>
+      <li>Tørk utbredt på et håndkle, langt fra radiator og travelhet.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">118</span>Ro for sensitiv hud</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Til nyfødte og mennesker med sensitiv hud velger vi garn merket OEKO-TEX® Standard 100 — det betyr at det er testet for skadelige stoffer av et uavhengig laboratorium, ikke bare på ord.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For de aller minste vaskes garnet i tillegg med et nøytralt middel før arbeidet begynner. Det første plagget i et menneskes liv skal være fullkomment mykt — og fullkomment ærlig i sammensetningen.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">119</span>Norsk garn</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Vi er særlig glade i garn fra norske fabrikker — Rauma og Sandnes Garn. Det ble skapt for dette været av generasjoner av mennesker som selv gikk i gensere strikket av det: varmt, ærlig, med en karakter som verken falmer eller gir opp etter én sesong.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">En ting av slikt garn er et lite stykke Norge, hvor den enn bor siden.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">120</span>Laget i Norge</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Hver ting fra verkstedet er strikket for hånd i Norge. Ikke «i norsk stil», ikke «med norske motiver», men her: ved dette vinduet, i dette været, i disse stille kveldene.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Og den reiser herfra til deg — med et kort der det kan skrives hvordan regnet var den dagen.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Tilbakemelding</h2>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
+    <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
+    <p><a class="mailbig" href="mailto:nadandre@live.com">nadandre@live.com</a></p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Strikkebutikk — melding fra nettsiden">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Navnet ditt</label>
+      <input id="f-name" type="text" name="Navn" required placeholder="Hva heter du">
+      <label for="f-email">E-posten din (for svar)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Emne</label>
+      <select id="f-topic" name="Emne">
+        <option>Bestilling av en ny ting</option>
+        <option>Individuell bestilling</option>
+        <option>Reparasjon av en ting</option>
+        <option>Spørsmål om garn og størrelser</option>
+        <option>Tilbakemelding</option>
+        <option>Annet</option>
+      </select>
+      <label for="f-msg">Melding</label>
+      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      <button type="submit">Send til Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis innen én til to dager.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">121</span>Din idé — våre pinner</h2>
+  <div class="card">
+    <p style="font-size:17px;color:var(--ink)">Du har lest helt til slutten. Videre trenger du ikke bla i noe og ikke bestemme noe akkurat nå.</p>
+    <p style="font-size:17px;color:var(--ink);margin-top:10px">Hvis du på veien møtte en ting som mangler i livet ditt eller i livet til noen du er glad i — skriv noen ord til oss. Eller bare kom tilbake hit i morgen: denne siden har det ikke travelt, og det har ikke vi heller. 🧶</p>
+  </div>
+</section>
+
+<footer>
+  Strikke Shop · Håndarbeid · Norge<br>
+  Strikket med kjærlighet — bæres med varme. 🧶
+</footer>
+
+</div>
+<div id="moreHint">bla nedover — det er mer varme lenger ned ↓</div>
+<script>
+(function(){
+  var BATCH=10;
+  var secs=Array.prototype.slice.call(document.querySelectorAll('main section'));
+  var shown=0;
+  secs.forEach(function(s){ s.classList.add('batch-hidden'); });
+  var main=document.querySelector('main');
+  var sentinel=document.createElement('div');
+  sentinel.style.height='1px';
+  main.appendChild(sentinel);
+  var hint=document.getElementById('moreHint');
+  function reveal(){
+    var n=0;
+    while(shown<secs.length && n<BATCH){
+      var s=secs[shown++];
+      s.classList.remove('batch-hidden');
+      s.classList.add('reveal');
+      main.insertBefore(sentinel, s.nextSibling ? null : null);
+      n++;
+    }
+    // keep sentinel after the last visible section
+    var last=secs[Math.min(shown,secs.length)-1];
+    if(last && last.nextSibling!==sentinel){ main.insertBefore(sentinel, last.nextSibling); }
+    if(shown>=secs.length){
+      if(window.__knitObs){ window.__knitObs.disconnect(); }
+      if(hint){ hint.style.opacity='0'; setTimeout(function(){ hint.remove(); },700); }
+    }
+  }
+  reveal();
+  if('IntersectionObserver' in window && shown<secs.length){
+    window.__knitObs=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ reveal(); }
+    },{rootMargin:'700px 0px'});
+    window.__knitObs.observe(sentinel);
+  } else {
+    while(shown<secs.length){ reveal(); }
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(a){ while(shown<secs.length){ reveal(); } }
+  });
+})();
+</script>
+</body>
+</html>
