@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knitting Shop — warmth, knitted by hand | Nadia's Shop</title>
+<meta name="description" content="Knitting Shop: handmade sweaters, scarves, hats, socks, blankets and children's pieces made from natural wool. Catalog, yarn, measurements, gift sets, repair of knitted items. Knitted by Nadia, Norway. Orders and feedback — right from this page.">
+<style>
+  :root{--bg:#fbf6ef;--card:#ffffff;--line:#ead9c2;--ink:#43302a;--dim:#8a7364;--acc:#b4552d;--rose:#c98a8a;--soft:#f5ead9}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.7}
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px}
+  header{padding:54px 0 8px;text-align:center}
+  .kicker{font-family:Verdana,sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--acc)}
+  h1{font-size:46px;line-height:1.15;font-weight:normal;margin:16px 0 12px}
+  h1 em{color:var(--acc);font-style:italic}
+  .sub{font-size:19px;color:var(--dim);max-width:620px;margin:0 auto}
+  .hero{width:100%;border-radius:18px;margin:28px 0 6px;box-shadow:0 12px 40px rgba(67,48,42,.15)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:16px 0 4px}
+  .chip{font-family:Verdana,sans-serif;font-size:13px;background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 15px}
+  .chip b{color:var(--acc)}
+  section{margin:48px 0}
+  h2{font-size:29px;font-weight:normal;margin-bottom:10px}
+  h2 .n{color:var(--rose);font-style:italic;margin-right:10px}
+  .lead{color:var(--dim);font-size:17px;margin-bottom:18px;max-width:720px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:700px){.grid,.grid3{grid-template-columns:1fr}h1{font-size:32px}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{font-size:19px;font-weight:normal;margin-bottom:6px}
+  .card p,.card li{font-size:15.5px;color:var(--dim)}
+  .card ul{margin-left:18px}
+  .price{font-family:Verdana,sans-serif;font-size:14px;color:var(--acc);margin-top:10px;display:block}
+  .meta{font-family:Verdana,sans-serif;font-size:12.5px;color:var(--dim);margin-top:6px;display:block}
+  .tag{font-family:Verdana,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:8px}
+  .fig{width:100%;border-radius:16px;box-shadow:0 8px 30px rgba(67,48,42,.13)}
+  .figcap{font-size:14px;color:var(--dim);text-align:center;margin-top:8px;font-style:italic}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:700px){.gallery{grid-template-columns:1fr}}
+  .gallery img{width:100%;height:100%;object-fit:cover;border-radius:14px;box-shadow:0 6px 22px rgba(67,48,42,.12)}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15.5px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-family:Verdana,sans-serif;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--acc);background:var(--soft)}
+  tr:last-child td{border-bottom:none}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .steps5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:700px){.steps,.steps5{grid-template-columns:1fr}}
+  .step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center}
+  .step b{display:block;font-size:28px;color:var(--acc);font-weight:normal}
+  .step h3{font-size:16.5px;font-weight:normal;margin:4px 0}
+  .step p{font-size:14.5px;color:var(--dim)}
+  .care li{font-size:16px;margin:7px 0 7px 20px}
+  .faq .card{margin-bottom:12px}
+  .order{background:var(--card);border:2px dashed var(--rose);border-radius:16px;padding:26px;text-align:center}
+  .order p{font-size:16.5px;color:var(--dim);max-width:580px;margin:8px auto}
+  form{max-width:620px;margin:18px auto 0;text-align:left}
+  label{font-family:Verdana,sans-serif;font-size:13px;color:var(--dim);display:block;margin:14px 0 5px}
+  input,select,textarea{width:100%;font-family:Georgia,serif;font-size:16px;color:var(--ink);background:#fffdf9;border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+  textarea{min-height:120px;resize:vertical}
+  button{margin-top:18px;width:100%;font-family:Verdana,sans-serif;font-size:16px;background:var(--acc);color:#fff;border:none;border-radius:10px;padding:14px;cursor:pointer}
+  button:hover{background:#9c4a26}
+  .mailbig{font-size:22px;color:var(--acc);text-decoration:none;border-bottom:1px dashed var(--rose)}
+  .batch-hidden{display:none}
+  section.reveal{animation:fadeUp .9s ease both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  #moreHint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--dark);color:#fdf6ec;padding:9px 18px;border-radius:999px;font-size:14px;opacity:.92;z-index:50;transition:opacity .6s;pointer-events:none}
+  footer{border-top:1px solid var(--line);margin-top:54px;padding:24px 0 44px;color:#a08a76;font-size:14.5px;text-align:center}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C2W27FWRBQ');</script>
+<style>
+html{scroll-behavior:smooth}
+.cta-row{margin:22px 0 6px;text-align:center}
+.cta-btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:18px;font-weight:600;padding:14px 30px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.cta-btn:hover{filter:brightness(1.07)}
+.cta-line{text-align:center;color:var(--muted);font-size:15px;margin-top:10px}
+#stickyBar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--dark);color:#fdf6ec;display:none;align-items:center;justify-content:center;gap:14px;padding:10px 14px;box-shadow:0 -4px 18px rgba(0,0,0,.25)}
+#stickyBar.show{display:flex}
+#stickyBar .sb-t{font-size:15.5px}
+#stickyBar .sb-b{background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:9px 20px;border-radius:999px;font-size:15.5px;white-space:nowrap}
+#stickyBar .sb-x{background:none;border:none;color:#fdf6ec;font-size:18px;cursor:pointer;opacity:.75;padding:4px 6px}
+#moreHint{bottom:74px !important}
+.qp{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.qp button{border:1.5px solid var(--accent);background:#fff;color:var(--ink);border-radius:999px;padding:7px 14px;font-size:14.5px;cursor:pointer;font-family:inherit}
+.qp button:hover{background:var(--accent);color:#fff}
+.form-note{color:var(--muted);font-size:15px;margin:-6px 0 14px}
+</style>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yy98c80d84");
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Handmade · Norway</div>
+  <h1>Knitting Shop — <em>warmth in every stitch</em></h1>
+  <p class="sub">Sweaters, scarves, socks and blankets, knitted by hand from natural wool. No factory — only hands, needles and the time put into each piece.</p>
+  <img class="hero" src="../vyazanie-shop/hero.webp" alt="Balls of soft wool in pastel shades, wooden needles and a folded knitted sweater by a window">
+  <div class="chips">
+    <span class="chip">🧶 <b>100% handmade</b></span>
+    <span class="chip">🐑 Natural <b>wool and merino</b></span>
+    <span class="chip">🎁 Beautiful <b>as a gift</b></span>
+    <span class="chip">✂️ Orders <b>made to your measurements</b></span>
+    <span class="chip">🔧 <b>Repair</b> of favorite pieces</span>
+  </div>
+
+  <div class="cta-row"><a class="cta-btn" data-cta href="#order">Write to Nadia — discuss your order</a><div class="cta-line">Pieces from 70 kr · A reply within the day · Worldwide delivery</div></div>
+</header>
+
+<section>
+  <h2><span class="n">01</span>Why handmade</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">Material</span><h3>Only natural yarn</h3><p>Wool, merino, alpaca, cotton. No squeaky synthetics: natural fibers warm, breathe and do not build up static.</p></div>
+    <div class="card"><span class="tag">One of a kind</span><h3>There is no second piece like it</h3><p>Each piece is knitted in a single copy, for one particular person. The small particularities of handwork are not flaws — they are the maker's signature.</p></div>
+    <div class="card"><span class="tag">Lifespan</span><h3>Years, not a season</h3><p>A factory sweater stretches out over one winter. A hand-knitted one, with ordinary care, serves 5–10 years and outlives fashion more than once.</p></div>
+    <div class="card"><span class="tag">Ecology</span><h3>Slow fashion</h3><p>A made-to-order piece does not gather dust in a warehouse or end up in landfill a month later. Leftover yarn goes into children's pieces and swatches — nothing is wasted.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Catalog</h2>
+  <p class="lead">Prices are approximate (“from”): the exact cost depends on size, yarn and pattern, and is agreed when you order. Times are for an order made “from scratch”.</p>
+  <img class="fig" src="../vyazanie-shop/sweaters.webp" alt="A stack of folded knitted sweaters with Scandinavian patterns">
+  <p class="figcap">Sweaters with Scandinavian patterns are the shop's hallmark.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Warmth</span><h3>Sweaters and cardigans</h3><p>Classic ones, and ones with Scandinavian patterns, in pure wool or soft merino. They warm truly — tested by the Norwegian winter.</p><span class="meta">Composition: wool / merino · Time: 2–4 weeks</span><span class="price">from 1 200 kr</span></div>
+    <div class="card"><span class="tag">Cozy</span><h3>Scarves and snoods</h3><p>Long scarves, double-loop snoods, shawls. Plain or with cables — under a coat, and for every day.</p><span class="meta">Composition: merino / alpaca · Time: 4–8 days</span><span class="price">from 450 kr</span></div>
+    <div class="card"><span class="tag">For the head</span><h3>Hats</h3><p>Warm hats with a folded brim, with a pompom and without. Adult and children's sizes, matching sets for the whole family.</p><span class="meta">Composition: merino · Time: 2–4 days</span><span class="price">from 350 kr</span></div>
+    <div class="card"><span class="tag">Warm feet</span><h3>Socks and mittens</h3><p>Real wool socks — for home, for boots, for fishing and for hikes. Mittens and gloves with patterns.</p><span class="meta">Composition: sock wool with nylon · Time: 3–5 days</span><span class="price">from 250 kr</span></div>
+    <div class="card"><span class="tag">For the home</span><h3>Blankets and home comfort</h3><p>Large chunky-knit blankets, cushion covers, mug cozies. A home you want to come back to.</p><span class="meta">Composition: wool / cotton · Time: 1–3 weeks</span><span class="price">from 900 kr</span></div>
+    <div class="card"><span class="tag">For little ones</span><h3>Children's</h3><p>Rompers, booties, little hats and toys made from hypoallergenic baby yarn. Gentle on skin — and on grandmothers' hearts.</p><span class="meta">Composition: baby merino / cotton · Time: 3–7 days</span><span class="price">from 300 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">03</span>Gallery</h2>
+  <p class="lead">Textures, colors and mood — up close. This is what real handwork looks like.</p>
+  <div class="gallery">
+    <img src="../vyazanie-shop/texture.webp" alt="Close-up of knitted textures: cables, jacquard and ribbing">
+    <img src="../vyazanie-shop/yarn.webp" alt="A palette of natural yarn skeins in different colors">
+    <img src="../vyazanie-shop/hands.webp" alt="The maker's hands knitting a scarf with a cable pattern">
+    <img src="../vyazanie-shop/home.webp" alt="A knitted blanket and cushions in a cozy living room">
+    <img src="../vyazanie-shop/baby.webp" alt="Knitted baby booties, a little hat and a blanket in pastel colors">
+    <img src="../vyazanie-shop/gift.webp" alt="A gift set of knitted pieces in a box with a ribbon">
+    <img src="../vyazanie-shop/men.webp" alt="A man in a knitted sweater with a Scandinavian pattern">
+    <img src="../vyazanie-shop/dog.webp" alt="A dog in a knitted sweater">
+    <img src="../vyazanie-shop/toys.webp" alt="Handmade knitted toys">
+    <img src="../vyazanie-shop/lesson.webp" alt="A knitting lesson across generations">
+    <img src="../vyazanie-shop/tools.webp" alt="A knitter's tools">
+    <img src="../vyazanie-shop/grandma.webp" alt="A grandmother and granddaughter choosing yarn">
+    <img src="../vyazanie-shop/booties.webp" alt="A row of knitted booties">
+    <img src="../vyazanie-shop/cat.webp" alt="A cat asleep on a knitted blanket">
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">04</span>Materials and yarn</h2>
+  <img class="fig" src="../vyazanie-shop/yarn.webp" alt="Skeins of wool and merino laid out by color">
+  <p class="figcap">The workshop's palette: from calm natural shades to deep northern ones.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">The classic</span><h3>Sheep's wool</h3><p>The warmest and the most durable. For sweaters, socks and blankets. It “bites” a little — and that is exactly why it warms so well.</p></div>
+    <div class="card"><span class="tag">Tenderness</span><h3>Merino</h3><p>Fine wool from merino sheep: soft, never scratchy, suitable for children and sensitive skin. For hats, scarves, children's pieces.</p></div>
+    <div class="card"><span class="tag">Luxury</span><h3>Alpaca</h3><p>Lighter and warmer than sheep's wool, with a quiet sheen. For scarves and cardigans for going out.</p></div>
+    <div class="card"><span class="tag">Air</span><h3>Mohair</h3><p>A fluffy haze for light, almost weightless pieces. Often knitted together with silk or merino.</p></div>
+    <div class="card"><span class="tag">Summer</span><h3>Cotton and linen</h3><p>For the warm season: tops, children's pieces, home textiles. Not hot, and easy to wash.</p></div>
+    <div class="card"><span class="tag">The practical one</span><h3>Sock yarn</h3><p>Wool with added nylon: socks do not wear through in a season and keep their shape. Home, hikes, fishing.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">05</span>How to take measurements</h2>
+  <img class="fig" src="../vyazanie-shop/measure.webp" alt="A measuring tape on a folded knitted sweater, and a notebook">
+  <p class="figcap">Five minutes with a measuring tape — and the piece will fit as if it had been knitted on you for years.</p>
+  <p class="lead">Measurements are taken with a soft tape, without pulling it tight. If you are unsure — write in the form below, and we will help.</p>
+  <table>
+    <tr><th>Piece</th><th>What to measure</th><th>How</th></tr>
+    <tr><td>Hat</td><td>Head circumference</td><td>Above the eyebrows and around the most prominent point at the back of the head</td></tr>
+    <tr><td>Socks</td><td>Foot length</td><td>From the heel to the tip of the big toe, standing</td></tr>
+    <tr><td>Mittens</td><td>Palm circumference</td><td>Around the knuckles, without the thumb</td></tr>
+    <tr><td>Scarf / snood</td><td>Desired length</td><td>An ordinary scarf — 150–180 cm; a snood — in one or two loops</td></tr>
+    <tr><td>Sweater</td><td>Chest circumference + length</td><td>Chest — at its widest point; length — from the shoulder to the desired hem</td></tr>
+    <tr><td>Blanket</td><td>Size</td><td>Children's — 80×100 cm; for an armchair — 130×170; for a bed — from 150×200</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">06</span>Seasonal selections</h2>
+  <img class="fig" src="../vyazanie-shop/colors.webp" alt="Skeins of yarn in deep colors with paper tags on a shelf">
+  <p class="figcap">A fjord in winter, Honey in autumn: the selections are gathered for the season and for the person.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">❄️ Autumn — winter</span><h3>The Northern set</h3><p>A jacquard sweater, a hat and mittens in one palette, thick socks. Everything you need when it is already dark outside at four in the afternoon.</p></div>
+    <div class="card"><span class="tag">🌿 Spring — summer</span><h3>The light set</h3><p>Cotton tops and cardigans for the evening, children's pieces in cotton, thin blankets for the veranda and for picnics.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">07</span>Gift sets</h2>
+  <img class="fig" src="../vyazanie-shop/gift.webp" alt="A gift box with a knitted hat, mittens and socks">
+  <p class="figcap">Each set is packed in a box with a card — it can be signed by hand.</p>
+  <div class="grid3" style="margin-top:18px">
+    <div class="card"><h3>“Warm Evening”</h3><p>A blanket + two pairs of home socks. For a housewarming and the winter holidays.</p><span class="price">from 1 300 kr</span></div>
+    <div class="card"><h3>“For the Little One”</h3><p>Booties, a little hat and a small blanket made from baby yarn. For a birth and a christening.</p><span class="price">from 650 kr</span></div>
+    <div class="card"><h3>“To the North”</h3><p>A hat, mittens and socks in one palette. For a fisherman, a hiker, and everyone who lives winter for real.</p><span class="price">from 800 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">08</span>About the maker</h2>
+  <img class="fig" src="../vyazanie-shop/hands.webp" alt="The maker's hands knitting a scarf with a cable pattern on wooden needles">
+  <p class="figcap">Every stitch — by hand. That is why no two pieces are ever alike.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:17px;color:var(--ink)">My name is <strong>Nadia</strong>. I live in Norway and have knitted all my life — first for my children, then for my grandchildren, and now for everyone who values real things. I work only with natural yarn: wool, merino, alpaca. Each piece is knitted in a single copy, slowly and with love — and serves for years, not one season.</p>
+    <p style="font-size:17px;color:var(--ink);margin-top:10px">A sweater holds several dozen hours of work and about two kilometers of yarn. I do not chase quantity: better one piece that will be worn and treasured than ten “one-time” ones.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">09</span>How a piece is born</h2>
+  <div class="steps5">
+    <div class="step"><b>1</b><h3>The idea</h3><p>We discuss the model, the color, and who it is being knitted for</p></div>
+    <div class="step"><b>2</b><h3>The swatch</h3><p>A test square is knitted: we check the pattern and the density</p></div>
+    <div class="step"><b>3</b><h3>The knitting</h3><p>The main work — days or weeks, stitch by stitch</p></div>
+    <div class="step"><b>4</b><h3>Finishing</h3><p>Assembly, blocking, and a careful check of every detail</p></div>
+    <div class="step"><b>5</b><h3>Packing</h3><p>Packed with care and sent on its way to you</p></div>
+  </div>
+  <img class="fig" src="../vyazanie-shop/texture.webp" alt="Knitted fabric textures in close-up" style="margin-top:18px">
+  <p class="figcap">Cables, jacquard, ribbing: the pattern is chosen for the piece and for the character of its future owner.</p>
+</section>
+
+<section>
+  <h2><span class="n">10</span>A custom order</h2>
+  <img class="fig" src="../vyazanie-shop/timeline.webp" alt="Hands knitting a sweater, a small calendar standing nearby">
+  <p class="figcap">A custom order begins with a conversation — and moves at your pace, not a factory's.</p>
+  <p class="lead">Want a sweater “like in the picture”, but in your color and your size? That is how the best pieces are born.</p>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Tell us the idea</h3><p>What we are knitting, for whom, which color and size. You can send an example photo — through the form below.</p></div>
+    <div class="step"><b>2</b><h3>We choose the yarn</h3><p>We will find a composition and shade to fit your budget and season; we will work out the exact cost and time.</p></div>
+    <div class="step"><b>3</b><h3>We knit and send</h3><p>Shipping across Norway and the world. Before sending, we will share a photograph of the finished piece.</p></div>
+  </div>
+  <table style="margin-top:18px">
+    <tr><th>Piece</th><th>Usual time</th><th>Note</th></tr>
+    <tr><td>Hat, mittens</td><td>2–4 days</td><td>Can be made urgently, in time for a holiday</td></tr>
+    <tr><td>Socks</td><td>3–5 days</td><td>Matching family orders — with a discount by arrangement</td></tr>
+    <tr><td>Scarf, snood</td><td>4–8 days</td><td>Depends on the pattern and the length</td></tr>
+    <tr><td>Children's pieces</td><td>3–7 days</td><td>Hypoallergenic yarn only</td></tr>
+    <tr><td>Blanket</td><td>1–3 weeks</td><td>Large sizes are discussed separately</td></tr>
+    <tr><td>Sweater, cardigan</td><td>2–4 weeks</td><td>Jacquard and cables — closer to the upper end</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">11</span>Repair and restoration</h2>
+  <img class="fig" src="../vyazanie-shop/restore.webp" alt="Hands restoring a knitted sweater with a needle and thread in a matching tone">
+  <p class="figcap">Stitch by stitch: a beloved piece comes back to life, not back to the shelf.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Has your favorite sweater worn through at the elbows? Has a grandmother's blanket suffered from moths? Do not be quick to part with things that carry a history.</p>
+    <ul style="margin-top:8px">
+      <li>darning and careful restoration of worn places;</li>
+      <li>replacing the elastic on socks and sleeves, reknitting the collar;</li>
+      <li>lengthening children's pieces — “room to grow” in reverse — and shortening adult ones;</li>
+      <li>reknitting an old piece into a new one: we will unravel it and knit it again from the same yarn.</li>
+    </ul>
+    <p style="margin-top:8px">Send a photograph of the piece through the form below — we will honestly assess whether the repair is possible and what it will cost, before any work begins.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">12</span>How to care for wool</h2>
+  <img class="fig" src="../vyazanie-shop/carewash.webp" alt="A knitted sweater in a basin of water, folded towels beside it">
+  <p class="figcap">Seldom, gently, in warm water — and wool serves for years.</p>
+  <div class="card care">
+    <ul>
+      <li><strong>Wash seldom and gently:</strong> by hand or in the machine on the “wool” setting, in cool water, with a special detergent.</li>
+      <li><strong>Do not wring:</strong> gently press it in a towel.</li>
+      <li><strong>Dry lying flat</strong> on a towel, giving the piece its shape — away from the radiator.</li>
+      <li><strong>Store folded</strong>, not on a hanger; in summer — with lavender or cedar against moths.</li>
+      <li><strong>Air it out:</strong> wool loves fresh air and is often “washed” simply by a walk out onto the balcony.</li>
+      <li><strong>Pilling</strong> is removed with a special fabric shaver or a soft brush — not by hand.</li>
+      <li><strong>Stains</strong> are best blotted right away, not rubbed: wool does not like friction while wet.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">13</span>Delivery and payment</h2>
+  <img class="fig" src="../vyazanie-shop/parcel.webp" alt="A knitted piece wrapped in paper and tied with twine, with a card">
+  <p class="figcap">Paper, twine, and a card signed by hand: this is how the piece travels to you.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">Delivery</span><h3>Across Norway and the world</h3><p>Within Norway — by post (Posten), usually 2–5 days. Worldwide — by arrangement; timing depends on the country. Every parcel is packed so that opening it is a pleasure.</p></div>
+    <div class="card"><span class="tag">Payment</span><h3>Agreed at the time of ordering</h3><p>A custom order begins after a prepayment for the yarn; the rest — before the finished piece is sent. Details (Vipps, bank transfer, PayPal) are discussed personally when you order.</p></div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2><span class="n">14</span>Frequently asked questions</h2>
+  <div class="card"><h3>Can you knit from a photograph from the internet?</h3><p>Yes, in most cases. Send the photo through the form below — we will say honestly what will come out exactly, and what will need to be adapted.</p></div>
+  <div class="card"><h3>I have my own yarn. Will you take it on?</h3><p>Yes, if there is enough of the yarn and it suits the piece. We will work out the amounts together before starting.</p></div>
+  <div class="card"><h3>What if the piece does not fit?</h3><p>That is why we take measurements so carefully at the start. If the mistake is ours — we will redo it. If the measurements were imprecise, we will discuss an adjustment.</p></div>
+  <div class="card"><h3>Do you knit for people with allergies and for newborns?</h3><p>Yes: baby merino and untreated cotton, soft and hypoallergenic. Please mention this in your order.</p></div>
+  <div class="card"><h3>Can I order something urgently, for a particular date?</h3><p>Small pieces (a hat, mittens, socks) can often be ready within a few days. Write as early as you can — we will honestly say whether we can make it in time.</p></div>
+  <div class="card"><h3>Do you offer a discount for several pieces?</h3><p>For family sets and matching orders — yes, by arrangement. Please ask — no need to be shy.</p></div>
+</section>
+
+<section>
+  <section>
+  <h2><span class="n">15</span>For men</h2>
+  <img class="fig" src="../vyazanie-shop/men.webp" alt="A man in a dark green knitted sweater with a Scandinavian pattern by the window of a winter house">
+  <p class="figcap">Men wear knits for decades — when a piece is knitted honestly and to size.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">Character</span><h3>Sweaters with nothing unnecessary</h3><p>Deep natural colors, restrained patterns, dense knitting. A sweater equally at home in the mountains and at the family table.</p><span class="price">from 1,400 kr</span></div>
+    <div class="card"><span class="tag">Practical</span><h3>Socks and hats for the day's pursuits</h3><p>Fishing, hunting, working outdoors, winter trips. A reinforced heel, a high cuff, and no compromises on warmth.</p><span class="price">from 250 kr</span></div>
+  </div>
+</section>
+
+<section id="order">
+  <h2>Get in touch</h2>
+  <p class="form-note">We reply within a day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photograph of a piece for repair, or simply a kind word — fill in the form, and the letter will come straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="What should we call you">
+      <label for="f-email">Your email (for a reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Ordering a new piece</option>
+        <option>Custom order</option>
+        <option>Repairing a piece</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Other</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 Scarf or hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repairing a piece</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like to have knitted? For whom, what size and color? If it is a repair — a few words about the piece."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">16</span>Family sets</h2>
+  <img class="fig" src="../vyazanie-shop/family.webp" alt="Family knitted sweaters in one color, from the largest to the smallest">
+  <p class="figcap">One color, one yarn — and the whole family in one photograph.</p>
+  <p class="lead">Matching patterns for the whole family — for photographs, holidays, and simply for the joy of “we are a team.”</p>
+  <div class="grid">
+    <div class="card"><h3>Mom, Dad, and the children</h3><p>Sweaters or hats in one palette and pattern for the whole family. Sizes — from little ones to a grandfather; the pattern scales to fit each piece.</p></div>
+    <div class="card"><h3>Pieces for two</h3><p>Two scarves, two hats, or mittens “for two” — for an anniversary, a wedding, or just because, with no occasion at all.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">17</span>For beloved pets</h2>
+  <img class="fig" src="../vyazanie-shop/dog.webp" alt="A small dog in a rust-colored knitted sweater on a wooden porch">
+  <p class="figcap">Dogs get cold in winter too — especially small and short-haired ones.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">For dogs</span><h3>Sweaters made to your pet's measurements</h3><p>Knitted to three measurements: back length, chest and neck circumference. They do not restrict movement, are easy to put on, and wash without fuss.</p><span class="price">from 300 kr</span></div>
+    <div class="card"><span class="tag">For cats and little ones</span><h3>Light vests</h3><p>For sphynx cats, puppies, and older animals who need a little extra warmth at home and on walks.</p><span class="price">from 250 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">18</span>Knitted toys</h2>
+  <img class="fig" src="../vyazanie-shop/toys.webp" alt="Knitted toys: a little bear, a bunny, and a hedgehog on a knitted blanket">
+  <p class="figcap">Bears, bunnies, and hedgehogs that are hugged for years and passed down to the little ones.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Toys are knitted from soft hypoallergenic yarn, with embroidered (not sewn-on) eyes — safe for the very smallest. The filling is modern and hypoallergenic. Each toy can be given its own “character”: a color, a little scarf, an embroidered initial.</p>
+    <span class="price">from 280 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">19</span>For holidays and special occasions</h2>
+  <img class="fig" src="../vyazanie-shop/holiday.webp" alt="Knitted décor on a festive table with candles">
+  <p class="figcap">A celebration is gathered from small things, made ahead of time and with love.</p>
+  <div class="grid3">
+    <div class="card"><span class="tag">A birth</span><h3>For a christening and the first year</h3><p>Christening sets, “welcome home” blankets, booties in a gift box. Things that are kept in the family.</p></div>
+    <div class="card"><span class="tag">A wedding</span><h3>Gentle pieces for the bride</h3><p>Handmade openwork shawls and wraps — for the shoulders, for the photo session, and as a keepsake of the day.</p></div>
+    <div class="card"><span class="tag">Anniversaries</span><h3>A blanket with a story</h3><p>A large blanket for a round date: colors and patterns meaningful to this very person can be woven in. Please order 1–2 months ahead.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">20</span>For corporate clients</h2>
+  <img class="fig" src="../vyazanie-shop/corporate.webp" alt="A stack of identical knitted scarves in a company's color">
+  <p class="figcap">Identical — and yet each one is knitted by hand. Companies feel that.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Warm gifts for employees and partners that will not end up in a desk drawer: woolen socks, hats, and scarves in your company's colors.</p>
+    <ul style="margin-top:8px">
+      <li>for 10 or more identical pieces — special terms;</li>
+      <li>colors chosen to match your company's style;</li>
+      <li>each piece comes with a card and, if you wish, the recipient's name;</li>
+      <li>booking for New Year orders opens in September — handmade work cannot be done overnight.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">21</span>Workshops and lessons</h2>
+  <img class="fig" src="../vyazanie-shop/lesson.webp" alt="A knitting lesson: an experienced craftswoman teaching a young woman to knit at a table with tea">
+  <p class="figcap">A craft lives on as long as it is passed from hand to hand.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">From zero</span><h3>Your first stitches</h3><p>A one-to-one lesson: how to hold the needles, cast on stitches, and knit your first piece — a scarf you will be glad to wear.</p></div>
+    <div class="card"><span class="tag">For those continuing</span><h3>Patterns and techniques</h3><p>Cables, jacquard, top-down raglan, neat finishing. We work through the very technique that will not come together for you from written patterns alone.</p></div>
+  </div>
+  <p class="lead" style="margin-top:14px">The format and cost of lessons are discussed personally — write through the contact form and say what you would like to learn.</p>
+</section>
+
+<section>
+  <h2><span class="n">22</span>How we wrap gifts</h2>
+  <img class="fig" src="../vyazanie-shop/gift.webp" alt="A gift box with knitted pieces, tied with a ribbon">
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Included in the price of the order</h3><p>A kraft box or a paper bag, tissue paper, twine, and a sprig of lavender. A card with a few words from the maker.</p></div>
+    <div class="card"><h3>From you</h3><p>We will sign the card with your text and send the gift straight to the recipient — no price tags or extra papers. The surprise stays a surprise.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">23</span>The workshop's palette</h2>
+  <img class="fig" src="../vyazanie-shop/mittens.webp" alt="Hand-knitted mittens and gloves on a scarf by the door">
+  <p class="figcap">The mittens wait by the door. The hands that will put them on are still asleep.</p>
+  <img class="fig" src="../vyazanie-shop/yarn.webp" alt="A palette of yarn skeins: from cream to deep burgundy">
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><span class="tag">North</span><h3>Natural and calm</h3><p>Cream, stone gray, moss, the deep blue of the fjord. Colors that never grow tiresome and go with everything in the wardrobe.</p></div>
+    <div class="card"><span class="tag">Warmth</span><h3>Warm accents</h3><p>Terracotta, mustard, burgundy, rust. For those who like a piece to be noticed — and cheerful.</p></div>
+  </div>
+  <p class="lead" style="margin-top:14px">Did not find your color? Yarn is ordered specially for your order — send a color sample or a photograph, and we will match it as closely as possible.</p>
+</section>
+
+<section>
+  <h2><span class="n">24</span>The order calendar</h2>
+  <img class="fig" src="../vyazanie-shop/ordcal.webp" alt="A paper calendar with notes beside a basket of yarn">
+  <p class="figcap">Dates in the calendar are promises. We write them down, and we keep them.</p>
+  <p class="lead">Handmade work loves a margin of time. Here are honest guidelines for when it is best to order:</p>
+  <table>
+    <tr><th>Occasion</th><th>Order no later than</th><th>What we can finish</th></tr>
+    <tr><td>Christmas and New Year</td><td>October — November</td><td>Sweaters and sets; in December, small pieces only</td></tr>
+    <tr><td>A birthday</td><td>2–3 weeks ahead</td><td>Almost everything except large blankets</td></tr>
+    <tr><td>The birth of a child</td><td>2 weeks ahead</td><td>“Little One” sets and blankets</td></tr>
+    <tr><td>A wedding</td><td>1–2 months ahead</td><td>Shawls, wraps, pieces for two</td></tr>
+    <tr><td>For winter, for yourself</td><td>September — October</td><td>A sweater by the first cold days — right on time</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">25</span>Knitting and health</h2>
+  <img class="fig" src="../vyazanie-shop/health.webp" alt="Hands knitting in an armchair, a cup of herbal tea beside them">
+  <p class="figcap">The hands work. The head rests. The breathing itself grows more even.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A little about the craft itself — why knitting has not gone out of fashion for hundreds of years:</p>
+    <ul style="margin-top:8px">
+      <li><strong>Calm:</strong> the rhythmic movements of the stitches work like a meditation and help you switch off after a hard day;</li>
+      <li><strong>Supple fingers:</strong> fine motor work keeps the joints of the hands mobile;</li>
+      <li><strong>A clear head:</strong> counting stitches and reading patterns is exercise for attention and memory;</li>
+      <li><strong>The visible result:</strong> in a world of screens, a thing you can touch and give as a gift brings a special sense of completion.</li>
+    </ul>
+    <p style="margin-top:8px">That is why every piece from the shop also carries the maker's good mood within it. It has been checked: in a bad mood, the knitting simply will not go.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">26</span>A small knitter's dictionary</h2>
+  <table>
+    <tr><th>Word</th><th>What it means</th></tr>
+    <tr><td>Jacquard</td><td>A color pattern knitted with several yarns at once — those very “Scandinavian” snowflakes and reindeer</td></tr>
+    <tr><td>Cables (arans)</td><td>Raised interlacings of stitches; they came from the Irish islands, where every pattern was a family's signature</td></tr>
+    <tr><td>Raglan</td><td>A way of knitting a sweater from the top down, with no seams at the shoulders — it sits especially neatly</td></tr>
+    <tr><td>Blocking</td><td>Wet-heat finishing: the final “hairdo” of a piece — washing, drying in shape, and a light steam</td></tr>
+    <tr><td>Hank and ball</td><td>The forms yarn lives in before it becomes a piece</td></tr>
+    <tr><td>Swatch</td><td>A small knitted square, 10×10 cm: stitches are counted from it so the piece fits exactly to size</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2><span class="n">27</span>Our principles</h2>
+  <img class="fig" src="../vyazanie-shop/principles.webp" alt="Hands holding a ball of natural wool above a wooden table">
+  <p class="figcap">Natural yarn, wooden needles, no unnecessary words or materials.</p>
+  <div class="grid">
+    <div class="card"><h3>Honest timelines</h3><p>Better to name a real deadline than to promise the impossible. If the queue is long, we will say so plainly and offer options.</p></div>
+    <div class="card"><h3>Honest prices</h3><p>The price is made of the yarn and the hours of work. No markups “for the brand”: you pay for the material and the maker's hands.</p></div>
+    <div class="card"><h3>A photo before shipping</h3><p>We photograph the finished piece and send you the photo before shipping. There will be no surprises in the parcel — except pleasant ones.</p></div>
+    <div class="card"><h3>A piece can be brought back into the conversation</h3><p>Something not right with the fit or the care, months later? Write to us. Handmade work is a relationship, not a single transaction.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">28</span>For regular customers</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Those who return are treated with particular care:</p>
+    <ul style="margin-top:8px">
+      <li>your measurements and favorite colors are kept in the workshop — a repeat order takes just two messages;</li>
+      <li>priority in the pre-holiday queue for those who have ordered before;</li>
+      <li>small joys for no reason: with repeat orders — a pair of house socks or a toy for the baby as a gift, by arrangement;</li>
+      <li>family sets for growing children: we knit on and lengthen pieces a child has outgrown — it costs less than a new piece.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">29</span>A surprise order: giving in secret</h2>
+  <img class="fig" src="../vyazanie-shop/surprise.webp" alt="A gift parcel with a note, by the door">
+  <p class="figcap">A gift even the recipient does not know about. Until the door opens.</p>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>The size, found quietly</h3><p>We will suggest how to learn the size of a hat, socks, or a sweater without giving away the surprise: from an old piece the recipient already has</p></div>
+    <div class="step"><b>2</b><h3>We knit in silence</h3><p>No notes or letters to the recipient. A photo of the finished piece — only for you</p></div>
+    <div class="step"><b>3</b><h3>Delivery to the recipient</h3><p>We send it straight to the celebration's address, with a card from you and no price tag</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">30</span>Feedback</h2>
+  <p class="form-note">We reply within the day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photo of a piece for repair, or simply a few words back — fill in the form, and your letter will come straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="What should we call you">
+      <label for="f-email">Your email (for our reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Ordering a new piece</option>
+        <option>A custom order</option>
+        <option>Repair of a piece</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Other</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of a piece</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, what size and color? If it is a repair — a few words about the piece."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">31</span>A word from the maker</h2>
+  <div class="card">
+    <p style="font-size:17.5px;color:var(--ink)">Thank you for being here. If you have read this far, then we are going the same way: you, too, believe that things can be slow, honest, and warm.</p>
+    <p style="font-size:17.5px;color:var(--ink);margin-top:10px">Write to me — through the form or by an ordinary letter. Tell me what you would like knitted, and for whom. Then we will think it through together, unhurriedly. Yours, Nadia. 🧶</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">32</span>Piece of the month</h2>
+  <img class="fig" src="../vyazanie-shop/sweaters.webp" alt="A stack of sweaters with Scandinavian patterns">
+  <p class="figcap">Evening. The first snow outside the window. A sweater waits on the back of a chair.</p>
+  <div class="card" style="margin-top:18px">
+    <span class="tag">The workshop's choice</span>
+    <h3>The “Northern” sweater</h3>
+    <p style="font-size:16.5px;color:var(--ink)">There are pieces that are not worn — they are lived in. This sweater is knitted slowly, in the round, without a single seam at the shoulders, from pure wool that smells of meadow and rain. The pattern — snowflakes and stars, like the ones cut from paper in childhood.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">It is put on when the first snow falls, when the city grows quiet and the windows turn yellow. In it, people go out for bread and into the mountains, sit by the fireplace, and meet the dawn on the veranda. It never goes out of fashion, because it never entered it: it is simply warm, honest, and one's own.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">This month, each “Northern” comes with a pair of socks to match — from the same batch of yarn, knitted on the same quiet evenings.</p>
+    <span class="price">from 1 500 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">33</span>Gift certificates</h2>
+  <img class="fig" src="../vyazanie-shop/giftcert.webp" alt="A gift certificate and a ball of yarn on a table">
+  <p class="figcap">A certificate is never late. And the piece chosen with it will still be knitted by hand.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Sometimes the best gift is not a thing, but the chance to choose for oneself. A certificate is a promise of warmth that the recipient will turn into a sweater, a shawl, or a pair of socks whenever they wish, in exactly the color they dream of.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">We will present it with a beautiful hand-written card, or a quiet letter by email — whichever feels calmer to you. The certificate has no expiry: handmade work does not like haste, and choosing the piece is part of the pleasure too. If the gift sum does not cover the whole piece, you can simply pay the difference; if something remains, the balance will wait for the next order, even until next winter.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Such a gift never misses on size. It never misses at all: it says — “choose your own warmth”.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">34</span>A set for coming home from the maternity hospital</h2>
+  <img class="fig" src="../vyazanie-shop/baby.webp" alt="A knitted baby set in pastel colors">
+  <p class="figcap">A blanket, a little hat, and booties. Everything small. Everything for the first time.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">The first day at home smells of milk, washed linen, and a quiet in which everyone walks on tiptoe. For that day we knit a set: a soft blanket, a little hat, and booties in one palette — from baby merino and cotton that do not prickle and are not afraid of frequent washing.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">The first photograph is taken in such a blanket. Then it is kept for years — folded away in a drawer with the most important things, and taken out when the child has already grown, just to hold it and marvel at how small everything was.</p>
+    <span class="price">from 700 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">35</span>How to choose a size for a gift</h2>
+  <img class="fig" src="../vyazanie-shop/giftsize.webp" alt="A sweater laid out for a quiet measuring with a tape measure">
+  <p class="figcap">A favorite sweater's size can be measured in five minutes, without a single question.</p>
+  <p class="lead">Calmly, and without panic: most knitted gifts need no exact measurements at all.</p>
+  <div class="grid">
+    <div class="card"><h3>Pieces that cannot go wrong</h3><p>A scarf, a snood, a blanket, house socks — they need no size; they need color and softness. If the gift is a surprise, begin with them: they always fit perfectly, because they fit the mood.</p></div>
+    <div class="card"><h3>One measurement — and all is settled</h3><p>For a hat, the head's circumference is enough, and any old hat of the recipient's will reveal it. For socks — the length of the foot: the insole of a shoe will tell it. One number, taken in a calm moment — and the piece will fit like a glove.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">36</span>Rare yarn, brought in for your order</h2>
+  <img class="fig" src="../vyazanie-shop/rareyarn.webp" alt="Rare cashmere and silk yarn in deep colors">
+  <p class="figcap">Such yarn does not sit on shelves. It travels here for one person.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Sometimes a piece begins not with a pattern, but with one single shade seen in a dream or in an old photograph: the color of the sea in September, the color of a grandmother's kerchief, the color of the sky before snow.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For such orders we bring the yarn in specially: cashmere, merino with silk, yak wool, rare dyes from small mills. It travels to us for weeks — and that is as it should be. A piece born so slowly serves for decades afterwards, and every stitch remembers for whom it all began.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send a photograph of the color, or simply describe it in words. We will match it as closely as yarn allows.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">37</span>Shawls and stoles</h2>
+  <img class="fig" src="../vyazanie-shop/shawl.webp" alt="Lace-knitted shawls on a wooden chair by a window">
+  <p class="figcap">A shawl dries by the window, and the light passes through its pattern as through stained glass.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">The shawl is the oldest and most patient of knitted things. It is knitted for weeks, stitch by stitch, until the lace resembles frost patterns on glass. There is not one unnecessary thread in it: only air, warmth, and pattern.</p>
+  </div>
+  <div class="grid" style="margin-top:16px">
+    <div class="card"><h3>For every day</h3><p>Warm stoles of merino and alpaca — over the shoulders in the evening, when the house is already asleep and you would like to sit a little longer with a book.</p><span class="price">from 600 kr</span></div>
+    <div class="card"><h3>For going out</h3><p>Lace shawls of mohair with silk — almost weightless. They are worn to weddings and celebrations, and afterwards kept carefully in paper, the way letters are kept.</p><span class="price">from 900 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">38</span>Vests and sleeveless knits</h2>
+  <img class="fig" src="../vyazanie-shop/vests.webp" alt="Knitted vests on wooden hangers">
+  <p class="figcap">A vest is warmth that does not keep the hands from living their own life.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A vest is the clothing of people who do everything with their hands. It warms the back and chest and leaves the arms free: for the workshop, the garden, fishing, for a grandfather who at eighty still does not sit idle.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">We knit them dense, with deep pockets, in calm colors — “as in the old days,” only better fitting. Such a vest is not worn for holidays. It is worn every day, and that is its celebration.</p>
+    <span class="price">from 800 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">39</span>A home that embraces</h2>
+  <img class="fig" src="../vyazanie-shop/kidscarnival.webp" alt="Children in knitted carnival hats with little ears">
+  <p class="figcap">A celebration you can wear: little ears, tails, and not one unhappy face.</p>
+  <p class="lead">A house becomes a home not because of furniture, but because of the small things that hands touch.</p>
+  <div class="grid3">
+    <div class="card"><h3>Doilies and table runners</h3><p>Cotton, crocheted and knitted. A table laid with such a doily at once looks as if someone is expected in the house.</p></div>
+    <div class="card"><h3>Potholders and trivets</h3><p>Dense and double, in cheerful kitchen colors. A hot kettle, a quiet evening, the smell of baking — coziness is made of such minutes.</p></div>
+    <div class="card"><h3>Knitted baskets</h3><p>For yarn, for small things, for the bathroom. In them, even disorder looks like a design.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">40</span>Cozy little things</h2>
+  <img class="fig" src="../vyazanie-shop/home.webp" alt="A cozy living room with knitted things and tea">
+  <p class="figcap">Steam over a mug, quiet, and nowhere to hurry to.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Mug cozies</h3><p>Tea in such a cozy cools more slowly, and the mug does not burn the palm. A small thing, given “just because” — and used every day.</p><span class="price">from 90 kr</span></div>
+    <div class="card"><h3>“Clothes” for the teapot</h3><p>As in childhood: a teapot in a knitted cozy brews longer and stands on the table like a full participant in the tea drinking.</p><span class="price">from 180 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">41</span>From your own yarn</h2>
+  <img class="fig" src="../vyazanie-shop/ownyarn.webp" alt="Balls of the customer's yarn in a bag on the workshop table">
+  <p class="figcap">Your yarn already knows what it wants to become. We will simply help.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">In almost every home there is a drawer where balls of yarn lie for years, kept “for someday.” They were bought with hope, kept with love, and never once touched. That is no reproach — it is a postponed piece that was simply waiting for its hour.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send them to us. We will look at the fiber and the amount, honestly say what can come of it — a scarf, a vest, children's things — and knit it. You pay only for the work, and the yarn will finally become what it dreamed of becoming when it was chosen in the shop.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Sometimes there is a story in such balls of yarn: a mother chose them, they were brought back from a journey. A piece knitted from them keeps that warmth twice over.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">42</span>Rescuing pieces after washing</h2>
+  <img class="fig" src="../vyazanie-shop/rescue.webp" alt="Hands gently stretching a damp knitted sweater on towels">
+  <p class="figcap">Warm water, a towel, and patience. Millimeter by millimeter — back into shape.</p>
+  <p class="lead">Do not hurry to say goodbye. Knitted things know how to forgive mistakes — if they are approached calmly.</p>
+  <div class="grid">
+    <div class="card"><h3>The piece has shrunk</h3><p>It happens: you lift from the water not a sweater, but its child-sized copy. Sometimes it can be brought back — warm water, a gentle agent, patience, and slow stretching into shape, millimeter by millimeter. Send a photograph and the yarn's composition: we will say honestly, without promises, whether there is hope. Sometimes — there is.</p></div>
+    <div class="card"><h3>The piece has stretched</h3><p>This is rescued more often. The right washing and drying on a towel, in quiet and away from the radiator, bring back the shape better than any words. And ribbing that has tired of holding will simply be reknitted — and the piece will fit again as on the first day.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">43</span>A photo report along the way</h2>
+  <img class="fig" src="../vyazanie-shop/progress.webp" alt="A phone with a photo of the process beside an unfinished sweater">
+  <p class="figcap">Waiting should not be silence: here is the yarn, here is the swatch, here is halfway.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">When a piece is being knitted for you, waiting should not be silence. If you wish, we send photographs along the way: here is the yarn chosen for you. Here is the swatch — ten by ten centimeters of the future sweater. Here is half the work, here is a sleeve, here the finished piece lies drying after washing.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">This is especially loved by those who order a gift from far away: you see the surprise being born, evening after evening, and by the time of shipping you know it better than if you had bought it ready-made in a shop.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">44</span>A gift for a colleague</h2>
+  <img class="fig" src="../vyazanie-shop/set.webp" alt="A set of knitted accessories in one palette: a hat, a scarf, and mittens">
+  <p class="figcap">Three pieces of one color lie side by side, silent about how they will warm in winter.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Neutral and warm</h3><p>There are gifts that put no one in an awkward position: socks, a hat, a scarf of a calm color. They are given to a boss and to an office friend with equal ease — because warmth is never too personal.</p></div>
+    <div class="card"><h3>A set in one palette</h3><p>A hat, a scarf, and mittens knitted from one yarn look like a considered thought. And that is the best gift for a colleague: not costly, but considered.</p><span class="price">from 1 100 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">45</span>For the country cottage and the garden</h2>
+  <img class="fig" src="../vyazanie-shop/garden.webp" alt="A vest and tall socks by an armchair on the veranda, a morning garden in dew">
+  <p class="figcap">Dew, the greenhouse, and tea that cools faster than you can drink it.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">There is clothing for the city, and there is clothing for early mornings with dew, for the greenhouse, for the veranda where tea cools faster than you can drink it. A vest you do not mind wearing hard. Taller socks, for boots. A hat that has seen more than one autumn.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For these pieces we take the most honest wool — practical, slow to show dirt, asking for no gentle treatment. It is not afraid of work. It was knitted for it.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Feedback</h2>
+  <p class="form-note">We reply within the day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photo of a piece for repair, or simply a few words back — fill in the form, and your letter will come straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="What should we call you">
+      <label for="f-email">Your email (for our reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Ordering a new piece</option>
+        <option>A custom order</option>
+        <option>Repair of a piece</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Other</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of an item</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, what size and color? If it is a repair — a few words about the item."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">46</span>For the road</h2>
+  <img class="fig" src="../vyazanie-shop/travel.webp" alt="An open suitcase: a merino snood, knitted socks and a book">
+  <p class="figcap">Lighter than a book — and a help on every plane and train.</p>
+  <div class="grid">
+    <div class="card"><h3>Compact warmth</h3><p>A thin merino snood and a pair of socks weigh less than a book, yet they help on every plane, train and in every waiting hall where the air conditioning knows no mercy. The road feels shorter when your feet are warm.</p></div>
+    <div class="card"><h3>A blanket for the car</h3><p>A small blanket lives in the trunk and waits for its hour: a picnic by the roadside, waiting for a ferry, a child asleep in the back seat. A thing you never think about — until it saves the evening.</p><span class="price">from 700 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">47</span>For walks and sports</h2>
+  <img class="fig" src="../vyazanie-shop/running.webp" alt="A morning runner in a merino headband on a quiet street">
+  <p class="figcap">A morning lap around a sleeping city — in quiet and in warmth.</p>
+  <p class="lead">Moving in cold air is a particular pleasure when you are dressed right: warm, but not hot; dry, but not stuffy.</p>
+  <div class="grid3">
+    <div class="card"><h3>Headbands and hats for running</h3><p>Merino wicks away moisture and keeps ears warm in the wind. A morning lap around a sleeping city — in quiet and in warmth.</p></div>
+    <div class="card"><h3>Leg warmers</h3><p>For dancing, yoga, or simply over boots: the calf and ankle love warmth no less than the neck.</p></div>
+    <div class="card"><h3>Fingerless gloves</h3><p>Fingers stay free — for the leash, the keys, the phone; the hands, meanwhile, stay warm. A walk is never interrupted by “wait, let me take off my glove.”</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">48</span>For twins</h2>
+  <img class="fig" src="../vyazanie-shop/twins.webp" alt="Two almost identical knitted children's sets side by side">
+  <p class="figcap">Two sets. One difference — the color of the pompom. Each has something that is only his.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Two identical little ones — and two almost identical sets. Almost — because each one has a single small difference: the color of a pompom, an embroidered letter, a stripe on a bootie. So they are not mixed up. So that from the very first day, each has something that is only his.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Parents of twins say that such things are kept in pairs afterwards — and many years later they tell the story better than photographs.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">49</span>Clothes for dolls</h2>
+  <img class="fig" src="../vyazanie-shop/doll.webp" alt="A doll in a knitted dress and a miniature hat on a child's bed">
+  <p class="figcap">A beloved doll has clothes for the season too.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Every beloved doll should have clothes for the season — every grandmother and every granddaughter knows this. Dresses, sweaters and tiny hats are knitted to the size of your doll exactly: send her height and measurements, and the rest we will think up together with her little owner.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">These are small things with a large meaning: they teach care better than any words.</p>
+    <span class="price">from 120 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">50</span>Bouquets that do not wilt</h2>
+  <img class="fig" src="../vyazanie-shop/bouquet.webp" alt="A bouquet of knitted flowers in a glass vase">
+  <p class="figcap">Tulips made of yarn stand in a vase and never ask for water. Only, sometimes — to be looked at.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Knitted flowers do not drop their petals by Friday. They stand for weeks, seasons, years — on the table of the person you gave them to, quietly reminding them of you every day.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">They are given to those who are allergic to pollen. To those who travel and cannot water living ones. To those who simply love beauty that does not end. A single flower, a small bouquet, or a whole arrangement — in a vase, which can also be chosen as part of the gift.</p>
+    <span class="price">from 150 kr per flower</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">51</span>Festive decor all year round</h2>
+  <img class="fig" src="../vyazanie-shop/xmas.webp" alt="Knitted Christmas ornaments and gift stockings on the branches of a fir tree">
+  <p class="figcap">Ornaments that do not break. They are hung on the tree every year, and every year they bring back something good.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>Christmas</h3><p>Knitted baubles, stars and stockings for gifts by the fireplace. They will outlive children, grandchildren and more than one tree — and become that very “like in childhood”, only now for the next ones.</p></div>
+    <div class="card"><h3>Easter and spring</h3><p>Knitted eggs, little hens and light napkins in spring colors. A table set for a holiday slowly and with love smells of home.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">52</span>Things with a name</h2>
+  <img class="fig" src="../vyazanie-shop/named.webp" alt="A knitted children's blanket with a name embroidered in the corner">
+  <p class="figcap">One embroidered letter changes everything: the blanket becomes someone's alone.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">One embroidered letter changes everything. The blanket becomes “Misha's blanket”. A sweater with a wedding date in its pattern stops being clothing and becomes a document — only warm and soft.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">We knit in or embroider a child's name, initials, a memorable date — letter by letter, slowly, the way a letter is signed by hand. Such things are not given away or thrown out. They are kept, passed on, and told about: “this was knitted when you were born.”</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">53</span>How to store knits in summer</h2>
+  <img class="fig" src="../vyazanie-shop/storage.webp" alt="Folded knitted sweaters in a drawer with a sprig of lavender">
+  <p class="figcap">Summer is a time of sleep for woolen things. Nearby — lavender.</p>
+  <p class="lead">Summer is a time of sleep for woolen things. Put them away properly, and they will wake in autumn as good as new.</p>
+  <div class="card care">
+    <ul>
+      <li>Before storing, it is best to wash an item or at least air it out: moths choose exactly what has been worn.</li>
+      <li>Fold — do not hang: hangers stretch knitted fabric within a single season.</li>
+      <li>Nearby — lavender, cedar, or a piece of soap in a cotton pouch: quiet, smelling of home, and keeping moths away.</li>
+      <li>Once during the summer, take them out and air them in the fresh air. Things, like people, like to be remembered.</li>
+      <li>At the workshop you can order cotton storage pouches — simple, breathable, in tones to match your things.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">54</span>First — a swatch</h2>
+  <img class="fig" src="../vyazanie-shop/swatch.webp" alt="A small knitted swatch beside an envelope">
+  <p class="figcap">Ten by ten centimeters of the future — it will reach you by ordinary letter.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A big piece should not begin with a big risk. If you are unsure about the color, the pattern, or the feel of the yarn, we will knit a small swatch — ten by ten centimeters of the future — and send it to you in an ordinary letter.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">You will hold it against your coat. Keep it in your hands morning and evening, in different light. Live with it for a day or two — and the decision will come on its own, calmly and without doubt. The cost of the swatch will be counted toward the price of the piece when you order it.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">55</span>An order without a form</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">The form on this page is not instead of a conversation, but its beginning. Write in it in your own words, in any order — what you would like, for whom, and by what day.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">A person answers, not a program: the same person who will later hold the needles. Sometimes the correspondence about a future piece is already half of its warmth.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">56</span>What the price is made of</h2>
+  <p class="lead">No secrets and no fine print. The price of a handmade piece is yarn and time. Almost nothing else.</p>
+  <table>
+    <tr><th>Part of the price</th><th>What it is</th></tr>
+    <tr><td>Yarn</td><td>The exact cost of the skeins for your piece precisely. On request we will show the receipts — there is nothing to hide.</td></tr>
+    <tr><td>The work</td><td>Hours at the needles. A sweater is forty to eighty hours of quiet work: several weeks of evenings.</td></tr>
+    <tr><td>Finishing</td><td>Assembly, washing and shaping, buttons and fittings, and the packaging in which the piece travels to you.</td></tr>
+    <tr><td>Delivery</td><td>At the actual cost of postage. Not a single extra krone on top.</td></tr>
+  </table>
+  <p class="lead" style="margin-top:12px">That is why a handmade piece cannot cost the same as a factory one. But if you divide its price by the years it will serve, it turns out cheaper than almost everything in the wardrobe.</p>
+</section>
+
+<section>
+  <h2><span class="n">57</span>If the yarn runs out in the middle</h2>
+  <img class="fig" src="../vyazanie-shop/yarnout.webp" alt="A sweater in progress: one sleeve knitted in a contrasting yarn">
+  <p class="figcap">The yarn ran out — and the piece found its turn.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">It happens in every knitting life: the piece is almost ready, one sleeve remains — and there is no yarn. And the shops no longer have it. Your hands sink exactly until the moment a way out is found.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send us the rest of the skein and a photograph of the piece. We will choose yarn as close as possible in color and character — and if an exact match does not exist, we will think up a beautiful turn: contrasting sleeves, a stripe, trim in another shade. Very often it is exactly this forced turn that becomes what the piece is loved for most.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">58</span>Pieces for photo sessions</h2>
+  <img class="fig" src="../vyazanie-shop/photosession.webp" alt="A family in matching knitted sweaters at a photo session">
+  <p class="figcap">Matching sweaters. Different people. One story for all.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Photographs keep people young, and the things in them warm. Matching sweaters on the whole family. A newborn sleeping in a knitted blanket. A dog in a sweater to match its owner.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Tell us about the shoot in advance: we will choose colors that are friends with each other and with the background, and we will knit everything in time for the day. And afterwards these pieces will go on living an ordinary life — and every time you put them on, you will remember that day.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">59</span>Colors on a screen</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">An honest word about colors: the screen lies a little. The same skein on a phone is blue, on a computer almost violet, and in life, in daylight, it suddenly turns out deep, like water.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">That is why, for important orders, we photograph the yarn in ordinary daylight, next to familiar objects. And if the decision is a serious one — there is the swatch (section 54): a small square of real yarn that will arrive by letter and tell you the whole truth about the color.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">60</span>Small orders — with great love</h2>
+  <img class="fig" src="../vyazanie-shop/smallorder.webp" alt="One pair of knitted socks, packed as a gift">
+  <p class="figcap">One pair of socks — and as much care in it as in a sweater.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">One pair of socks. One mug cozy. One toy for a grandson who lives in another city. There are no orders that are “too small” — there are people who need exactly this small thing right now.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Half of our regular clients once began with a single pair of socks. Small things are knitted in the same quiet evenings and with the same attentiveness — they simply finish sooner.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Feedback</h2>
+  <p class="form-note">We reply within a day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photograph of a piece for repair, or simply feedback — fill in the form, and the letter will come straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="How should we address you">
+      <label for="f-email">Your email (for the reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Order a new item</option>
+        <option>Custom order</option>
+        <option>Repair of an item</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Other</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of an item</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, what size and color? If it is a repair — a few words about the item."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">61</span>And once more — write to Nadia</h2>
+  <p class="form-note">We reply within a day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photograph of a piece for repair, or simply feedback — fill in the form, and the letter will come straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="How should we address you">
+      <label for="f-email">Your email (for the reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Order a new item</option>
+        <option>Custom order</option>
+        <option>Repair of an item</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Other</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of an item</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, what size and color? If it is a repair — a few words about the item."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">62</span>The maker's tools</h2>
+  <img class="fig" src="../vyazanie-shop/tools.webp" alt="Needles of bamboo, wood and metal, scissors and a measuring tape on linen cloth">
+  <p class="figcap">The needles lie on linen cloth and wait for the evening, when the house grows quiet.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Every yarn has its own needles. Bamboo gently holds slippery silk. Smooth metal guides wool easily. Warm wood does not chill the fingers on a long winter evening.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">The workshop holds several dozen pairs, and each knows its work. Old needles are not thrown away: they have a memory of their own, and stitches come off them more evenly, like words in a familiar language.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">63</span>Why the stitches are even</h2>
+  <img class="fig" src="../vyazanie-shop/stitches.webp" alt="A close-up of perfectly even knitted stitches with a ruler">
+  <p class="figcap">No secret at all: a swatch, a count of rows, and hands that feel the thread.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">No secret at all: before every piece — a small swatch. Then — a count of rows, not “by eye”. And a size checked as the work goes, while the piece can still be corrected with one movement.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Handwork is precision too. It is simply done not by a machine, but by hands that over decades have learned to feel the tension of the thread the way a musician feels a string.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">64</span>A gift for grandmother</h2>
+  <img class="fig" src="../vyazanie-shop/grandma.webp" alt="A grandmother and granddaughter choosing skeins of yarn at a table">
+  <p class="figcap">Two pairs of hands over skeins of yarn. The older ones choose the color; the younger ones absorb how it is done: slowly and with love.</p>
+  <div class="grid" style="margin-top:18px">
+    <div class="card"><h3>A shawl or a stole</h3><p>Over the shoulders — at home with a book, at the theater, on an evening walk. A light thing that embraces in your place when you are far away.</p></div>
+    <div class="card"><h3>Warm socks and slippers</h3><p>With a loose cuff, for feet that tire more than all others during the day. Care you feel every evening as you take off your shoes.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">65</span>Booties: the first shoes</h2>
+  <img class="fig" src="../vyazanie-shop/booties.webp" alt="A row of tiny knitted booties in pastel colors on a shelf">
+  <p class="figcap">They fit in the palm of a hand. Both at once.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">Booties are knitted to the length of a tiny foot, with a little room to spare — babies grow faster than yarn dries. Colors range from quiet pastels to bright ones, “like grown-ups”: first things have the right to be festive.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">A pair of booties is the quickest gift for a birth and, perhaps, the longest-lasting: they are not worn for long, but they are kept for a whole life afterwards.</p>
+    <span class="price">from 150 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">66</span>Cats approve</h2>
+  <img class="fig" src="../vyazanie-shop/cat.webp" alt="A ginger cat sleeping on a thick knitted blanket on an armchair">
+  <p class="figcap">The head of quality control inspects every blanket personally. Usually — in his sleep.</p>
+  <div class="card" style="margin-top:18px">
+    <p style="font-size:16.5px;color:var(--ink)">If a cat lives in the house, a knitted blanket will not stay yours for long. It is a law older than all of us: cats find the warmest thing in the house within one evening and make it their own — finally and without negotiation.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">That is why many order a second blanket, a smaller one, “the cat's”. And for homes with animals we recommend yarn that calmly withstands frequent washing: beauty is beauty, and life goes its own way.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">67</span>Hoods and balaclavas</h2>
+  <img class="fig" src="../vyazanie-shop/hood.webp" alt="A child in a knitted hood-balaclava on a winter walk">
+  <p class="figcap">Nothing slips, nothing comes undone, nothing gets lost. Only rosy cheeks.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A detachable merino hood is a hat and a scarf that stopped arguing and reached an agreement. Nothing slips in the wind, nothing comes undone on the run, nothing is lost in the cloakroom.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Parents value them especially: a child in a hood is protected all over, from the top of the head to the chest. And adults who walk in winter and know the price of the wind off the fjord.</p>
+    <span class="price">from 400 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">68</span>Neck warmers: warmth without the bulk</h2>
+  <img class="fig" src="../vyazanie-shop/dickey.webp" alt="A knitted neck warmer over an unzipped jacket">
+  <p class="figcap">A quiet piece: it covers the neck and chest — and never needs adjusting.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A neck warmer is a quiet piece. It covers the neck and chest under a jacket, but adds no extra bulk, does not bunch into folds, and never asks to be adjusted.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Drivers, cyclists, and everyone who gets ready on the run love them. You put one on in the morning — and forget it until evening. That is how a good thing should be.</p>
+    <span class="price">from 320 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">69</span>Ponchos</h2>
+  <img class="fig" src="../vyazanie-shop/poncho.webp" alt="A woman in a knitted poncho with a cup of tea on a veranda in the evening">
+  <p class="figcap">A poncho, a veranda, tea. The evening asks for nothing more.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A poncho does not need fastening, fitting, or coaxing into place. Throw it over your shoulders — and it finds how to lie on its own. It rests just as calmly on a slight young woman as on her grandfather.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">This is clothing for slow hours: an evening on the veranda, the road home, an armchair by the fireplace. A poncho does not call attention to itself. It simply warms — and that is enough.</p>
+    <span class="price">from 950 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">70</span>Boleros and shrugs</h2>
+  <img class="fig" src="../vyazanie-shop/bolero.webp" alt="A woman in a lacy knitted bolero over an evening dress">
+  <p class="figcap">It does not hide the outfit, it completes it — the way the last line completes a letter.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Sometimes a dress is perfect, but the shoulders are cold. Boleros exist for such evenings: a short, lacy wrap that does not hide the outfit, but completes it, the way the last line completes a letter.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Mohair-and-silk shrugs weigh almost nothing and fold down to the size of a palm — people take them along “just in case” and wear them all evening.</p>
+    <span class="price">from 550 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">71</span>Summer tops and blouses</h2>
+  <img class="fig" src="../vyazanie-shop/summertop.webp" alt="A woman in a light knitted top at a morning market">
+  <p class="figcap">Morning, a market, fabric warmed by the sun. Summer is kept in things like these, too.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Knitting is not only about winter. Cotton and linen breathe, openwork lets air and light through, and a handmade summer piece fits in a way no factory-made one ever does.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Such tops are worn for years: they do not stretch out in a season and do not lose their look after washing. Morning, a market, the smell of sun-warmed fabric — sometimes summer is kept in exactly such things.</p>
+    <span class="price">from 600 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">72</span>Knitted dresses and skirts</h2>
+  <img class="fig" src="../vyazanie-shop/dressknit.webp" alt="A knitted dress by a bright window in the morning">
+  <p class="figcap">A dress by the window. It already knows whom it belongs to.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A dress knitted to the figure is like no shop-bought one. It does not hang and does not pull — it follows the person it was made for, the way a favorite habit follows them.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Such things are not ordered in a hurry. First a conversation, measurements, yarn chosen by touch. Then weeks of quiet work. But afterwards the dress is worn for years — each time a little differently, and each time it is just right.</p>
+    <span class="price">from 1 800 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">73</span>Bags and backpacks</h2>
+  <img class="fig" src="../vyazanie-shop/totebag.webp" alt="A knitted bag in dense cotton on a table">
+  <p class="figcap">It holds its shape, its character, and everything put into it.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A bag in dense cotton holds its shape, its character, and everything put into it. Inside there is a lining and a pocket for a phone, so you do not have to search the bottom for it while standing at the checkout.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Such bags age beautifully: they do not crack or peel, they simply grow softer and more familiar, like a beloved book.</p>
+    <span class="price">from 350 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">74</span>Cases for everything</h2>
+  <img class="fig" src="../vyazanie-shop/cases.webp" alt="Knitted cases for glasses, a phone, and a book">
+  <p class="figcap">A phone in such a case can be found in a bag by touch — by the warmth of the yarn.</p>
+  <div class="grid">
+    <div class="card"><h3>For glasses and phones</h3><p>A soft knitted shell guards against scratches and cold. And a phone in such a case can be found in a bag by touch — by the warmth of the yarn.</p><span class="price">from 110 kr</span></div>
+    <div class="card"><h3>For books and tablets</h3><p>The case is knitted to the exact size — of your book, your tablet. With a flap and a button that is pleasant to fasten slowly.</p><span class="price">from 160 kr</span></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">75</span>Bookmarks for book lovers</h2>
+  <img class="fig" src="../vyazanie-shop/bookmark.webp" alt="A knitted bookmark with a tassel in an open book">
+  <p class="figcap">It remembers every page where you fell asleep.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A thin knitted bookmark with a tassel lives inside a book for years. It remembers all the pages where you fell asleep, and all the ones where you could not.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">They are often ordered as a set — for oneself and for everyone one shares books with. A small gift that does not call attention to itself, but simply stays nearby for a long time.</p>
+    <span class="price">from 70 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2>Feedback</h2>
+  <p class="form-note">We reply within a day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photograph of a piece for repair, or simply a kind word — fill in the form, and the letter will go straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="What should we call you">
+      <label for="f-email">Your email (for the reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Order a new piece</option>
+        <option>A custom order</option>
+        <option>Repair of a piece</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Something else</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of a piece</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, in what size and color? If it is a repair — a few words about the piece."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">76</span>Gift stockings — for the mantelpiece</h2>
+  <img class="fig" src="../vyazanie-shop/stocking.webp" alt="Large knitted gift stockings on a mantelpiece">
+  <p class="figcap">The stocking hangs empty — and is full because of it: with waiting.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A large knitted stocking above the fireplace is a promise of celebration you can see from far away. Small gifts are hidden inside it, and every December morning someone in the house will peek in — just in case.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Each stocking carries a name. For the children, for the parents, for the cat. Years later these stockings are taken out of the box with the decorations, and the house smells of tangerines and waiting again.</p>
+    <span class="price">from 290 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">77</span>For fishing and hunting</h2>
+  <img class="fig" src="../vyazanie-shop/fishing.webp" alt="An angler on a lake at dawn in a knitted hat and fingerless gloves">
+  <p class="figcap">Mist over the water and the long wait by the ice hole — they were knitted for a life like this.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">On the water and in the forest, clothing is tested quickly. Dark colors that do not show the dirt. Taller socks, so no draft gets in. A hat that is not afraid of rain. Fingerless gloves that leave the hands free for the work.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">These pieces are not too precious to wear into the forest — and that is their virtue: they are knitted not for a shelf, but for a life that includes mist over a lake and the long wait by the ice hole.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">78</span>For cycling and motorcycles</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">At speed, the wind finds every gap in your clothing. A balaclava in fine merino, a neck warmer, and gaiters close exactly the places it reaches first.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Nothing flaps, slips, or gets in the way of watching the road. The road, in general, likes it when you think about it, not about a frozen neck.</p>
+    <span class="price">from 280 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">79</span>For musicians</h2>
+  <img class="fig" src="../vyazanie-shop/musician.webp" alt="A musician's hands in knitted fingerless gloves on a guitar">
+  <p class="figcap">Music should not have to wait until the hands warm up.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Cold hands play worse — everyone who has rehearsed in an unheated hall or performed outdoors in November knows it. Fingerless gloves leave the fingers free while keeping the hands warm.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Guitarists, pianists, violinists: music should not have to wait until the hands warm up.</p>
+    <span class="price">from 200 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">80</span>For photographers</h2>
+  <img class="fig" src="../vyazanie-shop/photographer.webp" alt="A photographer at a winter dawn in gloves with opening fingers">
+  <p class="figcap">The shot does not wait. The hands are ready.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A winter dawn is beautiful and merciless. Gloves with fingers that fold back let you turn the camera dials precisely — and return the fingers to warmth at once, without taking the gloves off entirely.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Knitted exactly to your hand, they do not flap or bind. The shot does not wait. The hands are ready.</p>
+    <span class="price">from 240 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">81</span>For gardeners</h2>
+  <img class="fig" src="../vyazanie-shop/gardener.webp" alt="A gardener in a knitted vest with pockets in a morning garden">
+  <p class="figcap">Everything real grows slowly. The garden teaches the same thing knitting does.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A morning in the garden begins before the sun has warmed the ground. A vest with large pockets — for pruners, gloves, and a phone — and a warm back turns that morning from a trial into a pleasure.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">The garden, in fact, teaches the main thing knitting also knows: everything real grows slowly, and hurrying it is useless.</p>
+    <span class="price">from 750 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">82</span>Pockets — to your specification</h2>
+  <img class="fig" src="../vyazanie-shop/pocket.webp" alt="A hand putting a phone into the inside pocket of a knitted zippered vest">
+  <p class="figcap">A piece designed around your life, not the other way around.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Everyone has something they always carry: a phone, keys, a passport, medicine, a handkerchief for a grandchild. Factory clothing knows nothing of your habits. A piece knitted to order does.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">An inside pocket with a zipper. A hidden little pocket in a scarf — for a card. A deep pocket in a vest, from which nothing falls out when you bend down. Tell us what you carry with you — and the piece will be designed around your life, not the other way around.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">83</span>A mitten for two</h2>
+  <img class="fig" src="../vyazanie-shop/sharedmitten.webp" alt="A couple holding hands inside one large knitted mitten on a winter walk">
+  <p class="figcap">Two hands in one mitten. All the frost can do is watch.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">One large mitten, made so that two people can hold hands inside it. It looks like a joke — until you put it on during a winter walk and understand that it is the warmest thing in the world.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">It is given to couples for anniversaries, for winter weddings, and just because — as permission to walk longer, holding hands, while the frost pinches your cheeks.</p>
+    <span class="price">from 260 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">84</span>For walks with a dog</h2>
+  <img class="fig" src="../vyazanie-shop/dogwalk.webp" alt="A morning walk: a person in fingerless gloves and a dog in a knitted sweater">
+  <p class="figcap">A small ceremony the day begins with.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A morning walk with a dog does not wait while you sort out your gloves. Fingerless gloves in which the leash is held surely. A vest with a pocket for bags and the treat that makes someone's morning.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">And for the dog itself — a sweater to match yours (section 17). Stepping out together into a quiet winter yard is a small ceremony the day begins with.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">85</span>Sleep socks</h2>
+  <img class="fig" src="../vyazanie-shop/sleepsocks.webp" alt="Soft sleep socks at the edge of the bed in the evening">
+  <p class="figcap">They are ordered for parents — and then the call comes on a Thursday, after the first warm night.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Cold feet are an enemy of sleep that everyone knows. Socks in soft alpaca and merino, with no tight cuff at all, warm you within one evening and stay on all night.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">They are often ordered not for oneself, but for parents — and this is one of those gifts people later call to say thank you for. Not on a birthday. Just on a Thursday, after the first warm night.</p>
+    <span class="price">from 230 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">86</span>Soft socks with a loose cuff</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">There are feet that need not beauty, but gentleness: tired, sensitive, elderly feet. For them — a wide, soft cuff that does not pinch, and a flat seam that does not rub.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Such socks are not shown off. They are simply worn every day, and you stop thinking about your feet — and that is the best compliment a thing can receive.</p>
+    <span class="price">from 240 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">87</span>Slippers with soles</h2>
+  <img class="fig" src="../vyazanie-shop/slippers.webp" alt="Knitted slippers with felt soles by the bed in the morning">
+  <p class="figcap">Steps through the morning house wake no one.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A knitted upper, a felt or leather sole. Warm, quiet, and not slippery — steps through the morning house wake no one.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">House shoes are the most worn thing in a wardrobe, if you count honestly. Let them be beautiful: they are seen more often than dress shoes.</p>
+    <span class="price">from 380 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">88</span>Peds and house ballet flats</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Light as socks and neat as little shoes. Peds are worn at home, taken to yoga and on trips — in a suitcase they take the space of one pair of socks, and give the coziness of proper house shoes.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Guest peds by the door are a small tradition of welcoming homes: someone arrives, and warmth is already waiting for them.</p>
+    <span class="price">from 210 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">89</span>Blankets and beds for pets</h2>
+  <img class="fig" src="../vyazanie-shop/cat2.webp" alt="A cat sleeping on a knitted blanket in a basket by the window">
+  <p class="figcap">The place is chosen. The place is taken. The place is approved.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A small, dense blanket for a basket, a windowsill, a carrier. The animal chooses its own place — we simply make that place warm.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">The yarn for such blankets is not afraid of claws or frequent washing. And the cat, as we know from section 66, will still check your blanket first. Then, so be it, it will agree to its own.</p>
+    <span class="price">from 300 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">90</span>The armchair set</h2>
+  <img class="fig" src="../vyazanie-shop/armchair.webp" alt="An armchair corner with a knitted blanket, a cushion, and house socks">
+  <p class="figcap">The armchair is set for the evening: a blanket, a cushion, and quiet.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A blanket, a cushion, and a pair of house socks in one range of colors. A single order creates a place you want to return to every evening: an armchair by the window, a lamp, a book — and everything else can wait.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Such a set is given for a housewarming and to parents. And also — to oneself. Everyone should have an armchair in which the world becomes a little slower.</p>
+    <span class="price">from 1 250 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2>Feedback</h2>
+  <p class="form-note">We reply within a day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photograph of a piece for repair, or simply a kind word — fill in the form, and the letter will go straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="What should we call you">
+      <label for="f-email">Your email (for the reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Order a new piece</option>
+        <option>A custom order</option>
+        <option>Repair of a piece</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Something else</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of a piece</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, in what size and color? If it is a repair — a few words about the piece."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">91</span>Gifts of gratitude</h2>
+  <img class="fig" src="../vyazanie-shop/thankyou.webp" alt="A knitted shawl as a gift, with a thank-you card">
+  <p class="figcap">There are people to whom the main thing cannot be said with candy.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">There are people to whom a box of candy cannot say the main thing: the teacher who noticed your child; the doctor who did not let go of your hand; the nanny the children call their second grandmother.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For them — a shawl, a scarf, or a pair of handmade socks, and a card in your name. Such gifts are not put on a shelf. They are worn — and each time, the wearer remembers what they were given for.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">92</span>A tag with a name</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Inside every made-to-order piece there can live a small fabric label: the name of the person it was knitted for, a date, and a few words. No one sees it. But it is there — like a note left in a coat pocket.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Years from now, when the piece is taken out of a drawer and unfolded, it is the label that will tell where it came from and why it was kept so carefully.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">93</span>How knitted things survive the mail</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A knitted piece travels calmly. It folds without creases, is wrapped in paper, and rides in sturdy packaging — through sorting centers, trucks, and sometimes half a continent.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">It fears neither the shaking nor the cold of a cargo hold: it was made for northern life. Take it out of the parcel, shake it gently, let it rest for an hour — and it is again the same piece that lay on the workshop table.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">94</span>Delivery times around the world</h2>
+  <p class="lead">The mail, like knitting, does not like to hurry. Here is its usual, honest pace:</p>
+  <table>
+    <tr><th>Where</th><th>Usual delivery time</th></tr>
+    <tr><td>Norway</td><td>2–5 days</td></tr>
+    <tr><td>Europe</td><td>5–12 days</td></tr>
+    <tr><td>USA and Canada</td><td>10–20 days</td></tr>
+    <tr><td>The rest of the world</td><td>by arrangement — please ask when ordering</td></tr>
+  </table>
+  <p class="lead" style="margin-top:12px">The knitting time is added to these days — which is why we begin discussing gifts for a certain date in advance, during the quiet weeks (section 24).</p>
+</section>
+
+<section>
+  <h2><span class="n">95</span>Paying from abroad</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">If you live in another country, we will agree on a convenient method personally: an international bank transfer or PayPal. No hurry, no fine print, and answers to all your questions before you pay anything.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">96</span>Urgent orders</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">It happens: a celebration in a week, and no gift. Write right away, the same day. A small piece — a hat, socks, a toy — can often still be knitted and sent in time, if the first day is not lost to hesitation.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">We will tell you honestly on the very first day whether we can take it on. If not, we will offer a gift certificate, which is never late.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">97</span>Two identical pieces</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A matching pair is not simply “the same thing a second time.” Both pieces are knitted one after the other, from a single batch of yarn, so the shade matches not approximately, but completely: yarn from different batches can differ by half a tone, visible only side by side.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">In time, two pieces take about one and a half. Like people in a couple — together, everything comes a little easier.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">98</span>For clubs, choirs, and teams</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Matching hats and scarves in the club's colors bring people together more quietly and more surely than any uniform. They are put on before the start, before stepping on stage, before the group photograph — and suddenly the team looks like one whole.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For a sports team, a choir, a hiking group: tell us about your colors in advance — handmade work loves a margin of time — and by your day everything will be ready.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">99</span>A knitted dress code</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A handmade piece can be composed. A cardigan that holds the line of the shoulders. A shawl that completes an evening look rather than arguing with it. A vest that makes a shirt look deliberately neat.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">The secret is in the yarn and the fit: calm colors, clean finishing, nothing extra. Then a knitted piece reads not as “homemade,” but as “one's own.”</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">100</span>The hundredth block</h2>
+  <img class="fig" src="../vyazanie-shop/hundred.webp" alt="A table with knitted gifts, ready to be given">
+  <p class="figcap">A hundred blocks later, the table is still full — just as on the first evening.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">You have reached the hundredth block. Pause for a second and see how many occasions to give something knitted fit into one ordinary life.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">A birthday and a housewarming. First snow and a first child. An anniversary — and simply a Tuesday you want to make warmer. Retirement and the first year of university. Moving to a cold city — and coming home. There is no need to look for a reason. A knitted piece by itself means one thing: “I was thinking of you.”</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">101</span>Gift ideas up to 300 kr</h2>
+  <p class="lead">A small budget is no obstacle. Small things give just as much warmth as big ones.</p>
+  <div class="card"><ul>
+    <li>a book bookmark — from 70 kr</li>
+    <li>a mug cozy — from 90 kr</li>
+    <li>baby booties — from 150 kr</li>
+    <li>a knitted flower that will not wilt — from 150 kr</li>
+    <li>socks or mittens — from 250 kr</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2><span class="n">102</span>Gift ideas: 300–600 kr</h2>
+  <p class="lead">A medium budget is already a whole piece, one that will be used all winter.</p>
+  <div class="card"><ul>
+    <li>a merino hat — from 350 kr</li>
+    <li>a snood or dickey — from 320 kr</li>
+    <li>fleece-lined mittens — from 390 kr</li>
+    <li>a huggable toy — from 300 kr</li>
+    <li>slippers with soles — from 380 kr</li>
+    <li>a cotton bag — from 350 kr</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2><span class="n">103</span>Gift ideas: 600 kr and above</h2>
+  <p class="lead">Big gifts are given rarely and remembered long. Here are pieces that stay with a person for years.</p>
+  <div class="card"><ul>
+    <li>a scarf or stole — from 600–650 kr</li>
+    <li>a vest — from 750 kr</li>
+    <li>a poncho — from 950 kr</li>
+    <li>a blanket — from 1 200 kr</li>
+    <li>a sweater — from 1 300 kr</li>
+    <li>an armchair set — from 1 250 kr</li>
+  </ul></div>
+</section>
+
+<section>
+  <h2><span class="n">104</span>A gift for the person who has everything</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">He has everything that is sold. What remains is what is not sold ready-made: a piece created only for him. His measurements, his color, his habits, taken into account in the pockets and the sleeve length.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Such people are not impressed by price. What moves them is attention — and attention cannot be bought; it can only be put in, hour by hour, stitch by stitch.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">105</span>Gifts across a distance</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A mother in another country. A daughter away at university. A friend on the other shore of the ocean. Give the recipient's address — and the parcel will travel straight to them, with a card in your name inside.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">You will not see this piece in person. But you will know on which evening it will be unwrapped — and that is almost the same as being there.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p class="form-note">We reply within a day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photo of a piece for repair, or simply a few words — fill in the form, and your message will go straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="What should we call you">
+      <label for="f-email">Your email (for a reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Ordering a new piece</option>
+        <option>A custom order</option>
+        <option>Repair of a piece</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Other</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of a piece</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, what size and color? If it is a repair — a few words about the piece."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">106</span>A letter in the parcel</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A letter can be enclosed with any parcel. Your text — handwritten by our hand, or printed, whichever feels calmer to you. It can be short: three lines sometimes say more than a page.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Things are forgotten. The words that arrived with them — almost never.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">107</span>Huggable toys for grown-ups</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Grown-ups need toys no less than children do. They just admit it less often. A huggable lives by the pillow, rides in the car, waits on the work chair on hard days.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">They are given to students before exams, to friends before a move, to oneself — for no reason at all. What simply comforts needs no good reason.</p>
+    <span class="price">from 300 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">108</span>Warmers and warm helpers</h2>
+  <img class="fig" src="../vyazanie-shop/warmer.webp" alt="A hot-water bottle in a knitted cover on a bed">
+  <p class="figcap">Two minutes — and the warmth lasts almost an hour.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A knitted cover for a warmer or a hot-water bottle. Inside — flax seed or cherry pits, heated in the microwave: two minutes — and the warmth lasts almost an hour.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Against the stomach, against the lower back, into a cold bed half an hour before sleep. A way of warming up as old as the world — and still one of the most honest.</p>
+    <span class="price">from 240 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">109</span>A lavender sachet</h2>
+  <img class="fig" src="../vyazanie-shop/lavender.webp" alt="Knitted pouches with dried lavender on linen fabric">
+  <p class="figcap">Lavender in small pouches smells of a summer someone decided to keep.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A small knitted pouch with dried lavender. It is placed in a drawer with bed linen, hung in a wardrobe, tucked into a suitcase.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">The scent lasts for months, and if you press the pouch a little, it wakes again. A sachet is often added free to larger orders: there should be no threshold to calm.</p>
+    <span class="price">from 60 kr</span>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">110</span>Pieces for wet weather</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">The west coast of Norway knows rain better than any forecast. Wool is the only fiber that warms even when wet: it absorbs moisture and keeps holding warmth when synthetics have already given up.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For such days — mittens and socks with a touch of nylon for strength, and a dense knit that holds back the wind. You will come home wet, but not frozen.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">111</span>Buttons that change everything</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">The same piece with different buttons is two different pieces. Wood makes a cardigan homely, metal makes it urban, horn makes it almost dressy.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">When you order, we will show you 2–3 button options chosen for your piece. It is the last detail, and it is chosen slowly — the way a final period is placed: already knowing how it turned out.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">112</span>Zippers and fastenings</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A vest or cardigan can be made with a zipper, with buttons, or with no fastening at all — thrown on, it holds by itself. This is decided before the work begins, and we will talk about how you like to wear such pieces: fastened quickly with one hand, or unhurriedly, button by button.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">A fastening is the rhythm of a piece. We will find the one that matches yours.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">113</span>Repairing fastenings</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A broken zipper does not mean the end of a piece. It is replaced, and a good sweater lives on — sometimes even longer than with the first one: the new fastening is chosen stronger than the old.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Send a photo — we will say what can be done. Things should not die because of hardware.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">114</span>Refreshing an old piece</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A favorite sweater can be given back to you without reknitting it whole. Reknit the stretched cuffs. Add patches at the elbows — leather or suede; they carry the dignity of a life lived. Replace the buttons with ones that will age beautifully together with the piece.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">Sometimes a piece does not need a new future. It needs its past repaired.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">115</span>A new piece from an old one</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A mother's sweater that no one wears anymore can be unraveled — slowly, skein by skein — and from its wool, mittens can be knitted for her grandchildren. The yarn will keep the warmth of the hands that knitted it first.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">This is work about memory more than about knitting. Such orders are discussed with special care — and made first, ahead of the queue.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">116</span>Children's pieces with room to grow</h2>
+  <img class="fig" src="../vyazanie-shop/childsweater.webp" alt="A child in a knitted sweater, a mother adjusting the cuff">
+  <p class="figcap">The cuffs are folded back today — and let down tomorrow, when the arms have grown.</p>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">A good children's sweater knows how to grow. The turn-back cuffs are let down as the arms grow. The length is made with room to spare. The bootie fastenings, too, are made to grow into.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">A child grows quickly. But a piece knitted with room to grow will have time to become a favorite — and that is the only thing truly asked of children's clothing.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">117</span>Washing children's pieces</h2>
+  <div class="card care">
+    <p style="font-size:16.5px;color:var(--ink)">A short note for parents — the same unhurriedness as for grown-ups' pieces:</p>
+    <ul>
+      <li>A gel with no harsh scent; a child's skin senses fragrance more keenly than ours.</li>
+      <li>Water at 30 °C, the “wool” cycle — or simply a basin and hands.</li>
+      <li>Rinse until the water runs completely clear.</li>
+      <li>Dry laid flat on a towel, away from radiators and bustle.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">118</span>Calm for sensitive skin</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">For newborns and people with sensitive skin, we choose yarn marked OEKO-TEX® Standard 100 — which means it has been tested for harmful substances by an independent laboratory, not just in words.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">For the very smallest, the yarn is additionally washed with a neutral detergent before work begins. The first piece in a person's life should be impeccably soft — and impeccably honest in what it is made of.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">119</span>Norwegian yarn</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">We especially love yarn from Norwegian mills — Rauma and Sandnes Garn. It was created for this weather by generations of people who themselves wore sweaters knitted from it: warm, honest, with a character that does not fade or give up in a single season.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">A piece made from such yarn is a small piece of Norway, wherever it lives afterwards.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">120</span>Made in Norway</h2>
+  <div class="card">
+    <p style="font-size:16.5px;color:var(--ink)">Every piece of the workshop is knitted by hand in Norway. Not “in the style of Norway,” not “on Norwegian motifs,” but here: by this window, in this weather, on these quiet evenings.</p>
+    <p style="font-size:16.5px;color:var(--ink);margin-top:10px">And it travels from here to you — with a card on which one could write what kind of rain was falling then.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p class="form-note">We reply within a day. No spam — only a conversation about your piece.</p>
+  <div class="order">
+    <h3 style="font-weight:normal;font-size:23px">Write to Nadia 💌</h3>
+    <p>An order, a question, a photo of a piece for repair, or simply a few words — fill in the form, and your message will go straight to Nadia's inbox:</p>
+    <form action="https://formsubmit.co/nadandre@live.com" method="POST">
+      <input type="hidden" name="_subject" value="Knitting Shop — message from the website">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none">
+      <label for="f-name">Your name</label>
+      <input id="f-name" type="text" name="Name" required placeholder="What should we call you">
+      <label for="f-email">Your email (for a reply)</label>
+      <input id="f-email" type="email" name="Email" required placeholder="you@example.com">
+      <label for="f-topic">Subject</label>
+      <select id="f-topic" name="Subject">
+        <option>Ordering a new piece</option>
+        <option>A custom order</option>
+        <option>Repair of a piece</option>
+        <option>A question about yarn and sizes</option>
+        <option>Feedback</option>
+        <option>Other</option>
+      </select>
+      <label for="f-msg">Message</label>
+      
+    <div class="qp"><button type="button" data-fill="Hello! I would like to order socks. For whom: … Size: … Color: …">🧦 Socks</button><button type="button" data-fill="Hello! I would like to order a scarf or a hat. For whom: … Color: …">🧣 A scarf or a hat</button><button type="button" data-fill="Hello! I would like to order a blanket as a gift. Size: … Color: … By what day: …">🎁 A blanket as a gift</button><button type="button" data-fill="Hello! I need a knitted piece repaired. What happened: …">🔧 Repair of a piece</button></div>
+    <textarea id="f-msg" name="Message" required placeholder="What would you like knitted? For whom, what size and color? If it is a repair — a few words about the piece."></textarea>
+      <button type="submit">Send to Nadia ✉️</button>
+    </form>
+    <p style="font-size:14.5px;margin-top:14px">Nadia replies personally, usually within one or two days.</p>
+  </div>
+</section>
+
+
+<section>
+  <h2><span class="n">121</span>Your idea — our needles</h2>
+  <div class="card">
+    <p style="font-size:17px;color:var(--ink)">You have read to the very end. From here, there is nothing more to scroll and nothing to decide right now.</p>
+    <p style="font-size:17px;color:var(--ink);margin-top:10px">If along the way you met a piece that is missing from your life, or from the life of someone close to you — write us a few words. Or simply come back tomorrow: this page is in no hurry, and neither are we. 🧶</p>
+  </div>
+</section>
+
+<footer>Knitting Shop · Handmade · Norway<br>Knitted with love — worn with warmth. 🧶</footer>
+
+</div>
+<div id="moreHint">scroll down — there is more warmth below ↓</div>
+<script>
+(function(){
+  var BATCH=10;
+  var secs=Array.prototype.slice.call(document.querySelectorAll('main section'));
+  var shown=0;
+  secs.forEach(function(s){ s.classList.add('batch-hidden'); });
+  var main=document.querySelector('main');
+  var sentinel=document.createElement('div');
+  sentinel.style.height='1px';
+  main.appendChild(sentinel);
+  var hint=document.getElementById('moreHint');
+  function reveal(){
+    var n=0;
+    while(shown<secs.length && n<BATCH){
+      var s=secs[shown++];
+      s.classList.remove('batch-hidden');
+      s.classList.add('reveal');
+      main.insertBefore(sentinel, s.nextSibling ? null : null);
+      n++;
+    }
+    // keep sentinel after the last visible section
+    var last=secs[Math.min(shown,secs.length)-1];
+    if(last && last.nextSibling!==sentinel){ main.insertBefore(sentinel, last.nextSibling); }
+    if(shown>=secs.length){
+      if(window.__knitObs){ window.__knitObs.disconnect(); }
+      if(hint){ hint.style.opacity='0'; setTimeout(function(){ hint.remove(); },700); }
+    }
+  }
+  reveal();
+  if('IntersectionObserver' in window && shown<secs.length){
+    window.__knitObs=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){ reveal(); }
+    },{rootMargin:'700px 0px'});
+    window.__knitObs.observe(sentinel);
+  } else {
+    while(shown<secs.length){ reveal(); }
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(a){ while(shown<secs.length){ reveal(); } }
+  });
+})();
+</script>
+
+<div id="stickyBar"><span class="sb-t">Shall we knit something warm?</span><a class="sb-b" data-cta href="#order">Write to Nadia</a><button class="sb-x" aria-label="×">✕</button></div>
+<script>
+(function(){
+  var bar=document.getElementById('stickyBar');
+  function onScroll(){ if(window.scrollY>600){bar.classList.add('show');} }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  bar.querySelector('.sb-x').addEventListener('click',function(){bar.remove();});
+  document.addEventListener('click',function(e){
+    var c=e.target.closest ? e.target.closest('[data-cta]') : null;
+    if(c && window.gtag){ gtag('event','order_cta_click'); }
+    var b=e.target.closest ? e.target.closest('.qp button') : null;
+    if(b){
+      var form=b.closest('form'); if(!form) return;
+      var ta=form.querySelector('textarea'); if(!ta) return;
+      ta.value=b.getAttribute('data-fill'); ta.focus();
+      if(window.gtag){ gtag('event','quick_pick'); }
+    }
+  });
+  document.addEventListener('submit',function(e){
+    if(window.gtag){ gtag('event','form_submit'); }
+  }, true);
+})();
+</script>
+</body>
+</html>
