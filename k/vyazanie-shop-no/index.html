@@ -66,6 +66,26 @@
   #moreHint{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--dark);color:#fdf6ec;padding:9px 18px;border-radius:999px;font-size:14px;opacity:.92;z-index:50;transition:opacity .6s;pointer-events:none}
   footer{border-top:1px solid var(--line);margin-top:54px;padding:24px 0 44px;color:#a08a76;font-size:14.5px;text-align:center}
 </style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C2W27FWRBQ');</script>
+<style>
+html{scroll-behavior:smooth}
+.cta-row{margin:22px 0 6px;text-align:center}
+.cta-btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-size:18px;font-weight:600;padding:14px 30px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.cta-btn:hover{filter:brightness(1.07)}
+.cta-line{text-align:center;color:var(--muted);font-size:15px;margin-top:10px}
+#stickyBar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--dark);color:#fdf6ec;display:none;align-items:center;justify-content:center;gap:14px;padding:10px 14px;box-shadow:0 -4px 18px rgba(0,0,0,.25)}
+#stickyBar.show{display:flex}
+#stickyBar .sb-t{font-size:15.5px}
+#stickyBar .sb-b{background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:9px 20px;border-radius:999px;font-size:15.5px;white-space:nowrap}
+#stickyBar .sb-x{background:none;border:none;color:#fdf6ec;font-size:18px;cursor:pointer;opacity:.75;padding:4px 6px}
+#moreHint{bottom:74px !important}
+.qp{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+.qp button{border:1.5px solid var(--accent);background:#fff;color:var(--ink);border-radius:999px;padding:7px 14px;font-size:14.5px;cursor:pointer;font-family:inherit}
+.qp button:hover{background:var(--accent);color:#fff}
+.form-note{color:var(--muted);font-size:15px;margin:-6px 0 14px}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -82,6 +102,8 @@
     <span class="chip">✂️ Bestillinger <b>etter dine mål</b></span>
     <span class="chip">🔧 <b>Reparasjon</b> av favorittplagg</span>
   </div>
+
+  <div class="cta-row"><a class="cta-btn" data-cta href="#order">Skriv til Nadia — snakk om en bestilling</a><div class="cta-line">Plagg fra 70 kr · Svar i løpet av dagen · Levering over hele verden</div></div>
 </header>
 
 <section>
@@ -289,8 +311,9 @@
   </div>
 </section>
 
-<section>
+<section id="order">
   <h2>Kontakt oss</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
@@ -313,7 +336,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en dag eller to.</p>
@@ -491,6 +516,7 @@
 
 <section>
   <h2><span class="n">30</span>Kontakt oss</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
@@ -513,7 +539,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en dag eller to.</p>
@@ -686,6 +714,7 @@
 
 <section>
   <h2>Kontakt</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>En bestilling, et spørsmål, et bilde av et plagg til reparasjon eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
@@ -708,7 +737,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av én til to dager.</p>
@@ -877,6 +908,7 @@
 
 <section>
   <h2>Tilbakemelding</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>Bestilling, spørsmål, et bilde av en ting til reparasjon eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias innboks:</p>
@@ -899,7 +931,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en til to dager.</p>
@@ -908,6 +942,7 @@
 
 <section>
   <h2><span class="n">61</span>Og én gang til — skriv til Nadia</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>Bestilling, spørsmål, et bilde av en ting til reparasjon eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias innboks:</p>
@@ -930,7 +965,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av en til to dager.</p>
@@ -1088,6 +1125,7 @@
 
 <section>
   <h2>Tilbakemelding</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>En bestilling, et spørsmål, et bilde av noe som skal repareres eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
@@ -1110,7 +1148,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av én til to dager.</p>
@@ -1276,6 +1316,7 @@
 
 <section>
   <h2>Tilbakemelding</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>En bestilling, et spørsmål, et bilde av noe som skal repareres eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
@@ -1298,7 +1339,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis i løpet av én til to dager.</p>
@@ -1450,6 +1493,7 @@
 
 <section>
   <h2>Tilbakemelding</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
@@ -1472,7 +1516,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis innen én til to dager.</p>
@@ -1616,6 +1662,7 @@
 
 <section>
   <h2>Tilbakemelding</h2>
+  <p class="form-note">Vi svarer i løpet av dagen. Ingen spam — bare en samtale om plagget ditt.</p>
   <div class="order">
     <h3 style="font-weight:normal;font-size:23px">Skriv til Nadia 💌</h3>
     <p>En bestilling, et spørsmål, et bilde av en ting som skal repareres, eller bare en tilbakemelding — fyll ut skjemaet, så kommer brevet rett til Nadias e-post:</p>
@@ -1638,7 +1685,9 @@
         <option>Annet</option>
       </select>
       <label for="f-msg">Melding</label>
-      <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
+      
+    <div class="qp"><button type="button" data-fill="Hei! Jeg vil bestille sokker. Til hvem: … Størrelse: … Farge: …">🧦 Sokker</button><button type="button" data-fill="Hei! Jeg vil bestille et skjerf eller en lue. Til hvem: … Farge: …">🧣 Skjerf eller lue</button><button type="button" data-fill="Hei! Jeg vil bestille et pledd som gave. Størrelse: … Farge: … Til hvilken dag: …">🎁 Pledd som gave</button><button type="button" data-fill="Hei! Jeg trenger reparasjon av et strikkeplagg. Dette har skjedd: …">🔧 Reparasjon</button></div>
+    <textarea id="f-msg" name="Melding" required placeholder="Hva vil du ha strikket? Til hvem, hvilken størrelse og farge? Hvis det gjelder reparasjon — et par ord om plagget."></textarea>
       <button type="submit">Send til Nadia ✉️</button>
     </form>
     <p style="font-size:14.5px;margin-top:14px">Nadia svarer personlig, vanligvis innen én til to dager.</p>
@@ -1702,6 +1751,30 @@
     var a=e.target.closest ? e.target.closest('a[href^="#"]') : null;
     if(a){ while(shown<secs.length){ reveal(); } }
   });
+})();
+</script>
+
+<div id="stickyBar"><span class="sb-t">Skal vi strikke noe varmt?</span><a class="sb-b" data-cta href="#order">Skriv til Nadia</a><button class="sb-x" aria-label="×">✕</button></div>
+<script>
+(function(){
+  var bar=document.getElementById('stickyBar');
+  function onScroll(){ if(window.scrollY>600){bar.classList.add('show');} }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  bar.querySelector('.sb-x').addEventListener('click',function(){bar.remove();});
+  document.addEventListener('click',function(e){
+    var c=e.target.closest ? e.target.closest('[data-cta]') : null;
+    if(c && window.gtag){ gtag('event','order_cta_click'); }
+    var b=e.target.closest ? e.target.closest('.qp button') : null;
+    if(b){
+      var form=b.closest('form'); if(!form) return;
+      var ta=form.querySelector('textarea'); if(!ta) return;
+      ta.value=b.getAttribute('data-fill'); ta.focus();
+      if(window.gtag){ gtag('event','quick_pick'); }
+    }
+  });
+  document.addEventListener('submit',function(e){
+    if(window.gtag){ gtag('event','form_submit'); }
+  }, true);
 })();
 </script>
 </body>
