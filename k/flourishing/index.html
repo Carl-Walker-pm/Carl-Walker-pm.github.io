@@ -97,6 +97,17 @@
   <p>That's the other half of this project family. Our sibling, the <a href="https://carl-walker-pm.github.io/k/depression-friendly/">Depression Friendly Portal</a>, is built for the days when growing feels impossible — start there, it's gentler for heavy weather. And if things feel unsafe right now, please reach out immediately: in the US, call or text <strong>988</strong>; anywhere in the world, <a href="https://findahelpline.org">findahelpline.org</a> lists free, confidential helplines.</p>
 </section>
 
+<section>
+  <h2><span class="n">04</span>What to do after this page</h2>
+  <p class="lead">Reading about flourishing is not flourishing. Here is the whole path, in order:</p>
+  <div class="grid">
+    <div class="card"><span class="tag">Step 1 · Now</span><h3>Do today's practice</h3><p>Scroll up, take the practice at the top of this page, and actually do it — it takes under five minutes. One done practice beats fifty read ones.</p></div>
+    <div class="card"><span class="tag">Step 2 · This week</span><h3>Start the gentle week</h3><p>Tomorrow morning, begin Day 1 of the gentle first week above. One tiny practice a day, no score-keeping.</p></div>
+    <div class="card"><span class="tag">Step 3 · Tomorrow</span><h3>Come back for a new one</h3><p>This page shows a different practice every day — bookmark it. Returning daily for two minutes is the entire system.</p></div>
+    <div class="card"><span class="tag">Step 4 · Always</span><h3>Tell one person</h3><p>Flourishing grows faster shared. Tell a friend which practice you picked today — or do it together.</p></div>
+  </div>
+</section>
+
 <footer>
   Flourishing — a wellbeing project, sibling of the <a href="https://carl-walker-pm.github.io/k/depression-friendly/">Depression Friendly Portal</a>.<br>
   Not a medical service and not a substitute for professional care — a garden of small practices, offered freely.
@@ -118,7 +129,7 @@ var practices=[
 "Clear one small surface: a desk corner, a shelf, a bag. Order is calming.",
 "Say one honest kind thing to yourself, in the second person: 'You did fine today.'"
 ];
-var pi=0;
+var now=new Date();var start=new Date(now.getFullYear(),0,0);var pi=Math.floor((now-start)/86400000)%practices.length;document.getElementById('practiceText').textContent=practices[pi];
 function nextPractice(){pi=(pi+1)%practices.length;document.getElementById('practiceText').textContent=practices[pi];}
 </script>
 </body>
