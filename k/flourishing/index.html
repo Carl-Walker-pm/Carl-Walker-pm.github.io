@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flourishing — small practices for growing toward the light</title>
+<meta name="description" content="Flourishing is a gentle wellbeing project: five simple roots of a good life and small daily practices to grow them. The sibling of the Depression Friendly Portal — that one is for hard days; this one is for growing days.">
+<style>
+  :root{--bg:#0e120d;--card:#161c15;--line:#28331f;--ink:#f0f3e8;--dim:#a9b39a;--acc:#a8d97c;--gold:#e8c96a;--rose:#e8a0a0}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  header{padding:64px 0 22px;text-align:center}
+  .kicker{font-family:Verdana,sans-serif;font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--acc)}
+  h1{font-size:46px;line-height:1.15;font-weight:normal;margin:16px 0 12px}
+  h1 em{color:var(--acc);font-style:italic}
+  .sub{font-size:18.5px;color:var(--dim);max-width:600px;margin:0 auto}
+  section{margin:44px 0}
+  h2{font-size:28px;font-weight:normal;margin-bottom:10px}
+  h2 .n{color:var(--gold);font-style:italic;margin-right:10px}
+  .lead{color:var(--dim);font-size:16.5px;margin-bottom:18px;max-width:660px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}h1{font-size:32px}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .card h3{font-size:19px;font-weight:normal;margin-bottom:6px}
+  .card p{font-size:15.5px;color:var(--dim)}
+  .tag{font-family:Verdana,sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--acc);display:block;margin-bottom:8px}
+  .practice{background:linear-gradient(135deg,#1a2617,#12160f);border:1px solid var(--acc);border-radius:16px;padding:28px;text-align:center}
+  .practice .txt{font-size:24px;font-style:italic;min-height:72px;display:flex;align-items:center;justify-content:center}
+  .practice button{font-family:Verdana,sans-serif;margin-top:14px;background:var(--acc);color:#101408;border:none;border-radius:999px;padding:12px 26px;font-size:15px;cursor:pointer}
+  .honest{border-left:3px solid var(--gold);padding:6px 0 6px 20px;color:var(--dim);font-size:17px}
+  .honest strong{color:var(--ink)}
+  .days{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .day b{display:block;color:var(--gold);font-weight:normal;margin-bottom:4px}
+  .day span{font-size:14.5px;color:var(--dim)}
+  .hard{background:#1c1512;border:1px solid #4a3428;border-radius:14px;padding:24px}
+  .hard h2{color:var(--rose)}
+  .hard p{color:var(--dim);font-size:16px}
+  footer{border-top:1px solid var(--line);margin-top:52px;padding:24px 0 42px;color:#77816c;font-size:14px;text-align:center}
+  a{color:var(--acc)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Flourishing · A Wellbeing Project</div>
+  <h1>Growing toward <em>the light</em>,<br>one small practice at a time.</h1>
+  <p class="sub">Flourishing is not a mood and not a performance. It's what happens when the roots of a life are fed — a little, regularly, on ordinary days.</p>
+</header>
+
+<section>
+  <div class="practice">
+    <span class="tag">Today's small practice</span>
+    <div class="txt" id="practiceText">Name one good thing from today — out loud, or in writing. Small counts.</div>
+    <button onclick="nextPractice()">Give me another</button>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">01</span>The five roots</h2>
+  <p class="lead">Wellbeing research keeps finding the same five roots. You don't need all five thriving at once — you feed whichever one is driest.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">Root one</span><h3>Moments that feel good</h3><p>Not constant happiness — noticed moments. Sun on your face, a song, good tea. The practice is noticing before the moment passes.</p></div>
+    <div class="card"><span class="tag">Root two</span><h3>Doing what absorbs you</h3><p>The feeling of being fully inside something — drawing, coding, running, fixing. Time disappears. That's not wasted time; that's a root drinking.</p></div>
+    <div class="card"><span class="tag">Root three</span><h3>People</h3><p>One honest conversation feeds more than a hundred likes. Flourishing is almost never a solo project — reach toward one person, gently.</p></div>
+    <div class="card"><span class="tag">Root four</span><h3>Something that matters</h3><p>A reason bigger than the day: someone you help, something you're building, a promise you keep. Meaning is the deepest root.</p></div>
+    <div class="card"><span class="tag">Root five</span><h3>Finishing small things</h3><p>Done is a feeling too. A made bed, a sent message, a finished page. Small completions, honestly counted, grow confidence like rings on a tree.</p></div>
+    <div class="card"><span class="tag">The soil</span><h3>Sleep, food, movement, light</h3><p>Unfashionable and non-negotiable. Roots grow in soil, not in slogans — the basics feed everything above them.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">02</span>Honest words</h2>
+  <div class="honest">
+    <p><strong>Flourishing is not being happy all the time.</strong> Gardens have winters. A flourishing life includes grief, boredom, anger, and rest — the goal was never to feel good constantly; it's to be rooted when the weather turns, and growing when it clears. Anyone who sells you permanent sunshine is selling you a plastic plant.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="n">03</span>A gentle first week</h2>
+  <p class="lead">Seven days, one tiny practice a day. Skip a day without guilt — pick it up where you left it. Plants don't keep score, and neither should you.</p>
+  <div class="days">
+    <div class="day"><b>Day 1</b><span>Notice one good moment and write it down in one sentence.</span></div>
+    <div class="day"><b>Day 2</b><span>Spend 15 minutes inside something that absorbs you.</span></div>
+    <div class="day"><b>Day 3</b><span>Send one warm message to one person. No occasion needed.</span></div>
+    <div class="day"><b>Day 4</b><span>Move your body outside for 10 minutes. Count the sky as a bonus.</span></div>
+    <div class="day"><b>Day 5</b><span>Finish one small thing completely. Feel the "done."</span></div>
+    <div class="day"><b>Day 6</b><span>Do one small kind thing that nobody will ever know about.</span></div>
+    <div class="day"><b>Day 7</b><span>Rest on purpose. Rest is a practice, not a reward.</span></div>
+  </div>
+</section>
+
+<section class="hard">
+  <h2>Having a hard day instead?</h2>
+  <p>That's the other half of this project family. Our sibling, the <a href="https://carl-walker-pm.github.io/k/depression-friendly/">Depression Friendly Portal</a>, is built for the days when growing feels impossible — start there, it's gentler for heavy weather. And if things feel unsafe right now, please reach out immediately: in the US, call or text <strong>988</strong>; anywhere in the world, <a href="https://findahelpline.org">findahelpline.org</a> lists free, confidential helplines.</p>
+</section>
+
+<footer>
+  Flourishing — a wellbeing project, sibling of the <a href="https://carl-walker-pm.github.io/k/depression-friendly/">Depression Friendly Portal</a>.<br>
+  Not a medical service and not a substitute for professional care — a garden of small practices, offered freely.
+</footer>
+
+</div>
+<script>
+var practices=[
+"Name one good thing from today — out loud, or in writing. Small counts.",
+"Drink a glass of water slowly, like it matters. It does.",
+"Stand in daylight for two minutes. Let your eyes have the sky.",
+"Text one person one true sentence: 'I was thinking of you.'",
+"Stretch for sixty seconds. Shoulders down, jaw loose, breathe out long.",
+"Finish the smallest unfinished thing you can see from where you sit.",
+"Put one song on and do nothing else while it plays.",
+"Write tomorrow's tiniest step on paper tonight. One step only.",
+"Eat one thing slowly enough to actually taste it.",
+"Thank someone for something specific they did — name the thing.",
+"Clear one small surface: a desk corner, a shelf, a bag. Order is calming.",
+"Say one honest kind thing to yourself, in the second person: 'You did fine today.'"
+];
+var pi=0;
+function nextPractice(){pi=(pi+1)%practices.length;document.getElementById('practiceText').textContent=practices[pi];}
+</script>
+</body>
+</html>
