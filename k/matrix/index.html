@@ -20,15 +20,15 @@
   table.matrix{border-collapse:separate;border-spacing:8px;margin:10px auto}
   table.matrix th{font-family:Verdana,sans-serif;font-size:13px;color:#ffd98a;font-weight:normal;padding:4px;white-space:nowrap}
   table.matrix th.rowh{text-align:right;color:#b7a9d6}
-  td.cell{width:250px;height:141px;border-radius:10px;overflow:hidden;padding:0}
-  td.cell a{display:block;width:250px;height:141px;text-decoration:none;position:relative;border-radius:10px}
+  td.cell{width:200px;height:356px;border-radius:10px;overflow:hidden;padding:0}
+  td.cell a{display:block;width:200px;height:356px;text-decoration:none;position:relative;border-radius:10px}
   td.cell a.created::after{ content:'✦'; position:absolute; top:4px; right:8px; color:#ffd98a;
           font-size:16px; text-shadow:0 1px 3px #000; }
   td.cell a.created{ box-shadow:inset 0 0 0 2px #ffd98a; }
   .names{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:560px;margin:6px auto 0}
   .names div{background:#1a1626;border:1px solid #352b52;border-radius:10px;padding:10px 14px;font-size:14.5px}
   .names b{color:#ffd98a}
-  @media(max-width:600px){ td.cell{width:42vw;height:23.6vw} td.cell a{width:42vw;height:23.6vw} .names{grid-template-columns:1fr} }
+  @media(max-width:600px){ td.cell{width:44vw;height:78.2vw} td.cell a{width:44vw;height:78.2vw} .names{grid-template-columns:1fr} }
   .foot{margin-top:40px;color:#8f83b5;font-size:14px;border-top:1px solid #352b52;padding-top:16px}
   a{color:#c9a7ff}
   .note{background:#1a1626;border:1px solid #574a80;border-radius:12px;padding:14px 16px;max-width:680px}
@@ -260,6 +260,33 @@ function mxFirstScreens(game){
 }
 function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
 
+/* The game's poster — vertical 9:16, unique per cell, generated from its
+   coordinates: family palette, motif, the game's name and code. */
+function posterSVG(x, y){
+  var yg = Math.floor(y/6), xg = Math.floor(x/6);
+  var hueY = [210, 160, 95, 265, 28, 318][yg] + (y%6)*7;
+  var hueX = [200, 150, 80, 255, 20, 300][xg] + (x%6)*6;
+  var h = ((x+3)*40503) ^ ((y+5)*889523);
+  function rnd(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }
+  var stars = '', i;
+  for(i=0;i<14;i++){ stars += '<circle cx="'+Math.floor(8+rnd()*164)+'" cy="'+Math.floor(8+rnd()*130)+'" r="'+(0.8+rnd()*1.4).toFixed(1)+'" fill="#ffe9b0" opacity="'+(0.35+rnd()*0.5).toFixed(2)+'"/>'; }
+  var sunX = 30+Math.floor(rnd()*120), sunR = 13+Math.floor(rnd()*10);
+  function fit(s){ return s.length > 19 ? 12.5 : (s.length > 14 ? 14.5 : 16.5); }
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 320" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">' +
+    '<defs><linearGradient id="pg'+x+'-'+y+'" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0" stop-color="hsl('+hueY+',58%,30%)"/><stop offset="0.62" stop-color="hsl('+hueX+',58%,20%)"/><stop offset="1" stop-color="hsl('+hueX+',62%,12%)"/></linearGradient></defs>' +
+    '<rect width="180" height="320" fill="url(#pg'+x+'-'+y+')"/>' + stars +
+    '<circle cx="'+sunX+'" cy="'+(58+Math.floor(rnd()*26))+'" r="'+sunR+'" fill="hsl('+hueX+',85%,70%)" opacity="0.85"/>' +
+    '<circle cx="26" cy="252" r="66" fill="hsl('+hueY+',50%,18%)"/>' +
+    '<circle cx="158" cy="266" r="78" fill="hsl('+hueX+',52%,14%)"/>' +
+    '<circle cx="90" cy="292" r="70" fill="hsl('+hueY+',48%,10%)"/>' +
+    '<text x="90" y="34" font-size="11.5" fill="#ffd98a" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="2">'+cellCode(x, y)+'</text>' +
+    '<text x="90" y="152" font-size="62" text-anchor="middle">'+XCAT[x][1]+'</text>' +
+    '<text x="90" y="196" font-size="'+fit(XCAT[x][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+XCAT[x][0]+'</text>' +
+    '<text x="90" y="216" font-size="13" fill="#b7a9d6" text-anchor="middle" font-family="Georgia,serif">×</text>' +
+    '<text x="90" y="238" font-size="'+fit(YCAT[y][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+YCAT[y][0]+'</text>' +
+    '<text x="90" y="308" font-size="9.5" fill="#9a8bc0" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="3">ZENSWIPE GAMES</text></svg>';
+}
 (function(){
   var CELLS = [ [0,0],[24,0],[0,16],[24,16] ]; // X01 x Y01, X25 x Y01, X01 x Y17, X25 x Y17
   var COLS = [0, 24], ROWS = [0, 16];
@@ -270,7 +297,7 @@ function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
   ROWS.forEach(function(y){
     html += '<tr><th class="rowh">Y'+String(y+1).padStart(2,'0')+'<br>'+YCAT[y][0]+'</th>';
     COLS.forEach(function(x){
-      html += '<td class="cell"><a data-x="'+x+'" data-y="'+y+'" href="play.html?g=x'+(x+1)+'y'+(y+1)+'" title="'+cellCode(x,y)+' — '+cellTitle(x,y)+'">'+tileSVG(x,y,250)+'</a></td>';
+      html += '<td class="cell"><a data-x="'+x+'" data-y="'+y+'" href="play.html?g=x'+(x+1)+'y'+(y+1)+'" title="'+cellCode(x,y)+' — '+cellTitle(x,y)+'">'+posterSVG(x,y)+'</a></td>';
     });
     html += '</tr>';
   });
@@ -282,7 +309,7 @@ function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
      from the name and the frame — then saved, so it is created once. */
   function hashSeed(a, b){ var h = (a*73856093) ^ (b*19349663) ^ 0x36; return function(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }; }
   function gameId(x, y){ return 'x'+(x+1)+'y'+(y+1); }
-  function registry(){ try { return JSON.parse(localStorage.getItem('mx36_registry') || '{}'); } catch(e){ return {}; } }
+  function registry(){ try { return JSON.parse(localStorage.getItem('mx36_v2_registry') || '{}'); } catch(e){ return {}; } }
   function createGame(x, y){
     var id = gameId(x, y), reg = registry();
     if(reg[id]) return reg[id];
@@ -294,9 +321,9 @@ function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
       created: new Date().toISOString() };
     mxFirstScreens(game);
     try {
-      localStorage.setItem('mx36_game_'+id, JSON.stringify(game));
+      localStorage.setItem('mx36_v2_game_'+id, JSON.stringify(game));
       reg[id] = { x:x, y:y, name: game.name, created: game.created };
-      localStorage.setItem('mx36_registry', JSON.stringify(reg));
+      localStorage.setItem('mx36_v2_registry', JSON.stringify(reg));
     } catch(e){}
     return game;
   }

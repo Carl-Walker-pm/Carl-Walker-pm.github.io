@@ -266,6 +266,34 @@ function mxFirstScreens(game){
   mxExpand(game, game.screens['title']);
 }
 function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
+/* The game's poster — vertical 9:16, unique per cell, generated from its
+   coordinates: family palette, motif, the game's name and code. */
+function posterSVG(x, y){
+  var yg = Math.floor(y/6), xg = Math.floor(x/6);
+  var hueY = [210, 160, 95, 265, 28, 318][yg] + (y%6)*7;
+  var hueX = [200, 150, 80, 255, 20, 300][xg] + (x%6)*6;
+  var h = ((x+3)*40503) ^ ((y+5)*889523);
+  function rnd(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }
+  var stars = '', i;
+  for(i=0;i<14;i++){ stars += '<circle cx="'+Math.floor(8+rnd()*164)+'" cy="'+Math.floor(8+rnd()*130)+'" r="'+(0.8+rnd()*1.4).toFixed(1)+'" fill="#ffe9b0" opacity="'+(0.35+rnd()*0.5).toFixed(2)+'"/>'; }
+  var sunX = 30+Math.floor(rnd()*120), sunR = 13+Math.floor(rnd()*10);
+  function fit(s){ return s.length > 19 ? 12.5 : (s.length > 14 ? 14.5 : 16.5); }
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 320" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">' +
+    '<defs><linearGradient id="pg'+x+'-'+y+'" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0" stop-color="hsl('+hueY+',58%,30%)"/><stop offset="0.62" stop-color="hsl('+hueX+',58%,20%)"/><stop offset="1" stop-color="hsl('+hueX+',62%,12%)"/></linearGradient></defs>' +
+    '<rect width="180" height="320" fill="url(#pg'+x+'-'+y+')"/>' + stars +
+    '<circle cx="'+sunX+'" cy="'+(58+Math.floor(rnd()*26))+'" r="'+sunR+'" fill="hsl('+hueX+',85%,70%)" opacity="0.85"/>' +
+    '<circle cx="26" cy="252" r="66" fill="hsl('+hueY+',50%,18%)"/>' +
+    '<circle cx="158" cy="266" r="78" fill="hsl('+hueX+',52%,14%)"/>' +
+    '<circle cx="90" cy="292" r="70" fill="hsl('+hueY+',48%,10%)"/>' +
+    '<text x="90" y="34" font-size="11.5" fill="#ffd98a" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="2">'+cellCode(x, y)+'</text>' +
+    '<text x="90" y="152" font-size="62" text-anchor="middle">'+XCAT[x][1]+'</text>' +
+    '<text x="90" y="196" font-size="'+fit(XCAT[x][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+XCAT[x][0]+'</text>' +
+    '<text x="90" y="216" font-size="13" fill="#b7a9d6" text-anchor="middle" font-family="Georgia,serif">×</text>' +
+    '<text x="90" y="238" font-size="'+fit(YCAT[y][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+YCAT[y][0]+'</text>' +
+    '<text x="90" y="308" font-size="9.5" fill="#9a8bc0" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="3">ZENSWIPE GAMES</text></svg>';
+}
 (function(){
 'use strict';
 function qparam(n){ var m = new RegExp('[?&]'+n+'=(\\d+)').exec(location.search); return m ? parseInt(m[1],10) : 0; }
@@ -310,37 +338,11 @@ function sceneFor(kind, salt){
 }
 /* Each game's own poster — vertical 9:16, generated from its cell:
    family palette, the X motif, the game's title and code. */
-function posterFor(){
-  var yg = Math.floor(Y/6), xg = Math.floor(X/6);
-  var hueY = [210, 160, 95, 265, 28, 318][yg] + (Y%6)*7;
-  var hueX = [200, 150, 80, 255, 20, 300][xg] + (X%6)*6;
-  var h = ((X+3)*40503) ^ ((Y+5)*889523);
-  function rnd(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }
-  var stars = '', i;
-  for(i=0;i<14;i++){ stars += '<circle cx="'+Math.floor(8+rnd()*164)+'" cy="'+Math.floor(8+rnd()*130)+'" r="'+(0.8+rnd()*1.4).toFixed(1)+'" fill="#ffe9b0" opacity="'+(0.35+rnd()*0.5).toFixed(2)+'"/>'; }
-  var sunX = 30+Math.floor(rnd()*120), sunR = 13+Math.floor(rnd()*10);
-  function fit(s){ return s.length > 19 ? 12.5 : (s.length > 14 ? 14.5 : 16.5); }
-  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 320">' +
-    '<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">' +
-    '<stop offset="0" stop-color="hsl('+hueY+',58%,30%)"/><stop offset="0.62" stop-color="hsl('+hueX+',58%,20%)"/><stop offset="1" stop-color="hsl('+hueX+',62%,12%)"/></linearGradient></defs>' +
-    '<rect width="180" height="320" fill="url(#pg)"/>' + stars +
-    '<circle cx="'+sunX+'" cy="'+(58+Math.floor(rnd()*26))+'" r="'+sunR+'" fill="hsl('+hueX+',85%,70%)" opacity="0.85"/>' +
-    '<circle cx="26" cy="252" r="66" fill="hsl('+hueY+',50%,18%)"/>' +
-    '<circle cx="158" cy="266" r="78" fill="hsl('+hueX+',52%,14%)"/>' +
-    '<circle cx="90" cy="292" r="70" fill="hsl('+hueY+',48%,10%)"/>' +
-    '<text x="90" y="34" font-size="11.5" fill="#ffd98a" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="2">'+cellCode(X, Y)+'</text>' +
-    '<text x="90" y="152" font-size="62" text-anchor="middle">'+XCAT[X][1]+'</text>' +
-    '<text x="90" y="196" font-size="'+fit(XCAT[X][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+XCAT[X][0]+'</text>' +
-    '<text x="90" y="216" font-size="13" fill="#b7a9d6" text-anchor="middle" font-family="Georgia,serif">×</text>' +
-    '<text x="90" y="238" font-size="'+fit(YCAT[Y][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+YCAT[Y][0]+'</text>' +
-    '<text x="90" y="308" font-size="9.5" fill="#9a8bc0" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="3">ZENSWIPE GAMES · 36 × 36</text></svg>';
-  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-}
+function posterFor(){ return 'data:image/svg+xml;utf8,' + encodeURIComponent(posterSVG(X, Y)); }
 var poster = posterFor();
 
 /* ---------- storage: the game is generated ONCE, then saved ---------- */
-var KEY = 'mx36_game_' + GID;
-try { if(!localStorage.getItem(KEY)){ var legacySave = localStorage.getItem('mx36_' + (X+1) + '_' + (Y+1)); if(legacySave) localStorage.setItem(KEY, legacySave); } } catch(e){}
+var KEY = 'mx36_v2_game_' + GID;
 var store = {
   get: function(){ try { var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch(e){ return null; } },
   set: function(o){ try { localStorage.setItem(KEY, JSON.stringify(o)); } catch(e){} }
@@ -366,7 +368,7 @@ if(!G){
     steps: 0, len: 0, insights: 0, met: [], seen: [], started: false, finished: false
   };
   store.set(G);
-  try { var reg = JSON.parse(localStorage.getItem('mx36_registry') || '{}'); if(!reg[GID]){ reg[GID] = { x: X, y: Y, name: G.name, created: G.created }; localStorage.setItem('mx36_registry', JSON.stringify(reg)); } } catch(e){}
+  try { var reg = JSON.parse(localStorage.getItem('mx36_v2_registry') || '{}'); if(!reg[GID]){ reg[GID] = { x: X, y: Y, name: G.name, created: G.created }; localStorage.setItem('mx36_v2_registry', JSON.stringify(reg)); } } catch(e){}
 }
 var rng = hashSeed(X+11, Y+13);
 function pick(a){ return a[Math.floor(rng()*a.length)]; }
