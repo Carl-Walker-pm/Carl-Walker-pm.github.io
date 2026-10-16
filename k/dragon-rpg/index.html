@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dragon Trail — a story that generates itself</title>
+<title>Dragon Trail — journeys of 10, 30, 50 steps… and far beyond</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C2W27FWRBQ');</script>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yy98c80d84");</script>
@@ -20,6 +20,7 @@
           padding:16px 10px 8px; background:linear-gradient(transparent, rgba(10,8,18,.82));
           font-family:Verdana,sans-serif; font-size:11.5px; }
   .chip{ background:rgba(20,16,34,.85); border:1px solid #4a3d6e; border-radius:20px; padding:3px 10px; }
+  .chip b{ color:#ffd98a; }
   #titleChip{ position:absolute; top:8px; left:10px; font-family:Verdana,sans-serif; font-size:11px;
           letter-spacing:2px; background:rgba(20,16,34,.8); border:1px solid #4a3d6e;
           border-radius:20px; padding:4px 12px; }
@@ -30,14 +31,15 @@
   #desc b{ color:#ffd98a; font-weight:bold; }
   /* BLOCK 3 — the choices */
   #choices{ flex:0 0 auto; padding:10px 12px calc(12px + env(safe-area-inset-bottom));
-            display:flex; flex-direction:column; gap:9px; max-height:38dvh; overflow-y:auto;
+            display:flex; flex-direction:column; gap:9px; max-height:40dvh; overflow-y:auto;
             background:#17131f; border-top:1px solid #352b52; }
   .choice{ font-family:Verdana,sans-serif; font-size:16.5px; text-align:left; cursor:pointer;
            background:#2a2145; color:#f2ead9; border:1px solid #574a80; border-radius:12px;
-           padding:14px 16px; min-height:54px; }
+           padding:14px 16px; min-height:54px; width:100%; }
   .choice:active{ background:#3a2d5e; }
   .choice .hint{ display:block; font-size:12.5px; color:#b7a9d6; margin-top:3px; }
   .choice.primary{ background:#4a2d6e; border-color:#8a6ad6; }
+  .choice.disabled{ opacity:.45; background:#211a38; cursor:default; }
 </style>
 </head>
 <body>
@@ -95,6 +97,7 @@ function awardXP(d, amount, notes){
 
 /* ---------- state ---------- */
 var team = [], active = 0, enemy = null, crystals = 3, steps = 0;
+var journeyLen = 0, friendsMade = 0, victories = 0, met = 0;
 var sceneImg = document.getElementById('sceneImg'),
     descEl = document.getElementById('desc'),
     choicesEl = document.getElementById('choices'),
@@ -106,9 +109,9 @@ function chips(){
   chipsEl.innerHTML =
     '<span class="chip">'+GLYPH[a.el]+' <b>'+a.name+'</b> · Lv '+a.level+'</span>'+
     '<span class="chip">HP '+Math.max(0,a.hp)+'/'+a.maxhp+'</span>'+
-    '<span class="chip">◆ crystals '+crystals+'</span>'+
-    '<span class="chip">👣 '+steps+'</span>'+
-    '<span class="chip">🧑‍🤝‍🧑 team '+team.length+'</span>';
+    '<span class="chip">◆ '+crystals+'</span>'+
+    '<span class="chip">👣 step '+Math.min(steps+1, journeyLen)+' of '+journeyLen+'</span>'+
+    '<span class="chip">team '+team.length+'</span>';
 }
 /* THE SCREEN: picture + description + choices */
 function show(img, html, choices){
@@ -116,6 +119,12 @@ function show(img, html, choices){
   descEl.innerHTML = html; descEl.scrollTop = 0;
   choicesEl.innerHTML = '';
   choices.forEach(function(c, i){
+    if(c.disabled){
+      var dv = document.createElement('div');
+      dv.className = 'choice disabled';
+      dv.innerHTML = c.label + (c.hint ? '<span class="hint">'+c.hint+'</span>' : '');
+      choicesEl.appendChild(dv); return;
+    }
     var b = document.createElement('button');
     b.className = 'choice'+(i===0?' primary':'');
     b.innerHTML = c.label + (c.hint ? '<span class="hint">'+c.hint+'</span>' : '');
@@ -125,10 +134,55 @@ function show(img, html, choices){
   chips();
 }
 
+/* ---------- journeys: free 10 / 30 / 50 — paid 100 / 1,000 / 1,000,000 ---------- */
+function titleScreen(){
+  team = []; enemy = null;
+  show('img/scene-camp.jpg',
+    '<p><b>Dragon Trail.</b></p>'+
+    '<p>Every screen is a situation: a picture, its story, and your choice of what to do. '+
+    'Your choice opens the next screen — and so, screen by screen, the story unfolds. No script. No two journeys alike.</p>'+
+    '<p>Choose the length of your journey:</p>',
+    [ { label:'🐾 Mini journey — 10 steps', hint:'Free · a short walk with dragons', act:function(){ startJourney(10); } },
+      { label:'🌿 A journey — 30 steps', hint:'Free · a real trail', act:function(){ startJourney(30); } },
+      { label:'🏔️ A long journey — 50 steps', hint:'Free · the full walk', act:function(){ startJourney(50); } },
+      { label:'💠 A grand journey — 100 screens', hint:'Paid · coming soon', disabled:true },
+      { label:'💠 An epic journey — 1,000 screens', hint:'Paid · coming soon', disabled:true },
+      { label:'💠 The Million-Step Trail — 1,000,000 screens', hint:'Paid · a lifetime on the trail · coming soon', disabled:true } ]);
+}
+function startJourney(len){
+  journeyLen = len; steps = 0; friendsMade = 0; victories = 0; met = 0;
+  crystals = 3; team = []; active = 0; enemy = null;
+  var starter = genDragon(1);
+  team.push(starter);
+  show('img/trail.jpg',
+    '<p>The trail begins where the road gives up.</p>'+
+    '<p>It crosses the ashen fields, the warm stones, the low green valleys — and everything on it happens as you walk.</p>'+
+    '<p>Beside you stands <b>'+starter.name+'</b>, a young '+starter.el+' dragon, watching the horizon like it owes her an answer.</p>'+
+    '<p class="dim">Wild dragons can be fought — or offered a ◆ bond crystal when they weaken. What beats what: '+
+    'Fire 🡒 Leaf 🡒 Stone 🡒 Storm 🡒 Water 🡒 Fire, and Frost 🡒 Storm.</p>'+
+    '<p class="dim">Your journey: '+len+' steps.</p>',
+    [ { label:'Step onto the trail', act: trailScreen } ]);
+}
+function finaleScreen(){
+  var best = team.reduce(function(m,d){ return d.level>m.level?d:m; }, team[0]);
+  show('img/scene-camp.jpg',
+    '<p><b>The journey is complete.</b></p>'+
+    '<p>Evening, and the last camp of this trail. The fire is small and exactly enough. '+
+    'Behind you: '+journeyLen+' steps of a story that had never been told before — and will never be told the same way again.</p>'+
+    '<p>🐉 Dragons met on the trail: '+met+'<br>'+
+    '💚 Dragons who chose to walk with you: '+friendsMade+'<br>'+
+    '⚔️ Wild dragons bested: '+victories+'<br>'+
+    '🌟 Your strongest companion: '+best.name+', level '+best.level+'<br>'+
+    '🧑‍🤝‍🧑 Companions at the fire tonight: '+team.length+'</p>',
+    [ { label:'🚶 Begin a new journey', act: titleScreen },
+      { label:'🔁 Walk '+journeyLen+' steps again', hint:'A new story, the same length', act:function(){ startJourney(journeyLen); } } ]);
+}
+
 /* ---------- the trail: situations generated on the move ---------- */
 var PLACES = ['ashen fields','a valley of warm stones','a ridge above the clouds','a quiet pine wood',
   'the bank of a slow river','a meadow of grey grass','an old road of flat stones','a hillside of heather'];
 function trailScreen(){
+  if(steps >= journeyLen){ finaleScreen(); return; }
   if(team.every(function(d){ return d.hp<=0; })){ campScreen('Every dragon is spent. You carry them, slowly, to a safe place to rest.'); return; }
   steps++;
   var roll = Math.random();
@@ -143,6 +197,7 @@ function walkOn(label){
   return { label: label||'Walk on', act: trailScreen };
 }
 function encounterScreen(){
+  met++;
   var lvl = Math.max(1, ally().level + rnd(3) - 1);
   enemy = genDragon(lvl);
   var intro = pick([
@@ -189,7 +244,7 @@ function eggScreen(){
     choices.push({ label:'Take the egg with you', hint:'It will hatch on the trail', act:function(){
       var lvl = Math.max(1, Math.round(team.reduce(function(s,d){return s+d.level;},0)/team.length));
       var baby = genDragon(lvl);
-      team.push(baby);
+      team.push(baby); friendsMade++;
       afterText(baby.img,'<p>That evening, by the fire, the egg rocks — once, twice — and cracks along a seam of light.</p>'+
         '<p><b>'+baby.name+'</b>, a tiny '+baby.el+' dragon, climbs out and sneezes. She walks with you now.</p>');
     }});
@@ -298,8 +353,8 @@ function dmg(att, def, power){
 }
 function enemyTurn(){
   var a = ally(), blast = Math.random()<0.35, dd;
-  if(blast){ dd = dmg(enemy, a, 1.35); return '<p>'+enemy.name+' answers with a '+enemy.el+' blast — '+a.name+' takes <b>'+dd+'</b>.</p>'; }
-  dd = dmg(enemy, a, 1.0);
+  if(blast){ dd = dmg(enemy, a, 1.35); a.hp -= dd; return '<p>'+enemy.name+' answers with a '+enemy.el+' blast — '+a.name+' takes <b>'+dd+'</b>.</p>'; }
+  dd = dmg(enemy, a, 1.0); a.hp -= dd;
   return '<p>'+enemy.name+' strikes — '+a.name+' takes <b>'+dd+'</b>.</p>';
 }
 function round(kind){
@@ -314,7 +369,7 @@ function round(kind){
     var missing = 1 - enemy.hp/enemy.maxhp;
     var chance = 0.25 + missing*0.65 + (enemy.spd < a.spd ? 0.05 : 0);
     if(Math.random() < chance){
-      var joined = enemy; enemy = null; team.push(joined);
+      var joined = enemy; enemy = null; team.push(joined); friendsMade++;
       afterText(joined.img,'<p>You hold out the crystal. It drinks the light between you — and '+joined.name+' steps forward, slowly, and touches her forehead to it.</p><p><b>'+joined.name+'</b> walks with you now.</p><p class="dim">Team: '+team.length+' dragons</p>');
       return;
     }
@@ -338,15 +393,14 @@ function round(kind){
 function afterRound(t){
   var a = ally();
   if(a.hp <= 0){
-    var aliveIdx = team.findIndex(function(d){ return d.hp>0; });
-    if(aliveIdx >= 0){
+    var aliveTeam = team.map(function(d,i){ return {d:d,i:i}; }).filter(function(x){ return x.d.hp>0; });
+    if(aliveTeam.length){
       show(enemy.img, t+'<p><b>'+a.name+' is down.</b> Another companion must step in.</p>',
-        team.map(function(d,i){ return { label: GLYPH[d.el]+' Send '+d.name, hint:'Lv '+d.level+' · HP '+Math.max(0,d.hp)+'/'+d.maxhp,
-          act:function(){ if(d.hp<=0) return; active=i; battleScreen('<p>'+d.name+' steps over the line, eyes locked on '+enemy.name+'.</p>'); } }; })
-          .filter(function(c,i){ return team[i].hp>0; }));
+        aliveTeam.map(function(x){ return { label: GLYPH[x.d.el]+' Send '+x.d.name, hint:'Lv '+x.d.level+' · HP '+Math.max(0,x.d.hp)+'/'+x.d.maxhp,
+          act:function(){ active=x.i; battleScreen('<p>'+x.d.name+' steps over the line, eyes locked on '+enemy.name+'.</p>'); } }; }));
     } else {
       enemy = null;
-      campScreen(t.replace(/<p>/,'<p>') + '<p><b>Everyone is down.</b> The wild dragon watches you gather your companions — and, mercifully, turns away.</p>');
+      campScreen(t + '<p><b>Everyone is down.</b> The wild dragon watches you gather your companions — and, mercifully, turns away.</p>');
     }
     return;
   }
@@ -354,7 +408,7 @@ function afterRound(t){
 }
 function victoryScreen(t){
   var a = ally(), notes = [], xp = 14 + enemy.level*6, foe = enemy;
-  awardXP(a, xp, notes); enemy = null;
+  awardXP(a, xp, notes); enemy = null; victories++;
   var html = t + '<p>'+foe.name+' bows her head — beaten, and somehow pleased about it — and slips away into the wild.</p>'+
     '<p class="dim">+'+xp+' XP for '+a.name+'</p>';
   if(notes.length) html += '<p><b>🎉 '+notes.join(' ')+'</b></p>';
@@ -362,16 +416,7 @@ function victoryScreen(t){
 }
 
 /* ---------- the first screen ---------- */
-var starter = genDragon(1);
-team.push(starter);
-show('img/trail.jpg',
-  '<p>The trail begins where the road gives up.</p>'+
-  '<p>It crosses the ashen fields, the warm stones, the low green valleys — and everything on it happens as you walk. '+
-  'No two journeys down it are the same twice.</p>'+
-  '<p>Beside you stands <b>'+starter.name+'</b>, a young '+starter.el+' dragon, watching the horizon like it owes her an answer.</p>'+
-  '<p class="dim">Wild dragons can be fought — or offered a ◆ bond crystal when they weaken. What beats what: '+
-  'Fire 🡒 Leaf 🡒 Stone 🡒 Storm 🡒 Water 🡒 Fire, and Frost 🡒 Storm.</p>',
-  [ { label:'Step onto the trail', act: trailScreen } ]);
+titleScreen();
 })();
 </script>
 </body>
