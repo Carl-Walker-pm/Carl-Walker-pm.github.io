@@ -117,7 +117,10 @@ function tileSVG(x, y, w){
 (function(){
 'use strict';
 function qparam(n){ var m = new RegExp('[?&]'+n+'=(\\d+)').exec(location.search); return m ? parseInt(m[1],10) : 0; }
-var X = qparam('x')-1, Y = qparam('y')-1;
+var gm = /[?&]g=x(\d+)y(\d+)/.exec(location.search);
+var X = gm ? parseInt(gm[1],10)-1 : qparam('x')-1;
+var Y = gm ? parseInt(gm[2],10)-1 : qparam('y')-1;
+var GID = 'x'+(X+1)+'y'+(Y+1);
 var sceneImg = document.getElementById('sceneImg'),
     descEl = document.getElementById('desc'),
     choicesEl = document.getElementById('choices'),
@@ -186,7 +189,8 @@ function posterFor(){
 var poster = posterFor();
 
 /* ---------- storage: the game is generated ONCE, then saved ---------- */
-var KEY = 'mx36_' + (X+1) + '_' + (Y+1);
+var KEY = 'mx36_game_' + GID;
+try { if(!localStorage.getItem(KEY)){ var legacySave = localStorage.getItem('mx36_' + (X+1) + '_' + (Y+1)); if(legacySave) localStorage.setItem(KEY, legacySave); } } catch(e){}
 var store = {
   get: function(){ try { var s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch(e){ return null; } },
   set: function(o){ try { localStorage.setItem(KEY, JSON.stringify(o)); } catch(e){} }
@@ -204,13 +208,15 @@ if(!G){
   var R = hashSeed(X+3, Y+7);
   function pk(a){ return a[Math.floor(R()*a.length)]; }
   G = {
-    v: 1, x: X, y: Y,
+    v: 1, x: X, y: Y, id: GID, name: cellTitle(X, Y), code: cellCode(X, Y), frame: 'three-block',
+    created: new Date().toISOString(),
     hero: pk(FIRST)+pk(MID)+pk(LAST),
     place: pk(PL1)+' '+pk(PL2),
     seedNote: Math.floor(R()*900000+100000),
     steps: 0, len: 0, insights: 0, met: [], seen: [], started: false, finished: false
   };
   store.set(G);
+  try { var reg = JSON.parse(localStorage.getItem('mx36_registry') || '{}'); if(!reg[GID]){ reg[GID] = { x: X, y: Y, name: G.name, created: G.created }; localStorage.setItem('mx36_registry', JSON.stringify(reg)); } } catch(e){}
 }
 var rng = hashSeed(X+11, Y+13);
 function pick(a){ return a[Math.floor(rng()*a.length)]; }

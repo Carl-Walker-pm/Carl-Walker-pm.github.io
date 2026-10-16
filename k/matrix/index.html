@@ -27,7 +27,10 @@
   table.matrix th.colh{position:sticky;top:0;z-index:2;background:#17131f}
   table.matrix th.rowh{position:sticky;left:0;z-index:2;background:#17131f;text-align:right;padding-right:5px}
   td.cell{width:118px;min-width:118px;height:66px;border-radius:7px;overflow:hidden;padding:0;content-visibility:auto}
-  td.cell a{display:block;width:118px;height:66px;text-decoration:none}
+  td.cell a{display:block;width:118px;height:66px;text-decoration:none;position:relative}
+  td.cell a.created::after{ content:'✦'; position:absolute; top:2px; right:5px; color:#ffd98a;
+          font-size:13px; text-shadow:0 1px 3px #000; }
+  td.cell a.created{ box-shadow:inset 0 0 0 2px #ffd98a; border-radius:7px; }
   td.cell svg{display:block}
   table.cat{border-collapse:collapse;width:100%;font-size:14.5px;margin-bottom:8px}
   table.cat td, table.cat th{border-bottom:1px solid #2c2447;padding:5px 8px;text-align:left;vertical-align:top}
@@ -40,7 +43,7 @@
 <body>
 <div class="wrap">
   <h1>The 36 × 36 <span class="dim">— a map of every game that could exist</span></h1>
-  <p class="tag">If the game industry were born today, genre would not be a camera or a setting. It would be two questions: <b>what does the player do</b> (axis X), and <b>what kind of system answers</b> (axis Y). 36 × 36 = <b>1,296 cells</b> — 1,296 directions a game can take. Every tile below is a generated 16:9 cover, and every tile is a door: tap it, and the engine generates that game — first screen first, saved, never generated twice.</p>
+  <p class="tag">If the game industry were born today, genre would not be a camera or a setting. It would be two questions: <b>what does the player do</b> (axis X), and <b>what kind of system answers</b> (axis Y). 36 × 36 = <b>1,296 cells</b>. But nothing below is a game yet — each cell is only a <b>name</b> and a <b>frame</b> (~Frame: the three-block interface every game here is born into). <b>Tap a cell, and the tap itself creates the game</b> — at that moment, from that name and that frame. The game is saved as it is created (marked ✦), so it is created exactly once; after that, tapping simply opens it.</p>
 
   <div class="legend">
     <div class="lbox"><b>Axis X — what the player does</b><br>
@@ -124,11 +127,53 @@ function tileSVG(x, y, w){
   for(var y=0;y<36;y++){
     html += '<tr><th class="rowh">Y'+String(y+1).padStart(2,'0')+'</th>';
     for(var x2=0;x2<36;x2++){
-      html += '<td class="cell"><a href="play.html?x='+(x2+1)+'&y='+(y+1)+'" title="'+cellCode(x2,y)+' — '+cellTitle(x2,y)+'">'+tileSVG(x2,y,120)+'</a></td>';
+      html += '<td class="cell"><a data-x="'+x2+'" data-y="'+y+'" href="play.html?g=x'+(x2+1)+'y'+(y+1)+'" title="'+cellCode(x2,y)+' — '+cellTitle(x2,y)+'">'+tileSVG(x2,y,120)+'</a></td>';
     }
     html += '</tr>';
   }
   tbl.innerHTML = html;
+
+  /* ---------- THE CREATOR ----------
+     A cell is only a name and a ~Frame. The game does not exist until a tap:
+     the click is intercepted, and the game is created at that moment —
+     from the name and the frame — then saved, so it is created once. */
+  function hashSeed(a, b){ var h = (a*73856093) ^ (b*19349663) ^ 0x36; return function(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }; }
+  var FIRST = ['Ka','Vor','Sy','Mi','An','Tor','Ze','Bel','Ond','Ru','Fen','Gal','Il','Ash','Nor','Ek'];
+  var MID = ['ber','la','mir','fen','ra','sil','to','van','ori','um','ek','dor'];
+  var LAST = ['is','ax','une','or','ia','eth','on','ara','ix','um'];
+  var PL1 = ['the Gate of','the Field of','the House of','the Shore of','the Tower of','the Garden of','the Bridge of','the Well of'];
+  var PL2 = ['First Light','Quiet Signals','Long Practice','the Turning','Small Hours','the Answer','Beginnings','the Deep Work'];
+  function gameId(x, y){ return 'x'+(x+1)+'y'+(y+1); }
+  function registry(){ try { return JSON.parse(localStorage.getItem('mx36_registry') || '{}'); } catch(e){ return {}; } }
+  function createGame(x, y){
+    var id = gameId(x, y), reg = registry();
+    if(reg[id]) return reg[id];
+    var R = hashSeed(x+3, y+7);
+    function pk(a){ return a[Math.floor(R()*a.length)]; }
+    var game = { v:1, x:x, y:y, id:id, name: cellTitle(x, y), code: cellCode(x, y), frame: 'three-block',
+      hero: pk(FIRST)+pk(MID)+pk(LAST), place: pk(PL1)+' '+pk(PL2),
+      seedNote: Math.floor(R()*900000+100000),
+      steps: 0, len: 0, insights: 0, met: [], seen: [], started: false, finished: false,
+      created: new Date().toISOString() };
+    try {
+      localStorage.setItem('mx36_game_'+id, JSON.stringify(game));
+      reg[id] = { x:x, y:y, name: game.name, created: game.created };
+      localStorage.setItem('mx36_registry', JSON.stringify(reg));
+    } catch(e){}
+    return game;
+  }
+  var reg0 = registry();
+  tbl.querySelectorAll('a[data-x]').forEach(function(a){
+    if(reg0[gameId(+a.dataset.x, +a.dataset.y)]) a.classList.add('created');
+  });
+  tbl.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[data-x]') : null;
+    if(!a) return;
+    e.preventDefault();
+    var x = +a.dataset.x, y = +a.dataset.y;
+    createGame(x, y);
+    location.href = 'play.html?g=' + gameId(x, y);
+  });
   function cat(el, arr, code){
     var h = '<tr><th>Code</th><th>Category</th><th></th></tr>';
     arr.forEach(function(r,i){ h += '<tr><td>'+code+String(i+1).padStart(2,'0')+'</td><td>'+r[0]+'</td><td>'+(code==='X'?r[1]:r[1])+'</td></tr>'; });
