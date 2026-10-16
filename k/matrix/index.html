@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 36 × 36 — a map of every game that could exist</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C2W27FWRBQ');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yy98c80d84");</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#12101a;color:#f2ead9;font-family:Georgia,'Times New Roman',serif;line-height:1.6}
+  .wrap{max-width:1060px;margin:0 auto;padding:26px 18px 60px}
+  h1{font-size:32px;margin-bottom:6px}
+  h1 .dim{color:#b7a9d6}
+  .tag{color:#b7a9d6;font-size:16.5px;max-width:720px}
+  h2{font-size:21px;margin:34px 0 12px;color:#ffd98a}
+  p{margin-bottom:12px;max-width:760px}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media(max-width:640px){.legend{grid-template-columns:1fr}}
+  .lbox{background:#1a1626;border:1px solid #352b52;border-radius:12px;padding:14px 16px;font-size:14.5px}
+  .lbox b{color:#ffd98a}
+  .gridbox{overflow:auto;max-height:78vh;border:1px solid #352b52;border-radius:12px;background:#17131f}
+  table.matrix{border-collapse:separate;border-spacing:3px;padding:6px}
+  table.matrix th{font-family:Verdana,sans-serif;font-size:10.5px;color:#b7a9d6;font-weight:normal;padding:2px;white-space:nowrap}
+  table.matrix th.corner{position:sticky;left:0;top:0;z-index:3;background:#17131f}
+  table.matrix th.colh{position:sticky;top:0;z-index:2;background:#17131f}
+  table.matrix th.rowh{position:sticky;left:0;z-index:2;background:#17131f;text-align:right;padding-right:5px}
+  td.cell{width:118px;min-width:118px;height:66px;border-radius:7px;overflow:hidden;padding:0;content-visibility:auto}
+  td.cell a{display:block;width:118px;height:66px;text-decoration:none}
+  td.cell svg{display:block}
+  table.cat{border-collapse:collapse;width:100%;font-size:14.5px;margin-bottom:8px}
+  table.cat td, table.cat th{border-bottom:1px solid #2c2447;padding:5px 8px;text-align:left;vertical-align:top}
+  table.cat th{color:#ffd98a;font-family:Verdana,sans-serif;font-size:13px}
+  .foot{margin-top:40px;color:#8f83b5;font-size:14px;border-top:1px solid #352b52;padding-top:16px}
+  a{color:#c9a7ff}
+  .note{background:#1a1626;border:1px solid #574a80;border-radius:12px;padding:14px 16px;max-width:760px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>The 36 × 36 <span class="dim">— a map of every game that could exist</span></h1>
+  <p class="tag">If the game industry were born today, genre would not be a camera or a setting. It would be two questions: <b>what does the player do</b> (axis X), and <b>what kind of system answers</b> (axis Y). 36 × 36 = <b>1,296 cells</b> — 1,296 directions a game can take. Every tile below is a generated 16:9 cover, and every tile is a door: tap it, and the engine generates that game — first screen first, saved, never generated twice.</p>
+
+  <div class="legend">
+    <div class="lbox"><b>Axis X — what the player does</b><br>
+      X01–06 Act &amp; Move · X07–12 Think &amp; Decide · X13–18 Create &amp; Build · X19–24 Run Systems · X25–30 Talk &amp; Influence · X31–36 Explore &amp; Experience</div>
+    <div class="lbox"><b>Axis Y — what the world is</b><br>
+      Y01–06 Space &amp; Physics · Y07–12 Rules &amp; Information · Y13–18 Living Systems · Y19–24 Society &amp; Power · Y25–30 Economy &amp; Production · Y31–36 Mind &amp; Meaning</div>
+  </div>
+
+  <p class="note">Rows are Y (the world), columns are X (the action). Scroll the map both ways. Example: <b>X16 × Y17 — Programming × Artificial Minds</b>: a game about programming and teaching a team of AI agents.</p>
+
+  <h2>The matrix</h2>
+  <div class="gridbox"><table class="matrix" id="matrix"></table></div>
+
+  <h2>Axis X — the 36 ways to play</h2>
+  <table class="cat" id="catX"></table>
+  <h2>Axis Y — the 36 kinds of world</h2>
+  <table class="cat" id="catY"></table>
+
+  <p class="foot">Part of <a href="../zenswipe-games/">ZenSwipe Games</a> — games with no script, generated as you play. Shelf neighbors: <a href="../dragon-rpg/">Dragon Trail</a> · <a href="../little-dragon/">Little Dragon</a>. The taxonomy is Kirill Minin's design (2026).</p>
+</div>
+<script>
+// THE 36 x 36 — Kirill's game taxonomy (2026-10-15). X = what the player does. Y = what the world is.
+var XCAT = [
+ ['Movement','🚶','move, leap and cross'],['Traversal','🧗','find the path through'],['Combat','⚔️','meet force with force'],
+ ['Ranged Action','🏹','act from a distance'],['Driving','🚗','drive and steer'],['Precision','🎯','act with perfect timing'],
+ ['Deduction','🔍','read the clues and deduce'],['Puzzle Solving','🧩','solve what is puzzling'],['Tactics','♟️','choose the tactic'],
+ ['Strategy','🗺️','plan for the long term'],['Optimization','⚙️','find the most efficient way'],['Knowledge','📚','remember and know'],
+ ['Building','🏗️','build what is missing'],['Crafting','🔨','craft what is needed'],['Design','📐','design the form'],
+ ['Programming','💻','program the behavior'],['Gardening','🌱','plant and tend'],['Performance','🎤','perform for others'],
+ ['Command','📣','command the team'],['Logistics','📦','move what matters, where it matters'],['Resource Management','🧮','share out what is scarce'],
+ ['Business','💼','grow the enterprise'],['Exploration Planning','🧭','plan the expedition'],['Risk Management','🛡️','weigh the risk'],
+ ['Conversation','💬','talk and negotiate'],['Relationship','❤️','build the relationship'],['Leadership','👑','lead the group'],
+ ['Deception','🃏','play the hidden game'],['Competition','🏆','compete to win'],['Cooperation','🤝','win together'],
+ ['Discovery','🔭','discover the unknown'],['Survival','🔥','endure and adapt'],['Role Embodiment','🎭','live the role'],
+ ['Story Shaping','📖','shape the story'],['Reflection','🪞','look inward'],['Wonder','✨','wonder and behold']
+];
+var YCAT = [
+ ['Rigid Physics','falling stones and solid ground'],['Fluid & Weather','rivers, rain and turning winds'],['Gravity & Motion','orbits, falls and swinging weights'],
+ ['Spatial Geometry','folded spaces and impossible angles'],['Vehicles & Machines','engines, wheels and patient machines'],['Matter & Chemistry','elements that fizz, melt and transform'],
+ ['Formal Rules','laws written in perfect logic'],['Signals & Networks','messages racing through a web of signals'],['Hidden Information','locked doors and buried secrets'],
+ ['Time & Causality','clocks, echoes and second chances'],['Probability','dice, chances and near-misses'],['Language & Symbols','signs, ciphers and living words'],
+ ['Plants & Ecosystems','forests that think in centuries'],['Animals','creatures with their own agendas'],['Human Bodies','strength, breath and healing'],
+ ['Evolution','generations changing, one small step at a time'],['Artificial Minds','minds made by hands, thinking their own thoughts'],['Alien Life','life that never heard of Earth'],
+ ['Communities','villages, customs and belonging'],['Institutions','offices, laws and procedures'],['Politics & Power','thrones, votes and quiet influence'],
+ ['Culture & Identity','songs, masks and who-we-are'],['Conflict & Security','walls, guards and an uneasy peace'],['Trust & Reputation','promises kept and remembered'],
+ ['Markets & Trade','stalls, prices and fair exchange'],['Production Chains','workshops linked hand to hand'],['Energy Systems','currents, fuels and stored lightning'],
+ ['Infrastructure','roads, bridges and water in the pipes'],['Ecology & Climate','seasons, storms and balance'],['Scarcity & Abundance','empty stores and overflowing tables'],
+ ['Perception','light, sound and the eye that reads them'],['Memory & Identity','what is remembered, and who it makes us'],['Emotion','joy, grief and attachment'],
+ ['Ethics & Justice','hard choices and fair outcomes'],['Meaning & Belief','temples, stories and why-we-live'],['Dreams & Imagination','the country behind closed eyes']
+];
+var XGROUPS = ['Act & Move','Think & Decide','Create & Build','Run Systems','Talk & Influence','Explore & Experience'];
+var YGROUPS = ['Space & Physics','Rules & Information','Living Systems','Society & Power','Economy & Production','Mind & Meaning'];
+function cellTitle(x, y){ return XCAT[x][0] + ' × ' + YCAT[y][0]; }
+function cellCode(x, y){ return 'X' + String(x+1).padStart(2,'0') + ' × Y' + String(y+1).padStart(2,'0'); }
+// Deterministic generative tile: palette from the Y family, motif from X, seed from the coordinates.
+function tileSVG(x, y, w){
+  var yg = Math.floor(y/6), xg = Math.floor(x/6);
+  var hueY = [210, 160, 95, 265, 28, 318][yg] + (y%6)*7;
+  var hueX = [200, 150, 80, 255, 20, 300][xg] + (x%6)*6;
+  var h = (x*73856093) ^ (y*19349663);
+  function rnd(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }
+  var c1x = 40+rnd()*240, c1y = 20+rnd()*80, c1r = 26+rnd()*40;
+  var c2x = 40+rnd()*240, c2y = 60+rnd()*80, c2r = 16+rnd()*30;
+  var fs = w >= 300 ? 44 : 30;
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">' +
+   '<defs><linearGradient id="g'+x+'-'+y+'" x1="0" y1="0" x2="1" y2="1">' +
+   '<stop offset="0" stop-color="hsl('+hueY+',55%,26%)"/><stop offset="1" stop-color="hsl('+hueX+',60%,16%)"/></linearGradient></defs>' +
+   '<rect width="320" height="180" fill="url(#g'+x+'-'+y+')"/>' +
+   '<circle cx="'+c1x+'" cy="'+c1y+'" r="'+c1r+'" fill="hsl('+hueX+',80%,65%)" opacity="0.20"/>' +
+   '<circle cx="'+c2x+'" cy="'+c2y+'" r="'+c2r+'" fill="hsl('+hueY+',85%,70%)" opacity="0.16"/>' +
+   '<text x="160" y="96" font-size="'+fs+'" text-anchor="middle">'+XCAT[x][1]+'</text>' +
+   '<rect y="146" width="320" height="34" fill="rgba(8,6,14,0.72)"/>' +
+   '<text x="160" y="168" font-size="17" fill="#f2ead9" text-anchor="middle" font-family="Verdana,sans-serif" font-weight="bold">'+cellCode(x,y)+'</text></svg>';
+}
+
+(function(){
+  var tbl = document.getElementById('matrix');
+  var html = '<tr><th class="corner">Y \\ X</th>';
+  for(var x=0;x<36;x++) html += '<th class="colh">X'+String(x+1).padStart(2,'0')+'</th>';
+  html += '</tr>';
+  for(var y=0;y<36;y++){
+    html += '<tr><th class="rowh">Y'+String(y+1).padStart(2,'0')+'</th>';
+    for(var x2=0;x2<36;x2++){
+      html += '<td class="cell"><a href="play.html?x='+(x2+1)+'&y='+(y+1)+'" title="'+cellCode(x2,y)+' — '+cellTitle(x2,y)+'">'+tileSVG(x2,y,120)+'</a></td>';
+    }
+    html += '</tr>';
+  }
+  tbl.innerHTML = html;
+  function cat(el, arr, code){
+    var h = '<tr><th>Code</th><th>Category</th><th></th></tr>';
+    arr.forEach(function(r,i){ h += '<tr><td>'+code+String(i+1).padStart(2,'0')+'</td><td>'+r[0]+'</td><td>'+(code==='X'?r[1]:r[1])+'</td></tr>'; });
+    document.getElementById(el).innerHTML = h;
+  }
+  cat('catX', XCAT, 'X');
+  cat('catY', YCAT, 'Y');
+})();
+</script>
+</body>
+</html>
