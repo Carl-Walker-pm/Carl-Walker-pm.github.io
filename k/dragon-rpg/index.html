@@ -19,8 +19,7 @@
   .chip b{color:var(--ink);font-weight:normal}
   .chip.active{border-color:var(--acc);color:var(--ink)}
   #scene{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 8px 6px;flex:0 0 auto}
-  #art{font-family:"Courier New",monospace;font-size:3.6vw;line-height:1.22;white-space:pre;text-align:center;min-height:9.5em}
-  @media(min-width:480px){#art{font-size:16px}}
+  #sceneImg{width:100%;height:37dvh;object-fit:cover;border-radius:8px;display:block;background:#0d0a14}
   .el-Fire{color:#ffb27b}.el-Water{color:#8fd0ff}.el-Storm{color:#e9e37b}.el-Stone{color:#cbb99a}.el-Leaf{color:#9fe8a9}.el-Frost{color:#c8f4ff}
   .bar{font-family:"Courier New",monospace;font-size:11.5px;color:var(--dim);text-align:left;margin-top:4px;white-space:pre-wrap;word-break:break-word}
   .bar b{color:var(--ink);font-weight:normal}
@@ -49,7 +48,7 @@
   <header><h1>🐉 Dragon Trail</h1><span id="place">THE ASHEN FIELDS</span></header>
   <div id="team"></div>
   <div id="scene">
-    <div id="art"></div>
+    <img id="sceneImg" alt="On the Dragon Trail" src="img/trail.jpg">
     <div class="bar" id="enemyBar"></div>
     <div class="bar" id="allyBar"></div>
   </div>
@@ -86,6 +85,7 @@ function genDragon(level){
   var name=pick(NAME_A)+pick(NAME_B);
   var d={
     name:name, el:el, level:level,
+    img:'img/'+el.toLowerCase()+'-'+(1+rnd(2))+'.jpg',
     maxhp:0, hp:0, atk:0, def:0, spd:0, xp:0, xpNext:20,
     art:{
       horns:pick(HORNS), eyes:pick(EYES), wing:pick(WINGS),
@@ -132,8 +132,8 @@ function idleArt(){
 }
 
 // ---------- game state ----------
-var team=[], active=0, enemy=null, mode='explore', crystals=3, steps=0;
-var logEl=document.getElementById('log'), artEl=document.getElementById('art'),
+var team=[], active=0, enemy=null, mode='explore', crystals=3, steps=0, started=false;
+var logEl=document.getElementById('log'), sceneImg=document.getElementById('sceneImg'),
     enemyBar=document.getElementById('enemyBar'), allyBar=document.getElementById('allyBar'),
     actionsEl=document.getElementById('actions'), teamEl=document.getElementById('team'),
     placeEl=document.getElementById('place');
@@ -154,11 +154,11 @@ function render(){
     return '<span class="chip'+(i===active?' active':'')+'">'+(i===active?'▶ ':'')+'<b>'+d.name+'</b> '+d.el+' Lv'+d.level+' · '+Math.max(0,d.hp)+'/'+d.maxhp+'</span>';
   }).join('')+'<span class="chip">◆ crystals: <b>'+crystals+'</b></span>';
   if(enemy){
-    artEl.textContent=artOf(enemy); artEl.className='el-'+enemy.el;
+    sceneImg.src=enemy.img;
     enemyBar.innerHTML='WILD <b>'+enemy.name+'</b> · '+enemy.el+' · Lv '+enemy.level+'\n'+hpBar(enemy);
   }else{
-    artEl.textContent=idleArt(); artEl.className='';
-    enemyBar.textContent='No wild dragon in sight.';
+    sceneImg.src=started?team[active].img:'img/trail.jpg';
+    enemyBar.textContent= started? team[active].name+' walks beside you.' : 'No wild dragon in sight.';
   }
   allyBar.innerHTML='YOURS <b>'+ally.name+'</b> · '+ally.el+' · Lv '+ally.level+' · XP '+ally.xp+'/'+ally.xpNext+'\n'+hpBar(ally);
   renderActions();
@@ -248,7 +248,7 @@ function defeat(){
   enemy=null; mode='explore'; render();
 }
 function doSearch(){
-  steps++;
+  started=true; steps++;
   if(steps%4===0) placeEl.textContent=pick(PLACES);
   var lvl=clamp(team[active].level+rnd(3)-1,1,99);
   enemy=genDragon(lvl); mode='battle';
@@ -256,6 +256,7 @@ function doSearch(){
   render();
 }
 function doCamp(){
+  started=true;
   team.forEach(function(d){ d.hp=d.maxhp; });
   crystals=Math.max(crystals,3);
   say('You camp under the ash trees. Everyone is healed; crystals restocked to at least 3.','sys');
