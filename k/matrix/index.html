@@ -3,66 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The 36 × 36 — a map of every game that could exist</title>
+<title>The Matrix 2 × 2 — games born from their names</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C2W27FWRBQ');</script>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yy98c80d84");</script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#12101a;color:#f2ead9;font-family:Georgia,'Times New Roman',serif;line-height:1.6}
-  .wrap{max-width:1060px;margin:0 auto;padding:26px 18px 60px}
-  h1{font-size:32px;margin-bottom:6px}
+  .wrap{max-width:760px;margin:0 auto;padding:26px 18px 60px}
+  h1{font-size:30px;margin-bottom:6px}
   h1 .dim{color:#b7a9d6}
-  .tag{color:#b7a9d6;font-size:16.5px;max-width:720px}
-  h2{font-size:21px;margin:34px 0 12px;color:#ffd98a}
-  p{margin-bottom:12px;max-width:760px}
-  .legend{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
-  @media(max-width:640px){.legend{grid-template-columns:1fr}}
-  .lbox{background:#1a1626;border:1px solid #352b52;border-radius:12px;padding:14px 16px;font-size:14.5px}
-  .lbox b{color:#ffd98a}
-  .gridbox{overflow:auto;max-height:78vh;border:1px solid #352b52;border-radius:12px;background:#17131f}
-  table.matrix{border-collapse:separate;border-spacing:3px;padding:6px}
-  table.matrix th{font-family:Verdana,sans-serif;font-size:10.5px;color:#b7a9d6;font-weight:normal;padding:2px;white-space:nowrap}
-  table.matrix th.corner{position:sticky;left:0;top:0;z-index:3;background:#17131f}
-  table.matrix th.colh{position:sticky;top:0;z-index:2;background:#17131f}
-  table.matrix th.rowh{position:sticky;left:0;z-index:2;background:#17131f;text-align:right;padding-right:5px}
-  td.cell{width:118px;min-width:118px;height:66px;border-radius:7px;overflow:hidden;padding:0;content-visibility:auto}
-  td.cell a{display:block;width:118px;height:66px;text-decoration:none;position:relative}
-  td.cell a.created::after{ content:'✦'; position:absolute; top:2px; right:5px; color:#ffd98a;
-          font-size:13px; text-shadow:0 1px 3px #000; }
-  td.cell a.created{ box-shadow:inset 0 0 0 2px #ffd98a; border-radius:7px; }
-  td.cell svg{display:block}
-  table.cat{border-collapse:collapse;width:100%;font-size:14.5px;margin-bottom:8px}
-  table.cat td, table.cat th{border-bottom:1px solid #2c2447;padding:5px 8px;text-align:left;vertical-align:top}
-  table.cat th{color:#ffd98a;font-family:Verdana,sans-serif;font-size:13px}
+  .tag{color:#b7a9d6;font-size:16.5px;max-width:680px}
+  .tag b{color:#f2ead9}
+  h2{font-size:21px;margin:32px 0 12px;color:#ffd98a}
+  p{margin-bottom:12px;max-width:680px}
+  table.matrix{border-collapse:separate;border-spacing:8px;margin:10px auto}
+  table.matrix th{font-family:Verdana,sans-serif;font-size:13px;color:#ffd98a;font-weight:normal;padding:4px;white-space:nowrap}
+  table.matrix th.rowh{text-align:right;color:#b7a9d6}
+  td.cell{width:250px;height:141px;border-radius:10px;overflow:hidden;padding:0}
+  td.cell a{display:block;width:250px;height:141px;text-decoration:none;position:relative;border-radius:10px}
+  td.cell a.created::after{ content:'✦'; position:absolute; top:4px; right:8px; color:#ffd98a;
+          font-size:16px; text-shadow:0 1px 3px #000; }
+  td.cell a.created{ box-shadow:inset 0 0 0 2px #ffd98a; }
+  .names{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:560px;margin:6px auto 0}
+  .names div{background:#1a1626;border:1px solid #352b52;border-radius:10px;padding:10px 14px;font-size:14.5px}
+  .names b{color:#ffd98a}
+  @media(max-width:600px){ td.cell{width:42vw;height:23.6vw} td.cell a{width:42vw;height:23.6vw} .names{grid-template-columns:1fr} }
   .foot{margin-top:40px;color:#8f83b5;font-size:14px;border-top:1px solid #352b52;padding-top:16px}
   a{color:#c9a7ff}
-  .note{background:#1a1626;border:1px solid #574a80;border-radius:12px;padding:14px 16px;max-width:760px}
+  .note{background:#1a1626;border:1px solid #574a80;border-radius:12px;padding:14px 16px;max-width:680px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>The 36 × 36 <span class="dim">— a map of every game that could exist</span></h1>
-  <p class="tag">If the game industry were born today, genre would not be a camera or a setting. It would be two questions: <b>what does the player do</b> (axis X), and <b>what kind of system answers</b> (axis Y). 36 × 36 = <b>1,296 cells</b>. But nothing below is a game yet — each cell is only a <b>name</b> and a <b>frame</b> (~Frame: the three-block interface every game here is born into). <b>Tap a cell, and the tap itself creates the game</b> — at that moment, from that name and that frame. The game is saved as it is created (marked ✦), so it is created exactly once; after that, tapping simply opens it. And even then, only the first screen and its branches exist — the game grows one step ahead of the player, never more.</p>
+  <h1>The Matrix <span class="dim">2 × 2</span></h1>
+  <p class="tag">The taxonomy is 36 × 36 — what the player does (axis X) against what the world is (axis Y). Here it begins the way everything here begins: small. <b>Two actions × two worlds = four frames.</b> Nothing below is a game yet — each cell is only a <b>name</b> and a <b>frame</b> (~Frame: the three-block interface). <b>Tap a cell, and the tap itself creates the game</b> — at that moment, from that name alone. The game is saved as it is created (marked ✦) and grows one step ahead of you as you play: only the current screen and its branches ever exist.</p>
 
-  <div class="legend">
-    <div class="lbox"><b>Axis X — what the player does</b><br>
-      X01–06 Act &amp; Move · X07–12 Think &amp; Decide · X13–18 Create &amp; Build · X19–24 Run Systems · X25–30 Talk &amp; Influence · X31–36 Explore &amp; Experience</div>
-    <div class="lbox"><b>Axis Y — what the world is</b><br>
-      Y01–06 Space &amp; Physics · Y07–12 Rules &amp; Information · Y13–18 Living Systems · Y19–24 Society &amp; Power · Y25–30 Economy &amp; Production · Y31–36 Mind &amp; Meaning</div>
+  <table class="matrix" id="matrix"></table>
+
+  <div class="names">
+    <div><b>X01 · Movement</b> — the player moves, leaps, crosses.</div>
+    <div><b>X25 · Conversation</b> — the player talks and negotiates.</div>
+    <div><b>Y01 · Rigid Physics</b> — a world of falling stones and solid ground.</div>
+    <div><b>Y17 · Artificial Minds</b> — a world of minds made by hands, thinking their own thoughts.</div>
   </div>
 
-  <p class="note">Rows are Y (the world), columns are X (the action). Scroll the map both ways. Example: <b>X16 × Y17 — Programming × Artificial Minds</b>: a game about programming and teaching a team of AI agents.</p>
+  <p class="note" style="margin-top:22px">The four corners of the map: body and word, against stone and mind. A game here is composed of nothing but its two categories — the role comes from X, the matter from Y.</p>
 
-  <h2>The matrix</h2>
-  <div class="gridbox"><table class="matrix" id="matrix"></table></div>
-
-  <h2>Axis X — the 36 ways to play</h2>
-  <table class="cat" id="catX"></table>
-  <h2>Axis Y — the 36 kinds of world</h2>
-  <table class="cat" id="catY"></table>
-
-  <p class="foot">Part of <a href="../zenswipe-games/">ZenSwipe Games</a> — games with no script, generated as you play. Shelf neighbors: <a href="../dragon-rpg/">Dragon Trail</a> · <a href="../little-dragon/">Little Dragon</a>. The taxonomy is Kirill Minin's design (2026).</p>
+  <p class="foot">Part of <a href="../zenswipe-games/">ZenSwipe Games</a> — games with no script, generated as you play. The full 36 × 36 taxonomy is Kirill Minin's design (2026), kept as a document and a workbook; this page is its living seed.</p>
 </div>
 <script>
 // THE 36 x 36 — Kirill's game taxonomy (2026-10-15). X = what the player does. Y = what the world is.
@@ -271,18 +259,21 @@ function mxFirstScreens(game){
   mxExpand(game, game.screens['title']);
 }
 function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+
 (function(){
+  var CELLS = [ [0,0],[24,0],[0,16],[24,16] ]; // X01 x Y01, X25 x Y01, X01 x Y17, X25 x Y17
+  var COLS = [0, 24], ROWS = [0, 16];
   var tbl = document.getElementById('matrix');
-  var html = '<tr><th class="corner">Y \\ X</th>';
-  for(var x=0;x<36;x++) html += '<th class="colh">X'+String(x+1).padStart(2,'0')+'</th>';
+  var html = '<tr><th></th>';
+  COLS.forEach(function(x){ html += '<th>X'+String(x+1).padStart(2,'0')+' · '+XCAT[x][0]+'</th>'; });
   html += '</tr>';
-  for(var y=0;y<36;y++){
-    html += '<tr><th class="rowh">Y'+String(y+1).padStart(2,'0')+'</th>';
-    for(var x2=0;x2<36;x2++){
-      html += '<td class="cell"><a data-x="'+x2+'" data-y="'+y+'" href="play.html?g=x'+(x2+1)+'y'+(y+1)+'" title="'+cellCode(x2,y)+' — '+cellTitle(x2,y)+'">'+tileSVG(x2,y,120)+'</a></td>';
-    }
+  ROWS.forEach(function(y){
+    html += '<tr><th class="rowh">Y'+String(y+1).padStart(2,'0')+'<br>'+YCAT[y][0]+'</th>';
+    COLS.forEach(function(x){
+      html += '<td class="cell"><a data-x="'+x+'" data-y="'+y+'" href="play.html?g=x'+(x+1)+'y'+(y+1)+'" title="'+cellCode(x,y)+' — '+cellTitle(x,y)+'">'+tileSVG(x,y,250)+'</a></td>';
+    });
     html += '</tr>';
-  }
+  });
   tbl.innerHTML = html;
 
   /* ---------- THE CREATOR ----------
@@ -290,18 +281,12 @@ function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
      the click is intercepted, and the game is created at that moment —
      from the name and the frame — then saved, so it is created once. */
   function hashSeed(a, b){ var h = (a*73856093) ^ (b*19349663) ^ 0x36; return function(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }; }
-  var FIRST = ['Ka','Vor','Sy','Mi','An','Tor','Ze','Bel','Ond','Ru','Fen','Gal','Il','Ash','Nor','Ek'];
-  var MID = ['ber','la','mir','fen','ra','sil','to','van','ori','um','ek','dor'];
-  var LAST = ['is','ax','une','or','ia','eth','on','ara','ix','um'];
-  var PL1 = ['the Gate of','the Field of','the House of','the Shore of','the Tower of','the Garden of','the Bridge of','the Well of'];
-  var PL2 = ['First Light','Quiet Signals','Long Practice','the Turning','Small Hours','the Answer','Beginnings','the Deep Work'];
   function gameId(x, y){ return 'x'+(x+1)+'y'+(y+1); }
   function registry(){ try { return JSON.parse(localStorage.getItem('mx36_registry') || '{}'); } catch(e){ return {}; } }
   function createGame(x, y){
     var id = gameId(x, y), reg = registry();
     if(reg[id]) return reg[id];
     var R = hashSeed(x+3, y+7);
-    function pk(a){ return a[Math.floor(R()*a.length)]; }
     var game = { v:1, x:x, y:y, id:id, name: cellTitle(x, y), code: cellCode(x, y), frame: 'three-block',
       hero: XACTORS[x], place: '',
       seedNote: Math.floor(R()*900000+100000),
@@ -327,13 +312,6 @@ function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
     createGame(x, y);
     location.href = 'play.html?g=' + gameId(x, y);
   });
-  function cat(el, arr, code){
-    var h = '<tr><th>Code</th><th>Category</th><th></th></tr>';
-    arr.forEach(function(r,i){ h += '<tr><td>'+code+String(i+1).padStart(2,'0')+'</td><td>'+r[0]+'</td><td>'+(code==='X'?r[1]:r[1])+'</td></tr>'; });
-    document.getElementById(el).innerHTML = h;
-  }
-  cat('catX', XCAT, 'X');
-  cat('catY', YCAT, 'Y');
 })();
 </script>
 </body>
