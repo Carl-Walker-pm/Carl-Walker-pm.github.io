@@ -43,7 +43,7 @@
 <body>
 <div class="wrap">
   <h1>The 36 × 36 <span class="dim">— a map of every game that could exist</span></h1>
-  <p class="tag">If the game industry were born today, genre would not be a camera or a setting. It would be two questions: <b>what does the player do</b> (axis X), and <b>what kind of system answers</b> (axis Y). 36 × 36 = <b>1,296 cells</b>. But nothing below is a game yet — each cell is only a <b>name</b> and a <b>frame</b> (~Frame: the three-block interface every game here is born into). <b>Tap a cell, and the tap itself creates the game</b> — at that moment, from that name and that frame. The game is saved as it is created (marked ✦), so it is created exactly once; after that, tapping simply opens it.</p>
+  <p class="tag">If the game industry were born today, genre would not be a camera or a setting. It would be two questions: <b>what does the player do</b> (axis X), and <b>what kind of system answers</b> (axis Y). 36 × 36 = <b>1,296 cells</b>. But nothing below is a game yet — each cell is only a <b>name</b> and a <b>frame</b> (~Frame: the three-block interface every game here is born into). <b>Tap a cell, and the tap itself creates the game</b> — at that moment, from that name and that frame. The game is saved as it is created (marked ✦), so it is created exactly once; after that, tapping simply opens it. And even then, only the first screen and its branches exist — the game grows one step ahead of the player, never more.</p>
 
   <div class="legend">
     <div class="lbox"><b>Axis X — what the player does</b><br>
@@ -119,6 +119,136 @@ function tileSVG(x, y, w){
    '<text x="160" y="168" font-size="17" fill="#f2ead9" text-anchor="middle" font-family="Verdana,sans-serif" font-weight="bold">'+cellCode(x,y)+'</text></svg>';
 }
 
+/* ================= THE ENGINE — generation one step ahead =================
+   A game is never generated whole. Only the current screen exists, plus its
+   branches — the screens one step ahead. Moving forward generates the next
+   step's branches, and so on. Everything generated is saved with the game. */
+function mxHashStr(s){ var h = 2166136261; for(var i=0;i<s.length;i++){ h ^= s.charCodeAt(i); h = (h*16777619) >>> 0; } return h; }
+function mxRng(key){ var h = mxHashStr(key) || 1; return function(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }; }
+var MX_FIRST = ['Ka','Vor','Sy','Mi','An','Tor','Ze','Bel','Ond','Ru','Fen','Gal','Il','Ash','Nor','Ek'];
+var MX_MID = ['ber','la','mir','fen','ra','sil','to','van','ori','um','ek','dor'];
+var MX_LAST = ['is','ax','une','or','ia','eth','on','ara','ix','um'];
+function mxName(r){ return MX_FIRST[Math.floor(r()*16)] + MX_MID[Math.floor(r()*12)] + MX_LAST[Math.floor(r()*10)]; }
+var MX_KINDS = ['meeting','discovery','making','crossroads','wonder','challenge'];
+function mxSitKind(game, n){ var r = mxRng(game.id+':s'+n); return MX_KINDS[Math.floor(r()*MX_KINDS.length)]; }
+function mxSitName(game, n){ var r = mxRng(game.id+':s'+n+':name'); return mxName(r); }
+
+function mxGenScreen(game, id){
+  var X = game.x, Y = game.y, act = XCAT[X][2], world = YCAT[Y][1];
+  var title = game.name, code = game.code, hero = game.hero;
+  if(id === 'title'){
+    return { id:id, kind:'title', imgKind:'title',
+      html: '<p><b>'+code+' — '+title+'</b></p>'+
+        '<p>This game was created at your tap — from its name and its frame. Only this first screen and its branches exist so far; the rest of the game does not exist yet. It will be generated one step ahead of you, as you play, and everything generated is saved.</p>'+
+        '<p>Here, you <b>'+act+'</b>, in a world of <b>'+world+'</b>.</p>'+
+        '<p>'+hero+' is waiting at '+game.place+'. The rest has not happened yet — it cannot, until you choose.</p>'+
+        '<p>Choose the length of the journey:</p>',
+      choices: [
+        { label:'🐾 Mini journey — 10 steps', hint:'Free', len:10 },
+        { label:'🌿 A journey — 30 steps', hint:'Free', len:30 },
+        { label:'🏔️ A long journey — 50 steps', hint:'Free', len:50 },
+        { label:'💠 A grand journey — 100 screens', hint:'Paid · coming soon', disabled:true },
+        { label:'💠 An epic journey — 1,000 screens', hint:'Paid · coming soon', disabled:true },
+        { label:'💠 The Million-Step — 1,000,000 screens', hint:'Paid · coming soon', disabled:true } ],
+      branches: null };
+  }
+  if(id.indexOf('arr-') === 0){
+    var len = parseInt(id.slice(4), 10);
+    return { id:id, kind:'arrival', imgKind:'arrival',
+      html: '<p>The game begins at '+game.place+'.</p><p>'+hero+' looks at you the way guides do — as if the world of '+world+' had been waiting for someone who would <b>'+act+'</b>.</p><p class="dim">'+code+' · '+title+' · '+len+' steps</p>',
+      choices: [ { label:'▶ Continue' } ], branches: null };
+  }
+  if(id === 'finale'){
+    return { id:id, kind:'finale', imgKind:'finale',
+      html: '<p><b>The journey is complete.</b></p>'+
+        '<p>{{len}} steps through '+world+', taken by someone who came to '+act+'.</p>'+
+        '<p>✦ Insights gathered: {{insights}}<br>🧑‍🤝‍🧑 Met on the way: {{met}}<br>📍 Steps walked: {{steps}}</p>'+
+        '<p class="dim">This game — '+code+' — stays generated and saved in this browser, exactly as it grew.</p>',
+      choices: [], branches: [] };
+  }
+  var m = /^s(\d+)$/.exec(id);
+  if(m){
+    var n = parseInt(m[1], 10), kind = mxSitKind(game, n), r = mxRng(game.id+':'+id);
+    function pk(a){ return a[Math.floor(r()*a.length)]; }
+    var html = '', choices = [];
+    if(kind === 'meeting'){
+      var nm = mxSitName(game, n);
+      var kinds = ['a keeper of this place','a traveler going the other way','a maker at their work','a voice from inside the system','a guardian who asks nothing','a stranger who knows your guide'];
+      html = '<p>On the way, you meet <b>'+nm+'</b>, '+pk(kinds)+' — one of those who live among '+world+'.</p><p>'+nm+' studies you, and waits to see what you will do.</p>';
+      choices = [ { label:'✦ '+cap(act) }, { label:'👋 Greet them and pass' } ];
+    } else if(kind === 'discovery'){
+      html = '<p>The way opens onto something the maps of '+world+' do not show.</p><p>'+pk(['It has clearly been here a long time, waiting to be noticed.','It changes the way you understand everything before it.','Your guide goes quiet — even '+hero+' has not seen this.'])+'</p>';
+      choices = [ { label:'🔭 Look closer' }, { label:'▶ Take it in, and walk on' } ];
+    } else if(kind === 'making'){
+      html = '<p>Here is a place where the world of '+world+' is unfinished — and a chance to <b>'+act+'</b>.</p>';
+      choices = [ { label:'✦ Do the work' }, { label:'▶ Not this one — walk on' } ];
+    } else if(kind === 'crossroads'){
+      html = '<p>The way divides, inside '+world+'.</p><p>'+pk(['One way is lit; the other is honest.','One way is shorter; the other is yours.','One way everyone takes; the other one waits.'])+'</p>';
+      choices = [ { label:'⬆️ The first way' }, { label:'↗️ The second way' } ];
+    } else if(kind === 'wonder'){
+      html = '<p>For a moment, the world of '+world+' simply… shows off.</p><p>'+pk(['Light does something you have no name for.','Everything aligns, briefly, and beautifully.','It is the kind of moment journeys are actually for.'])+'</p>';
+      choices = [ { label:'✨ Linger a while' }, { label:'▶ Walk on' } ];
+    } else {
+      html = '<p>Here the world of '+world+' tests whether you truly came to <b>'+act+'</b>.</p>';
+      choices = [ { label:'✦ Face the test' }, { label:'▶ Go around — find another way' } ];
+    }
+    return { id:id, kind:'situation', imgKind:kind, stepNo:n, html:html, choices:choices, branches:null };
+  }
+  var om = /^o(\d+)([ab])$/.exec(id);
+  if(om){
+    var sn = parseInt(om[1], 10), skind = mxSitKind(game, sn), r2 = mxRng(game.id+':'+id), ohtml = '', eff = null;
+    if(skind === 'meeting'){
+      var nm2 = mxSitName(game, sn);
+      if(om[2] === 'a'){ eff = { insight:1, met:nm2 }; ohtml = '<p>You '+act+' — and '+nm2+' answers in kind. Something in the world of '+world+' shifts, slightly, permanently.</p><p class="dim">✦ Insight gained · '+nm2+' will remember this meeting.</p>'; }
+      else { eff = { met:nm2 }; ohtml = '<p>A greeting, honestly given, honestly received. Not every meeting must become work.</p><p class="dim">'+nm2+' walks on. So do you.</p>'; }
+    } else if(skind === 'discovery'){
+      if(om[2] === 'a'){ eff = { insight:1 }; ohtml = '<p>The closer you look, the more there is. That is the tax and the gift of '+world+'.</p><p class="dim">✦ Insight gained.</p>'; }
+      else ohtml = '<p>Some discoveries are for carrying, not for solving. You carry this one.</p>';
+    } else if(skind === 'making'){
+      if(om[2] === 'a'){ eff = { insight:1 }; ohtml = '<p>It takes longer than expected. It usually does. But when it is done, the place is different — and so, a little, are you.</p><p class="dim">✦ Insight gained. The work holds.</p>'; }
+      else ohtml = '<p>You leave the unfinished thing for whoever it is truly meant for. The road keeps its own counsel.</p>';
+    } else if(skind === 'crossroads'){
+      ohtml = om[2] === 'a' ? '<p>You take it, and do not look back. Looking back is a different game.</p>' : '<p>You take it, and the world of '+world+' rearranges itself around the choice, quietly.</p>';
+    } else if(skind === 'wonder'){
+      if(om[2] === 'a'){ eff = { insight:1 }; ohtml = '<p>You linger. The moment does not mind. When you walk on, it walks with you a while.</p><p class="dim">✦ Insight gained.</p>'; }
+      else ohtml = '<p>You nod to the wonder, the way you nod to weather, and keep your pace.</p>';
+    } else {
+      if(om[2] === 'a'){
+        if(r2() < 0.7){ eff = { insight:1 }; ohtml = '<p>It is not easy. It was never going to be. But the way through was exactly the way you chose — and it holds.</p><p class="dim">✦ Insight gained.</p>'; }
+        else ohtml = '<p>The test wins this round — fairly. What it teaches is worth more than the win would have been: you see now how '+world+' truly works.</p><p class="dim">A lesson, carried forward.</p>';
+      } else ohtml = '<p>Around is also a direction. The test keeps its dignity; you keep your road.</p>';
+    }
+    return { id:id, kind:'outcome', imgKind:skind, html:ohtml, effects:eff, choices:[ { label:'▶ Continue' } ], branches:null };
+  }
+  return { id:id, kind:'arrival', imgKind:'arrival', html:'<p>The way continues.</p>', choices:[ { label:'▶ Continue' } ], branches:null };
+}
+function mxBranchTarget(game, screen, idx){
+  var c = screen.choices[idx];
+  if(!c || c.disabled) return null;
+  if(screen.kind === 'title') return 'arr-' + c.len;
+  if(screen.kind === 'arrival') return 's1';
+  if(screen.kind === 'situation') return 'o' + screen.stepNo + (idx === 0 ? 'a' : 'b');
+  if(screen.kind === 'outcome'){ var n = parseInt(screen.id.slice(1), 10); return n >= game.len ? 'finale' : 's' + (n+1); }
+  return null;
+}
+/* Generate ONLY the branches of this screen — one step ahead, never more. */
+function mxExpand(game, screen){
+  if(!screen || screen.branches) return;
+  screen.branches = screen.choices.map(function(c, i){
+    var t = mxBranchTarget(game, screen, i);
+    if(!t) return null;
+    if(!game.screens[t]) game.screens[t] = mxGenScreen(game, t);
+    return t;
+  });
+}
+/* At creation: the first screen + its branches. Nothing beyond exists. */
+function mxFirstScreens(game){
+  game.screens = {};
+  game.screens['title'] = mxGenScreen(game, 'title');
+  game.currentId = 'title';
+  mxExpand(game, game.screens['title']);
+}
+function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
 (function(){
   var tbl = document.getElementById('matrix');
   var html = '<tr><th class="corner">Y \\ X</th>';
@@ -155,6 +285,7 @@ function tileSVG(x, y, w){
       seedNote: Math.floor(R()*900000+100000),
       steps: 0, len: 0, insights: 0, met: [], seen: [], started: false, finished: false,
       created: new Date().toISOString() };
+    mxFirstScreens(game);
     try {
       localStorage.setItem('mx36_game_'+id, JSON.stringify(game));
       reg[id] = { x:x, y:y, name: game.name, created: game.created };
