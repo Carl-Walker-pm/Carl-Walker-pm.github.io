@@ -16,6 +16,8 @@
         display:flex; justify-content:center; }
   #app{ width:100%; max-width:480px; height:100dvh; display:flex; flex-direction:column; background:#1a1626; }
   #picWrap{ position:relative; flex:0 0 42dvh; background:#0d0a14; }
+  #picWrap.poster{ flex:0 0 64dvh; }
+  #picWrap.poster #sceneImg{ object-fit:contain; }
   #sceneImg{ width:100%; height:100%; object-fit:cover; display:block; }
   #chips{ position:absolute; left:0; right:0; bottom:0; display:flex; gap:6px; flex-wrap:wrap;
           padding:16px 10px 8px; background:linear-gradient(transparent, rgba(10,8,18,.85));
@@ -153,6 +155,35 @@ function sceneFor(kind){
     '<text x="160" y="168" font-size="15" fill="#f2ead9" text-anchor="middle" font-family="Verdana,sans-serif">'+cellCode(X, Y)+' · '+(labels[kind]||'')+'</text></svg>';
   return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
+/* Each game's own poster — vertical 9:16, generated from its cell:
+   family palette, the X motif, the game's title and code. */
+function posterFor(){
+  var yg = Math.floor(Y/6), xg = Math.floor(X/6);
+  var hueY = [210, 160, 95, 265, 28, 318][yg] + (Y%6)*7;
+  var hueX = [200, 150, 80, 255, 20, 300][xg] + (X%6)*6;
+  var h = ((X+3)*40503) ^ ((Y+5)*889523);
+  function rnd(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }
+  var stars = '', i;
+  for(i=0;i<14;i++){ stars += '<circle cx="'+Math.floor(8+rnd()*164)+'" cy="'+Math.floor(8+rnd()*130)+'" r="'+(0.8+rnd()*1.4).toFixed(1)+'" fill="#ffe9b0" opacity="'+(0.35+rnd()*0.5).toFixed(2)+'"/>'; }
+  var sunX = 30+Math.floor(rnd()*120), sunR = 13+Math.floor(rnd()*10);
+  function fit(s){ return s.length > 19 ? 12.5 : (s.length > 14 ? 14.5 : 16.5); }
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 320">' +
+    '<defs><linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">' +
+    '<stop offset="0" stop-color="hsl('+hueY+',58%,30%)"/><stop offset="0.62" stop-color="hsl('+hueX+',58%,20%)"/><stop offset="1" stop-color="hsl('+hueX+',62%,12%)"/></linearGradient></defs>' +
+    '<rect width="180" height="320" fill="url(#pg)"/>' + stars +
+    '<circle cx="'+sunX+'" cy="'+(58+Math.floor(rnd()*26))+'" r="'+sunR+'" fill="hsl('+hueX+',85%,70%)" opacity="0.85"/>' +
+    '<circle cx="26" cy="252" r="66" fill="hsl('+hueY+',50%,18%)"/>' +
+    '<circle cx="158" cy="266" r="78" fill="hsl('+hueX+',52%,14%)"/>' +
+    '<circle cx="90" cy="292" r="70" fill="hsl('+hueY+',48%,10%)"/>' +
+    '<text x="90" y="34" font-size="11.5" fill="#ffd98a" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="2">'+cellCode(X, Y)+'</text>' +
+    '<text x="90" y="152" font-size="62" text-anchor="middle">'+XCAT[X][1]+'</text>' +
+    '<text x="90" y="196" font-size="'+fit(XCAT[X][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+XCAT[X][0]+'</text>' +
+    '<text x="90" y="216" font-size="13" fill="#b7a9d6" text-anchor="middle" font-family="Georgia,serif">×</text>' +
+    '<text x="90" y="238" font-size="'+fit(YCAT[Y][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+YCAT[Y][0]+'</text>' +
+    '<text x="90" y="308" font-size="9.5" fill="#9a8bc0" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="3">ZENSWIPE GAMES · 36 × 36</text></svg>';
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+}
+var poster = posterFor();
 
 /* ---------- storage: the game is generated ONCE, then saved ---------- */
 var KEY = 'mx36_' + (X+1) + '_' + (Y+1);
@@ -195,6 +226,7 @@ function chips(){
     '<span class="chip">✦ '+G.insights+'</span>';
 }
 function show(html, choices, img){
+  document.getElementById('picWrap').classList.toggle('poster', img === poster);
   sceneImg.src = img || curScene || cover;
   descEl.innerHTML = html; descEl.scrollTop = 0;
   choicesEl.innerHTML = '';
@@ -225,7 +257,7 @@ function titleScreen(){
     show(intro + '<p class="dim">A journey is already under way: step '+G.steps+' of '+G.len+', ✦ '+G.insights+' insights.</p>',
       [ { label:'▶ Continue the journey', act: stepScreen },
         { label:'🔁 Begin this game again', act: function(){ resetJourney(); } },
-        { label:'🗺️ Back to the matrix', act: function(){ location.href = 'index.html'; } } ]);
+        { label:'🗺️ Back to the matrix', act: function(){ location.href = 'index.html'; } } ], poster);
     return;
   }
   show(intro + '<p>Choose the length of the journey:</p>',
@@ -235,7 +267,7 @@ function titleScreen(){
       { label:'💠 A grand journey — 100 screens', hint:'Paid · coming soon', disabled:true },
       { label:'💠 An epic journey — 1,000 screens', hint:'Paid · coming soon', disabled:true },
       { label:'💠 The Million-Step — 1,000,000 screens', hint:'Paid · coming soon', disabled:true },
-      { label:'🗺️ Back to the matrix', act:function(){ location.href = 'index.html'; } } ]);
+      { label:'🗺️ Back to the matrix', act:function(){ location.href = 'index.html'; } } ], poster);
 }
 function resetJourney(){ G.steps = 0; G.insights = 0; G.met = []; G.seen = []; G.finished = false; G.started = false; save(); titleScreen(); }
 function begin(len){
