@@ -25,6 +25,8 @@
   td.cell a.created::after{ content:'✦'; position:absolute; top:4px; right:8px; color:#ffd98a;
           font-size:16px; text-shadow:0 1px 3px #000; }
   td.cell a.created{ box-shadow:inset 0 0 0 2px #ffd98a; }
+  td.cell a.requested::after{ content:'◌'; position:absolute; top:4px; right:8px; color:#b7a9d6;
+          font-size:16px; text-shadow:0 1px 3px #000; }
   .names{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:560px;margin:6px auto 0}
   .names div{background:#1a1626;border:1px solid #352b52;border-radius:10px;padding:10px 14px;font-size:14.5px}
   .names b{color:#ffd98a}
@@ -146,6 +148,24 @@ var MX_GLYPH = ['act','think','create','systems','talk','explore'];
 function mxThing(game, id){ var r = mxRng(game.id+':'+id+':thing'); return YTHINGS[game.y][Math.floor(r()*4)]; }
 
 function mxGenScreen(game, id){
+  var AG = (typeof AUTHORED !== 'undefined') ? AUTHORED[game.id] : undefined;
+  var AE = AG ? AG[id] : undefined;
+  if(AE){
+    var akind = id === 'title' ? 'title' : (id === 'finale' ? 'finale' : (id.indexOf('arr-') === 0 ? 'arrival' : (id.charAt(0) === 's' ? 'situation' : 'outcome')));
+    var asc = { id:id, kind:akind, imgKind: AE.img || akind, html: AE.html, choices: AE.choices || [], branches: null };
+    if(AE.eff) asc.effects = AE.eff;
+    var amm = /^s(\d+)$/.exec(id); if(amm) asc.stepNo = parseInt(amm[1], 10);
+    if(akind === 'finale') asc.branches = [];
+    return asc;
+  }
+  if(!AG){
+    if(id === 'title'){
+      return { id:id, kind:'title', imgKind:'title',
+        html:'<p><b>'+game.code+' — '+game.name+'</b></p><p>This game does not exist yet.</p><p>Your tap is the request — it carries this name to Wally. The game is created from its name alone: authored for it, saved, and only then does it begin. Nothing here comes from a template.</p><p class="dim">Request registered: '+game.name+'.</p>',
+        choices: [], branches: [] };
+    }
+    return { id:id, kind:'arrival', imgKind:'arrival', html:'<p>This game does not exist yet.</p>', choices: [], branches: [] };
+  }
   var X = game.x, Y = game.y, act = XCAT[X][2], world = YCAT[Y][1];
   var Xname = XCAT[X][0], Yname = YCAT[Y][0];
   var title = game.name, code = game.code, actor = XACTORS[X];
@@ -287,6 +307,49 @@ function posterSVG(x, y){
     '<text x="90" y="238" font-size="'+fit(YCAT[y][0])+'" fill="#f2ead9" text-anchor="middle" font-family="Georgia,serif" font-weight="bold">'+YCAT[y][0]+'</text>' +
     '<text x="90" y="308" font-size="9.5" fill="#9a8bc0" text-anchor="middle" font-family="Verdana,sans-serif" letter-spacing="3">ZENSWIPE GAMES</text></svg>';
 }
+
+/* ================= AUTHORED GAMES =================
+   Games authored by Wally from the name alone — no templates.
+   A cell without an entry here DOES NOT EXIST yet: its tap registers
+   a creation request, and that is all. */
+var AUTHORED = {
+'x1y1': {
+  'title': { html:'<p><b>X01 × Y01 — Movement × Rigid Physics</b></p><p>The Stone Country does not hate you. It simply obeys its laws: what falls, falls; what balances, stands; what is pushed, answers with its weight.</p><p>You are a runner. The Far Gate is ten crossings away, and every crossing is a question asked by stone — of timing, balance, and nerve — answered by your body.</p><p class="dim">This game was authored from its name. Only this screen and its branches exist; it grows one step ahead of you.</p><p>Choose the length of the journey:</p>',
+    choices:[ { label:'🐾 The Ten Crossings — 10 steps', hint:'Authored journey', len:10 }, { label:'🌿 A journey — 30 steps', hint:'Not yet written', disabled:true }, { label:'🏔️ A long journey — 50 steps', hint:'Not yet written', disabled:true } ] },
+  'arr-10': { html:'<p>Dawn. Across the path, the first stones of the country lie like a held breath. Far ahead — further than sight — the Far Gate.</p><p>You roll your shoulders, feel the ground through your soles, and step forward.</p><p class="dim">X01 × Y01 · Movement × Rigid Physics · 10 steps</p>', choices:[ { label:'▶ Step forward' } ] },
+  's1': { img:'act', html:'<p><b>The Slope of Loose Stone.</b> A scree slope, forty paces wide, every stone awake and waiting for an excuse. High up, the stones lie packed and old. Low down, the way is short — and moving.</p>', choices:[ { label:'⬆️ Cross high, where the stones are packed' }, { label:'⬇️ Cross low and fast, before they slide' } ] },
+  'o1a': { img:'act', eff:{insight:1}, html:'<p>Packed stone holds. Step by deliberate step you read the slope with your feet, and it lets you pass like a senior letting a junior by.</p><p class="dim">✦ First lesson of the country: old stone keeps its word.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o1b': { img:'act', html:'<p>You run the low line and the whole slope sighs downhill behind you — a river of stone, loud as applause. Across. Heart hammering. Nothing broken.</p>', choices:[ { label:'▶ Continue' } ] },
+  's2': { img:'act', html:'<p><b>The Ledge.</b> One foot wide, polished by wind, with honest air below it. The ledge does not narrow and does not widen. It simply is.</p>', choices:[ { label:'🚶 Walk it — arms out, eyes on the far side' }, { label:'🧎 Sit, and scoot along it' } ] },
+  'o2a': { img:'act', eff:{insight:1}, html:'<p>Eyes on the far side, and the body follows the gaze, the way it always does. Your feet find their own counsel. Halfway across you are almost calm.</p><p class="dim">✦ The country teaches: look where you are going, not where you fear.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o2b': { img:'act', html:'<p>Seated, you inch along with great dignity and no style at all. Below, a dislodged pebble takes the fast way down, pinging off the rock. You do not watch it land.</p>', choices:[ { label:'▶ Continue' } ] },
+  's3': { img:'act', html:'<p><b>The Rain of Pebbles.</b> The cliff above sheds its skin in small stones — patter, pause, patter. There is a rhythm to it, if you stand still long enough to learn it.</p>', choices:[ { label:'⏱️ Learn the rhythm, sprint the gaps' }, { label:'🧱 Hug the cliff wall and inch through' } ] },
+  'o3a': { img:'act', eff:{insight:1}, html:'<p>Patter — you wait. Pause — you run. Patter — you freeze mid-stride like a statue of yourself. Three gaps, three sprints, and you are through with nothing worse than dust in your hair.</p><p class="dim">✦ Timing is a kind of strength.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o3b': { img:'act', html:'<p>Flat against the wall, you shuffle through the cliff\'s own shadow, where the pebbles rarely reach. Slow. A small stone kisses your shoulder — a reminder, not an injury.</p>', choices:[ { label:'▶ Continue' } ] },
+  's4': { img:'act', html:'<p><b>The Boulder.</b> It sits in the narrow of the path like a full stop. Too round to climb quickly, too heavy to argue with — almost. Between boulder and wall: a gap the width of your ribs.</p>', choices:[ { label:'💪 Shoulder it — shift it by weight' }, { label:'↔️ Squeeze through the gap' } ] },
+  'o4a': { img:'act', eff:{insight:1}, html:'<p>You set your shoulder, breathe out, and lean your whole life into it. The boulder considers — and rolls, one hand\'s width. Enough. Stone respects weight honestly given.</p><p class="dim">✦ You do not have to move the mountain. A hand\'s width is a door.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o4b': { img:'act', html:'<p>Sideways. Breath held thin. The stone is cold through your shirt, front and back, and for three steps you and the boulder are one object. Then — pop — you are through.</p>', choices:[ { label:'▶ Continue' } ] },
+  's5': { img:'act', html:'<p><b>The Stone Bridge.</b> A natural arch over a gorge, older than any road — with a crack across its middle like a held-back word. The crack is the whole question.</p>', choices:[ { label:'🏃 Cross at a run — little time on the crack' }, { label:'🐾 Cross on all fours, weight spread wide' } ] },
+  'o5a': { img:'act', html:'<p>You take it at a run — six strides, the crack under your feet for one heartbeat each. The arch hums through your soles and holds, the way it has held for ten thousand crossings.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o5b': { img:'act', eff:{insight:1}, html:'<p>Hands and feet, weight spread over four points, you pour yourself across the crack like water. Under your palm the stone feels almost warm. The arch approves of being understood.</p><p class="dim">✦ Spread the load, and even cracked things carry you.</p>', choices:[ { label:'▶ Continue' } ] },
+  's6': { img:'act', html:'<p><b>The Falling Stair.</b> The path drops in giant steps, each one a tilted slab that rocks a finger\'s width when tested. Below them, the country continues — if you arrive in one piece.</p>', choices:[ { label:'🦘 Jump step to step, trust momentum' }, { label:'⬇️ Lower yourself down each one' } ] },
+  'o6a': { img:'act', eff:{insight:1}, html:'<p>Step — rock — leap. Step — rock — leap. Momentum carries you over the doubt, and the stair clatters its applause behind you, one slab at a time.</p><p class="dim">✦ Sometimes balance is just falling, aimed.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o6b': { img:'act', html:'<p>Down on your belly for each drop, feet first, finding the next slab by toe. Undignified. Methodical. The country respects method too — it lets you down gently, step by step.</p>', choices:[ { label:'▶ Continue' } ] },
+  's7': { img:'act', html:'<p><b>The Column.</b> A fallen pillar of stone lies across a ravine — round as a tree trunk, smooth as ice in its middle where the wind has polished it for a century.</p>', choices:[ { label:'🚶 Walk the round top, steady and upright' }, { label:'🫂 Bear-hug it and shinny across' } ] },
+  'o7a': { img:'act', eff:{insight:1}, html:'<p>Halfway across, the polished middle tries to roll your feet off the world. You soften your knees, breathe, and walk out of the wobble. The ravine below keeps its opinion to itself.</p><p class="dim">✦ Soft knees, soft landing.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o7b': { img:'act', html:'<p>Arms and legs wrapped around cold stone, you progress by hugs. It is slow, it is ridiculous, and it has worked since the first creature crossed anything. The column does not laugh. Stone is polite.</p>', choices:[ { label:'▶ Continue' } ] },
+  's8': { img:'act', html:'<p><b>The Hail.</b> Above the open stretch, a loose face of the mountain lets go in bursts — a clatter of stone, a silence, a clatter. An overhang offers its shelter nearby.</p>', choices:[ { label:'🛡️ Shelter under the overhang, wait it out' }, { label:'💨 Run the open stretch between bursts' } ] },
+  'o8a': { img:'act', html:'<p>Under the overhang you watch the mountain throw its tantrum — burst, burst, then a longer silence that feels different in the bones. You step out into a clean, quiet world smelling of struck stone.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o8b': { img:'act', eff:{insight:1}, html:'<p>Silence — GO. Stones begin to mutter behind you as your feet find the far edge; the burst breaks over the empty ground you just left. The country applauds in its own language.</p><p class="dim">✦ Read the pause, not the noise.</p>', choices:[ { label:'▶ Continue' } ] },
+  's9': { img:'act', html:'<p><b>The Great Weight.</b> A stone door blocks the last approach, hung from a rope over a beam, the rope\'s other end tied to a hanging rock — a counterweight, waiting for an argument. A fallen beam lies nearby.</p>', choices:[ { label:'⚖️ Add your weight to the rope' }, { label:'🪵 Wedge the door with the fallen beam' } ] },
+  'o9a': { img:'act', eff:{insight:1}, html:'<p>You climb the rope and hang. Your weight plus the rock\'s weight, against the door — arithmetic the country cannot refuse. The slab rises, groaning, exactly as high as honesty requires.</p><p class="dim">✦ In this country, you are also a weight. Spend yourself well.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o9b': { img:'act', html:'<p>Lever, heave, wedge — the beam takes the door\'s grudge and holds it, creaking. You slip under with respect for both parties. Behind you, the beam settles in for a long career.</p>', choices:[ { label:'▶ Continue' } ] },
+  's10': { img:'act', html:'<p><b>The Far Gate.</b> It is not locked. It is simply a slab of stone taller than you, hung true on stone pivots, and it opens for whatever can move it honestly. The country beyond is already visible through the seam — light, and open ground.</p>', choices:[ { label:'✋ Push — whole body, slow and steady' }, { label:'🎵 Rock it — swing the slab by rhythm' } ] },
+  'o10a': { img:'act', eff:{insight:1}, html:'<p>Palm, shoulder, hip, leg — you become a slow lever of yourself. The pivot grinds, considers, and yields a hand\'s width, a forearm, a doorway. Light comes through like water.</p><p class="dim">✦ Steady pressure outlasts force.</p>', choices:[ { label:'▶ Continue' } ] },
+  'o10b': { img:'act', eff:{insight:1}, html:'<p>Push — release. Push — release. The great slab begins to swing to your rhythm, a hand\'s width wider with every pass, until the doorway stands open and still, breathing with you.</p><p class="dim">✦ Even stone keeps time, once you find it.</p>', choices:[ { label:'▶ Continue' } ] },
+  'finale': { img:'finale', html:'<p><b>The Far Gate stands open.</b></p><p>Ten crossings: {{steps}} answers given with one body. ✦ Lessons the country taught you: {{insights}}.</p><p>The Stone Country never opposed you. It only ever asked its questions honestly — what falls, falls; what balances, stands — and you answered every one.</p><p class="dim">X01 × Y01 — Movement × Rigid Physics. Authored from its name, saved as it grew.</p>', choices:[] }
+}
+};
 (function(){
   var CELLS = [ [0,0],[24,0],[0,16],[24,16] ]; // X01 x Y01, X25 x Y01, X01 x Y17, X25 x Y17
   var COLS = [0, 24], ROWS = [0, 16];
@@ -309,7 +372,7 @@ function posterSVG(x, y){
      from the name and the frame — then saved, so it is created once. */
   function hashSeed(a, b){ var h = (a*73856093) ^ (b*19349663) ^ 0x36; return function(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }; }
   function gameId(x, y){ return 'x'+(x+1)+'y'+(y+1); }
-  function registry(){ try { return JSON.parse(localStorage.getItem('mx36_v2_registry') || '{}'); } catch(e){ return {}; } }
+  function registry(){ try { return JSON.parse(localStorage.getItem('mx36_v3_registry') || '{}'); } catch(e){ return {}; } }
   function createGame(x, y){
     var id = gameId(x, y), reg = registry();
     if(reg[id]) return reg[id];
@@ -319,17 +382,18 @@ function posterSVG(x, y){
       seedNote: Math.floor(R()*900000+100000),
       steps: 0, len: 0, insights: 0, met: [], seen: [], started: false, finished: false,
       created: new Date().toISOString() };
+    game.status = (typeof AUTHORED !== 'undefined' && AUTHORED[id]) ? 'created' : 'requested';
     mxFirstScreens(game);
     try {
-      localStorage.setItem('mx36_v2_game_'+id, JSON.stringify(game));
-      reg[id] = { x:x, y:y, name: game.name, created: game.created };
-      localStorage.setItem('mx36_v2_registry', JSON.stringify(reg));
+      localStorage.setItem('mx36_v3_game_'+id, JSON.stringify(game));
+      reg[id] = { x:x, y:y, name: game.name, created: game.created, status: game.status };
+      localStorage.setItem('mx36_v3_registry', JSON.stringify(reg));
     } catch(e){}
     return game;
   }
   var reg0 = registry();
   tbl.querySelectorAll('a[data-x]').forEach(function(a){
-    if(reg0[gameId(+a.dataset.x, +a.dataset.y)]) a.classList.add('created');
+    var e0 = reg0[gameId(+a.dataset.x, +a.dataset.y)]; if(e0) a.classList.add(e0.status === 'created' ? 'created' : 'requested');
   });
   tbl.addEventListener('click', function(e){
     var a = e.target.closest ? e.target.closest('a[data-x]') : null;
