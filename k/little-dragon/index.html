@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Little Dragon — a first story walk (age 5)</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1d2b1a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icon-192.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2W27FWRBQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-C2W27FWRBQ');</script>
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","yy98c80d84");</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ height:100%; }
+  body{ background:#141a12; color:#fdf6e3; font-family:Georgia,'Times New Roman',serif;
+        display:flex; justify-content:center; }
+  #app{ width:100%; max-width:480px; height:100dvh; display:flex; flex-direction:column; background:#22301d; }
+  #picWrap{ position:relative; flex:0 0 42dvh; }
+  #sceneImg{ width:100%; height:100%; object-fit:cover; display:block; }
+  #chips{ position:absolute; left:0; right:0; bottom:0; display:flex; gap:6px; flex-wrap:wrap;
+          padding:16px 10px 8px; background:linear-gradient(transparent, rgba(10,16,8,.82));
+          font-family:Verdana,sans-serif; font-size:13px; }
+  .chip{ background:rgba(18,28,14,.88); border:1px solid #5d7a45; border-radius:20px; padding:4px 11px; }
+  #titleChip{ position:absolute; top:8px; left:10px; font-family:Verdana,sans-serif; font-size:11px;
+          letter-spacing:2px; background:rgba(18,28,14,.85); border:1px solid #5d7a45;
+          border-radius:20px; padding:4px 12px; }
+  #fsBtn{ position:absolute; top:8px; right:10px; width:38px; height:38px; border-radius:50%;
+          background:rgba(18,28,14,.88); border:1px solid #5d7a45; color:#fdf6e3;
+          font-size:17px; cursor:pointer; line-height:1; }
+  #desc{ flex:1; overflow-y:auto; padding:20px 22px 10px; font-size:22px; line-height:1.55; }
+  #desc p{ margin-bottom:14px; }
+  #desc .big{ font-size:30px; }
+  #desc b{ color:#ffe27a; }
+  #choices{ flex:0 0 auto; padding:9px 11px calc(11px + env(safe-area-inset-bottom));
+            display:flex; flex-direction:column; gap:8px; max-height:27dvh; overflow-y:auto;
+            background:#141a12; border-top:1px solid #3d552e; }
+  .choice{ font-family:Verdana,sans-serif; font-size:19px; text-align:left; cursor:pointer;
+           background:#2e4423; color:#fdf6e3; border:2px solid #6d8f4f; border-radius:16px;
+           padding:12px 16px; min-height:58px; width:100%; }
+  .choice:active{ background:#3c5a2d; }
+  .choice.primary{ background:#4d6628; border-color:#a8c256; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="picWrap">
+    <img id="sceneImg" alt="A little dragon" src="img/baby.jpg">
+    <div id="titleChip">🐣 LITTLE DRAGON</div>
+    <button id="fsBtn" title="Fullscreen">⛶</button>
+    <div id="chips"></div>
+  </div>
+  <div id="desc"></div>
+  <div id="choices"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+function rnd(n){ return Math.floor(Math.random()*n); }
+function pick(a){ return a[rnd(a.length)]; }
+
+var steps = 0, walkLen = 10, friends = [], treasures = 0, lastSit = -1, pip = 'Pip';
+var sceneImg = document.getElementById('sceneImg'),
+    descEl = document.getElementById('desc'),
+    choicesEl = document.getElementById('choices'),
+    chipsEl = document.getElementById('chips');
+
+function chips(){
+  chipsEl.innerHTML =
+    '<span class="chip">👣 '+Math.min(steps+1, walkLen)+' of '+walkLen+'</span>'+
+    (friends.length ? '<span class="chip">💛 '+friends.join(' ')+'</span>' : '')+
+    (treasures ? '<span class="chip">✨ '+treasures+'</span>' : '');
+}
+function show(img, html, choices){
+  sceneImg.src = img;
+  descEl.innerHTML = html; descEl.scrollTop = 0;
+  choicesEl.innerHTML = '';
+  choices.forEach(function(c, i){
+    var b = document.createElement('button');
+    b.className = 'choice'+(i===0?' primary':'');
+    b.textContent = c.label;
+    b.onclick = c.act;
+    choicesEl.appendChild(b);
+  });
+  chips();
+}
+function addFriend(e){ if(friends.indexOf(e)<0) friends.push(e); }
+function go(html, img){ show(img||'img/trail.jpg', html, [ { label:'▶ Go on', act: walkScreen } ]); }
+
+function titleScreen(){
+  steps = 0; friends = []; treasures = 0;
+  show('img/baby.jpg',
+    '<p class="big">🐣 <b>Little Dragon</b></p>'+
+    '<p>A story walk for little walkers.</p>'+
+    '<p>How far shall we walk today?</p>',
+    [ { label:'🌱 A tiny walk — 5 steps', act:function(){ startWalk(5); } },
+      { label:'🌿 A walk — 10 steps', act:function(){ startWalk(10); } },
+      { label:'🌳 A big walk — 15 steps', act:function(){ startWalk(15); } } ]);
+}
+function startWalk(len){
+  walkLen = len; steps = 0; friends = []; treasures = 0; lastSit = -1;
+  pip = pick(['Pip','Nia','Bo','Lulu','Mimi','Toto']);
+  show('img/baby.jpg',
+    '<p>This is <b>'+pip+'</b>.</p>'+
+    '<p>'+pip+' is a little dragon. '+pip+' has small wings and a big smile.</p>'+
+    '<p>Today '+pip+' goes for a walk. Come along!</p>',
+    [ { label:'▶ Start walking', act: walkScreen } ]);
+}
+function finaleScreen(){
+  show('img/night.jpg',
+    '<p class="big">🌙 The moon is smiling.</p>'+
+    '<p>'+pip+' walked '+walkLen+' steps. Good walking, '+pip+'!</p>'+
+    (friends.length ? '<p>New friends: <span class="big">'+friends.join(' ')+'</span></p>' : '<p>It was a quiet, happy walk.</p>')+
+    (treasures ? '<p>✨ Treasures found: '+treasures+'</p>' : '')+
+    '<p>Now it is time to rest. <b>The End.</b> 💛</p>',
+    [ { label:'🔁 Walk again', act: titleScreen },
+      { label:'🌙 Same walk, new story', act:function(){ startWalk(walkLen); } } ]);
+}
+function walkScreen(){
+  if(steps >= walkLen){ finaleScreen(); return; }
+  steps++;
+  var i;
+  do { i = rnd(SITS.length); } while(i === lastSit);
+  lastSit = i;
+  SITS[i]();
+}
+
+var SITS = [
+  function rainbow(){
+    show('img/rainbow.jpg',
+      '<p>Look! Up in the sky!</p><p class="big">🌈 A rainbow!</p>',
+      [ { label:'🏃 Run to the rainbow', act:function(){ go('<p>'+pip+' runs and runs. The rainbow is still far away. Rainbows are shy like that.</p><p>But running is fun!</p>','img/rainbow.jpg'); } },
+        { label:'🎨 Count the colors', act:function(){ go('<p>Red. Orange. Yellow. Green. Blue. Purple.</p><p><b>Six colors!</b> Good counting, '+pip+'.</p>','img/rainbow.jpg'); } } ]);
+  },
+  function frog(){
+    show('img/scene-spring.jpg',
+      '<p>A little pond. And in the pond…</p><p class="big">🐸 A frog!</p>',
+      [ { label:'👋 Say hello', act:function(){ addFriend('🐸'); go('<p>“Ribbit!” says the frog. That means <b>hello</b> in frog.</p><p>The frog walks with '+pip+' now. 💛</p>','img/scene-spring.jpg'); } },
+        { label:'💦 Splash together', act:function(){ addFriend('🐸'); go('<p>Splash, splash, splash! 💦</p><p>Everybody is wet. Everybody is laughing.</p><p>The frog walks with '+pip+' now. 💛</p>','img/scene-spring.jpg'); } } ]);
+  },
+  function butterfly(){
+    show('img/trail.jpg',
+      '<p>Something is flying. Slow and soft.</p><p class="big">🦋 A butterfly!</p>',
+      [ { label:'🐾 Follow the butterfly', act:function(){ addFriend('🦋'); go('<p>Up, down, round the flowers. The butterfly shows '+pip+' all the best flowers.</p><p>The butterfly walks with '+pip+' now. 💛</p>','img/trail.jpg'); } },
+        { label:'🌸 Show her a flower', act:function(){ addFriend('🦋'); go('<p>The butterfly sits on the flower. She likes it!</p><p>The butterfly walks with '+pip+' now. 💛</p>','img/trail.jpg'); } } ]);
+  },
+  function picnic(){
+    show('img/picnic.jpg',
+      '<p>Under the apple tree — a picnic!</p><p class="big">🧺 Berries! Lots of berries!</p>',
+      [ { label:'😋 Eat a berry', act:function(){ treasures++; go('<p>Mmm! Sweet and warm from the sun. ☀️</p><p>'+pip+' has berries for the road. ✨</p>','img/picnic.jpg'); } },
+        { label:'🐦 Share with a bird', act:function(){ addFriend('🐦'); go('<p>A little bird comes down. Peck, peck. “Thank you!” she chirps.</p><p>The bird walks with '+pip+' now. 💛</p>','img/picnic.jpg'); } } ]);
+  },
+  function puddle(){
+    show('img/water-2.jpg',
+      '<p>After the rain, the path has a present.</p><p class="big">💧 A big puddle!</p>',
+      [ { label:'👢 Jump in!', act:function(){ go('<p>SPLASH! 💦💦💦</p><p>Wet feet. Happy dragon.</p>','img/water-2.jpg'); } },
+        { label:'🫧 Look at the bubbles', act:function(){ go('<p>Round and shiny, up they float. Pop! Pop! Pop!</p><p>Goodbye, bubbles.</p>','img/water-2.jpg'); } } ]);
+  },
+  function bunny(){
+    show('img/trail.jpg',
+      '<p>Behind the bush, two long ears.</p><p class="big">🐰 A bunny!</p>',
+      [ { label:'👋 Say hello', act:function(){ addFriend('🐰'); go('<p>The bunny wiggles his nose. That is bunny for <b>hello</b>.</p><p>The bunny hops along with '+pip+' now. 💛</p>','img/trail.jpg'); } },
+        { label:'🏃 Play tag', act:function(){ addFriend('🐰'); go('<p>Run, run, hop, hop! Nobody wins. Everybody wins.</p><p>The bunny hops along with '+pip+' now. 💛</p>','img/trail.jpg'); } } ]);
+  },
+  function flowers(){
+    show('img/rainbow.jpg',
+      '<p>A whole field of flowers. Pink, yellow, white.</p><p class="big">🌼 It smells like summer.</p>',
+      [ { label:'👃 Smell the flowers', act:function(){ go('<p>Sniff, sniff. Aaaah.</p><p>'+pip+' smells like a flower now too.</p>','img/rainbow.jpg'); } },
+        { label:'👑 Make a flower crown', act:function(){ treasures++; go('<p>One flower, two flowers, round and round…</p><p>A crown! '+pip+' is the King of the Walk. 👑 ✨</p>','img/rainbow.jpg'); } } ]);
+  },
+  function stone(){
+    show('img/scene-spring.jpg',
+      '<p>What is shining in the grass?</p><p class="big">✨ A shiny stone!</p>',
+      [ { label:'🤲 Take the stone', act:function(){ treasures++; go('<p>The stone is smooth and warm. '+pip+' puts it in the pocket. ✨</p><p>A treasure for the road.</p>','img/scene-spring.jpg'); } },
+        { label:'☀️ Show it to the sun', act:function(){ treasures++; go('<p>The sun touches the stone — and the stone sparkles like a tiny star! ✨</p>','img/scene-spring.jpg'); } } ]);
+  },
+  function bigDragon(){
+    show('img/fire-1.jpg',
+      '<p>A shadow. A big, warm shadow.</p><p class="big">🐉 A big dragon!</p><p>He smiles. Big dragons are kind.</p>',
+      [ { label:'👋 Wave hello', act:function(){ go('<p>The big dragon waves back. His wave is slow, like a tree in the wind.</p><p>“Good walking, little one,” he says.</p>','img/fire-1.jpg'); } },
+        { label:'🤗 Show him a smile', act:function(){ go('<p>'+pip+' smiles the biggest smile. The big dragon smiles back — even bigger!</p><p>Smiles are catching.</p>','img/fire-1.jpg'); } } ]);
+  },
+  function sleepy(){
+    show('img/leaf-2.jpg',
+      '<p>Under a big green leaf, the world is quiet.</p><p class="big">😴 '+pip+' is a little sleepy.</p>',
+      [ { label:'🍃 Rest a little', act:function(){ go('<p>'+pip+' closes his eyes. One, two, three breaths.</p><p>Open! All rested. Off we go.</p>','img/leaf-2.jpg'); } },
+        { label:'🎵 Sing a quiet song', act:function(){ go('<p>“La la la,” sings '+pip+'. The leaf sings back: rustle, rustle.</p><p>Music is everywhere.</p>','img/leaf-2.jpg'); } } ]);
+  },
+  function snow(){
+    show('img/frost-2.jpg',
+      '<p>Soft and white and slow…</p><p class="big">❄️ Snow!</p>',
+      [ { label:'✋ Catch a snowflake', act:function(){ go('<p>One snowflake lands on '+pip+'’s nose. It tickles!</p><p>Achoo! …and gone. ❄️</p>','img/frost-2.jpg'); } },
+        { label:'⚪ Make a snowball', act:function(){ treasures++; go('<p>Pat, pat, pat. A round, white snowball. ✨</p><p>'+pip+' puts it down gently. For the snowman who comes later.</p>','img/frost-2.jpg'); } } ]);
+  },
+  function fire(){
+    show('img/scene-camp.jpg',
+      '<p>A little fire, warm and friendly.</p><p class="big">🔥 Crackle, crackle.</p>',
+      [ { label:'👐 Warm your paws', act:function(){ go('<p>Warm paws, warm nose, warm tail.</p><p>All warm. All good.</p>','img/scene-camp.jpg'); } },
+        { label:'🍢 Toast a marshmallow', act:function(){ treasures++; go('<p>Round and golden and gooey. Yum! ✨</p><p>Sticky paws are happy paws.</p>','img/scene-camp.jpg'); } } ]);
+  }
+];
+
+document.getElementById('fsBtn').onclick = function(){
+  if(document.fullscreenElement){ document.exitFullscreen(); }
+  else if(document.documentElement.requestFullscreen){ document.documentElement.requestFullscreen().catch(function(){}); }
+};
+
+titleScreen();
+})();
+</script>
+</body>
+</html>
