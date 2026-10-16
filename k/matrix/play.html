@@ -130,6 +130,29 @@ if(X<0 || X>35 || Y<0 || Y>35){
 }
 var cover = 'data:image/svg+xml;utf8,' + encodeURIComponent(tileSVG(X, Y, 480));
 sceneImg.src = cover;
+var curScene = null;
+/* Every screen generates its own picture: same art family as the cover
+   (palette from the cell), composed from the situation + the step. */
+function sceneFor(kind){
+  var glyphs = { arrival:'🚪', meeting:'👥', discovery:'🔭', making:'🛠️', crossroads:'🛤️', wonder:'✨', challenge:'⚡', finale:'🌙' };
+  var labels = { arrival:'Arrival', meeting:'A meeting', discovery:'A discovery', making:'The work', crossroads:'A crossroads', wonder:'Wonder', challenge:'A test', finale:'The end of the road' };
+  var yg = Math.floor(Y/6), xg = Math.floor(X/6);
+  var hueY = [210, 160, 95, 265, 28, 318][yg] + (Y%6)*7;
+  var hueX = [200, 150, 80, 255, 20, 300][xg] + (X%6)*6;
+  var h = ((X+1)*73856093) ^ ((Y+1)*19349663) ^ (G.steps*2654435761) ^ (kind.length*97 + kind.charCodeAt(0)*13);
+  function rnd(){ h = (h*1103515245 + 12345) & 0x7fffffff; return h/0x7fffffff; }
+  var ang = Math.floor(rnd()*360), circles = '', i;
+  for(i=0;i<3;i++){ circles += '<circle cx="'+Math.floor(30+rnd()*260)+'" cy="'+Math.floor(20+rnd()*110)+'" r="'+Math.floor(14+rnd()*38)+'" fill="hsl('+(i%2 ? hueY : hueX)+',85%,68%)" opacity="'+(0.13+rnd()*0.12).toFixed(2)+'"/>'; }
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180">' +
+    '<defs><linearGradient id="sg" gradientTransform="rotate('+ang+' 0.5 0.5)">' +
+    '<stop offset="0" stop-color="hsl('+hueY+',55%,'+(24+Math.floor(rnd()*8))+'%)"/><stop offset="1" stop-color="hsl('+hueX+',60%,15%)"/></linearGradient></defs>' +
+    '<rect width="320" height="180" fill="url(#sg)"/>' + circles +
+    '<text x="160" y="98" font-size="58" text-anchor="middle">'+(glyphs[kind]||'✨')+'</text>' +
+    '<text x="288" y="130" font-size="25" text-anchor="middle">'+XCAT[X][1]+'</text>' +
+    '<rect y="146" width="320" height="34" fill="rgba(8,6,14,0.72)"/>' +
+    '<text x="160" y="168" font-size="15" fill="#f2ead9" text-anchor="middle" font-family="Verdana,sans-serif">'+cellCode(X, Y)+' · '+(labels[kind]||'')+'</text></svg>';
+  return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+}
 
 /* ---------- storage: the game is generated ONCE, then saved ---------- */
 var KEY = 'mx36_' + (X+1) + '_' + (Y+1);
@@ -171,8 +194,8 @@ function chips(){
     (G.len ? '<span class="chip">👣 step '+Math.min(G.steps+1, G.len)+' of '+G.len+'</span>' : '')+
     '<span class="chip">✦ '+G.insights+'</span>';
 }
-function show(html, choices){
-  sceneImg.src = cover;
+function show(html, choices, img){
+  sceneImg.src = img || curScene || cover;
   descEl.innerHTML = html; descEl.scrollTop = 0;
   choicesEl.innerHTML = '';
   choices.forEach(function(c, i){
@@ -193,6 +216,7 @@ function show(html, choices){
 function after(html){ show(html, [ { label:'▶ Continue', act: stepScreen } ]); }
 
 function titleScreen(){
+  curScene = cover;
   var intro = '<p><b>'+code+' — '+title+'</b></p>'+
     '<p>This game was generated for this cell of the matrix — and saved. It will never be generated again; it will simply continue.</p>'+
     '<p>Here, you <b>'+act+'</b>, in a world of <b>'+world+'</b>.</p>'+
@@ -216,10 +240,12 @@ function titleScreen(){
 function resetJourney(){ G.steps = 0; G.insights = 0; G.met = []; G.seen = []; G.finished = false; G.started = false; save(); titleScreen(); }
 function begin(len){
   G.len = len; G.steps = 0; G.insights = 0; G.met = []; G.seen = []; G.started = true; G.finished = false; save();
+  curScene = sceneFor('arrival');
   after('<p>The game begins at '+G.place+'.</p><p>'+G.hero+' looks at you the way guides do — as if the world of '+world+' had been waiting for someone who would <b>'+act+'</b>.</p><p class="dim">'+code+' · '+title+' · '+len+' steps</p>');
 }
 function finale(){
   G.finished = true;
+  curScene = sceneFor('finale');
   show('<p><b>The journey is complete.</b></p>'+
     '<p>'+G.len+' steps through '+world+', taken by someone who came to '+act+'.</p>'+
     '<p>✦ Insights gathered: '+G.insights+'<br>🧑‍🤝‍🧑 Met on the way: '+(G.met.length ? G.met.join(', ') : 'no one — a solitary road')+'<br>📍 Places seen: '+(G.seen.length+1)+'</p>'+
@@ -236,6 +262,7 @@ function notePlace(){
   if(G.seen.indexOf(G.place) < 0 && rng() < 0.3){ G.seen.push(G.place); }
 }
 function meeting(){
+  curScene = sceneFor('meeting');
   var R = hashSeed(X+G.steps, Y+G.steps*3);
   var name = FIRST[Math.floor(R()*16)] + MID[Math.floor(R()*12)] + LAST[Math.floor(R()*10)];
   var kinds = ['a keeper of this place','a traveler going the other way','a maker at their work','a voice from inside the system','a guardian who asks nothing','a stranger who knows your guide'];
@@ -253,6 +280,7 @@ function meeting(){
         } } ]);
 }
 function discovery(){
+  curScene = sceneFor('discovery');
   notePlace();
   show('<p>The way opens onto something the maps of '+world+' do not show.</p>'+
        '<p>'+pick(['It has clearly been here a long time, waiting to be noticed.','It changes the way you understand everything before it.','Your guide goes quiet — even '+G.hero+' has not seen this.'])+'</p>',
@@ -260,21 +288,25 @@ function discovery(){
       { label:'▶ Take it in, and walk on', act:function(){ after('<p>Some discoveries are for carrying, not for solving. You carry this one.</p>'); } } ]);
 }
 function making(){
+  curScene = sceneFor('making');
   show('<p>Here is a place where the world of '+world+' is unfinished — and a chance to <b>'+act+'</b>.</p>',
     [ { label:'✦ Do the work', act:function(){ G.insights++; after('<p>It takes longer than expected. It usually does. But when it is done, the place is different — and so, a little, are you.</p><p class="dim">✦ Insight gained. The work holds.</p>'); } },
       { label:'▶ Not this one — walk on', act:function(){ after('<p>You leave the unfinished thing for whoever it is truly meant for. The road keeps its own counsel.</p>'); } } ]);
 }
 function crossroads(){
+  curScene = sceneFor('crossroads');
   show('<p>The way divides, inside '+world+'.</p><p>'+pick(['One way is lit; the other is honest.','One way is shorter; the other is yours.','One way everyone takes; the other one waits.'])+'</p>',
     [ { label:'⬆️ The first way', act:function(){ after('<p>You take it, and do not look back. Looking back is a different game.</p>'); } },
       { label:'↗️ The second way', act:function(){ after('<p>You take it, and the world of '+world+' rearranges itself around the choice, quietly.</p>'); } } ]);
 }
 function wonder(){
+  curScene = sceneFor('wonder');
   show('<p>For a moment, the world of '+world+' simply… shows off.</p><p>'+pick(['Light does something you have no name for.','Everything aligns, briefly, and beautifully.','It is the kind of moment journeys are actually for.'])+'</p>',
     [ { label:'✨ Linger a while', act:function(){ G.insights++; after('<p>You linger. The moment does not mind. When you walk on, it walks with you a while.</p><p class="dim">✦ Insight gained.</p>'); } },
       { label:'▶ Walk on', act:function(){ after('<p>You nod to the wonder, the way you nod to weather, and keep your pace.</p>'); } } ]);
 }
 function challenge(){
+  curScene = sceneFor('challenge');
   show('<p>Here the world of '+world+' tests whether you truly came to <b>'+act+'</b>.</p>',
     [ { label:'✦ Face the test', act:function(){
           if(rng() < 0.7){ G.insights++; after('<p>It is not easy. It was never going to be. But the way through was exactly the way you chose — and it holds.</p><p class="dim">✦ Insight gained.</p>'); }
