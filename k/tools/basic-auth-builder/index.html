@@ -45,8 +45,12 @@
     var e = email.value.trim();
     var t = token.value.trim();
     if (!e || !t) { status.textContent = "Enter both the email and the token."; return; }
+    if (t.indexOf("ATATT") !== 0 || t.length < 50) {
+      status.textContent = "This does not look like an Atlassian API token. A real token is a long code starting with ATATT (about 190 characters). Check what you pasted into the API token field — if you see only a few dots there, it is the wrong paste.";
+      return;
+    }
     out.value = "Basic " + b64utf8(e + ":" + t);
-    status.textContent = "Built. Copy the result and paste it as the credential value.";
+    status.textContent = "Built. Token looks right (" + t.length + " chars, starts with ATATT). Copy the result and paste it as the credential value.";
   });
   document.getElementById("copy").addEventListener("click", function () {
     if (!out.value) { status.textContent = "Nothing to copy yet — press Build first."; return; }
