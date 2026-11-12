@@ -51,16 +51,21 @@
   document.getElementById("copy").addEventListener("click", function () {
     if (!out.value) { status.textContent = "Nothing to copy yet — press Build first."; return; }
     out.select();
+    function manual() {
+      status.textContent = "Copy did not work — long-press the result above, Select all, Copy.";
+    }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(out.value).then(function () {
         status.textContent = "Copied.";
       }, function () {
-        document.execCommand("copy");
-        status.textContent = "Copied.";
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        if (ok) { status.textContent = "Copied."; } else { manual(); }
       });
     } else {
-      document.execCommand("copy");
-      status.textContent = "Copied.";
+      var ok2 = false;
+      try { ok2 = document.execCommand("copy"); } catch (e) { ok2 = false; }
+      if (ok2) { status.textContent = "Copied."; } else { manual(); }
     }
   });
 })();
