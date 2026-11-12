@@ -50,7 +50,17 @@
       return;
     }
     out.value = "Basic " + b64utf8(e + ":" + t);
-    status.textContent = "Built. Token looks right (" + t.length + " chars, starts with ATATT). Copy the result and paste it as the credential value.";
+    var done = false;
+    function copiedNote() {
+      status.textContent = "Built and copied (" + out.value.length + " chars). Paste it into the form — the line must start with Basic.";
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(out.value).then(function () { done = true; copiedNote(); }, function () {
+        status.textContent = "Built. Token looks right (" + t.length + " chars, starts with ATATT). Press Copy result — then paste a line of " + out.value.length + " chars into the form.";
+      });
+    } else {
+      status.textContent = "Built. Token looks right (" + t.length + " chars, starts with ATATT). Press Copy result — then paste a line of " + out.value.length + " chars into the form.";
+    }
   });
   document.getElementById("copy").addEventListener("click", function () {
     if (!out.value) { status.textContent = "Nothing to copy yet — press Build first."; return; }
