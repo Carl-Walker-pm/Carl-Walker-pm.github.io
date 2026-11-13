@@ -18,10 +18,17 @@
 </head>
 <body>
 <h1>Basic-auth builder</h1>
-<p>Builds the one-line <code>Basic &lt;base64(email:token)&gt;</code> value for Atlassian API tokens.</p>
+<p>Builds the one-line <code>Basic &lt;base64(...)&gt;</code> value for API tokens — Confluence (email + token) or Cursor (API key as the username, empty password).</p>
+<label for="service">Service</label>
+<select id="service">
+  <option value="confluence">Confluence (Atlassian)</option>
+  <option value="cursor">Cursor</option>
+</select>
+<div id="emailRow">
 <label for="email">Email</label>
 <input id="email" type="text" value="admin@4dux.net" autocomplete="off">
-<label for="token">API token</label>
+</div>
+<label for="token" id="tokenLabel">API token</label>
 <input id="token" type="password" autocomplete="off" placeholder="Paste the API token">
 <button id="build" type="button">Build</button>
 <button id="copy" type="button" class="secondary">Copy result</button>
@@ -37,13 +44,44 @@
     bytes.forEach(function (b) { bin += String.fromCharCode(b); });
     return btoa(bin);
   }
+  var service = document.getElementById("service");
+  var emailRow = document.getElementById("emailRow");
   var email = document.getElementById("email");
   var token = document.getElementById("token");
+  var tokenLabel = document.getElementById("tokenLabel");
   var out = document.getElementById("out");
   var status = document.getElementById("status");
+  service.addEventListener("change", function () {
+    var isCursor = service.value === "cursor";
+    emailRow.style.display = isCursor ? "none" : "";
+    tokenLabel.textContent = isCursor ? "Cursor API key" : "API token";
+    token.placeholder = isCursor ? "Paste the Cursor API key (starts with crsr_)" : "Paste the API token";
+    out.value = "";
+    status.textContent = "";
+  });
   document.getElementById("build").addEventListener("click", function () {
     var e = email.value.trim();
     var t = token.value.trim();
+    if (service.value === "cursor") {
+      if (!t) { status.textContent = "Paste the Cursor API key first."; return; }
+      if (t.indexOf("crsr_") !== 0 || t.length < 50) {
+        status.textContent = "This does not look like a Cursor API key. A real key starts with crsr_ and is about 69 characters. Check what you pasted — if you see only a few dots there, it is the wrong paste.";
+        return;
+      }
+      out.value = "Basic " + b64utf8(t + ":");
+      var done = false;
+      function copiedNoteCursor() {
+        status.textContent = "Built and copied (" + out.value.length + " chars). Paste it into the form — the line must start with Basic.";
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(out.value).then(function () { done = true; copiedNoteCursor(); }, function () {
+          status.textContent = "Built. Key looks right (" + t.length + " chars, starts with crsr_). Press Copy result — then paste a line of " + out.value.length + " chars into the form.";
+        });
+      } else {
+        status.textContent = "Built. Key looks right (" + t.length + " chars, starts with crsr_). Press Copy result — then paste a line of " + out.value.length + " chars into the form.";
+      }
+      return;
+    }
     if (!e || !t) { status.textContent = "Enter both the email and the token."; return; }
     if (t.indexOf("ATATT") !== 0 || t.length < 50) {
       status.textContent = "This does not look like an Atlassian API token. A real token is a long code starting with ATATT (about 190 characters). Check what you pasted into the API token field — if you see only a few dots there, it is the wrong paste.";
