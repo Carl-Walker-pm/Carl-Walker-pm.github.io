@@ -1,0 +1,451 @@
+/* ==========================================================================
+   Båtsfjord — glossy print-magazine restyle  (style.css)
+   Drop-in for the existing markup/classes of k/batsfjord/index.html.
+   Offline: no @import, no web fonts, no external URLs. System fonts only.
+   Palette: deep Arctic navy · ice white · crab-red accent.
+   ========================================================================== */
+
+:root{
+  --navy-950:#04101e;
+  --navy-900:#071a2f;
+  --navy-800:#0b2540;
+  --navy-700:#133a5e;
+  --sea-500:#2f7596;
+  --sea-300:#8fbad2;
+  --ice-50:#f7fafc;
+  --ice-100:#eef4f8;
+  --frost:#e2edf4;
+  --ink:#0c1b2a;
+  --ink-soft:#4b6173;      /* captions/kickers on light grounds (>=5:1) */
+  --rule:rgba(11,37,64,.2);
+  --crab:#b8291b;          /* accent on light grounds (>=6:1 on white) */
+  --crab-bright:#e2402f;   /* badge ground, white text on it >=4.6:1   */
+  --crab-light:#ff9a8a;    /* accent on navy grounds                   */
+  --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,"Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:"Helvetica Neue",Helvetica,"Segoe UI",Arial,sans-serif;
+  --gutter:clamp(16px,4vw,40px);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+
+body{
+  margin:0;
+  background:
+    linear-gradient(180deg,var(--ice-100) 0,var(--ice-50) 480px),
+    var(--ice-50);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.65;
+  font-kerning:normal;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%}
+
+/* ---------- Masthead ------------------------------------------------------ */
+.mast{
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:clamp(34px,6vw,76px) var(--gutter) clamp(24px,4vw,42px);
+  color:var(--ice-50);
+  background:
+    radial-gradient(120% 160% at 18% -10%,#1f5683 0,rgba(31,86,131,0) 55%),
+    linear-gradient(180deg,var(--navy-800) 0,var(--navy-950) 100%);
+  border-bottom:5px solid var(--crab-bright);
+  box-shadow:0 1px 0 var(--crab-light) inset;
+}
+.mast::before{               /* glossy sheen across the top half */
+  content:"";
+  position:absolute;inset:0 0 45% 0;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0));
+  pointer-events:none;
+}
+.mast .name{
+  position:relative;
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(32px,9vw,112px);
+  line-height:1;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  text-indent:.12em;          /* optically re-centre the tracked caps */
+  overflow-wrap:anywhere;
+}
+.mast .issue{
+  position:relative;
+  max-width:46em;
+  margin:clamp(12px,2vw,20px) auto 0;
+  padding-top:clamp(10px,1.6vw,16px);
+  border-top:1px solid rgba(143,186,210,.45);
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:clamp(14px,1.6vw,17px);
+  line-height:1.5;
+  letter-spacing:.04em;
+  color:var(--sea-300);
+}
+
+/* ---------- Page frame & blocks ------------------------------------------ */
+.wrap{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 var(--gutter) clamp(56px,8vw,96px);
+  counter-reset:plate;
+}
+.block{
+  position:relative;
+  margin:0;
+  padding:clamp(36px,6vw,76px) 0;
+  border-top:1px solid var(--rule);
+  border-bottom:0;
+}
+.wrap > .block:first-child{border-top:0}
+
+/* Two-page-spread layout on wide screens: copy | plate, alternating sides */
+@media (min-width:901px){
+  .block{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    column-gap:clamp(36px,5vw,64px);
+    row-gap:0;
+    align-items:start;
+  }
+  .block > figure{grid-column:2;grid-row:1 / span 12;margin:6px 0 0;position:sticky;top:24px}
+  .block > :not(figure){grid-column:1;min-width:0}
+  .block:nth-of-type(even) > figure{grid-column:1}
+  .block:nth-of-type(even) > :not(figure){grid-column:2}
+  /* blocks with no photo: one centred editorial column */
+  .block:not(:has(figure)){display:block;max-width:44rem;margin-inline:auto}
+}
+
+/* ---------- Folio line ---------------------------------------------------- */
+.num{
+  display:flex;align-items:center;justify-content:flex-start;gap:12px;
+  margin:0 0 14px;padding:0 0 9px;
+  border-bottom:1px solid var(--rule);
+  font-family:var(--sans);
+  font-size:12px;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:var(--crab);
+}
+.num::before{                  /* small red folio mark before the number */
+  content:"";flex:none;order:-1;
+  width:10px;height:10px;margin-right:2px;
+  background:var(--crab-bright);
+  transform:rotate(45deg);
+}
+.kicker{
+  margin:14px 0 0;
+  font-family:var(--sans);
+  font-size:12px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+
+/* ---------- Type ---------------------------------------------------------- */
+h1.cover{
+  margin:14px 0 18px;
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(42px,8.4vw,112px);
+  line-height:.98;letter-spacing:-.015em;
+  color:var(--navy-900);
+  overflow-wrap:break-word;hyphens:auto;
+}
+h1.cover::after{               /* crab-red sign-off rule under the cover line */
+  content:"";display:block;width:min(160px,40%);height:6px;margin-top:22px;
+  background:linear-gradient(90deg,var(--crab-bright),var(--crab));
+}
+h2{
+  margin:10px 0 14px;
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(28px,3.6vw,44px);
+  line-height:1.1;letter-spacing:-.01em;
+  color:var(--navy-900);
+  overflow-wrap:break-word;hyphens:auto;
+}
+h3{
+  margin:12px 0 8px;
+  font-family:var(--serif);font-weight:700;font-style:italic;
+  font-size:clamp(21px,2.4vw,26px);line-height:1.2;
+  color:var(--navy-800);
+}
+p{margin:12px 0;font-size:18px;line-height:1.7;overflow-wrap:break-word;hyphens:auto}
+.lede{font-size:clamp(19px,2vw,22px);line-height:1.6;color:var(--navy-800)}
+
+/* Drop cap on the opening paragraph of each ordinary block */
+.block:not(.hero):not(.cover):not(.tour):not(#block-119) > h2 + p::first-letter{
+  float:left;
+  font-family:var(--serif);font-weight:700;
+  font-size:4.7em;line-height:.8;
+  padding:.07em .1em 0 0;
+  color:var(--crab);
+}
+/* Cover standfirst */
+.cover > p{
+  max-width:34em;
+  font-size:clamp(19px,2.1vw,24px);line-height:1.55;
+  font-style:italic;color:var(--navy-700);
+}
+
+/* Pull quotes: class/element for future markup + the Editor's Letter close */
+blockquote,.pullquote,#block-02 > p:last-of-type{
+  margin:26px 0 18px;
+  padding:6px 0 6px 22px;
+  border-left:5px solid var(--crab-bright);
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(22px,2.6vw,30px);
+  line-height:1.3;
+  color:var(--navy-800);
+}
+
+/* Fact box */
+.factbox{
+  margin:22px 0;padding:20px 24px;
+  background:linear-gradient(180deg,#fff,var(--frost));
+  border:1px solid var(--rule);border-top:4px solid var(--crab-bright);
+}
+.factbox p{font-size:17px}
+
+/* ---------- Plates (figures) & captions ----------------------------------- */
+figure{
+  position:relative;
+  margin:24px 0;
+  counter-increment:plate;
+}
+figure img{
+  display:block;width:100%;height:auto;
+  background:var(--frost);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 18px 38px -16px rgba(4,16,30,.55);
+}
+figure::after{                 /* glossy diagonal sheen over the photograph */
+  content:"";
+  position:absolute;inset:0 0 auto 0;
+  aspect-ratio:3/2;max-height:100%;
+  background:linear-gradient(115deg,rgba(255,255,255,.22) 0,rgba(255,255,255,.06) 26%,rgba(255,255,255,0) 42%);
+  pointer-events:none;
+}
+figcaption{
+  margin-top:10px;padding-top:9px;
+  border-top:2px solid var(--navy-800);
+  font-family:var(--serif);font-style:italic;
+  font-size:14.5px;line-height:1.5;
+  color:var(--ink-soft);
+}
+figcaption::before{
+  content:"Plate " counter(plate,decimal-leading-zero);
+  display:block;margin-bottom:2px;
+  font-family:var(--sans);font-style:normal;font-weight:700;
+  font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--crab);
+}
+
+/* ---------- Cover ---------------------------------------------------------- */
+.block.cover{display:block;max-width:none;padding-top:clamp(36px,6vw,72px)}
+.block.cover > figure{position:relative;top:auto;margin:30px 0 0}
+.cover figcaption{max-width:52em}
+
+/* ---------- CONCEPT badge --------------------------------------------------- */
+.badge,
+.concept-badge,
+.tour .num::after{
+  display:inline-block;
+  align-self:flex-start;
+  margin:0;
+  padding:8px 14px 7px 12px;
+  font-family:var(--sans);font-size:11px;font-weight:800;
+  line-height:1.3;letter-spacing:.2em;text-transform:uppercase;
+  color:#fff;
+  background:linear-gradient(180deg,#f0553f 0,var(--crab-bright) 45%,#b8291b 100%);
+  border:1px solid #8d1c11;
+  border-radius:2px;
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 3px 8px -3px rgba(4,16,30,.5);
+}
+.badge::before,.concept-badge::before{content:"\25C6\0000a0"}   /* small diamond + nbsp */
+.tour .num::after{content:"\25C6\0000a0Concept";white-space:nowrap}
+.tour .num{justify-content:space-between}
+.tour .num::before{display:none}
+.tour .num{padding-bottom:12px}
+
+/* Tour / programme blocks (hook class `tour`): sea-glass cards */
+.tour{
+  margin:clamp(14px,2.4vw,26px) 0;
+  padding:clamp(22px,3.4vw,40px) clamp(18px,3.4vw,40px);
+  background:linear-gradient(135deg,#fff 0,var(--frost) 100%);
+  border:1px solid var(--rule);
+  border-left:7px solid var(--crab-bright);
+  box-shadow:0 14px 30px -22px rgba(4,16,30,.55);
+}
+.tour + .tour{border-top:1px solid var(--rule)}
+.tour h2{font-size:clamp(26px,3.1vw,38px)}
+
+/* ---------- Startup HEROs --------------------------------------------------- */
+.hero{
+  border:0;
+  padding:clamp(40px,6.4vw,84px) 0;
+  /* full-bleed band without causing horizontal scroll (shadow is not scrollable overflow) */
+  box-shadow:0 0 0 100vmax var(--hero-bg,var(--navy-900));
+  clip-path:inset(0 -100vmax);
+  background:var(--hero-bg,var(--navy-900));
+  color:#dce9f2;
+  --hero-bg:var(--navy-900);
+}
+.hero:nth-of-type(even){--hero-bg:var(--frost);color:var(--ink)}
+.hero + .hero{margin-top:0}
+.hero::before{                 /* thin crab-red head-rule */
+  content:"";position:absolute;left:0;top:0;width:96px;height:4px;background:var(--crab-bright);
+}
+.hero .num{margin-top:0}
+.hero .badge{margin:4px 0 6px;justify-self:start}
+.hero h2{
+  margin:6px 0 14px;
+  font-size:clamp(32px,4.8vw,60px);line-height:1.04;
+  color:#fff;
+}
+.hero > h2 + p{                /* the one-line pitch becomes a pull quote */
+  margin:8px 0 18px;padding:4px 0 4px 20px;
+  border-left:5px solid var(--crab-bright);
+  font-style:italic;font-size:clamp(20px,2.3vw,27px);line-height:1.32;
+  color:#fff;
+}
+.hero > h2 + p + p{font-size:17px;color:#bcd2e1}
+.hero .num{color:var(--crab-light);border-bottom-color:rgba(143,186,210,.35)}
+.hero .kicker{color:var(--sea-300)}
+.hero figcaption{color:#a9c4d6;border-top-color:var(--sea-300)}
+.hero figcaption::before{color:var(--crab-light)}
+.hero figure img{box-shadow:0 0 0 1px rgba(255,255,255,.18),0 24px 44px -18px rgba(0,0,0,.8)}
+
+.hero:nth-of-type(even) .num{color:var(--crab);border-bottom-color:var(--rule)}
+.hero:nth-of-type(even) .kicker{color:var(--ink-soft)}
+.hero:nth-of-type(even) h2{color:var(--navy-900)}
+.hero:nth-of-type(even) > h2 + p{color:var(--navy-800)}
+.hero:nth-of-type(even) > h2 + p + p{color:#33495b}
+.hero:nth-of-type(even) figcaption{color:var(--ink-soft);border-top-color:var(--navy-800)}
+.hero:nth-of-type(even) figcaption::before{color:var(--crab)}
+.hero:nth-of-type(even) figure img{box-shadow:0 0 0 1px rgba(11,37,64,.15),0 22px 40px -20px rgba(4,16,30,.6)}
+
+/* ---------- Back matter ------------------------------------------------------ */
+#block-117 p,#block-118 p{font-size:15.5px;line-height:1.6}
+#block-119 p{
+  font-size:16px;line-height:1.9;
+  column-gap:40px;
+}
+@media (min-width:701px){#block-119 p{column-count:2}}
+#block-119 p{break-inside:avoid-column}
+#block-120{
+  background:linear-gradient(180deg,var(--navy-800),var(--navy-950));
+  color:#dce9f2;
+  box-shadow:0 0 0 100vmax var(--navy-900);
+  clip-path:inset(0 -100vmax);
+  margin-top:clamp(36px,6vw,80px);
+  text-align:center;
+}
+#block-120 .num{justify-content:center;color:var(--crab-light);border-bottom-color:rgba(143,186,210,.35)}
+#block-120 .kicker{color:var(--sea-300)}
+#block-120 h2{color:#fff;font-size:clamp(32px,5vw,64px)}
+#block-120 p{color:#dce9f2;margin-inline:auto;max-width:34em}
+#block-120 > h2 + p::first-letter{all:unset}
+@media (min-width:901px){#block-120{display:block;max-width:none;margin-inline:0}}
+
+.foot{
+  margin-top:clamp(40px,6vw,64px);padding-top:20px;
+  border-top:3px double var(--navy-800);
+  font-family:var(--sans);font-size:13px;line-height:1.6;
+  color:var(--ink-soft);
+}
+.foot p{font-size:13px;line-height:1.6;margin:0}
+
+/* ---------- Links (none in the current page; tap-safe if added) -------------- */
+a{color:var(--crab);text-underline-offset:.18em;text-decoration-thickness:1px;padding:12px 2px;margin:-12px -2px}
+a:hover,a:focus{color:var(--navy-800)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--crab-bright);outline-offset:2px}
+button,.btn,nav a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center}
+
+/* ---------- Phones: strictly ONE column at <=600px ---------------------------- */
+@media (max-width:900px){
+  .block{display:block !important;max-width:none}
+  .block > figure{position:relative;top:auto}
+}
+@media (max-width:600px){
+  body{font-size:17px}
+  .wrap{padding-left:16px;padding-right:16px}
+  .block{padding:34px 0;display:block !important;float:none}
+  .block > *{float:none;max-width:100%}
+  h1.cover{font-size:clamp(38px,12vw,52px)}
+  h2{font-size:clamp(27px,7.6vw,32px)}
+  .hero h2{font-size:clamp(29px,8.4vw,36px)}
+  p{font-size:17px;line-height:1.65}
+  .cover > p{font-size:19px}
+  .tour{padding:22px 16px;border-left-width:5px}
+  .tour .num{flex-wrap:wrap}
+  .num{letter-spacing:.22em}
+  blockquote,.pullquote,#block-02 > p:last-of-type{font-size:21px;padding-left:16px}
+  .hero > h2 + p{font-size:20px;padding-left:16px}
+  figure{margin:20px 0}
+  figcaption{font-size:14px}
+  #block-119 p{column-count:1 !important}
+  .mast .issue{letter-spacing:.02em}
+  .block > figure::after{aspect-ratio:3/2}
+  /* anything interactive, if added later */
+  a,button,.btn{min-height:44px;min-width:44px}
+}
+
+/* ---------- Print ------------------------------------------------------------- */
+@page{
+  size:A4;
+  margin:16mm 14mm 20mm;
+  @bottom-center{
+    content:counter(page);
+    font-family:"Palatino Linotype",Palatino,Georgia,serif;
+    font-size:9pt;color:#4b6173;
+  }
+  @bottom-left{
+    content:"Båtsfjord — draft issue";
+    font-family:Helvetica,Arial,sans-serif;font-size:7pt;letter-spacing:.2em;text-transform:uppercase;color:#b8291b;
+  }
+}
+@media print{
+  html,body{background:#fff !important;color:#000}
+  body{font-size:11pt;line-height:1.5}
+  .mast{
+    background:#071a2f !important;color:#fff;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+    padding:14mm 10mm 8mm;
+  }
+  .mast::before,figure::after{display:none}
+  .wrap{max-width:none;padding:0}
+  .block,.block.cover,.tour,.hero,#block-120{
+    display:block !important;max-width:none;
+    break-inside:avoid;page-break-inside:avoid;
+    box-shadow:none !important;clip-path:none !important;
+    background:#fff !important;color:#000;
+    padding:8mm 0;margin:0;
+  }
+  .hero{border-top:1.2pt solid #071a2f;border-bottom:0;break-before:auto}
+  .hero::before{background:#b8291b;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tour{border:1px solid #071a2f;border-left:2.5mm solid #b8291b;padding:6mm 5mm;margin:4mm 0}
+  .block > figure{position:static;margin:5mm 0}
+  figure,figcaption,h1,h2,h3,.num,.kicker,blockquote,.pullquote{break-inside:avoid;page-break-inside:avoid}
+  h1,h2,h3,.num,.kicker{break-after:avoid;page-break-after:avoid}
+  figure img{box-shadow:none;max-height:92mm;width:100%;object-fit:cover}
+  .hero figure img,.tour figure img{max-height:66mm}
+  .hero{padding:6mm 0}
+  .hero figure{margin:3mm 0 0}
+  p{font-size:11pt;orphans:3;widows:3}
+  h1.cover{font-size:40pt;color:#071a2f}
+  h2,.hero h2,.hero:nth-of-type(even) h2,#block-120 h2{font-size:21pt;color:#071a2f}
+  .hero > h2 + p,.hero:nth-of-type(even) > h2 + p{color:#071a2f;font-size:14pt}
+  .hero > h2 + p + p,.hero:nth-of-type(even) > h2 + p + p,#block-120 p{color:#000}
+  .hero .num,.hero:nth-of-type(even) .num,#block-120 .num{color:#b8291b}
+  .hero .kicker,.hero:nth-of-type(even) .kicker,#block-120 .kicker,figcaption,.hero figcaption{color:#333}
+  .hero figcaption::before{color:#b8291b}
+  .badge,.concept-badge,.tour .num::after{
+    background:#fff !important;color:#b8291b;border:1.2pt solid #b8291b;box-shadow:none;
+  }
+  #block-119 p{column-count:2 !important;font-size:10pt}
+  #block-120{text-align:left}
+  #block-120   .foot{break-inside:avoid;color:#333}
+  a{color:#000;padding:0;margin:0}
+}
