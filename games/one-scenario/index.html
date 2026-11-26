@@ -1,0 +1,1197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="data:," />
+    <title>One Scenario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+    <style>
+      :root{
+        /* 8-colour palette — 70s sci-fi paperback, printed not pixellated */
+        --void:#0f111a;
+        --paper:#f2e8cf;
+        --gold:#e9c46a;
+        --rust:#e76f51;
+        --teal:#2a9d8f;
+        --steel:#457b9d;
+        --ice:#a8dadc;
+        --signal:#bc4749;
+        --ink:var(--void);
+        --ink-soft:var(--void);
+        --panel:var(--paper);
+        --page:var(--void);
+        --hairline:var(--ice);
+      }
+      *{ box-sizing:border-box; }
+      html,body{ height:100%; }
+      body{
+        margin:0;
+        background:var(--page);
+        background-image:radial-gradient(rgba(233,196,106,.14) 1px, transparent 1.3px);
+        background-size:11px 11px;
+        color:var(--ink);
+        font-family:"Archivo", system-ui, sans-serif;
+        display:flex; justify-content:center;
+      }
+      button{ font-family:inherit; cursor:pointer; }
+      button:focus-visible{ outline:3px solid var(--ink); outline-offset:2px; }
+
+      .device{
+        width:100%; max-width:560px; min-height:100dvh;
+        display:flex; flex-direction:column;
+        padding:14px 12px calc(14px + env(safe-area-inset-bottom));
+        gap:14px;
+      }
+      @media (min-width:560px){
+        .device{ min-height:0; margin:26px 0; }
+        body{ align-items:flex-start; }
+      }
+
+      /* ---------- FRAME 1 · PICTURE ---------- */
+      .frame-pic{
+        background:var(--panel);
+        border:1.5px solid var(--ink);
+        padding:10px 10px 8px;
+        box-shadow:10px 10px 0 rgba(15,17,26,.5);
+        flex:none;
+      }
+      .frame-pic canvas{
+        display:block; width:100%; aspect-ratio:4/3;
+        background:var(--paper);
+        border:1.5px solid var(--ink);
+      }
+      .pic-caption{
+        display:flex; justify-content:space-between; align-items:center; gap:10px;
+        padding-top:9px;
+        font-family:"IBM Plex Mono", ui-monospace, monospace;
+        font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink);
+      }
+      .pic-live{ display:flex; align-items:center; gap:7px; white-space:nowrap; }
+      .pic-live i{ width:7px; height:7px; border-radius:50%; background:var(--signal); display:block; animation:blink 1s steps(1) infinite; }
+      @keyframes blink{ 50%{ opacity:0; } }
+
+      /* ---------- FRAME 2 · STORY ---------- */
+      .frame-story{
+        flex:none;
+        background:var(--panel);
+        border:1.5px solid var(--ink);
+        box-shadow:10px 10px 0 rgba(15,17,26,.5);
+        padding:22px 24px 20px;
+      }
+      .mission-line{
+        display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;
+      }
+      .mission-name{
+        font-weight:800; font-size:15px; letter-spacing:.05em; text-transform:uppercase;
+        line-height:1.4; margin:0;
+      }
+      .turn-tag{
+        font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:11px; letter-spacing:.14em;
+        border:1.5px solid var(--ink); background:var(--gold); color:var(--void);
+        padding:4px 8px; white-space:nowrap;
+      }
+      .goal-line{
+        font-family:"Newsreader", Georgia, serif; font-style:italic;
+        font-size:17.5px; line-height:1.35; margin:10px 0 16px; color:var(--ink-soft);
+      }
+      .bars{ display:grid; gap:9px; margin-bottom:18px; }
+      .bar-row{ display:grid; grid-template-columns:96px 1fr 40px; align-items:center; gap:10px; }
+      .bar-label{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.16em; }
+      .bar-track{ height:9px; border:1.5px solid var(--ink); position:relative; overflow:hidden; background:var(--panel); }
+      .bar-fill{ position:absolute; inset:0; transform-origin:left; background:var(--teal); transition:width .5s ease; }
+      .bar-fill.hull{ background:var(--steel); }
+      .bar-fill.low{
+        background:var(--signal);
+        background-image:repeating-linear-gradient(45deg, var(--signal) 0 4px, var(--paper) 4px 8px);
+      }
+      .bar-val{ font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:13px; text-align:right; line-height:1; }
+      .story-text{
+        font-family:"Newsreader", Georgia, serif;
+        font-size:23px; line-height:1.42; margin:0 0 10px; min-height:98px; color:var(--ink);
+      }
+      .story-text .cursor{ display:inline-block; width:10px; height:18px; background:var(--ink); vertical-align:-2px; margin-left:2px; animation:blink 1.1s steps(1) infinite; }
+      .log-line{
+        font-family:"IBM Plex Mono", ui-monospace, monospace;
+        font-size:12.5px; line-height:1.5; color:var(--ink-soft); margin:0;
+        border-top:1px dashed var(--hairline); padding-top:10px;
+      }
+      .log-line:empty{ display:none; }
+      .howto{
+        font-family:"Newsreader", Georgia, serif; font-style:italic;
+        font-size:16.5px; line-height:1.45; margin:14px 0 0; color:var(--ink-soft);
+      }
+      .howto b{ color:var(--ink); font-style:normal; }
+
+      /* ---------- FRAME 3 · TOOLBAR ---------- */
+      .frame-tools{
+        flex:none; background:var(--panel);
+        border:1.5px solid var(--ink);
+        box-shadow:10px 10px 0 rgba(15,17,26,.5);
+        padding:12px;
+      }
+      .actions{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+      .actions.single{ grid-template-columns:1fr; }
+      .act-btn{
+        min-height:68px; padding:13px 15px; text-align:left;
+        background:var(--ink); color:var(--paper);
+        border:1.5px solid var(--ink); border-radius:2px;
+        display:flex; flex-direction:column; gap:4px; justify-content:center;
+        transition:transform .12s ease, background .12s ease;
+      }
+      .act-btn:hover{ background:var(--steel); transform:translateY(-1px); }
+      .act-btn:active{ transform:translateY(1px); }
+      .act-btn:disabled{ opacity:.38; cursor:not-allowed; transform:none; }
+      .act-btn .a-name{ font-weight:700; font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; line-height:1.5; }
+      .act-btn .a-sub{ font-family:"Newsreader", Georgia, serif; font-size:15.5px; line-height:1.15; opacity:.72; }
+      .act-btn .a-key{
+        align-self:flex-start; font-family:"IBM Plex Mono", ui-monospace, monospace;
+        font-size:10px; line-height:1; border:1px solid var(--gold); color:var(--gold);
+        padding:3px 5px;
+      }
+      .menu-actions{ display:grid; grid-template-columns:1fr; gap:10px; }
+      @media (min-width:480px){ .menu-actions{ grid-template-columns:1fr 1fr 1fr; } .menu-actions .act-btn{ min-height:112px; } }
+      .util-row{ display:flex; gap:10px; margin-top:10px; }
+      .util-btn{
+        flex:1; min-height:42px; padding:8px 6px;
+        background:transparent; color:var(--ink);
+        border:1.5px solid var(--ink); border-radius:2px;
+        font-family:"IBM Plex Mono", ui-monospace, monospace; font-size:10px; letter-spacing:.14em; line-height:1.5;
+        transition:background .12s ease, color .12s ease;
+      }
+      .util-btn:hover{ background:var(--teal); border-color:var(--teal); color:var(--paper); }
+      .util-btn:active{ transform:translateY(1px); }
+      .hidden{ display:none !important; }
+      @media (prefers-reduced-motion: reduce){
+        .pic-live i, .story-text .cursor{ animation:none; }
+        .act-btn, .util-btn, .bar-fill{ transition:none; }
+        .act-btn:hover, .act-btn:active, .util-btn:active{ transform:none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="device">
+
+      <!-- FRAME 1 · PICTURE -->
+      <section class="frame-pic" aria-label="Scene">
+        <canvas id="screen" width="480" height="360"></canvas>
+        <div class="pic-caption">
+          <span id="picTag">THE STARPORT</span>
+          <span class="pic-live"><i></i><span id="picLive">SHIP 08:00</span></span>
+        </div>
+      </section>
+
+      <!-- FRAME 2 · STORY -->
+      <section class="frame-story" aria-live="polite">
+        <div class="mission-line">
+          <h1 class="mission-name" id="missionName">ONE SCENARIO</h1>
+          <span class="turn-tag" id="turnTag"></span>
+        </div>
+        <p class="goal-line" id="goalLine">Pilot · Engineer · Scout — pick a past, take the stars.</p>
+        <div class="bars" id="bars"></div>
+        <p class="story-text" id="storyText"></p>
+        <p class="log-line" id="logLine"></p>
+        <p class="howto" id="howto"><b>The ship's clock runs in real time.</b> Pick a past, meet the captain, then chart the dark — every jump generates the next world from the last, and the menu is whatever the void offers.</p>
+      </section>
+
+      <!-- FRAME 3 · TOOLBAR -->
+      <section class="frame-tools">
+        <div class="actions" id="actions"></div>
+        <div class="util-row">
+          <button class="util-btn" id="btnHome" type="button">◀ STARPORT</button>
+          <button class="util-btn" id="btnRestart" type="button">↻ RESTART</button>
+          <button class="util-btn" id="btnSound" type="button">SOUND: ON</button>
+        </div>
+      </section>
+
+    </div>
+    <script>
+    "use strict";
+    /* ============================================================
+       ONE SCENARIO — a space RPG.
+       No schools, no fixed plot. You stand at the starport,
+       pick a past (pilot, engineer, scout), board the Kestrel,
+       meet its captain and its ship-mind — and from there the
+       voyage generates itself: planets, stations, belts,
+       derelicts, anomalies. The menu is whatever the void offers.
+       The ship's clock ticks in real time, and the dark does
+       small things to the ship while you think.
+
+       THE ART — 8 colours, pushed as far as eight go.
+       The fine 8x8 Bayer halftone stays — 64 levels deep, now
+       mixed across a fixed palette of eight: void, paper, gold,
+       rust, teal, steel, ice and signal red. A 70s sci-fi
+       paperback, printed in colour: skies graduate steel to
+       paper, the giant burns gold and rust, aurora runs teal
+       over ice, and the Meridian pulses gold, rust and teal.
+       Soul over nostalgia — now in colour.
+       ============================================================ */
+    var VOID = "#0f111a", INK = "#0f111a", PAPER = "#f2e8cf",
+        GOLD = "#e9c46a", RUST = "#e76f51", TEAL = "#2a9d8f",
+        STEEL = "#457b9d", ICE = "#a8dadc", SIGNAL = "#bc4749";
+    var cv = document.getElementById("screen");
+    var ctx = cv.getContext("2d");
+    var W = 480, H = 360;
+    var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var TAU = Math.PI * 2;
+
+    var BAYER8 = [
+      [0,32,8,40,2,34,10,42],[48,16,56,24,50,18,58,26],
+      [12,44,4,36,14,46,6,38],[60,28,52,20,62,30,54,22],
+      [3,35,11,43,1,33,9,41],[51,19,59,27,49,17,57,25],
+      [15,47,7,39,13,45,5,37],[63,31,55,23,61,29,53,21]
+    ];
+    var tileCache = {};
+    function tile(level, color) {
+      var key = color + ":" + level;
+      if (tileCache[key]) return tileCache[key];
+      var c = document.createElement("canvas"); c.width = 8; c.height = 8;
+      var g = c.getContext("2d"); g.fillStyle = color;
+      for (var y = 0; y < 8; y++)
+        for (var x = 0; x < 8; x++)
+          if (BAYER8[y][x] < level) g.fillRect(x, y, 1, 1);
+      var p = ctx.createPattern(c, "repeat");
+      tileCache[key] = p;
+      return p;
+    }
+    /* halftone fill: t = coverage 0..1 of `color` dots */
+    function shade(x, y, w, h, t, color) {
+      if (t <= 0.004 || w <= 0 || h <= 0) return;
+      if (t >= 0.996) { ctx.fillStyle = color; ctx.fillRect(x, y, w, h); return; }
+      ctx.fillStyle = tile(Math.round(t * 64), color);
+      ctx.fillRect(x, y, w, h);
+    }
+    function fill(x, y, w, h, color) { ctx.fillStyle = color; ctx.fillRect(x, y, w, h); }
+    function bgFill(color) { fill(0, 0, W, H, color); }
+    function vgrad(x, y, w, h, t0, t1, color, bands) {
+      bands = bands || 44;
+      var bh = h / bands;
+      for (var i = 0; i < bands; i++)
+        shade(x, y + i * bh, w, bh + 1.5, t0 + (t1 - t0) * (i / (bands - 1)), color);
+    }
+    function hgrad(x, y, w, h, t0, t1, color, bands) {
+      bands = bands || 36;
+      var bw = w / bands;
+      for (var i = 0; i < bands; i++)
+        shade(x + i * bw, y, bw + 1.5, h, t0 + (t1 - t0) * (i / (bands - 1)), color);
+    }
+    function disc(cx, cy, r, color) {
+      ctx.fillStyle = color; ctx.beginPath(); ctx.arc(cx, cy, r, 0, TAU); ctx.fill();
+    }
+    function discShade(cx, cy, r, t, color) {
+      ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, r, 0, TAU); ctx.clip();
+      shade(cx - r, cy - r, r * 2, r * 2, t, color); ctx.restore();
+    }
+    function ringS(cx, cy, r, color, lw) {
+      ctx.strokeStyle = color; ctx.lineWidth = lw || 2;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, TAU); ctx.stroke();
+    }
+    function ellip(cx, cy, rx, ry, color) {
+      ctx.fillStyle = color; ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, TAU); ctx.fill();
+    }
+    function ellipShade(cx, cy, rx, ry, t, color) {
+      ctx.save(); ctx.beginPath(); ctx.ellipse(cx, cy, rx, ry, 0, 0, TAU); ctx.clip();
+      shade(cx - rx, cy - ry, rx * 2, ry * 2, t, color); ctx.restore();
+    }
+    function poly(pts, color) {
+      ctx.fillStyle = color; ctx.beginPath();
+      pts.forEach(function (p, i) { i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); });
+      ctx.closePath(); ctx.fill();
+    }
+    function line(x1, y1, x2, y2, color, lw) {
+      ctx.strokeStyle = color; ctx.lineWidth = lw || 2;
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+    }
+    function rnd(seed) { var x = Math.sin(seed * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+    function starfield(n, seed, color, ymax) {
+      for (var i = 0; i < n; i++) {
+        var sx = rnd(seed + i * 3.1) * W, sy = rnd(seed + i * 7.7 + 1) * (ymax || H);
+        var b = rnd(seed + i * 13.3 + 2);
+        if (b > 0.93) { fill(sx - 2, sy, 5, 1.6, color); fill(sx, sy - 2, 1.6, 5, color); }
+        else if (b > 0.55) fill(sx, sy, 2, 2, color);
+        else fill(sx, sy, 1.2, 1.2, color);
+      }
+    }
+    function twinkle(t, seed, color) {
+      if (REDUCED) return;
+      for (var k = 0; k < 6; k++) {
+        if (Math.sin(t / 640 + k * 1.7) < 0.25) continue;
+        var sx = rnd(seed + k * 31.7) * W, sy = rnd(seed + k * 17.3 + 5) * H * 0.7;
+        fill(sx - 3, sy, 7, 1.6, color); fill(sx, sy - 3, 1.6, 7, color);
+      }
+    }
+    function groundShadow(x, y, w, t) { ellipShade(x, y, w, w * 0.2, t, INK); }
+    function bob(t, slow) { return REDUCED ? 0 : Math.round(Math.sin(t / (slow || 320)) * 1.6); }
+
+    /* ---------- figures: flat silhouettes, drawn not pixellated ---------- */
+    function figure(x, y, hgt, kind, col, det, flip) {
+      var u = hgt / 16, s = flip ? -1 : 1;
+      function P(pts, c) {
+        ctx.fillStyle = c; ctx.beginPath();
+        pts.forEach(function (p, i) {
+          var px2 = x + p[0] * u * s, py2 = y + p[1] * u;
+          i ? ctx.lineTo(px2, py2) : ctx.moveTo(px2, py2);
+        });
+        ctx.closePath(); ctx.fill();
+      }
+      function R(ox, oy, w, h, c) {
+        var xx = s < 0 ? x - (ox + w) * u : x + ox * u;
+        ctx.fillStyle = c; ctx.fillRect(xx, y + oy * u, w * u, h * u);
+      }
+      function C(ox, oy, r, c) {
+        ctx.fillStyle = c; ctx.beginPath();
+        ctx.arc(x + ox * u * s, y + oy * u, r * u, 0, TAU); ctx.fill();
+      }
+      if (kind === "robot") {
+        R(-2.5, -5.6, 1.7, 5.6, col); R(0.8, -5.6, 1.7, 5.6, col);
+        R(-2.9, -0.7, 2.5, 0.7, col); R(0.4, -0.7, 2.5, 0.7, col);
+        R(-4.3, -10.8, 1.3, 5.0, col); R(3.0, -10.8, 1.3, 5.0, col);
+        C(-3.65, -5.3, 0.85, col); C(3.65, -5.3, 0.85, col);
+        R(-3.0, -11.2, 6.0, 5.8, col);
+        R(-1.8, -10.4, 3.6, 2.6, det);
+        C(-0.9, -9.1, 0.38, col); C(0.9, -9.1, 0.38, col); C(0, -9.1, 0.38, col);
+        line(x, y - 14.6 * u, x, y - 16.1 * u, col, Math.max(2, u * 0.32));
+        R(-2.2, -14.6, 4.4, 3.2, col);
+        R(-1.7, -13.7, 3.4, 0.85, det);
+        C(0, -16.35, 0.5, det);
+        return;
+      }
+      if (kind === "alien") {
+        P([[-1.5, -7], [-0.3, -7], [-0.5, 0], [-1.8, 0]], col);
+        P([[1.5, -7], [0.3, -7], [0.5, 0], [1.8, 0]], col);
+        P([[-2.0, -12.8], [-3.2, -5.0], [-2.2, -4.8], [-1.3, -12.2]], col);
+        P([[2.0, -12.8], [3.2, -5.0], [2.2, -4.8], [1.3, -12.2]], col);
+        P([[-2.0, -13.2], [-1.7, -6.8], [1.7, -6.8], [2.0, -13.2]], col);
+        R(-0.5, -14.6, 1.0, 1.8, col);
+        ctx.fillStyle = col; ctx.beginPath();
+        ctx.ellipse(x, y - 16.1 * u, 1.55 * u, 2.05 * u, 0, 0, TAU); ctx.fill();
+        ctx.fillStyle = det; ctx.beginPath();
+        ctx.ellipse(x - 0.62 * u * s, y - 15.9 * u, 0.27 * u, 0.55 * u, 0, 0, TAU); ctx.fill();
+        ctx.beginPath();
+        ctx.ellipse(x + 0.62 * u * s, y - 15.9 * u, 0.27 * u, 0.55 * u, 0, 0, TAU); ctx.fill();
+        return;
+      }
+      /* humans */
+      if (kind === "hero") R(3.1, -11.6, 2.1, 6.6, col);            /* backpack */
+      P([[-2.7, -5.6], [-0.35, -5.6], [-0.75, 0], [-3.0, 0]], col);
+      P([[2.7, -5.6], [0.35, -5.6], [0.75, 0], [3.0, 0]], col);
+      R(-3.35, -0.7, 3.15, 0.7, col); R(0.2, -0.7, 3.15, 0.7, col);
+      P([[-3.3, -11], [-4.7, -6.2], [-3.7, -5.7], [-2.8, -10.4]], col);
+      P([[3.3, -11], [4.7, -6.2], [3.7, -5.7], [2.8, -10.4]], col);
+      if (kind === "cap") P([[-3.4, -11.2], [-3.7, -4.2], [3.7, -4.2], [3.4, -11.2]], col);
+      else P([[-3.3, -11.2], [-2.9, -5.4], [2.9, -5.4], [3.3, -11.2]], col);
+      C(0, -12.9, 1.95, col);
+      if (kind === "hero") {
+        R(-1.95, -11.35, 3.9, 0.85, det);                          /* scarf */
+        R(-2.9, -9.4, 5.8, 0.55, det);                             /* chest strap */
+        if (!flip) R(3.1, -8.8, 2.1, 0.5, det);
+      } else if (kind === "cap") {
+        C(0, -13.55, 2.02, col);
+        R(-2.7, -13.3, 5.4, 0.62, col);                            /* cap brim */
+        C(0, -13.7, 0.45, det);                                    /* insignia */
+        C(0, -9.6, 0.34, det); C(0, -8.2, 0.34, det);
+      } else if (kind === "crew") {
+        C(1.75, -14.3, 0.95, col);                                 /* bun */
+        R(-1.6, -11.25, 3.2, 0.65, det);                           /* collar */
+        R(-3.28, -8.6, 0.6, 2.2, det);
+      } else if (kind === "spacer") {
+        R(-1.25, -10.5, 1.15, 1.15, det);                          /* chest patch */
+        ctx.strokeStyle = det; ctx.lineWidth = Math.max(2, u * 0.34);
+        ctx.beginPath(); ctx.arc(x + 5.9 * u * s, y - 6.2 * u, 1.9 * u, 0, TAU); ctx.stroke();
+      }
+    }
+
+    /* ---------- scenes (picture frame) ---------- */
+    function drawStarport(t) {
+      bgFill(PAPER);
+      vgrad(0, 0, W, 302, 0.55, 0.04, STEEL, 42);                  /* dawn sky, steel to paper */
+      vgrad(0, 190, W, 112, 0.22, 0, RUST, 18);                    /* rust light low on the horizon */
+      disc(394, 84, 29, GOLD); ringS(394, 84, 29, INK, 2);
+      discShade(386, 78, 7, 0.35, RUST); discShade(402, 92, 5, 0.3, RUST);
+      /* distant port skyline, faded by haze */
+      fill(14, 168, 36, 134, INK); fill(20, 148, 24, 22, INK);
+      fill(428, 128, 32, 174, INK); line(444, 128, 444, 96, INK, 3);
+      fill(66, 226, 52, 76, INK); fill(356, 240, 44, 62, INK);
+      shade(0, 120, W, 182, 0.42, PAPER);
+      for (var wn = 0; wn < 7; wn++) {                              /* lit windows in the towers */
+        fill(22 + (wn % 3) * 9, 182 + Math.floor(wn / 3) * 26, 4, 6, GOLD);
+        fill(436 + (wn % 2) * 10, 150 + wn * 20, 4, 6, GOLD);
+      }
+      /* the Kestrel on the pad */
+      var hull = [[92, 198], [148, 166], [332, 166], [396, 196], [386, 226], [138, 230], [92, 216]];
+      poly(hull, INK);
+      ctx.save(); ctx.beginPath();
+      hull.forEach(function (p, i) { i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); });
+      ctx.closePath(); ctx.clip();
+      shade(92, 164, 304, 24, 0.4, PAPER);                         /* light along the spine */
+      shade(92, 208, 304, 22, 0.3, PAPER);
+      ctx.restore();
+      poly([[92, 198], [78, 152], [100, 150], [118, 194]], RUST);   /* tail fin, rust-red */
+      fill(196, 182, 17, 9, GOLD); fill(224, 182, 17, 9, GOLD); fill(252, 182, 17, 9, GOLD);
+      fill(348, 184, 22, 10, ICE);                                 /* cockpit glass */
+      fill(238, 202, 20, 28, PAPER); shade(242, 206, 12, 20, 0.35, INK);  /* open hatch */
+      line(168, 228, 156, 264, INK, 6); line(332, 228, 344, 264, INK, 6);
+      fill(142, 264, 28, 5, INK); fill(330, 264, 28, 5, INK);
+      shade(52, 192, 26, 20, REDUCED ? 0.55 : 0.5 + 0.2 * Math.sin(t / 280), RUST);  /* engine shimmer */
+      /* gantry */
+      fill(410, 148, 10, 154, INK); line(410, 174, 376, 182, INK, 5); line(392, 178, 392, 200, INK, 2);
+      /* ground + pad */
+      fill(0, 300, W, 2.5, INK);
+      shade(0, 302, W, 58, 0.15, INK);
+      ctx.strokeStyle = INK; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.ellipse(240, 322, 196, 19, 0, 0, TAU); ctx.stroke();
+      ellipShade(240, 320, 150, 13, 0.1, INK);
+      line(20, 344, 130, 312, INK, 1.6); line(460, 344, 350, 312, INK, 1.6); line(90, 352, 190, 318, INK, 1.6);
+      /* you, centre screen — and company */
+      groundShadow(240, 324, 52, 0.3);
+      figure(150, 324 + bob(t, 430), 92, "robot", STEEL, GOLD, false);
+      figure(240, 322 + bob(t), 106, "hero", INK, RUST, false);
+      fill(292, 298, 25, 25, INK); fill(292, 308, 25, 3.5, PAPER); line(298, 298, 298, 290, INK, 3); line(311, 298, 311, 290, INK, 3); line(298, 290, 311, 290, INK, 3);
+    }
+
+    function drawBridge(t) {
+      bgFill(VOID);
+      shade(0, 0, W, H, 0.13, STEEL);                              /* wall tone */
+      fill(148, 12, 184, 4, GOLD);                                 /* ceiling light strip */
+      shade(120, 16, 240, 26, 0.07, GOLD);
+      /* the big viewport */
+      fill(64, 30, 352, 182, PAPER);
+      fill(69, 35, 342, 172, VOID);
+      ctx.save(); ctx.beginPath(); ctx.rect(69, 35, 342, 172); ctx.clip();
+      starfield(46, 21, PAPER, 190);
+      disc(332, 108, 45, GOLD);
+      ctx.save(); ctx.beginPath(); ctx.arc(332, 108, 45, 0, TAU); ctx.clip();
+      shade(287, 78, 90, 9, 0.3, RUST); shade(287, 98, 90, 7, 0.18, PAPER); shade(287, 122, 90, 10, 0.36, RUST);
+      hgrad(332, 63, 45, 90, 0.05, 0.5, VOID, 14);                 /* terminator */
+      ctx.restore();
+      ctx.strokeStyle = ICE; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.ellipse(332, 108, 74, 17, -0.3, 0, TAU); ctx.stroke();
+      ctx.restore();
+      line(240, 35, 240, 207, PAPER, 3);                           /* viewport mullion */
+      /* crew at the consoles — drawn first, consoles overlap their legs */
+      figure(118, 326 + bob(t, 430), 102, "cap", PAPER, GOLD, false);
+      figure(240, 324 + bob(t), 106, "hero", PAPER, RUST, false);
+      figure(362, 326 + bob(t, 370), 96, "robot", ICE, GOLD, false);
+      /* console bank */
+      fill(28, 258, 424, 66, PAPER);
+      shade(28, 258, 424, 66, 0.1, INK);
+      fill(50, 268, 92, 36, VOID); fill(194, 268, 92, 36, VOID); fill(338, 268, 92, 36, VOID);
+      for (var sc = 0; sc < 12; sc++) {                            /* screen data */
+        fill(58 + rnd(sc * 3.3) * 74, 274 + rnd(sc * 7.1) * 24, 3, 3, TEAL);
+        fill(202 + rnd(sc * 5.7 + 9) * 74, 274 + rnd(sc * 3.9 + 4) * 24, 3, 3, GOLD);
+        fill(346 + rnd(sc * 9.3 + 2) * 74, 274 + rnd(sc * 6.3 + 7) * 24, 3, 3, ICE);
+      }
+      ctx.strokeStyle = GOLD; ctx.lineWidth = 2;                   /* the chart line, centre screen */
+      ctx.beginPath(); ctx.moveTo(202, 296);
+      ctx.lineTo(222, 284); ctx.lineTo(240, 290); ctx.lineTo(258, 276); ctx.lineTo(278, 280); ctx.stroke();
+      disc(278, 280, 3.5, GOLD);
+      for (var bt = 0; bt < 18; bt++) fill(52 + bt * 22, 312, 7, 4, bt % 5 === 0 ? SIGNAL : INK);  /* button row */
+      fill(0, 324, W, 36, INK); shade(0, 324, W, 36, 0.18, PAPER); /* floor */
+      ellipShade(118, 330, 40, 6, 0.14, PAPER); ellipShade(240, 328, 44, 6, 0.14, PAPER); ellipShade(362, 330, 38, 6, 0.14, PAPER);
+    }
+
+    function drawPlanet(t) {
+      bgFill(PAPER);
+      vgrad(0, 0, W, 250, 0.42, 0.02, STEEL, 38);
+      /* the ringed giant, hanging in the sky — gold, banded with rust */
+      ctx.save(); ctx.translate(374, 76); ctx.rotate(-0.3);
+      ctx.strokeStyle = RUST; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.ellipse(0, 0, 88, 19, 0, 0, TAU); ctx.stroke(); ctx.restore();
+      disc(374, 76, 41, GOLD);
+      ctx.save(); ctx.beginPath(); ctx.arc(374, 76, 41, 0, TAU); ctx.clip();
+      shade(333, 44, 82, 8, 0.55, RUST); shade(333, 60, 82, 7, 0.25, PAPER);
+      shade(333, 84, 82, 9, 0.6, RUST); shade(333, 102, 82, 8, 0.32, PAPER);
+      hgrad(374, 35, 41, 82, 0.04, 0.42, VOID, 12);
+      ctx.restore();
+      ctx.save(); ctx.translate(374, 76); ctx.rotate(-0.3);
+      ctx.strokeStyle = RUST; ctx.lineWidth = 5;
+      ctx.beginPath(); ctx.ellipse(0, 0, 88, 19, 0, Math.PI * 0.12, Math.PI * 0.88); ctx.stroke(); ctx.restore();
+      fill(28, 26, 2, 2, INK); fill(96, 52, 2, 2, INK); fill(180, 20, 2, 2, INK); fill(238, 64, 2, 2, INK);
+      /* rock spires, rust-red */
+      poly([[6, 302], [28, 190], [50, 302]], RUST);
+      ctx.save(); ctx.beginPath(); ctx.moveTo(28, 190); ctx.lineTo(50, 302); ctx.lineTo(28, 302); ctx.closePath(); ctx.clip();
+      shade(28, 190, 22, 112, 0.4, PAPER); ctx.restore();
+      poly([[424, 302], [442, 224], [460, 302]], RUST);
+      shade(442, 224, 18, 78, 0.3, PAPER);
+      /* glass-trees: teal trunks, concentric crowns */
+      [[128, 302, 58], [330, 302, 46]].forEach(function (tr) {
+        line(tr[0], tr[1], tr[0], tr[1] - tr[2], TEAL, 3.5);
+        line(tr[0], tr[1] - tr[2] * 0.55, tr[0] - 16, tr[1] - tr[2] * 0.8, TEAL, 2);
+        line(tr[0], tr[1] - tr[2] * 0.55, tr[0] + 16, tr[1] - tr[2] * 0.85, TEAL, 2);
+        ringS(tr[0], tr[1] - tr[2] - 12, 11, TEAL, 1.8);
+        ringS(tr[0], tr[1] - tr[2] - 12, 18, TEAL, 1.4);
+        ringS(tr[0], tr[1] - tr[2] - 12, 25, TEAL, 1.1);
+        disc(tr[0] - 14, tr[1] - tr[2] + 8, 1.8, GOLD); disc(tr[0] + 15, tr[1] - tr[2] + 4, 1.8, GOLD);
+      });
+      /* ground */
+      fill(0, 300, W, 2.5, INK);
+      shade(0, 302, W, 58, 0.22, RUST);
+      for (var st = 0; st < 26; st++) fill(rnd(st * 4.7) * W, 308 + rnd(st * 9.1) * 44, 3, 2, INK);
+      /* survey markers */
+      line(58, 322, 58, 300, INK, 2.5); poly([[58, 300], [72, 304], [58, 309]], SIGNAL);
+      line(404, 330, 404, 310, INK, 2.5); poly([[404, 310], [417, 314], [404, 319]], SIGNAL);
+      groundShadow(214, 324, 50, 0.3); groundShadow(264, 326, 46, 0.28);
+      figure(214, 322 + bob(t), 102, "hero", INK, RUST, false);
+      figure(264, 324 + bob(t, 300), 96, "crew", STEEL, GOLD, true);
+    }
+
+    function drawIce(t) {
+      bgFill(STEEL);
+      vgrad(0, 0, W, 302, 0.72, 0.25, VOID, 46);                   /* dusk, void over steel */
+      for (var b = 0; b < 3; b++) {                                /* aurora — teal and ice ribbons */
+        var base = 34 + b * 30;
+        for (var ax = 0; ax < W; ax += 9) {
+          var ay = base + Math.sin(ax / 58 + b * 1.4) * 13;
+          shade(ax, ay, 9, 20 + b * 5, 0.55 - b * 0.13 + 0.12 * Math.sin(ax / 90 + b), b % 2 ? ICE : TEAL);
+        }
+      }
+      disc(64, 66, 19, PAPER); discShade(58, 60, 6, 0.3, STEEL); discShade(72, 74, 4, 0.28, STEEL);
+      starfield(20, 31, PAPER, 90);
+      /* ice spikes */
+      [[10, 128], [86, 96], [300, 112], [392, 88]].forEach(function (sp, i) {
+        var bx = sp[0], bw2 = sp[1], top = 302 - (120 + (i % 3) * 26);
+        poly([[bx, 302], [bx + bw2 * 0.44, top], [bx + bw2, 302]], PAPER);
+        line(bx, 302, bx + bw2 * 0.44, top, INK, 2.2);
+        line(bx + bw2 * 0.44, top, bx + bw2, 302, INK, 2.2);
+        ctx.save(); ctx.beginPath();
+        ctx.moveTo(bx + bw2 * 0.44, top); ctx.lineTo(bx + bw2, 302); ctx.lineTo(bx + bw2 * 0.44, 302); ctx.closePath(); ctx.clip();
+        shade(bx, top, bw2, 302 - top, 0.2, INK); ctx.restore();
+      });
+      /* snowfield */
+      fill(0, 300, W, 60, ICE);
+      shade(0, 330, W, 30, 0.25, PAPER);
+      line(0, 300, W, 300, INK, 2.5);
+      ellipShade(70, 322, 60, 8, 0.1, INK); ellipShade(300, 336, 80, 9, 0.1, INK); ellipShade(430, 318, 46, 7, 0.12, INK);
+      for (var sp2 = 0; sp2 < 30; sp2++) fill(rnd(sp2 * 6.1 + 40) * W, 306 + rnd(sp2 * 3.7) * 48, 2, 1.6, INK);
+      /* the rover, lamps on */
+      ctx.save(); ctx.beginPath(); ctx.rect(418, 252, 62, 52); ctx.clip();
+      hgrad(418, 252, 62, 52, 0.05, 0.3, INK, 10); ctx.restore();
+      poly([[330, 300], [330, 264], [416, 264], [416, 300]], RUST);
+      ctx.save(); ctx.beginPath(); ctx.arc(374, 264, 15, Math.PI, 0); ctx.closePath(); ctx.fillStyle = ICE; ctx.fill(); ctx.restore();
+      ringS(374, 264, 15, INK, 2);
+      fill(342, 274, 14, 9, GOLD); fill(364, 274, 14, 9, GOLD); fill(390, 274, 14, 9, GOLD);
+      disc(350, 302, 11, INK); disc(398, 302, 11, INK);
+      disc(350, 302, 4, PAPER); disc(398, 302, 4, PAPER);
+      line(404, 264, 424, 238, INK, 2.5); disc(426, 236, 3.5, INK);
+      /* figures on the snow */
+      groundShadow(168, 324, 50, 0.26); groundShadow(106, 326, 44, 0.24);
+      figure(106, 324 + bob(t, 410), 92, "robot", STEEL, GOLD, false);
+      figure(168, 322 + bob(t), 102, "hero", INK, RUST, false);
+    }
+
+    function drawStation(t) {
+      bgFill(PAPER);
+      shade(0, 0, W, H, 0.06, INK);
+      line(120, 0, 120, 300, INK, 1.4); line(362, 0, 362, 300, INK, 1.4);
+      shade(120, 0, 1.4, 300, 0.3, INK); shade(362, 0, 1.4, 300, 0.3, INK);
+      /* porthole — deep space, framed in rivets */
+      disc(240, 106, 80, VOID);
+      ctx.save(); ctx.beginPath(); ctx.arc(240, 106, 72, 0, TAU); ctx.clip();
+      starfield(34, 41, PAPER, 330);
+      disc(272, 92, 27, STEEL);
+      ctx.save(); ctx.beginPath(); ctx.arc(272, 92, 27, 0, TAU); ctx.clip();
+      shade(245, 74, 54, 6, 0.3, ICE); shade(245, 92, 54, 5, 0.18, PAPER); shade(245, 106, 54, 7, 0.36, ICE);
+      ctx.restore();
+      disc(206, 128, 7, GOLD); discShade(204, 126, 2.5, 0.3, RUST);
+      ctx.restore();
+      ringS(240, 106, 80, INK, 4);
+      for (var rv = 0; rv < 10; rv++) {
+        var ra = rv / 10 * TAU;
+        disc(240 + Math.cos(ra) * 90, 106 + Math.sin(ra) * 90, 2.6, INK);
+      }
+      /* hanging lamps + their light */
+      [104, 376].forEach(function (lx) {
+        line(lx, 0, lx, 24, INK, 3);
+        disc(lx, 31, 10, INK); disc(lx, 34, 4, GOLD);
+        ctx.save(); ctx.beginPath();
+        ctx.moveTo(lx - 7, 38); ctx.lineTo(lx + 7, 38); ctx.lineTo(lx + 44, 168); ctx.lineTo(lx - 44, 168); ctx.closePath(); ctx.clip();
+        vgrad(lx - 44, 38, 88, 130, 0.14, 0.02, INK, 16); ctx.restore();
+      });
+      /* dock board */
+      fill(22, 118, 88, 124, VOID);
+      fill(22, 118, 88, 17, GOLD);
+      fill(30, 124, 40, 5, INK); fill(76, 124, 24, 5, INK);
+      for (var rw = 0; rw < 6; rw++) {
+        fill(30, 146 + rw * 15, 30 + rnd(rw * 8.3) * 38, 5, rw % 2 ? TEAL : PAPER);
+        fill(30, 154 + rw * 15, 18 + rnd(rw * 5.1 + 3) * 30, 3.5, PAPER);
+      }
+      /* trader's stall */
+      figure(416, 248, 86, "spacer", TEAL, GOLD, true);
+      fill(368, 196, 6, 106, INK); fill(456, 196, 6, 106, INK);
+      poly([[362, 198], [462, 198], [470, 176], [354, 176]], RUST);
+      ctx.save(); ctx.beginPath();
+      ctx.moveTo(362, 198); ctx.lineTo(462, 198); ctx.lineTo(470, 176); ctx.lineTo(354, 176); ctx.closePath(); ctx.clip();
+      for (var aw = 0; aw < 6; aw++) if (aw % 2) shade(354 + aw * 20, 176, 20, 22, 0.85, PAPER);
+      ctx.restore();
+      fill(364, 240, 100, 9, INK);
+      fill(376, 250, 36, 32, INK); line(376, 266, 412, 266, PAPER, 2); line(394, 250, 394, 282, PAPER, 2);
+      fill(420, 258, 32, 24, INK); line(420, 270, 452, 270, PAPER, 2);
+      disc(386, 234, 3, INK); disc(404, 234, 3, INK); disc(428, 234, 3, INK);
+      /* floor */
+      fill(0, 300, W, 2.5, INK);
+      shade(0, 302, W, 58, 0.13, INK);
+      ellipShade(104, 304, 54, 7, 0.12, INK); ellipShade(376, 304, 54, 7, 0.12, INK);
+      line(150, 352, 216, 304, INK, 1.5); line(330, 352, 264, 304, INK, 1.5);
+      groundShadow(212, 324, 50, 0.28); groundShadow(140, 326, 44, 0.26);
+      figure(140, 324 + bob(t, 300), 94, "crew", STEEL, GOLD, false);
+      figure(212, 322 + bob(t), 104, "hero", INK, RUST, false);
+    }
+
+    function drawAsteroids(t) {
+      bgFill(VOID);
+      discShade(118, 78, 96, 0.15, STEEL); discShade(150, 92, 58, 0.2, STEEL);
+      discShade(392, 258, 116, 0.11, TEAL); discShade(84, 282, 72, 0.09, STEEL);
+      starfield(120, 51, PAPER);
+      twinkle(t, 77, GOLD);
+      function rock(cx, cy, r, seed, driftAmp) {
+        var dx = REDUCED ? 0 : Math.sin(t / 2100 + seed) * driftAmp;
+        var dy = REDUCED ? 0 : Math.cos(t / 2600 + seed * 2) * driftAmp * 0.6;
+        discShade(cx + dx, cy + dy, r, 0.85, STEEL);
+        discShade(cx + dx - r * 0.3, cy + dy - r * 0.3, r * 0.55, 0.4, ICE);
+        disc(cx + dx - r * 0.25, cy + dy - r * 0.1, r * 0.16, VOID);
+        disc(cx + dx + r * 0.3, cy + dy + r * 0.28, r * 0.12, VOID);
+        ctx.strokeStyle = ICE; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx + dx, cy + dy, r, Math.PI * 0.95, Math.PI * 1.5); ctx.stroke();
+      }
+      rock(96, 66, 21, 1.3, 5); rock(392, 52, 15, 2.9, 4); rock(438, 128, 26, 4.1, 6);
+      rock(60, 148, 12, 5.7, 4); rock(352, 196, 10, 7.3, 3);
+      /* the Kestrel, holding off — lamps on */
+      var ship = [[30, 218], [52, 202], [104, 202], [124, 214], [116, 228], [44, 230], [30, 226]];
+      poly(ship, PAPER);
+      fill(58, 210, 9, 5, GOLD); fill(74, 210, 9, 5, GOLD); fill(90, 210, 9, 5, GOLD);
+      shade(2, 208, 26, 14, REDUCED ? 0.55 : 0.5 + 0.2 * Math.sin(t / 240), RUST);
+      /* lamp beam + tether */
+      ctx.save(); ctx.beginPath();
+      ctx.moveTo(120, 210); ctx.lineTo(120, 224); ctx.lineTo(330, 258); ctx.lineTo(330, 208); ctx.closePath(); ctx.clip();
+      hgrad(120, 208, 210, 50, 0.42, 0.05, GOLD, 22); ctx.restore();
+      ctx.strokeStyle = ICE; ctx.lineWidth = 1.8;
+      ctx.beginPath(); ctx.moveTo(104, 230); ctx.quadraticCurveTo(200, 268, 292, 238); ctx.stroke();
+      /* you, on EVA — lit by the ship */
+      var ey = REDUCED ? 0 : Math.sin(t / 900) * 3;
+      discShade(308, 236 + ey, 30, 0.16, GOLD);
+      figure(308, 272 + ey, 98, "hero", PAPER, RUST, false);
+      disc(308 + 14, 236 + ey, 3, GOLD);
+      rock(150, 316, 13, 8.9, 4); rock(428, 308, 17, 10.2, 5);
+    }
+
+    function drawDerelict(t) {
+      bgFill(VOID);
+      shade(0, 0, W, H, 0.13, STEEL);                              /* dead-ship gloom */
+      line(112, 0, 112, 322, INK, 3); line(372, 0, 372, 322, INK, 3); line(0, 118, W, 118, INK, 3);
+      /* frost on a dead screen */
+      fill(34, 40, 128, 88, VOID);
+      ctx.strokeStyle = ICE; ctx.lineWidth = 2; ctx.strokeRect(34, 40, 128, 88);
+      shade(38, 44, 120, 80, 0.3, ICE);
+      shade(38, 44, 44, 30, 0.5, ICE); shade(118, 96, 40, 28, 0.45, ICE);
+      shade(52, 66, 66, 4, 0.22, TEAL); shade(52, 78, 44, 4, 0.22, TEAL);
+      /* snapped conduits */
+      line(424, 0, 424, 84, INK, 6); line(438, 0, 438, 64, INK, 6);
+      line(424, 84, 430, 98, INK, 4); line(438, 64, 434, 80, INK, 4);
+      if (!REDUCED && (t % 2700) < 130) {                          /* a spark, now and then */
+        fill(425, 100, 9, 2, GOLD); fill(428.5, 96.5, 2, 9, GOLD);
+      }
+      /* floating debris */
+      for (var db = 0; db < 5; db++) {
+        var dx = 60 + rnd(db * 17.7) * 340 + (REDUCED ? 0 : Math.sin(t / 1500 + db * 2.1) * 9);
+        var dy = 150 + rnd(db * 23.3) * 90 + (REDUCED ? 0 : Math.cos(t / 1800 + db) * 6);
+        shade(dx, dy, 7 + rnd(db * 7.9) * 8, 5, 0.55, PAPER);
+      }
+      /* a toppled console */
+      poly([[332, 288], [454, 288], [440, 320], [346, 320]], INK);
+      shade(332, 288, 122, 32, 0.22, PAPER);
+      line(332, 288, 454, 288, PAPER, 2.5);
+      /* your lamp makes a small day */
+      var flick = REDUCED ? 1 : 0.93 + 0.07 * Math.sin(t / 110) * Math.sin(t / 47);
+      ctx.save(); ctx.beginPath();
+      ctx.moveTo(207, 250); ctx.lineTo(223, 250); ctx.lineTo(292, 320); ctx.lineTo(138, 320); ctx.closePath(); ctx.clip();
+      vgrad(138, 250, 154, 70, 0.34 * flick, 0.05, GOLD, 16); ctx.restore();
+      ellipShade(215, 319, 88, 11, 0.32 * flick, GOLD);
+      ellipShade(215, 319, 48, 7, 0.3 * flick, GOLD);
+      figure(215, 320 + bob(t, 480), 102, "hero", PAPER, RUST, false);
+      figure(336, 322 + bob(t, 390), 92, "robot", ICE, GOLD, false);
+      shade(298, 226, 78, 98, 0.5, VOID);                           /* ECHO stands half in dark */
+      fill(0, 322, W, 38, INK); shade(0, 322, W, 38, 0.16, PAPER);
+      line(0, 322, W, 322, PAPER, 2);
+    }
+
+    function drawGrove(t) {
+      bgFill(PAPER);
+      vgrad(0, 0, W, 262, 0.34, 0.02, TEAL, 38);
+      disc(68, 56, 22, GOLD); ringS(68, 56, 22, INK, 2);
+      discShade(60, 50, 6, 0.3, RUST); discShade(76, 64, 4.5, 0.28, RUST);
+      disc(410, 42, 13, PAPER); ringS(410, 42, 13, INK, 2); discShade(406, 38, 3.5, 0.3, STEEL);
+      /* mushroom trees — teal trunks, rust caps, paper spots */
+      [[46, 128], [150, 148], [322, 138], [424, 118]].forEach(function (tr, i) {
+        var bx = tr[0], capR = tr[1] * 0.32, topY = 302 - tr[1];
+        poly([[bx - 6, 302], [bx - 3, topY + 16], [bx + 3, topY + 16], [bx + 6, 302]], TEAL);
+        ctx.fillStyle = RUST; ctx.beginPath();
+        ctx.arc(bx, topY + 16, capR, Math.PI, 0); ctx.closePath(); ctx.fill();
+        ctx.save(); ctx.beginPath(); ctx.arc(bx, topY + 16, capR, Math.PI, 0); ctx.closePath(); ctx.clip();
+        shade(bx - capR, topY + 16 - capR, capR * 2, capR * 0.55, 0.3, PAPER); ctx.restore();
+        for (var dt = 0; dt < 5; dt++)
+          disc(bx - capR * 0.6 + rnd(i * 31 + dt * 7.7) * capR * 1.2, topY + 16 - capR * (0.25 + rnd(dt * 3.3 + i) * 0.55), 2.2, PAPER);
+        for (var gl = 0; gl < 6; gl++)
+          line(bx - capR * 0.7 + gl * capR * 0.24, topY + 17, bx - capR * 0.55 + gl * capR * 0.22, topY + 27, INK, 1.6);
+        line(bx - 2, topY + 28, bx - 2, topY + 44, INK, 1.4);
+        disc(bx - 2, topY + 48, 1.8, INK);
+      });
+      /* a listening stone */
+      fill(372, 252, 62, 50, STEEL);
+      ctx.fillStyle = STEEL; ctx.beginPath(); ctx.arc(403, 252, 31, Math.PI, 0); ctx.closePath(); ctx.fill();
+      ringS(403, 272, 12, GOLD, 2.2); disc(403, 272, 2.6, GOLD);
+      shade(372, 221, 62, 81, 0.18, PAPER);
+      /* ground */
+      fill(0, 300, W, 2.5, INK);
+      shade(0, 302, W, 58, 0.2, TEAL);
+      for (var tf = 0; tf < 22; tf++) {
+        var tx2 = rnd(tf * 5.3 + 60) * W, ty2 = 312 + rnd(tf * 8.9) * 40;
+        line(tx2, ty2, tx2 - 2, ty2 - 6, INK, 1.6); line(tx2 + 3, ty2, tx2 + 4, ty2 - 7, INK, 1.6);
+      }
+      /* drifting spores */
+      for (var spt = 0; spt < 14; spt++) {
+        var sxp = rnd(spt * 13.7 + 90) * W + (REDUCED ? 0 : Math.sin(t / 1100 + spt * 1.9) * 10);
+        var syp = 120 + rnd(spt * 19.3) * 170 + (REDUCED ? 0 : Math.cos(t / 1400 + spt) * 7);
+        fill(sxp, syp, 2.2, 2.2, INK);
+      }
+      groundShadow(196, 324, 50, 0.3); groundShadow(122, 326, 44, 0.27); groundShadow(272, 326, 40, 0.25);
+      figure(122, 324 + bob(t, 300), 94, "crew", STEEL, GOLD, false);
+      figure(196, 322 + bob(t), 102, "hero", INK, RUST, false);
+      figure(272, 324 + bob(t, 520), 126, "alien", TEAL, GOLD, false);
+    }
+
+    function drawAnomaly(t, isEnd) {
+      bgFill(VOID);
+      starfield(115, 61, PAPER);
+      twinkle(t, 97, GOLD);
+      discShade(240, 148, 150, 0.09, STEEL);
+      discShade(240, 148, 108, 0.12, TEAL);
+      discShade(240, 148, 70, 0.15, GOLD);
+      shade(236, 56, 8, 190, 0.22, GOLD);                          /* the light that falls upward */
+      var pulse = REDUCED ? 0 : Math.sin(t / 620) * 4;
+      ringS(240, 148, 56 + pulse, GOLD, 2.2);
+      ringS(240, 148, 39 - pulse * 0.6, RUST, 2);
+      ringS(240, 148, 24, TEAL, 1.6);
+      /* the Artifact, turning slowly */
+      var ang = REDUCED ? 0.6 : t / 2600, ca = Math.cos(ang), sa = Math.sin(ang);
+      function rot(dx, dy) { return [240 + dx * ca - dy * sa, 148 + dx * sa + dy * ca]; }
+      poly([rot(0, -21), rot(13, 0), rot(0, 21), rot(-13, 0)], GOLD);
+      poly([rot(0, -11), rot(7, 0), rot(0, 11), rot(-7, 0)], VOID);
+      disc(240, 148, 4, PAPER);
+      /* the observation deck */
+      fill(0, 300, W, 60, INK);
+      shade(0, 300, W, 60, 0.15, PAPER);
+      fill(0, 298, W, 3, PAPER);
+      ellipShade(240, 306, 96, 8, 0.2, PAPER);
+      line(60, 330, 420, 330, PAPER, 1.4); line(60, 344, 420, 344, PAPER, 1.4);
+      if (isEnd) {
+        figure(102, 322 + bob(t, 340), 90, "crew", ICE, GOLD, false);
+        figure(164, 320 + bob(t, 430), 98, "cap", PAPER, GOLD, false);
+        figure(318, 320 + bob(t, 380), 92, "robot", ICE, GOLD, false);
+      }
+      figure(240, 318 + bob(t, 460), 102, "hero", PAPER, RUST, false);
+    }
+
+    var DRAW = {
+      starport: drawStarport, bridge: drawBridge, planet: drawPlanet,
+      ice: drawIce, station: drawStation, asteroids: drawAsteroids,
+      derelict: drawDerelict, grove: drawGrove,
+      anomaly: function (t) { drawAnomaly(t, false); },
+      end: function (t) { drawAnomaly(t, true); }
+    };
+
+    /* ============================================================
+       GAME STATE
+       ============================================================ */
+    var $ = function (id) { return document.getElementById(id); };
+    var elName = $("missionName"), elTurn = $("turnTag"), elGoal = $("goalLine"),
+        elBars = $("bars"), elStory = $("storyText"), elLog = $("logLine"),
+        elActions = $("actions"), elTag = $("picTag"), elHow = $("howto"),
+        elLive = $("picLive");
+
+    var G = {
+      screen: "start",        // start | scene | end
+      stage: "start",         // intro1 | intro2 | pool | finale | end | lost
+      role: null,
+      place: "starport",
+      jump: 1, scenesDone: 0, lastScene: -1,
+      skill: 0, data: 0, crew: 0, credits: 12, hull: 88, fuel: 6,
+      clock: 8 * 60, tick: 0,
+      story: "", log: ""
+    };
+    var soundOn = true, audioCtx = null;
+
+    function beep(freq, dur, delay) {
+      if (!soundOn) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+        o.type = "square"; o.frequency.value = freq;
+        g.gain.setValueAtTime(0.06, audioCtx.currentTime + (delay || 0));
+        g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + (delay || 0) + dur);
+        o.connect(g); g.connect(audioCtx.destination);
+        o.start(audioCtx.currentTime + (delay || 0));
+        o.stop(audioCtx.currentTime + (delay || 0) + dur);
+      } catch (e) { /* audio is decoration only */ }
+    }
+    function sfx(kind) {
+      if (kind === "good") { beep(520, 0.07); beep(780, 0.09, 0.07); }
+      else if (kind === "win") { beep(392, 0.1); beep(523, 0.1, 0.1); beep(659, 0.1, 0.2); beep(784, 0.22, 0.3); }
+      else beep(330, 0.05);
+    }
+    function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+    /* ============================================================
+       CONTENT — one ship, one captain, one ship-mind.
+       Scene shape: { place, tag, title, text, choices[] }
+       Choice shape: { name, sub, fx:{skill,data,crew,credits,hull,fuel}, result }
+       ============================================================ */
+    var ROLES = {
+      pilot:    { key: "pilot",    tag: "PILOT",    skill: "NAVIGATION",  sub: "Ex-hauler · steady hands on the stick" },
+      engineer: { key: "engineer", tag: "ENGINEER", skill: "ENGINEERING", sub: "Shipyard-born · fixes anything that hums" },
+      scout:    { key: "scout",    tag: "SCOUT",    skill: "SURVEY",      sub: "Frontier mapper · first boots on new worlds" }
+    };
+
+    var INTRO1 = {
+      place: "bridge", tag: "SSV KESTREL — BRIDGE", title: "THE CAPTAIN",
+      text: "Captain Reyes studies you the way navigators study weather. \"ECHO recommended you. ECHO recommends nobody. So — what did you do, out there in the dark, before my ship?\"",
+      choices: [
+        { name: "\"FLEW. ANYTHING, ANYWHERE.\"", sub: "Crew +1", fx: { crew: 1 }, result: "\"Honest,\" she says. \"The dark eats liars first. Rule one on the Kestrel: we log everything twice. Even the miracles. Especially those.\"" },
+        { name: "\"KEPT SHIPS ALIVE.\"", sub: "Data +1", fx: { data: 1 }, result: "\"Alive,\" she repeats, approving. \"Good word for a ship. Rule one on the Kestrel: we log everything twice. Even the miracles.\"" },
+        { name: "\"WALKED WORLDS NOBODY NAMED.\"", sub: "Skill +1", fx: { skill: 1 }, result: "Something like respect crosses her face and files itself away. \"Then you'll fit. Rule one: we log everything twice. Even the miracles.\"" }
+      ]
+    };
+    var INTRO2 = {
+      place: "bridge", tag: "SSV KESTREL — BRIDGE", title: "THE STAR CHART",
+      text: "ECHO unfolds a chart of unmapped dark across the viewport. One point of light pulses at the far edge. \"The Meridian signal,\" ECHO says. \"Six jumps out. Nobody who reached it has filed a report. I find this rude.\"",
+      choices: [
+        { name: "\"THEN WE FILE THE FIRST.\"", sub: "Crew +1", fx: { crew: 1 }, result: "\"Confidence noted,\" says ECHO. \"Also logged twice.\" Reyes almost smiles. \"Undock us. Jump one is yours.\"" },
+        { name: "ASK WHAT THE SIGNAL IS", sub: "Data +1", fx: { data: 1 }, result: "\"A pattern,\" ECHO says. \"Repeating. Patient. Older than every chart I own. I have owned charts for two hundred years.\" Reyes nods: \"Undock us.\"" },
+        { name: "ASK ABOUT THE LAST CREW", sub: "Skill +1", fx: { skill: 1 }, result: "\"There is no last crew,\" Reyes says. \"There are only crews who stopped answering.\" A beat. \"We will answer. Undock us. Jump one is yours.\"" }
+      ]
+    };
+
+    var POOL = [
+      { place: "planet", tag: "SURVEY — ROCKY WORLD", title: "FIRST BOOTS DOWN",
+        text: "A rust-red world, thin kind air, and a glass-tree forest chiming in a wind that comes from nowhere on the charts. The survey flag is planted. The world is listening.",
+        choices: [
+          { name: "SURVEY THE GLASS FOREST", sub: "Skill +2 · Hull −2", fx: { skill: 2, hull: -2 }, result: "The trees ring when you tap them — each a different note, each older than the colony era. You log a forest that is also an instrument. Twice." },
+          { name: "SCAN THE DEEP CRUST", sub: "Data +3 · Fuel −1", fx: { data: 3, fuel: -1 }, result: "Under the red dust: a river of heavy water, enough to matter. ECHO marks the world in gold on the chart. \"Someone will build a town here,\" it says. \"Because of a Tuesday.\"" },
+          { name: "CAMP AND WATCH THE SKY", sub: "Crew +2 · Fuel −1", fx: { crew: 2, fuel: -1 }, result: "The ringed giant rises like a slow moon. Nobody talks for an hour. Some data only the crew can hold, and it holds the crew together." }
+        ] },
+      { place: "ice", tag: "THE FROZEN MOON", title: "UNDER THE ICE",
+        text: "A white moon around a tired star. The rover's lamps find claw-marks in the ice — fresh ones, longer than the rover, going down into a crack that breathes warm air.",
+        choices: [
+          { name: "FOLLOW THE BREATHING CRACK", sub: "Data +2 · Hull −6", fx: { data: 2, hull: -6 }, result: "Below the crust: a black warm sea, and things with lamps of their own rising to look at yours. You back out slowly, rich in footage and poor in answers." },
+          { name: "DRILL FOR ICE-CORE SAMPLES", sub: "Skill +2 · Fuel −1", fx: { skill: 2, fuel: -1 }, result: "The core reads like a diary: four thousand winters, and one summer that should not exist. ECHO requests the sample be logged twice. You already had." },
+          { name: "MELT AND TOP UP THE TANKS", sub: "Fuel +2", fx: { fuel: 2 }, result: "Moon-ice becomes ship-water becomes tomorrow's burn. Unglamorous, ECHO notes, is just glory that works every day." }
+        ] },
+      { place: "station", tag: "HELIOS STATION", title: "DOCKING FEES AND RUMOURS",
+        text: "Helios Station: three rings of traders, one honest mechanic, and a dock board older than the war. Your shore leave is short and your credits are loud.",
+        choices: [
+          { name: "TRADE SURVEY DATA", sub: "Credits +6 · Data −1", fx: { credits: 6, data: -1 }, result: "A cartographer with ink on her cuffs pays well for the glass forest. \"A forest that's an instrument,\" she murmurs. \"The guild will fight over this.\" Let them." },
+          { name: "HIRE THE HONEST MECHANIC", sub: "Credits −4 · Hull +12", fx: { credits: -4, hull: 12 }, result: "She finds two faults ECHO was too polite to mention and fixes three. The Kestrel leaves Helios humming in a lower, happier key." },
+          { name: "LISTEN IN THE DOCK CANTEEN", sub: "Crew +1 · Data +2", fx: { crew: 1, data: 2 }, result: "Spacers trade the only currency that never crashes: warnings. A dead ship on your route. A signal that answers back. You log both. Twice." }
+        ] },
+      { place: "asteroids", tag: "THE SCATTERED BELT", title: "ROCKS AND RICHES",
+        text: "The belt turns slowly, patient as geology. One rock in a thousand carries metal worth a mortgage. Your tether is clipped. The Kestrel holds off, lamps on, like a lantern in a cave.",
+        choices: [
+          { name: "MINE THE BRIGHT ROCK", sub: "Credits +5 · Hull −4", fx: { credits: 5, hull: -4 }, result: "Platinum veins, and one long scratch down the Kestrel's flank from a jealous pebble. The cargo bay is heavy. The scratch is a story now." },
+          { name: "RIDE THE BELT'S EDGE", sub: "Skill +2 · Fuel −1", fx: { skill: 2, fuel: -1 }, result: "You thread the gaps the way thread takes a needle — by respect, not force. Reyes, watching the feed, says one word: \"Clean.\" It goes in the log. Twice." },
+          { name: "TAG ROCKS FOR THE GUILD", sub: "Data +2 · Credits +2", fx: { data: 2, credits: 2 }, result: "Forty rocks beaconed for other crews. The guild pays in credits and in the better currency: they will answer when the Kestrel calls." }
+        ] },
+      { place: "derelict", tag: "THE SILENT SHIP", title: "NO ANSWER ON ANY CHANNEL",
+        text: "She hangs in the dark with her running lights on and her crew simply — gone. Meals set. Log open mid-sentence. ECHO's voice drops half a tone: \"I do not enjoy this. Boarding party, be kind.\"",
+        choices: [
+          { name: "READ THE CAPTAIN'S LOG", sub: "Data +3 · Crew −1", fx: { data: 3, crew: -1 }, result: "\"Day 41. The signal is not calling us. It is calling THROUGH—\" The sentence ends there. The bridge is very quiet. You close the log gently, like a door." },
+          { name: "SALVAGE THE FUEL CELLS", sub: "Fuel +3 · Hull −3", fx: { fuel: 3, hull: -3 }, result: "Her cells are full and cold and fit the Kestrel like they were poured for her. A tool slips, sparks kiss the hull. Fair trade, whispers ECHO. Fair trade." },
+          { name: "TOW HER TO THE LANES", sub: "Crew +2 · Fuel −1", fx: { crew: 2, fuel: -1 }, result: "You beacon her for the guild tugs, crew effects sealed and named. Whoever she was, she will not drift anonymous. The Kestrel's crew stands a little straighter." }
+        ] },
+      { place: "grove", tag: "THE WHISPERING GROVE", title: "FIRST CONTACT, UNBOTHERED",
+        text: "Mushroom trees tall as towers, twin moons, and a local resident sitting on a stone, listening to your landing like it is weather. It has clearly decided you are not interesting. Yet.",
+        choices: [
+          { name: "SIT. LISTEN BACK.", sub: "Crew +1 · Data +2", fx: { crew: 1, data: 2 }, result: "An hour of sitting. Then the resident plays the grove — stalks bowed like strings — and the whole forest answers. First contact, ECHO logs, was a concert. Attendance: honoured." },
+          { name: "OFFER TRADE GOODS", sub: "Credits −2 · Skill +2", fx: { credits: -2, skill: 2 }, result: "It ignores the goods and studies your hands instead, then teaches them a knot no human archive holds. Some currencies only spend once, in one place, forever." },
+          { name: "SURVEY AND DO NOT TOUCH", sub: "Data +2 · Fuel −1", fx: { data: 2, fuel: -1 }, result: "Look, log, leave. The resident watches you not-take things with growing approval, and at dusk leaves a carved stone by the ramp. It depicts the Kestrel. Perfectly." }
+        ] },
+      { place: "bridge", tag: "THE LONG DARK", title: "BETWEEN STARS",
+        text: "Three days of nothing on the scopes but the ship's own heartbeat. The long dark is where crews are made or quietly unmade. The bridge is yours for the watch.",
+        choices: [
+          { name: "RUN THE CREW'S DRILLS", sub: "Skill +2 · Crew +1 · Hull −2", fx: { skill: 2, crew: 1, hull: -2 }, result: "Fire drill, seal drill, the drill nobody names. Times improve. So does the singing in the corridors, which ECHO insists is unrelated." },
+          { name: "TEACH ECHO A CARD GAME", sub: "Crew +2", fx: { crew: 2 }, result: "ECHO loses the first hand on purpose and the second honestly, and demands a rematch every night after. Two hundred years old, and it has found a new way to be young." },
+          { name: "TAKE THE QUIET WATCH ALONE", sub: "Data +1 · Skill +1", fx: { data: 1, skill: 1 }, result: "Alone with the starfield, you notice the Meridian signal has a second voice under the first — a harmony. You log it twice before you trust it once." }
+        ] },
+      { place: "anomaly", tag: "AN UNCHARTED SIGNAL", title: "IT ANSWERS BACK",
+        text: "A pocket of space where the stars are wrong — too many, too close, arranged like a held breath. Your hail goes out. Something in the pocket rearranges the stars, politely, into a reply.",
+        choices: [
+          { name: "REPLY IN KIND", sub: "Data +3 · Hull −4", fx: { data: 3, hull: -4 }, result: "You answer pattern for pattern. The pocket brightens — approval, or appetite. A surge scars the hull and the scopes fill with a map of somewhere that has no right to exist. Yet." },
+          { name: "RECORD EVERYTHING, BURN AWAY", sub: "Data +2 · Fuel −1", fx: { data: 2, fuel: -1 }, result: "Prudence, Reyes calls it, and means it as praise. The recording is nine seconds long. ECHO has played it four hundred times. It gets stranger." },
+          { name: "LEAVE A BEACON AND A WARNING", sub: "Crew +2 · Credits −1", fx: { crew: 2, credits: -1 }, result: "\"Here be questions,\" the beacon says, in your voice, forever. Some captains will thank you. Some will curse you. Both will be right." }
+        ] }
+    ];
+
+    var FINALE = {
+      place: "anomaly", tag: "THE MERIDIAN", title: "THE MERIDIAN",
+      text: "Six jumps out, the chart ends — and it is there. A structure older than every star in view, turning slowly, holding a light that falls upward. The signal stops. In the new silence, ECHO whispers: \"It was never calling the ships. It was calling a witness.\"",
+      choices: [
+        { name: "TAKE THE KESTREL IN", sub: "Skill +2", fx: { skill: 2 }, result: "You fly the approach by hand, the way the light seems to ask. The structure opens like an eye that has decided, at last, to see you back." },
+        { name: "SEND EVERYTHING YOU ARE, FIRST", sub: "Data +2", fx: { data: 2 }, result: "Charts, logs, the glass forest's music, ECHO's card game, all of it — the whole voyage, offered. The light answers with yours, harmonised." },
+        { name: "HOLD POSITION. WITNESS.", sub: "Crew +2", fx: { crew: 2 }, result: "You hold the Kestrel steady and simply stay, crew shoulder to shoulder on the bridge, while the oldest thing in the dark acknowledges the newest. It is enough. It is more than enough." }
+      ]
+    };
+    var END_LINE = "The report you file is one line long, and Reyes logs it twice: \"We went. We saw. We answered.\" Somewhere behind you, patient as ever, the Meridian begins — very faintly — to turn toward the next witness.";
+    var LOST_LINE = "The Kestrel's last log is found a year later, beacon-tight and courteous to the end. Final entry, in ECHO's hand: \"Hull gone. Crew safe in the pods. The dark is not cruel. It is only large. Awaiting pickup. We can wait. We have cards.\"";
+
+    var AMBIENT = [
+      { log: "A micrometeorite ticks off the hull like a fingernail on glass.", fx: { hull: -2 } },
+      { log: "The crew shares a meal that officially does not exist. Morale, unofficially, soars.", fx: { crew: 1 } },
+      { log: "ECHO hums an old shanty in the vents. Nobody admits to liking it. Everybody does.", fx: null },
+      { log: "Solar wind, rich and steady — the scoops drink deep.", fx: { fuel: 1 } },
+      { log: "A dream goes around the crew: a forest, ringing like bells. Nobody planted it.", fx: { data: 1 } },
+      { log: "Somewhere aft, a pump develops an opinion. It is noted. It is logged twice.", fx: null }
+    ];
+
+    /* ============================================================
+       FLOW
+       ============================================================ */
+    function setStory(main, log) {
+      G.story = main;
+      if (log !== undefined) G.log = log;
+      elStory.innerHTML = "";
+      var span = document.createElement("span");
+      span.textContent = main;
+      elStory.appendChild(span);
+      var cur = document.createElement("span");
+      cur.className = "cursor"; cur.setAttribute("aria-hidden", "true");
+      elStory.appendChild(cur);
+      elLog.textContent = G.log ? "» " + G.log : "";
+    }
+    function setLogOnly(text) {
+      G.log = text;
+      elLog.textContent = text ? "» " + text : "";
+    }
+    function fxText(fx) {
+      var R = ROLES[G.role];
+      var labels = { skill: R ? R.skill : "Skill", data: "Data", crew: "Crew", credits: "Credits", hull: "Hull", fuel: "Fuel" };
+      var parts = [];
+      for (var k in fx) {
+        if (!fx[k]) continue;
+        parts.push(labels[k] + " " + (fx[k] > 0 ? "+" : "−") + Math.abs(fx[k]));
+      }
+      return parts.join(" · ");
+    }
+    function applyFx(fx) {
+      if (!fx) return;
+      G.skill = clamp(G.skill + (fx.skill || 0), 0, 40);
+      G.data = clamp(G.data + (fx.data || 0), 0, 40);
+      G.crew = clamp(G.crew + (fx.crew || 0), 0, 40);
+      G.credits = clamp(G.credits + (fx.credits || 0), 0, 99);
+      G.hull = clamp(G.hull + (fx.hull || 0), 0, 100);
+      G.fuel = clamp(G.fuel + (fx.fuel || 0), 0, 12);
+    }
+
+    function showScene(sc, tag) {
+      G.place = sc.place;
+      elTag.textContent = tag || sc.tag || "";
+      elName.textContent = sc.title;
+      setStory(sc.text, G.log);
+      renderPanel();
+      renderChoices(sc.choices);
+    }
+    function renderChoices(choices) {
+      elActions.innerHTML = "";
+      elActions.className = "actions";
+      choices.forEach(function (c, i) {
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "act-btn";
+        b.innerHTML = '<span class="a-key">' + (i + 1) + '</span><span class="a-name"></span><span class="a-sub"></span>';
+        b.querySelector(".a-name").textContent = c.name;
+        b.querySelector(".a-sub").textContent = c.sub || "";
+        b.addEventListener("click", function () { chooseOption(c); });
+        elActions.appendChild(b);
+      });
+    }
+    function renderContinue(label, sub) {
+      elActions.innerHTML = "";
+      elActions.className = "actions single";
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "act-btn";
+      b.innerHTML = '<span class="a-name">' + label + '</span><span class="a-sub">' + sub + '</span>';
+      b.addEventListener("click", advance);
+      elActions.appendChild(b);
+    }
+    function chooseOption(c) {
+      applyFx(c.fx);
+      sfx("tick");
+      if (G.hull <= 0 && G.stage !== "intro1" && G.stage !== "intro2") { endGame(true); return; }
+      var fxLine = fxText(c.fx);
+      setStory(c.result, fxLine ? fxLine : G.log);
+      renderPanel();
+      if (G.stage === "intro1") renderContinue("CONTINUE ▶", "ECHO is unfolding the star chart");
+      else if (G.stage === "intro2") renderContinue("UNDOCK — JUMP ONE ▶", "The dark is waiting");
+      else if (G.stage === "pool") renderContinue("NEXT JUMP ▶", "Jump " + (G.jump + 1) + " — the chart decides");
+      else if (G.stage === "finale") renderContinue("FILE THE REPORT ▶", "Reyes has the last word");
+    }
+    function pickScene() {
+      var idx = Math.floor(Math.random() * POOL.length);
+      if (POOL.length > 1 && idx === G.lastScene) idx = (idx + 1) % POOL.length;
+      G.lastScene = idx;
+      return POOL[idx];
+    }
+    function burnFuel() {
+      if (G.fuel > 0) { G.fuel--; return ""; }
+      G.hull = clamp(G.hull - 6, 0, 100);
+      return "Tanks dry — the Kestrel scoops raw hydrogen at ramming speed. Hull −6. ECHO does not complain. Much.";
+    }
+    function advance() {
+      sfx("tick");
+      if (G.stage === "intro1") {
+        G.stage = "intro2";
+        showScene(INTRO2);
+      } else if (G.stage === "intro2") {
+        G.stage = "pool"; G.jump = 1; G.scenesDone = 0;
+        var note0 = burnFuel();
+        if (note0) G.log = note0;
+        if (G.hull <= 0) { endGame(true); return; }
+        showScene(pickScene());
+      } else if (G.stage === "pool") {
+        G.scenesDone++;
+        var note = burnFuel();
+        if (note) G.log = note;
+        if (G.hull <= 0) { endGame(true); return; }
+        if (G.scenesDone >= 6) {
+          G.stage = "finale"; G.jump = 7;
+          showScene(FINALE);
+        } else {
+          G.jump++;
+          showScene(pickScene());
+        }
+      } else if (G.stage === "finale") {
+        endGame(false);
+      }
+    }
+
+    function startRole(key) {
+      G.role = key; G.screen = "scene"; G.stage = "intro1";
+      G.jump = 1; G.scenesDone = 0; G.lastScene = -1;
+      G.skill = 0; G.data = 0; G.crew = 0; G.credits = 12; G.hull = 88; G.fuel = 6;
+      G.log = "";
+      elHow.classList.add("hidden");
+      sfx("good");
+      showScene(INTRO1);
+    }
+
+    function endGame(lost) {
+      var R = ROLES[G.role];
+      G.screen = "end"; G.stage = lost ? "lost" : "end"; G.place = "end";
+      var score = G.skill + G.data + G.crew;
+      var grade = lost ? "THE SHIP THAT WAITED" : (score >= 24 ? "FIRST WITNESS" : (score >= 14 ? "A TRUE VOYAGE" : "A QUIET VOYAGE"));
+      elTag.textContent = lost ? "SIGNAL LOST" : "VOYAGE COMPLETE";
+      elName.textContent = "★ " + grade;
+      setStory(lost ? LOST_LINE : END_LINE,
+        R.skill + " " + G.skill + " · Data " + G.data + " · Crew " + G.crew + " · Credits " + G.credits + " · Hull " + G.hull + " · Fuel " + G.fuel);
+      sfx(lost ? "tick" : "win");
+      renderPanel();
+      elActions.innerHTML = "";
+      elActions.className = "actions";
+      var again = document.createElement("button");
+      again.type = "button"; again.className = "act-btn";
+      again.innerHTML = '<span class="a-name">↻ NEW VOYAGE</span><span class="a-sub">Same past, a fresh star chart</span>';
+      again.addEventListener("click", function () { startRole(G.role); });
+      var pick = document.createElement("button");
+      pick.type = "button"; pick.className = "act-btn";
+      pick.innerHTML = '<span class="a-name">◀ THE STARPORT</span><span class="a-sub">Stand on the pad again, choose again</span>';
+      pick.addEventListener("click", toStart);
+      elActions.appendChild(again); elActions.appendChild(pick);
+    }
+
+    function toStart() {
+      G.screen = "start"; G.stage = "start"; G.role = null; G.place = "starport";
+      elTag.textContent = "THE STARPORT";
+      elName.textContent = "ONE SCENARIO";
+      elGoal.textContent = "Pilot · Engineer · Scout — pick a past, take the stars.";
+      elTurn.textContent = "";
+      elBars.innerHTML = "";
+      elHow.classList.remove("hidden");
+      setStory("The Kestrel sits on the pad with her hatch open and her lights warm, six jumps from a signal nobody has ever answered. You stand in the middle of the dock, bag packed, whole voyage unwritten. Who were you, before the dark?", "");
+      elActions.innerHTML = "";
+      elActions.className = "menu-actions";
+      ["pilot", "engineer", "scout"].forEach(function (k, i) {
+        var R = ROLES[k];
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "act-btn";
+        b.innerHTML = '<span class="a-key">' + (i + 1) + '</span><span class="a-name">' + R.tag + '</span><span class="a-sub">' + R.sub + '</span>';
+        b.addEventListener("click", function () { startRole(k); });
+        elActions.appendChild(b);
+      });
+    }
+
+    /* ---------- panel ---------- */
+    function barRow(label, pct, val, low) {
+      var cls = low ? " low" : (label === "HULL" ? " hull" : "");
+      return '<div class="bar-row"><span class="bar-label">' + label + '</span>' +
+        '<div class="bar-track"><div class="bar-fill' + cls + '" style="width:' + pct + '%"></div></div>' +
+        '<span class="bar-val">' + val + '</span></div>';
+    }
+    function renderPanel() {
+      if (G.screen === "start" || !G.role) return;
+      var R = ROLES[G.role];
+      elTurn.textContent = (G.stage === "end" || G.stage === "lost") ? "VOYAGE OVER" : (G.stage === "finale" ? "THE MERIDIAN" : "JUMP " + G.jump);
+      elGoal.textContent = "SSV KESTREL — Fuel " + G.fuel + " · Credits " + G.credits + " · Data " + G.data + " · Crew " + G.crew;
+      elBars.innerHTML =
+        barRow(R.skill, clamp(G.skill * 4, 0, 100), G.skill + "", false) +
+        barRow("HULL", G.hull, G.hull + "", G.hull <= 25);
+    }
+
+    /* ---------- real-time ship clock + the living dark ---------- */
+    function fmtClock() {
+      var h = Math.floor(G.clock / 60) % 24, m = G.clock % 60;
+      return "SHIP " + (h < 10 ? "0" : "") + h + ":" + (m < 10 ? "0" : "") + m;
+    }
+    setInterval(function () {
+      G.clock = (G.clock + 20) % (24 * 60);
+      elLive.textContent = fmtClock();
+      G.tick++;
+      if (G.tick % 45 === 0 && G.screen === "scene" && G.stage === "pool" && !document.hidden) {
+        var ev = AMBIENT[Math.floor(Math.random() * AMBIENT.length)];
+        applyFx(ev.fx);
+        setLogOnly(ev.log);
+        renderPanel();
+        if (G.hull <= 0) endGame(true);
+      }
+    }, 1000);
+
+    /* ---------- picture loop ---------- */
+    function draw(now) {
+      var fn = DRAW[G.place] || drawStarport;
+      fn(now);
+    }
+    (function loop(now) {
+      draw(now || 0);
+      setTimeout(function () { requestAnimationFrame(loop); }, 60);
+    })(0);
+
+    /* ---------- utility controls ---------- */
+    $("btnHome").addEventListener("click", toStart);
+    $("btnRestart").addEventListener("click", function () {
+      if (G.role) startRole(G.role); else toStart();
+    });
+    $("btnSound").addEventListener("click", function () {
+      soundOn = !soundOn;
+      this.textContent = soundOn ? "SOUND: ON" : "SOUND: OFF";
+      if (soundOn) sfx("tick");
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key < "1" || e.key > "4") return;
+      var idx = Number(e.key) - 1;
+      var btns = elActions.querySelectorAll(".act-btn");
+      if (btns[idx] && !btns[idx].disabled) btns[idx].click();
+    });
+
+    toStart();
+    </script>
+  </body>
+</html>
